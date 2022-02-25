@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS - Practicing_1</title>
+	<link rel="stylesheet" href="CSS.css">
+	
+</head>
+<body>
+<h1>What Can JavaScript Do?</h1>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+		<button onclick = "document.getElementById('myImage').src = 'Bulbs_OnOff/bulb_on.jpg'">Turn on the light</button>
+		
+		<img id = "myImage" src = "Bulbs_OnOff/bulb_off.jpg" style = "width:100px">
+		
+		<button onclick = "document.getElementById('myImage').src = 'Bulbs_OnOff/bulb_off.jpg'">Turn off the light</button>
+
+<br><br>
+<hr>
+
+<h1>JavaScript Statements</h1>
+<p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+
+<pre>
+	< p id="demo1">< /p>
+	
+	< script type="text/javascript">
+	
+	let x,y,z;		//Statenent 1
+	x = 5;			//Statenent 2
+	y = 6;			//Statenent 3
+	z = x + y;		//Statenent 4
+	document.getElementById('demo1').innerHTML = "The value of z is " + z + ".";
+	
+	< /script>
+</pre>
+
+<p id="demo1"></p>
+<script type="text/javascript">
+	let x,y,z;
+	x = 5;
+	y = 6;
+	z = x + y;
+	document.getElementById('demo1').innerHTML = "The value of z is " + z + ".";
+</script>
+
+<h2>JavaScript Statements</h2>
+<p>In HTML, JavaScript statements are executed by the browser.</p>
+<pre>
+	< p id="demo2">< /p>
+
+	< script>
+	document.getElementById("demo2").innerHTML = "Hello Dolly.";
+	< /script>
+</pre>
+
+<p id="demo2"></p>
+
+<script>
+document.getElementById("demo2").innerHTML = "Hello Dolly.";
+</script>
+
+<h2>JavaScript Code Blocks</h2>
+<p>JavaScript statements can be grouped together in code blocks, inside curly brackets {...}.<br>
+The purpose of code blocks is to define statements to be executed together.</p>
+
+<pre>
+	< button type = "button" onclick = "myFunction()">Click Me!< /button>
+	< p id="demo3">< /p>
+	< p id="demo4">< /p>
+
+	< script>
+		function myFunction(){
+			document.getElementById("demo3").innerHTML = "Hello Dolly";
+			document.getElementById("demo4").innerHTML = "How are You?";
+		}
+	< /script>
+</pre>
+
+<button type = "button" onclick = "myFunction()">Click Me!</button>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<script>
+	function myFunction(){
+		document.getElementById("demo3").innerHTML = "Hello Dolly";
+		document.getElementById("demo4").innerHTML = "How are You?";
+	}
+</script>
+<hr>
+
+<h1>JavaScript Operators</h1>
+
+<p>x = 5, y = 2, calculate z = x + y, and display "z":</p>
+<pre>
+	< p id="demo5">< /p>
+	< script>
+		let x = 5;
+		let y = 2;
+		let z = x + y;
+		document.getElementById("demo5").innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo5"></p>
+<script>
+	var x = 5;
+	var y = 2;
+	var z = x + y;
+	document.getElementById("demo5").innerHTML = z;
+</script>
+
+<h2>JavaScript String Operators</h2>
+
+<p>The + operator concatenates (adds) strings.</p>
+<pre>
+	< p id="demo6">< /p>
+
+	< script>
+		let text1 = "John";
+		let text2 = "Doe";
+		let text3 = text1 + text2;
+		document.getElementById("demo6").innerHTML = text3;
+	< /script>
+</pre>
+
+<p>The assignment operator += can concatenate strings.</p>
+<pre>
+	< p id="demo">< /p>
+
+	< script>
+		let text1 = "What a very ";
+		text1 += "nice day";
+		document.getElementById("demo").innerHTML = text1;
+	< /script>
+</pre>
+
+<p id="demo6"></p>
+
+<script>
+	let text1 = "John";
+	let text2 = "Doe";
+	let text3 = text1 + " " + text2;
+	document.getElementById("demo6").innerHTML = text3;
+</script>
+<p>What a very nice day!</p>
+
+<h2>Adding Strings and Numbers</h2>
+<p>Adding a <b>number</b> and a <b>string</b>, returns a <b>string</b>.</p>
+<pre>
+	< p id="demo7">< /p>
+
+	< script>
+		let x = 5;
+		let y = "5" + 5;
+		let z = "Hello" + 5;
+		let a = 5 + "Hello";
+		document.getElementById("demo7").innerHTML = x + "< br>" + y + "< br>" + z + "< br>" + a;
+	< /script>	
+</pre>
+
+<p id="demo7"></p>
+
+<script type="text/javascript">
+	let x = 5;
+	let y = "5" + 5;
+	let z = "Hello" + 5;
+	let a = 5 + "Hello";
+	document.getElementById("demo7").innerHTML = x + "<br>" + y + "<br>" + z + "<br>" + a;
+</script>
+<p>5, 55, Hello5, 5Hello</p>
+<hr>
+
+<h1>JavaScript Arithmetic</h1>
+<h2>The % Operator</h2>
+<p>The <b>modulus</b> operator (%) returns the division remainder.</p>
+
+<pre>
+	< p id="demo8">< /p>
+	< script type="text/javascript">
+		let x = 5;
+		let y = 2;
+		let z = x % y;
+		document.getElementById('demo8').innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo_8"></p>
+<script type="text/javascript">
+	let x = 5;
+	let y = 2;
+	let z = x % y;
+	document.getElementById('demo_8').innerHTML = z;
+</script>
+<p>1</p>
+
+<h2>Incrementing</h2>
+<p>The increment operator (++) increments numbers.</p>
+
+<pre>
+	< p id="demo9">< /p>
+
+	< script>
+		let x = 5;
+		x++;
+		let z = x;
+		document.getElementById("demo9").innerHTML = z;
+	< /script>
+	
+</pre>
+<p id="demo9"></p>
+
+<script>
+	let x = 5;
+	x++;
+	let z = x;
+	document.getElementById("demo9").innerHTML = z;
+</script>
+<p>6</p>
+
+<h2>Decrementing</h2>
+<p>The decrement operator (--) decrements numbers.</p>
+
+<pre>
+	< p id="demo 10"></p>
+	< script type="text/javascript">
+		let x = 5;
+		x--;
+		let z = x;
+		document.getElementById('demo 10').innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo 10"></p>
+<script type="text/javascript">
+	let x = 5;
+	x--;
+	let z = x;
+	document.getElementById('demo 10').innerHTML = z;
+</script>
+<p>5</p>
+<hr>
+
+<h1>JavaScript Assignment Operators</h1>
+
+<p>The += assignment operator adds a value to a variable.</p>
+<pre>
+	< p id="demo">< /p>
+
+	< script>
+		let x = 10;
+		x += 5;
+		document.getElementById("demo").innerHTML = x;
+	< /script>
+</pre>
+<p id="demo11"></p>
+
+<script>
+	let x = 10;
+	x += 5;
+	document.getElementById("demo11").innerHTML = x;
+</script>
+<p>15</p>
+
+<pre>
+	The -= assignment operator subtracts a value from a variable.
+	Assignment
+	let x = 10;
+	x -= 5;
+
+	The *= assignment operator multiplies a variable.
+	Assignment
+	let x = 10;
+	x *= 5;
+
+	The /= assignment divides a variable.
+	Assignment
+	let x = 10;
+	x /= 5;
+</pre>
+<hr>
+
+<h1>JavaScript Data Types</h1>
+<p>JavaScript variables can hold different data types: numbers, strings, objects and more:</p>
+<pre>
+	let length = 16;                               // Number
+	let lastName = "Johnson";                      // String
+	let x = {firstName:"John", lastName:"Doe"};    // Object
+</pre>
+
+<h2>JS Types are Dynamic</h2>
+<p>JavaScript has dynamic types. This means that the same variable can be used to hold different data types:</p>
+
+<pre>
+	let x;           // Now x is undefined
+	x = 5;           // Now x is a Number
+	x = "John";      // Now x is a String
+</pre>
+</body>
+</html>
