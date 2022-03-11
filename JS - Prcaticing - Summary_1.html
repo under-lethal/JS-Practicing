@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS - Practicing_1</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+<h1>What Can JavaScript Do?</h1>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+		<button onclick = "document.getElementById('myImage').src = 'Bulbs_OnOff/bulb_on.jpg'">Turn on the light</button>
+		
+		<img id = "myImage" src = "Bulbs_OnOff/bulb_off.jpg" style = "width:100px">
+		
+		<button onclick = "document.getElementById('myImage').src = 'Bulbs_OnOff/bulb_off.jpg'">Turn off the light</button>
+
+<br><br>
+<hr>
+
+<h1>JavaScript Statements</h1>
+<p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+
+<pre>
+	< p id="demo1">< /p>
+	
+	< script type="text/javascript">
+	
+	let x,y,z;		//Statenent 1
+	x = 5;			//Statenent 2
+	y = 6;			//Statenent 3
+	z = x + y;		//Statenent 4
+	document.getElementById('demo1').innerHTML = "The value of z is " + z + ".";
+	
+	< /script>
+</pre>
+
+<p id="demo1"></p>
+<script type="text/javascript">
+	let x,y,z;
+	x = 5;
+	y = 6;
+	z = x + y;
+	document.getElementById('demo1').innerHTML = "The value of z is " + z + ".";
+</script>
+
+<h2>JavaScript Statements</h2>
+<p>In HTML, JavaScript statements are executed by the browser.</p>
+<pre>
+	< p id="demo2">< /p>
+
+	< script>
+	document.getElementById("demo2").innerHTML = "Hello Dolly.";
+	< /script>
+</pre>
+
+<p id="demo2"></p>
+
+<script>
+document.getElementById("demo2").innerHTML = "Hello Dolly.";
+</script>
+
+<h2>JavaScript Code Blocks</h2>
+<p>JavaScript statements can be grouped together in code blocks, inside curly brackets {...}.<br>
+The purpose of code blocks is to define statements to be executed together.</p>
+
+<pre>
+	< button type = "button" onclick = "myFunction()">Click Me!< /button>
+	< p id="demo3">< /p>
+	< p id="demo4">< /p>
+
+	< script>
+		function myFunction(){
+			document.getElementById("demo3").innerHTML = "Hello Dolly";
+			document.getElementById("demo4").innerHTML = "How are You?";
+		}
+	< /script>
+</pre>
+
+<button type = "button" onclick = "myFunction()">Click Me!</button>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<script>
+	function myFunction(){
+		document.getElementById("demo3").innerHTML = "Hello Dolly";
+		document.getElementById("demo4").innerHTML = "How are You?";
+	}
+</script>
+<hr>
+
+<h1>JavaScript Operators</h1>
+
+<p>x = 5, y = 2, calculate z = x + y, and display "z":</p>
+<pre>
+	< p id="demo5">< /p>
+	< script>
+		let x = 5;
+		let y = 2;
+		let z = x + y;
+		document.getElementById("demo5").innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo5"></p>
+<script>
+	var x = 5;
+	var y = 2;
+	var z = x + y;
+	document.getElementById("demo5").innerHTML = z;
+</script>
+
+<h2>JavaScript String Operators</h2>
+
+<p>The + operator concatenates (adds) strings.</p>
+<pre>
+	< p id="demo6">< /p>
+
+	< script>
+		let text1 = "John";
+		let text2 = "Doe";
+		let text3 = text1 + text2;
+		document.getElementById("demo6").innerHTML = text3;
+	< /script>
+</pre>
+
+<p>The assignment operator += can concatenate strings.</p>
+<pre>
+	< p id="demo">< /p>
+
+	< script>
+		let text1 = "What a very ";
+		text1 += "nice day";
+		document.getElementById("demo").innerHTML = text1;
+	< /script>
+</pre>
+
+<p id="demo6"></p>
+
+<script>
+	let text1 = "John";
+	let text2 = "Doe";
+	let text3 = text1 + " " + text2;
+	document.getElementById("demo6").innerHTML = text3;
+</script>
+<p>What a very nice day!</p>
+
+<h2>Adding Strings and Numbers</h2>
+<p>Adding a <b>number</b> and a <b>string</b>, returns a <b>string</b>.</p>
+<p>In addition to the comparison operators, which can be used on string values, the concatenation operator (+) concatenates two string values together, returning another string that is the union of the two operand strings.</p>
+<pre>
+	< p id="demo7">< /p>
+
+	< script>
+		let x = 5;
+		let y = "5" + 5;
+		let z = "Hello" + 5;
+		let a = 5 + "Hello";
+		document.getElementById("demo7").innerHTML = x + "< br>" + y + "< br>" + z + "< br>" + a;
+	< /script>	
+</pre>
+
+<p id="demo7"></p>
+
+<script type="text/javascript">
+	let x = 5;
+	let y = "5" + 5;
+	let z = "Hello" + 5;
+	let a = 5 + "Hello";
+	document.getElementById("demo7").innerHTML = x + "<br>" + y + "<br>" + z + "<br>" + a;
+</script>
+<p>5, 55, Hello5, 5Hello</p>
+
+<h2>JavaScript Assignment Operators</h2>
+
+<p>The += assignment operator adds a value to a variable.</p>
+<pre>
+	< p id="demo">< /p>
+
+	< script>
+		let x = 10;
+		x += 5;
+		document.getElementById("demo").innerHTML = x;
+	< /script>
+</pre>
+<p id="demo11"></p>
+
+<script>
+	let x = 10;
+	x += 5;
+	document.getElementById("demo11").innerHTML = x;
+</script>
+<p>15</p>
+
+<pre>
+	The -= assignment operator subtracts a value from a variable.
+	Assignment
+	let x = 10;
+	x -= 5;
+
+	The *= assignment operator multiplies a variable.
+	Assignment
+	let x = 10;
+	x *= 5;
+
+	The /= assignment divides a variable.
+	Assignment
+	let x = 10;
+	x /= 5;
+</pre>
+<hr>
+
+<h2>JavaScript Comparison Operators</h2>
+<p>Comparison operators are used in logical statements to determine equality or difference between variables or values.<br>
+Comparison and Logical operators are used to test for true or false.</p>
+<pre>
+	Equal (==)		RETURNS/Evaluates to <b>true</b> if the OPERANDS are EQUAL:						console.log(5 == 5); //true | 5 =='5' //true | 5 =='hello' //true
+	Not Equal (!=)		RETURNS/Evaluates to <b>true</b> if the OPERANDS are NOT EQUAL:					console.log(5 != 3); //true | 5 != 'hello' //true | 3 != 3 //false
+	Strict Equal (===)	RETURNS/Evaluates to <b>true</b> if the OPERANDS are EQUAL and of the SAME Type: 			console.log(5 === 5); //true | 5 === '5' //false | 3 != 3 //false
+	Strict Not Equal (!==)	RETURNS/Evaluates to <b>true</b> if the OPERANDS are STRICTLY NOT EQUAL or are of different TYPE: 	console.log(5 !== 5); //false | 5 !== '5' //true | '5' !== '5' //true
+</pre>
+<pre>
+	Greater Than Operator (>)		RETURNS/Evaluates to <b>true</b> if the LEFT OPERAND are GREATER than the RIGHT OPERAND:		console.log(5 > 1); //true 
+	Less Than Operator (<)			RETURNS/Evaluates to <b>true</b> if the LEFT OPERAND is LESS than the RIGHT OPERAND:			console.log(1 < 5); //true 
+	Greater than or Equal to Operator (>=)	RETURNS/Evaluates to <b>true</b> if the LEFT OPERAND are GREATER or EQUAL TO the RIGHT OPERAND:	console.log(5 >= 5); //true 
+	Less than or Equal to Operator (<=)	RETURNS/Evaluates to <b>true</b> if the LEFT OPERAND is LESS or EQUAL TO the RIGHT OPERAND:		console.log(5 <= 5); //true 
+</pre>
+
+<h2>JavaScript Arithmetic Operators</h2>
+<pre>
+	Remainder (%) - RETURNS  the INTEGER REMAINDER of dividing the TWO OPERANDS: 12 % 5 returns(2).
+	
+	Increment (++) - Unary operator (operator unar). Un operator unar, în C #, este un operator care ia un singur operand într-o expresie sau o declarație. 
+	Operatorii unari din C # sunt +, -, !, ~, ++, - și operatorul de distribuție.
+	Adds one to its operand. If used as a prefix operator (++x), returns the value of its operand after adding one; if used as a postfix operator (x++), returns the value of its operand before adding one.
+	If x is 3, then ++x sets x to 4 and returns 4, whereas x++ returns 3 and, only then, sets x to 4.
+
+	Decrement (--) - Unary operator. Subtracts one from its operand. The return value is analogous to that for the increment operator.
+	If x is 3, then --x sets x to 2 and returns 2, whereas x-- returns 3 and, only then, sets x to 2.
+</pre>
+
+<h2>Bitwise Operators</h2>
+<p>A bitwise operator treats their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers.</p>
+<pre>
+	The bitwise AND operator (&) returns a 1 in each bit position for which the corresponding bits of both operands are 1s.
+
+	Bitwise AND (&) - 	const a = 5;        // 00000000000000000000000000000101
+				const b = 3;        // 00000000000000000000000000000011
+				console.log(a & b); // 00000000000000000000000000000001
+				// expected output: 1
+				1 & 1 = 1 | 1 & 0 = 0 | 0 & 0 = 0;
+</pre>
+<pre>
+	The bitwise OR operator (|) returns a 1 in each bit position for which the corresponding bits of either or both operands are 1s.
+
+	Bitwise OR (|) - 	const a = 5;        // 00000000000000000000000000000101
+				const b = 3;        // 00000000000000000000000000000011
+				console.log(a | b); // 00000000000000000000000000000111
+				// expected output: 7
+				1 | 1 = 1 | 1 | 0 = 1 | 0 | 0 = 1;
+</pre>
+<pre>
+	The bitwise XOR operator (^) returns a 1 in each bit position for which the corresponding bits of either but not both operands are 1s.
+
+	Bitwise XOR (^) - 	const a = 5;        // 00000000000000000000000000000101
+				const b = 3;        // 00000000000000000000000000000011
+				console.log(a ^ b); // 00000000000000000000000000000110
+				// expected output: 6
+				1 ^ 1 = 0 | 1 ^ 0 = 1 | 0 ^ 0 = 0;
+</pre>
+<pre>
+	The bitwise NOT operator (~) inverts the bits of its operand. Like other bitwise operators, it converts the operand to a 32-bit signed integer
+
+	Bitwise NOT (~) - 	const a = 5;        // 00000000000000000000000000000101
+				const b = 3;        // 11111111111111111111111111111101
+				console.log(a ^ b); // 11111111111111111111111111111010
+				// expected output: -6
+				1 ~ 1 = 0 | 1 ~ 0 = 1 | 0 ~ 0 = 1;
+</pre>
+<pre>
+	The left shift operator (<<) shifts the first operand the specified number of bits to the left. Excess bits shifted off to the left are discarded. Zero bits are shifted in from the right.
+	
+	Left shift (<<) - 	const a = 5;        // 00000000000000000000000000000101
+				const b = 3;        // 00000000000000000000000000000010
+				console.log(a << b); // 00000000000000000000000000010100
+				// expected output: 20				
+</pre>
+
+<h2>Logical operators</h2>
+<p>Logical operators are used to determine the logic between variables or values.</p>
+<p>Logical operators perform logical operations: AND, OR and NOT.</p>
+<pre>
+	<b>&&</b> Logical AND: (Return) TRUE - If BOTH operands/boolean VALUES are TRUE, else evaluate to FALSE. true && false; //false
+
+	var a1 =  true && true;     //  returns true
+	var a2 =  true && false;    //  returns false
+	var a3 = false && true;     //  returns false
+	var a4 = false && (3 == 4); //  returns false
+	var a5 = 'Cat' && 'Dog';    //  returns Dog
+	var a6 = false && 'Cat';    //  returns false
+	var a7 = 'Cat' && false;    //  returns false
+</pre>
+<pre>	
+	<b>||</b> Logical AND: (Return) TRUE - If EITHER of the operands/boolean VALUES is TRUE. Evaluates to FALSE if BOTH re FALSE. true && false; //true
+
+	var o1 =  true || true;     //  returns true
+	var o2 = false || true;     //  returns true
+	var o3 =  true || false;    //  returns true
+	var o4 = false || (3 == 4); //  returns false
+	var o5 = 'Cat' || 'Dog';    //  returns Cat
+	var o6 = false || 'Cat';    //  returns Cat
+	var o7 = 'Cat' || false;    //  returns Cat
+</pre>
+<pre>	
+	<b>!</b> Logical NOT: (Return) TRUE - If the operand/boolean FALSE. And vice-versa. !true; //false   !false; //true
+
+	var n1 = !true;  // !t returns false
+  	var n2 = !false; // !f returns true
+  	var n3 = !'Cat'; // !t returns false
+</pre>
+
+<h3>Short-circuit evaluation</h3>
+<p>As logical expressions are evaluated left to right, they are tested for possible "short-circuit" evaluation using the following rules:
+<pre>
+	false && anything is short-circuit evaluated to false.
+	true || anything is short-circuit evaluated to true.
+</pre>
+The rules of logic guarantee that these evaluations are always correct. Note that the anything part of the above expressions is not evaluated, so any side effects of doing so do not take effect.</p>
+
+<h2>Conditional (teRnary) operator</h2>
+<p>Ternar =  Care este compus din trei unități sau din trei elemente.</p>
+<p>The (conditional operator) is the only JS Operator that takes THREE OPERANDS.<br>
+The OPERATOR can have - one of two values - based on a condition. The synax is:</p>
+<pre>
+	conditon ? val1 : val2
+	If the CONDITION is TRUE - the operator has the value of "val1" - Otherwise it has the value of "val2".
+
+	For Example:
+	var status = (age >= 18) ? 'adult' :'minor'
+</pre>
+<pre>
+	Let's create a program to determine/see whether a child is a minor or an adult.
+	let age = prompt('Enter your age :');
+	let status = (age >= 18) ? 'adult' : 'minor';
+	console.log(`You're ${status}.`);
+</pre>
+
+<p>This operator is frequently used as an alternative to an if...else statement.<br>
+A ternary operator evaluates a condition and executes a block of code based on the condition.<br>
+Its syntax is:</p>
+<pre>
+	condition ? expression1 : expression2
+</pre>
+<p>Let's write another program to determine if a student passed or failed in the exam based on marks obtained.</p>
+<pre>
+	// program to check pass or fail
+	let marks = prompt('Enter your marks :');
+	// check the condition
+	let result = (marks >= 40) ? 'pass' : 'fail';
+	console.log(`You ${result} the exam.`);
+
+	Enter your marks: 78
+	You pass the exam.
+</pre>
+<p>Suppose the user enters 78. Then the condition marks >= 40 is checked which evaluates to true. So the first expression pass is assigned to the result variable.</p>
+<pre>
+	Enter your marks: 35
+	You fail the exam.
+</pre>
+<p>Suppose the use enters 35. Then the condition marks >= 40 evaluates to false. So the second expression fail is assigned to the result variable.</p>
+<pre>
+	Another Example:
+	var age = 26;
+	var beverage = (age >= 21) ? "Beer" : "Juice";
+	console.log(beverage); // "Beer"
+</pre>
+
+<h2>Comma Operator</h2>
+<p>The comma operator(,) - EVALUATES both of its operands and returns the value of last operands.</p>
+<p>The "comma" itself serves two PURPORSES. Sometimes it simply ACTS like a SEPARATOR (that can be seen when you declare variables, or when you declare AN OBJECT, or define an ARRAY.)
+</p>
+<pre>
+	Example:
+	let num1 = 1,
+	let num2 = 2,
+	let num3 - 3;
+
+	let obj ={name: "Steven", country: "US", age: 45}
+
+	let arr = [1,2,3,4,5];
+	IN THOSE APLLICATIONS THE comma IS A SEPARATOR. not AN OPERATOR.
+</pre>
+
+<p>So what is the purpose of the comma operator?</p>
+<p>The "comma operator" evaluates each if its OPERANDS (from LEFT to RIGHT) AND RETURNS THE VALUE OF the LAST OPERAND.<br>
+Operand is - the PART of the expression THAT SPECIFIES - WHAT DATA is to be MANIPULATED OR OPERATED ON by that operator. (So 1 + 3 - "1" and "3" are the OPERANDS - "+" is the operator.</p>
+<pre>
+	Some Example that show the comma operator is USE.
+
+	let i = (8, 10); // in this case - the comma operator is not a separator. It's going to evaluate the operands and RETURN  - the LAST ONE.
+	//i //10.
+	
+	The reason I put parantheses - is because of OPERATOR PRECEDENCE. 
+	Because it is a "comma operator" - is the last operator to be apllied (i need to put PARANTHESES around it - to make sure 8 and 10 - are used in an EXPRESSION).
+	OTHERWISE IT WOULD SET i = 8;
+</pre>
+<pre>
+	Another Example:
+
+	let j = (1+2, 3+4); 
+	The "comma operator" says - do both of them - but return the last. So: j is = to 7. //7
+
+	Third Example:
+	let x = 1; x = (x++,x); // x=2; 
+	The reason - The first part is done (++x), it's increments x by 1  - and then it returns "x".
+	What it's assign to "x" is (x). (++x, x)<- this value Here.
+
+	4. You can also have the "comma operator" more than once:
+	var i = (1,2,3,4,5); //5
+
+	5. Where the "comma operator" be useful?
+	I lets you put more than ONE expression (in JS) - and only one Expression is expected.
+	Loops are a common example where "comma" is used. A For Loop.
+	
+	... A simplte WHILE Loop:
+	let cnt = 0;
+	while (cnt++, cnt < 100) {console.log(cnt);}
+	//we increment the counter "cnt++", but the "last part - of a "comma operator" GETS Returned.
+	//The Expression is still evaluated here - because this is the last part.
+
+	If we reverse the order:
+	let cnt = 0;
+	while (cnt < 100, cnt++) {console.log(cnt);} // out loop would never execute. (Because "while" is checking the condition "first"). (This is not the condition it gets checked (cnt <100) - because the last thing THAT IS RETURNED is "cnt++").
+	(It can't process that - and "while loop" never continues).
+</pre>
+<pre>
+	Example 6:
+	let obj = {name:"Steven", country:"US", active: true, score: 90}
+
+	let pssOrFail = function(obj, score){
+		obj.score >= score ? obj.pass = true : obj.pass = false; 
+	}
+
+	I've create an Function. I've pass an "obj" and "score" parameters.
+	Then, we're checked to SEE if the "score" of the OBJECT - is greater than - the "score" WE PASS in.
+	IF IT SO - then we SET a "pass attribute" (on that object)  = "true". Otherwise we'll set "pass attribute" to false.
+
+	The "ternary syntax" - allowes for only one statement in each of these three components.
+	In generallly if you need more than ONE statement - then you should use (an if-else statements)
+</pre>
+
+<h2>The "delete" operator</h2>
+<p>The delete operator deletes an object's property. The syntax is:</p>
+<p>delete object.property;<br>
+	delete object[propertyKey];<br>
+	delete objectName[index];</p>
+<pre>
+	let person = {name: "Test", age: 199};
+	console.log(preson);
+	delete person.age;
+	console.log(person); //you've notice that the "age" simply dissapear. Deleted BOTH (the property AND the value) - from the Object.
+
+	If we do: 
+	delete person.age;
+	console.log(person.age); // 199 undefined.
+</pre>
+
+<h2>typeof Operator</h2>
+<p>The <b>typeof</b> operator, returns a string indicating the <u>type of the unevaluated operand</u>.</p>
+<p>The typeof operator returns the following results for these variables:</p>
+<pre>
+	typeof myFun;       // returns "function"
+	typeof shape;       // returns "string"
+	typeof size;        // returns "number"
+	typeof foo;         // returns "object"
+	typeof today;       // returns "object"
+	typeof doesntExist; // returns "undefined"
+</pre>
+<pre>
+	typeof true; // returns "boolean"
+	typeof null; // returns "object"
+
+	typeof 62;            // returns "number"
+	typeof 'Hello world'; // returns "string"
+</pre>
+
+<h2>The "in" Operator</h2>
+<p>The "in" operator is something that you'll use in "if" statement.</p>
+<pre>
+	We have an expression - where we're checking to see if - "toString" EXIST in an "Object"{}. 
+	
+	if ('toString' in {}){
+		log('toString exist in Object');
+	}
+</pre>
+<p>The purpose of the "in" operator - to find out - whether or not - come sort of object -contains- some PROPERTY.</p>
+
+
+<h1>JavaScript Arithmetic</h1>
+<h2>The % Operator</h2>
+<p>The <b>modulus</b> operator (%) returns the division remainder.</p>
+
+<pre>
+	< p id="demo8">< /p>
+	< script type="text/javascript">
+		let x = 5;
+		let y = 2;
+		let z = x % y;
+		document.getElementById('demo8').innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo_8"></p>
+<script type="text/javascript">
+	let x = 5;
+	let y = 2;
+	let z = x % y;
+	document.getElementById('demo_8').innerHTML = z;
+</script>
+<p>1</p>
+
+<h2>Incrementing</h2>
+<p>The increment operator (++) increments numbers.</p>
+
+<pre>
+	< p id="demo9">< /p>
+
+	< script>
+		let x = 5;
+		x++;
+		let z = x;
+		document.getElementById("demo9").innerHTML = z;
+	< /script>
+	
+</pre>
+<p id="demo9"></p>
+
+<script>
+	let x = 5;
+	x++;
+	let z = x;
+	document.getElementById("demo9").innerHTML = z;
+</script>
+<p>6</p>
+
+<h2>Decrementing</h2>
+<p>The decrement operator (--) decrements numbers.</p>
+
+<pre>
+	< p id="demo 10"></p>
+	< script type="text/javascript">
+		let x = 5;
+		x--;
+		let z = x;
+		document.getElementById('demo 10').innerHTML = z;
+	< /script>
+</pre>
+
+<p id="demo 10"></p>
+<script type="text/javascript">
+	let x = 5;
+	x--;
+	let z = x;
+	document.getElementById('demo 10').innerHTML = z;
+</script>
+<p>5</p>
+<hr>
+
+<h1>JavaScript Data Types</h1>
+<p>JavaScript variables can hold different data types: numbers, strings, objects and more:</p>
+<pre>
+	let length = 16;                               // Number
+	let lastName = "Johnson";                      // String
+	let x = {firstName:"John", lastName:"Doe"};    // Object
+</pre>
+
+<h2>JS Types are Dynamic</h2>
+<p>JavaScript has dynamic types. This means that the same variable can be used to hold different data types:</p>
+
+<pre>
+	let x;           // Now x is undefined
+	x = 5;           // Now x is a Number
+	x = "John";      // Now x is a String
+</pre>
+
+
+</body>
+</html>

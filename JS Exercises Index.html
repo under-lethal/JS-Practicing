@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Exercises 1</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+	<h3>Global Scope</h3>
+	<p>Create a variable with GLOBAL SCOPE - and then PRINT it to the (console) - by using it INSIDE a Function.</p>
+	<div id="ex1"></div>
+
+	<h3>Function Scope</h3>
+	<p>Create a Function - and then create a variable inside that Funciton. Print the variable to the console:<br>
+	1. Inside the function (both before and after declaration).<br>
+	2. outside the Function - to see the difference.</p>
+	<div id="ex2"></div>
+
+	<h4>Nested Function</h4>
+	<div id="ex2a"></div>
+
+	<h4>Another Nested Function</h4>
+	<div id="ex2b"></div>
+
+	<h3>Block Scope</h3>
+	<p>// Create a function, and then - create a variable inside an if statement in that function.<br> 
+	// Print the variable to the console inside the block and outside the block to see the difference.<br>
+	// Note: StackBlitz may hide the error from you; you can look in the page's developer tools to see the answer, or copy this section to an HTML page.</p>
+	<div id="ex3"></div><br>
+	<div id="x3"></div><br>
+	<div id="x4"></div>
+
+	<h3>var</h3>
+	<p>Because the game variable is function scoped, it is still accessible inside the function even though it was declared and initialized inside an if block. Block scoped variables would not work if we tried the above. The result would be the following:</p>
+
+	<pre>
+		// index.js
+
+		function play(numberOfPlayers) {
+		  if (numberOfPlayers === 1) {
+		    let game = 'Super Mario Odyssey';
+		  } else {
+		    let game = 'Super Smash Brothers';
+		  }
+
+		  function format() {
+		    return `You are playing ${game}`;
+		  }
+
+		  return format();
+		}
+
+		console.log(play(1)); // ReferenceError game is not defined
+		console.log(play(2));
+	</pre>
+	
+	<h3>let</h3>
+	<p>In this case, the format function can not use the game variable because it is not available in the play function or its nested functions as it is block scoped. To fix the issue, we would have to do something like:</p>
+	<pre>
+		// index.js
+
+		function play(numberOfPlayers) {
+		  <b>let game;</b>
+		  if (numberOfPlayers === 1) {
+		    game = 'Super Mario Odyssey';
+		  } else {
+		    game = 'Super Smash Brothers';
+		  }
+
+		  function format() {
+		    return `You are playing ${game}`;
+		  }
+
+		  return format();
+		}
+
+		console.log(play(1)); // You are playing Super Mario Odyssey
+		console.log(play(2)); // You are playing Super Smash Brothers
+	</pre>
+	<div id="x5"></div>
+	<p>This time, the let variable is block scoped to the play function and thus is available in all nested blocks. Variables defined with const work the same way, except they need to be initialized at the same time they are declared.</p>
+
+	<h3>var let & const</h3>
+	<p>Declare a variable with each of the above keywords, two for const (one that has a number, string, or boolean and one object or array)<br>
+	Try to alter the value of each variable and see what happens in each scenario.<br>
+ 	On the object or array, try adding to the array or altering an attribute on the object as well as reassigning the value.</p>
+ 	<div id="ex4"></div>
+ 	<div id="ex5"></div>
+ 	<div id="ex6"></div>
+ 	<div id="ex7"></div>
+ 	<div id="ex8"></div>
+
+ 	<h3>Value vs Reference</h3>
+ 	<p>Declare a variable with a value of a number, string, or boolean, then copy it to another Variable.<br>
+ 	Log both variables, then change the value of one and log them again.<br>
+ 	Declare a variable with a value of an object or an array, then copy it to another Variable.<br>
+ 	Log both variables, then change the value of an attribute on one object or add an item to one array and log them again</p>
+ 	<div id="ex9"></div>
+
+
+</body>
+<script type="text/javascript" src = "JS/JS_Exercises.js"></script>
+</html>
