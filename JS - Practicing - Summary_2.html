@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>JS Execises - Logical Operators</title>
+	<title>JS Practicing_Summary_2</title>
 	<link rel="stylesheet" href="CSS.css">	
 </head>
 <body>
@@ -520,13 +520,89 @@
 		console.log(person, person2); //{name:"Brooke"} {name:"Brooke"}
 	</pre>
 	<p>We created a Function() - that TAKES an OBJECT (as a parameter). It CHANGES the "name" attribute (of the object).<br>
-		The we call the Function() - and pass the (person) OBJECT.<br>
-		After that - we LOG (person, person2) - VARIABLES. Both of them - has their name changed.(becasue both of those VARIABLES  - point to the same location in MEMORY.<br>
+	The we call the Function() - and pass the (person) OBJECT.<br>
+	After that - we LOG (person, person2) - VARIABLES. Both of them - has their name changed.(becasue both of those VARIABLES  - point to the same location in MEMORY.<br>
 	In addition  - the Object (that was passed in the Function()) - also points to the same location in memory.</p>
 
 	<h3>Some Variables  - save their DATA by VALUE - and some by REFERENCE.</h3>
 	<p>If you pass those VARIABLES into Functions() (the saving DATA by REFERENCE)(or passing by Reference to Functions) - OCCURS with Objects and ARRAYS.<br>
 	So - WHICH TYPE OF VARIABLES  -save their DATA by VALUE? (Strings, Numbers, Booleans, UNdefined an Null).</p>
+
+	<h2>JavaScript Primitive Types</h2>
+	<p>A primitive type in JavaScript is data that is not an object and has no methods. JavaScript also has global objects, like String, that are different than related primitive types, like string. </p>
+
+	<p>There are 6 primitive types in JS:<br>
+	1.string: a sequence of characters<br>
+	2.number: a numerical value, including whole numbers as well as numbers with decimals<br>
+	3.boolean: true/false values<br>
+	4.undefined: the absence of a value<br>
+	5.null: the intentional absence of a value<br>
+	6.Symbol: provides unique identifiers for variables</p>
+
+	<p>Comparison operators can also be used with strings:</p>
+	<pre>
+		const firstString = 'Here is a string';
+		const secondString = 'Here is the second string';
+		
+		console.log(firstString === secondString); // false
+		console.log('a' === 'a'); //true
+		console.log('a' < 'b'); //true
+	</pre>
+
+	<h3>numbers</h3>
+	<p>All the normal mathematical operations can be used on two numbers, like +, -, x, ÷, and %. </p>
+	<pre>
+		console.log(2 + 2); // 4
+		console.log(4 - 2); // 2
+		console.log(2 * 2); // 4
+		console.log(2 / 2); // 1
+		console.log(2 % 2); // 0
+	</pre>
+
+	<p>You can also use math shorthand operations in JavaScript. The following are examples:</p>
+	<pre>
+		let val = 0;
+		val += 4; 
+		console.log(val); //4
+
+		val -= 2;
+		console.log(val);//2
+
+		val *= 3;
+		console.log(val);//6
+	</pre>
+
+	<h3>boolean</h3>
+	<p>A JS "boolean" - represents ONE of TWO values: "true" or "false".<br>
+	They can be DECLARED and INITIALIZED with a value of "true" or "false", or by providing an expression will evaluate "true" or "false".</p>
+	<pre>
+		let isGreaterThan100 = 50 > 100; //false
+		let isLessThan10 = 5 < 10; // true
+		let equals5 = 5 === 5; // true
+	</pre>
+
+	<h3>undefined</h3>
+	<p>"undefined" - is the VALUE assigned to VARIABLES - when they are DECLARED but not INITIALIZED.<br>
+	Or, for Functions() that aren't present.<br>
+	"undefined" is DIFFERENT from "null".</p>
+	<pre>
+		let myVar;
+		console.log(myVar); //undefined
+
+		function sayHi(name) {
+			console.log(`Hi ${name}!`)
+		}
+		sayHi(); //Hi undefined
+	</pre>
+
+	<h3>null</h3>
+	<p>Usually "null" - refers to the absence of a value.<br>
+	Some Functions, may have optional arguments - and in those situations it is a good idea to pass,"null" over "undefined"</p>
+
+	<h3>symbols</h3>
+	<p>Symbols values are created by using the "Symbol" function - and are guranteed to be unique.<br>
+	If you need a guaranteed unique value, "Symbol" is the perfect option.</p>
+	
 
 
 
@@ -544,6 +620,8 @@
 		const name = dog && dog.name;
 		document.write(name + "< br>");
 	</pre>
+
+
 </body>
 <script type="text/javascript" src = "JS/Logical_Operators.js"></script>
 </html>

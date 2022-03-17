@@ -98,6 +98,177 @@
  	Log both variables, then change the value of an attribute on one object or add an item to one array and log them again</p>
  	<div id="ex9"></div>
 
+ 	<h3>JavaScript Data Types</h3>
+ 	<p>For each expression, predict what you think the output will be in a comment (//) without first running the command.</p>
+ 	<pre>
+ 		typeof("potato"); //string
+ 		typeof(5.5);	//number
+ 		typeof(NaN);	//undefined
+ 		typeof(true);	//boolean
+ 		typeof(1 != 2);	//boolean
+
+ 		"hamburger" + "s"; //hamburgers
+ 		"hamburger" - "s"; // NaN (?)
+
+ 		"1" + "3" // '13'
+ 		"1" - "3" // -2
+
+ 		"johnny" + 5 //johnny5
+ 		"johnny" - 5 //NaN - when you COMPARE strings and numbers (apples with pears)
+
+ 		99 * "luftbaloons" //NaN
+ 	</pre>
+
+ 	<h3>this</h3>
+ 	<p>When talking about this in JavaScript, we're talking about the context in which a JavaScript function is run. Context in general is the circumstances that form the setting for an event, statement, or idea.<br>In JS - it's the circumstances in which something is done (like a Function() being run).<br>
+ 	"this." in JS is generally, RELATED to OBJECTS - and what objects is invoking a Function().
+ 	</p>
+ 	<pre>
+ 		function sayHello() {
+ 			console.log(this);
+ 			console.log(`Hello, ${this.name}!`);
+ 		}
+
+ 		const person = {
+ 			name:'Preston',
+ 			sayHello,
+ 		};
+
+ 		sayHello(); // Window {}; Hello!
+ 		person.sayHello(); //{ name: "Preston", sayHello: function }; Hello, Preston!
+ 	</pre>
+ 	<div id="ex10"></div>
+ 	<div id="ex11"></div>
+ 	<p>The context of the "sayHello" Function() - changes. depending on HOW and WHERE it's called.<br>
+ 	When it's invoked by itself, (it's CONTEXT) - it's GLOBAL Window Object.<br>
+ 	When it's invoked from the "person Object{}" - it's context is the (perons Object) - that invoke the Function().</p>
+ 	<p>In our example with the sayHello function above, this prints out in two different ways, once as the Window object and once as myObj.<br>
+ 	If a function is called and it's not called as a method on an object, the context of the function will default to the global context.<br>
+ 	The CONTEXT of the global Window: If there no name attribute on the "Window" - the message will print out: "//Window"</p>
+
+ 	<h3>Determining Context</h3>
+ 	<pre>
+ 		const person = {
+  		name: 'Alen',
+  		sayHello: function () {
+    		console.log(this);
+    		console.log(`Hello ${this.name}!`);
+  			},
+		};
+		person.sayHello();
+ 	</pre>
+ 	<div id="ex12"></div>
+ 	<div id="ex13"></div>	
+ 	<p>In this Example the "sayHello" Function() is a method on the (person Object).<br>
+ 	When it's invoked, it's run the ONCTEXT of the (person Object).<br>
+ 	So "this." reffers to the OBJECT associated with calling the function.</p>
+
+ 	<h4>Another Example</h4>
+ 	<pre>
+ 		function sayHello() {
+		  console.log(this);
+		  console.log(`Hello ${this.name}!`);
+		}
+
+		const person = {
+		  name: 'Preston',
+		  sayHello,
+		  spouse: {
+		    name: 'Amanda',
+		    sayHello,
+		  },
+		};
+		person.sayHello(); // { name: 'Preston', sayHello: function, spouse: {} }; Hello Preston
+		person.spouse.sayHello();// { name: 'Amanda', sayHello: function }; Hello Amanda
+ 	</pre>
+ 	<div id="ex14"></div>
+ 	<div id="ex15"></div>
+
+ 	<p>In this example, one of the attributes on the person object is an object itself.<br>
+ It also has a "sayHello" function.<br>
+ When we call the "person.wife.sayHello() function" - this refers to the (person.supose.object) - not the person "object".</p>
+
+ <p>We still have our "sayHello" Function(), and our person Object{}, - but this time, the object doesn't have a "sayHello" Method. <br>
+ 	We know that if we run the "sayHello Function()" without being on an object - the context would default to window.<br>
+ 	But all JS Functions have 3 methods - that you can use to set the context. Those 3 methods are - "call, aplly, bind".<br>
+ They all allow you to set tge context of a function - although each in slightly different ways.</p>
+
+ <pre>
+ 		function sayHello() {
+	  console.log(this);
+	  console.log(`Hello, ${this.name}!`);
+		}
+
+		const person = {
+		  name: 'Preston',
+		};
+
+		sayHello.call(person); // { name: 'Preston' }; Hello Preston!
+		// or
+		sayHello.apply(person); // { name: 'Preston' }; Hello Preston!
+		// or
+		const newFn = sayHello.bind(person);
+		newFn(); // { name: 'Preston' }; Hello Preston!
+ </pre>
+ <div id ="ex16"></div>
+ <div id ="ex17"></div> 
+
+ <h3>Arrow Functions</h3>
+ <pre>
+ 		const person = {
+  	name: 'Preston',
+  	sayHello: () => {
+    	console.log(this); // Window
+    	console.log(`Hello ${this.name}!`); // Hello !
+  	},
+	};
+	person.sayHello();
+ </pre>
+<div id="ex18"></div>
+<div id="ex19"></div>
+
+<h2>Exercises</h2>
+<div id="ex20"></div>
+<div id="ex21"></div>
+<div id="ex22"></div>
+<div id="ex23"></div>
+<div id="ex24"></div>
+<div id="ex25"></div>
+<div id="ex26"></div>
+
+<h2>Exercises console.log()</h2>
+<p>console.log the following:<br>
+1. Your Name<br>
+2. The number of pizzas you'll have at your pizza party<br>
+3. An object that describes your favorite pizza<br>
+4. An array of friends that will come to your party<br>
+5. Multiple arguments: "My favorite pizza is " and the pizza object
+</p>
+<div id="ex27">1</div>
+<div id="ex28">2</div>
+<div id="ex29">x</div>
+<div id="ex30">4</div>
+<div id="ex31">x</div>
+
+<h2>Exercises console.log()</h2>
+<p>
+Print your favorite dessert<br>
+Print a message with your favorite flavor of ice cream coming from a variable<br>
+Print an object with two attributes: dessert ('ice cream sundae’) and an array of toppings
+
+</p>
+<div id="ex32">x</div>
+<div id="ex33">x</div>
+<div id="ex34">x</div>
+
+<p>Print out a pizza object<br>
+Print out an array of friends’ names<br>
+Print out an array of pizzas</p>
+<div id="ex35"></div>
+<div id="ex36"></div>
+<div id="ex37"></div>
+
+
 
 </body>
 <script type="text/javascript" src = "JS/JS_Exercises.js"></script>
