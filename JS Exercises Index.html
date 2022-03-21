@@ -268,6 +268,252 @@ Print out an array of pizzas</p>
 <div id="ex36"></div>
 <div id="ex37"></div>
 
+<h2>Logical Operators</h2>
+<h3>The || Operator</h3>
+<p>true || false = true</p>
+<div id="oo"></div>
+<p>true || true = true</p>
+<div id="oo1"></div>
+<p>false || false = false</p>
+<div id="oo2"></div>
+<p>The end result doesn't have to be a boolean value. Let's look at an example of that.</p>
+<pre>
+	let person9 = firstPerson || lastPerson || null;
+	document.getElementById('oo3').innerHTML = person9;
+	//Uncaught ReferenceError: firstPerson is not defined
+</pre>
+<div id="oo3"></div>
+
+<h3>The && Operator</h3>
+<p>true && true = true;</p>
+<div id="ao"></div>
+<p>	true && false --> false; <br>
+false && true --> false;</p>
+<div id="ao1"></div>
+<p>The end result of the COMPARISONS though, works differently than the "||" operator.<br>
+If all parts of the "&&" operator statement are TRUE, the results will be THE LAST STATEMENT.<br>
+If any part of it - is FALSE - it returns THE FIRST STATEMENT in the list.</p>
+<pre>
+	let result = 5 && 3; // 3
+	result = 0 && 4; // 0
+</pre>
+
+<h3>The (!) NOT Operator</h3>
+<p>The (!) is an unary operator and it's placed before the single operant.<br>
+The USE of (!) is to INVERT the Boolean expression.<br>
+It means if: x = true //<br> 
+"!x'"inxert x Boolean Value.<br>
+x is equal to FALSE.</p>
+<pre>
+		x = true; 
+		!x; //false
+</pre>
+<div id="ao2"></div>
+
+<h3>Logical Operators Exercises 2</h3>
+<div id="lo"></div>
+<div id="lo1"></div>
+<div id="lo2"></div>
+<div id="lo3"></div>
+<div id="lo4"></div>
+<div id="lo5"></div>
+
+<h3>Comparison Operators</h3>
+<h4>Abstract Comparison == !=</h4>
+<p>When you use these two comparisons, JavaScript converts both variables to the same type and then compares them.</p>
+<pre>
+	console.log(1 == '1')/ // true
+</pre>
+<p>In our example above, it takes one of the two values and converts it to the same type as the opposite one (i.e. takes the number and converts it to a string) and then does the comparison.<br>
+That's why the statement 1 == '1' is true. Obviously a number is not the same as a string, but with abstract comparison they are compared to each other as if they were the same.
+</p>
+<p>The same is true for !=. If we take the inverse of the previous statement:</p>
+<pre>
+	console.log(1 != '1'); // false
+	 1 != '1' - means '1' != '1' / 1 != 1 //false.
+</pre>
+<p>Another situation to be aware of when using abstract comparison is when you are comparing null and undefined. These are two distinct primitive types in JavaScript, but if you use the abstract comparison on<br> these two values, you get a true.</p>
+<pre>
+	console.log(null == undefined); // true
+	console.log(null != undefined); // false
+</pre>
+
+<h4>Strict Comparison === !==</h4>
+<p>With strict comparisons, no type conversion happens, and the values are compared to each other exactly as you wrote them.<br>
+Likely when you make a comparison between two objects, you actually want to know if two values are strictly equal or strictly not equal to each other.
+</p>
+<pre>
+console.log(1 === '1'); // false
+console.log(1 !== '1'); // true
+console.log(1 === 1); // true
+console.log(null === undefined); // false
+</pre>
+
+<h4>Relational Operators</h4>
+<p>Relational operators are the following operators: >, >=, < and <=.</p>
+<pre>
+	console.log(4 > 1); // true
+	console.log(4 > 4); // false
+	console.log(4 > 8); // false
+
+	console.log(4 >= 4); // true
+	console.log(4 >= 8); // false
+
+	console.log(4 < 8); // true
+	console.log(4 < 4); // false
+	console.log(4 < 2); // false
+
+	console.log(4 <= 4); // true
+	console.log(4 <= 2); // false
+</pre>
+
+<h4>Comparison Exercises 3</h4>
+<pre>
+	console.log(null == undefined); // true
+	console.log(null === undefined);// false
+
+	console.log(1 === '1'); //false
+	console.log(1 !== '1'); //true
+
+	console.log(1 == 1); // true
+	console.log(1 === 1);// true
+	console.log(1 != 2); // true
+	console.log(1 !== 2);// true
+
+	console.log('hi' == 'hi');//true
+	console.log('Hi' !== 'hi'); //true
+	console.log('Hi' !== 'Hi'); //false
+
+	console.log({ attr: 'hi' } == { attr: 'hi' }); //false (??)
+	const myObj = { attr: 'hi' };
+	const myObj2 = myObj;
+	console.log(myObj == myObj2); //true (??)
+
+	console.log(true === true); //true
+	console.log(false !== true);//true
+
+</pre>
+
+<h3>The OR (||) operator Exercises</h3>
+<p>It stops at the first truthy value and returns that value to be used. If no truthy values are available, it returns the last falsy value in the list.</p>
+<pre>
+	'0' || null // '0'
+	If the first Operand is TRUTHY, it evaluates to the first operand. Otherwise - it evaluates to the second.
+</pre>
+<div id="or"></div>
+<pre>
+	2. What is the value of name?
+	const name = '' || null || 3 || 'Jason';
+</pre>
+<div id="or1"></div>
+
+<pre>
+3. Provide values for val1 and val2 so that you enter the if statement.
+const val1;
+const val2;
+if (val1 || val2) {
+  console.log('You made it into the if statement')
+</pre>
+<div id="or2"></div>
+
+<h3>The AND (&) operator Exercises</h3>
+<p>When evaluating an expression that uses the && operator, JavaScript starts at the left most part of the expression and works its way to the right.<br>
+It stops at the first falsy value and returns that value, if there is a falsy value. If no falsy values are present, it continues to the end of the statement and returns the value of the last truthy statement as the result of the comparison.</p>
+<pre>
+  1. dog && dog.breed
+	const dog = {
+  breed: 'Labradoodle'
+}
+</pre>
+<div id="ao3"></div>
+<pre>
+Provide values for val1 and val2 so that you enter the if statement.
+const val1;
+const val2;
+if (val1 && val2) {
+  console.log('You made it into the if statement')
+}
+</pre>
+<div id="ao4"></div>
+<pre>
+	const val1 = 'Hello';
+	const val2 = 'World';
+if (val1 && val2) {
+  console.log('You made it into the if statement')
+}
+</pre>
+<div id="ao5"></div>
+
+<h3>The (!) NOT Operator - Exercises</h3>
+<p>The logical operator "not" (!) lets you convert a truthy statement to a false result, and a falsy statement to a true result. Using two not operators together (!!) lets you convert a truthy value to the boolean result true and a falsy value to the boolean result false.</p>
+<pre>
+	!truthy → false
+	!falsy → true
+	!!truthy → true
+	!!falsy → false
+</pre>
+<pre>
+ 1. !dog.breed vs dog.name
+const dog = {
+  breed: 'Labradoodle'
+}
+
+!dog.breed - false; !dog.name - true
+</pre>
+<div id="no"></div>
+
+<pre>
+2. What is the value of name?
+let name = !!dog.name;
+name = !dog.name
+
+//true
+{} => true; !{} =>false
+{name: 'x'} => true; !{name: "X"} => false; (???)
+</pre>
+
+<pre>
+!{} - false;  ![] - false; 
+
+const person  = [{fname:"alen"},{lname:"Steve"}]
+person;
+(2)[{…}, {…}]
+!person;
+false
+
+const numbers = [1,2,3,4];
+numbers;
+(4)[1, 2, 3, 4]
+!numbers;
+false
+
+function sum (a, b){return a + b};
+sum(1,2);
+3
+!sum();
+true
+
+function aaa(){};
+undefined
+!aaa();
+true
+
+!!aaa();
+false
+
+</pre>
+<div id="no1"></div>
+<div id="no2"></div>
+<pre>
+3. Provide a value for the ifStatement variable using the not operator and the name attribute so that you enter the if statement.
+const ifStatement = !dog.name;
+if (ifStatement) {
+  dog.name = 'Max';
+}
+console.log(dog);
+</pre>
+<div id="no3"></div>
+<div id="no4"></div>
 
 
 </body>

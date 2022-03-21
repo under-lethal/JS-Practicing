@@ -602,12 +602,14 @@
 	<h3>symbols</h3>
 	<p>Symbols values are created by using the "Symbol" function - and are guranteed to be unique.<br>
 	If you need a guaranteed unique value, "Symbol" is the perfect option.</p>
-	
+	<pre>
+	let sym1 = Symbol('sym');
+	let sym2 = Symbol('sym');
 
+	console.log(sym1 === sym2); // false
+	</pre>
 
-
-
-	<h2>JS Execises - Logical Operators</h2>
+<h2>Logical Operators</h2>	
 	<h3>Logical AND &&</h3>
 	<pre>
 	const dog = {

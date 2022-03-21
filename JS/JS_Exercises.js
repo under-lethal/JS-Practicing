@@ -324,12 +324,108 @@ const pizza3 = {
 
 document.getElementById('ex35').innerHTML = `${pizza3.crust} ${pizza3.sauce} ${pizza3.toppings}`;
  
+// the || Operator
+let isTrue =  5 > 3 || 6 > 8; 
+let isFalse = 1 > 3 || 2 > 8;
+if(isTrue || isFalse){
+	document.getElementById('oo').innerHTML = "It's gonna be true or false?";
+}
+
+let isTrue1 = 3 > 1 || 1 === 1;
+let isTrue2 = 5 > 1 || 9 > 7;
+if (isTrue1 || isTrue2){
+	document.getElementById('oo1').innerHTML = 'True?';
+}
+
+let isFalse1 = 'n' > 'n' || 0 > 1;
+let isFalse2 = 9 >= 9 || 0 < 0;
+if (isFalse1 || isFalse2){
+	document.getElementById('oo2').innerHTML = 'False!';
+}
 
 
 
+//the && operator
+let isTrue3 = 1 > 0 && 50 > 4 * 9;
+let isTrue4 = 1 > 0 && 2 > 1;
+if (isTrue3 && isTrue4){
+	document.getElementById('ao').innerHTML = 'True!';
+}
 
+//true && false = false
+let isFalse3 = 3 > 2 && 0 < 1;
+let isFalse4 = 1 > 2 && 1 < 0;
+document.getElementById('ao1').innerHTML = isFalse3 && isFalse4;
 
+ //! - Operator
+ let x = true;
+ document.getElementById('ao2').innerHTML = !x;
 
+ //Logical Op 2
+ var a = 10; 
+ var b = 10;
 
+ if (a === 10 && b === 10){
+ 	document.getElementById('lo').innerHTML = "true";
+ }else{
+ 	document.getElementById('lo1').innerHTML = "false";
+ }
 
+ if (a === 10 || b === 10){
+ 	document.getElementById('lo2').innerHTML = "true";
+ }else{
+ 	document.getElementById('lo3').innerHTML = "false";
+ }
 
+ if (a === 5 && b === 1){
+ 	document.getElementById('lo4').innerHTML = "true";
+ }else{
+ 	document.getElementById('lo5').innerHTML = "false";
+ }
+
+// || OR Operator Exercises
+
+document.getElementById('or').innerHTML = '0' || null;
+
+const name0 = '' || null || 3 || 'Jason';
+document.getElementById('or1').innerHTML = name0;
+
+const val1 = undefined;
+const val2 = 'Jason';
+document.getElementById('or2').innerHTML = val1 || val2;
+
+// && Operator - Exercises
+
+const dog1 = {
+	breed: 'Labaradoodle'
+}
+document.getElementById('ao3').innerHTML = dog1 && dog1.breed;
+
+const val3 = 'Labarador';
+const val4 = null;
+document.getElementById('ao4').innerHTML = val3 && val4;
+
+//,,it stops at the FIRST FALSY value
+const val5 = 'Hello';
+const val6 = 'World';
+if(val5 && val6){
+	document.getElementById('ao5').innerHTML = "You've made it into the if statement";
+}
+
+// (!) Not Operator
+const dog2 = {
+	breed: 'Doberman'
+}
+document.getElementById('no').innerHTML = !dog2.breed;
+
+//What is the value of name?
+let name2 = !!dog.name2; //true
+name2 = !dog.name2 // true(?)
+document.getElementById('no1').innerHTML = name2;
+document.getElementById('no2').innerHTML = name2;
+
+const ifStatement = !dog3.name3;
+if(ifStatement){
+	dog3.name3 = 'Max';
+}
+document.getElementById('no3').innerHTML = dog3;
