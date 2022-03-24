@@ -429,3 +429,16 @@ if(ifStatement){
 	dog3.name3 = 'Max';
 }
 document.getElementById('no3').innerHTML = dog3;
+
+
+//JavaScript Loops
+let points = [1,2,3,4];
+document.getElementById('lp').innerHTML = points;
+
+var ourArray = [];
+for (var i = 0; i < 5; i++){
+	ourArray.push(i);
+}
+document.getElementById('lp2').innerHTML = ourArray;
+
+

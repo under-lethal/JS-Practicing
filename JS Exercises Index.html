@@ -513,9 +513,24 @@ if (ifStatement) {
 console.log(dog);
 </pre>
 <div id="no3"></div>
-<div id="no4"></div>
+
+<h3>The Nullish Coalescing</h3>
+<p>The Logical operator "nullish coalescing" (??) - is a way of saying you WANT  to use one value OR another value.<br>
+If the FIRST VALUE is "null" or "undefined", you'll use the RIGHT SIDE of the OPERATOR. Otherwise - you'll use the left side.<br>
+This is where it differs from th OR "operator", but it's very closely related.
+</p>
+<pre>
+	1. 5 ?? 100 //5
+
+	2. 0 ?? null	//0
+
+	3. null ?? 5  //5
+
+	4. null ?? undefined // undefined(?)
+</pre>
 
 
-</body>
+
 <script type="text/javascript" src = "JS/JS_Exercises.js"></script>
+</body>
 </html>
