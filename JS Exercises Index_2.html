@@ -609,7 +609,7 @@ document.getElementById('ex5').innerHTML = movie2Output;
 <script type="text/javascript">
 	let dwarves = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
 	let dwarvesOut = '';
-	dwarves.forEach(function(item, index){return item, index});
+	dwarves.forEach(function(item, index){return item});
 	document.getElementById('fe2').innerHTML = dwarvesOut += dwarves;
 </script>
 
@@ -645,10 +645,319 @@ document.getElementById('ex5').innerHTML = movie2Output;
 	}
 	]
 	var books2 = '';
-	books.forEach(function(book){return book});
+	books.forEach(function(book){return book.pages});
 		document.getElementById('feo').innerHTML = books2 += books.pages;	
 </script>
 
+<h3>while, do...while</h3>
+<p>The while and do ... while loops are very similar. They both allow you to run a certain piece of code over and over again until some condition is met.<br> 
+That condition goes inside parentheses after the while keyword.</p>
+<p>The condition, can be anything that you want, as long as it evaluates truthy (if you want to go in to the loop) and will eventually evaulate to falsy.<br> 
+If it never evaluates to falsy, you'll be stuck in an infinite loop, or a you'll be stuck in the loop with no way to exit.<br> 
+So make sure that you provide some sort of expression that can evaluate to both truthy and falsy at least once.</p>
+<p> In this loop, you provide a condition that, until it evaluates as false, will continue running. In this case, you don't need an iterable to loop over. </p>
+<pre>
+	while(expressionIsTrue){// Do whatever you want}
+
+	The do ... while loop is almost the exact same. The only difference is the syntax of how it's started.
+
+	do {//Do whatever you want} while(expression is TRUE)
+</pre>
+<pre>
+< p id="do">< /p>
+< script type="text/javascript">
+	let n = 0;
+	let nPLus = ''
+	while (n < 5){
+		n++;
+	}
+	document.getElementById('do').innerHTML = 'n= ' + n;
+< /script>
+</pre>
+<p id="do"></p>
+<script type="text/javascript">
+	let n = 0;
+	let nPLus = ''
+	while (n < 5){
+		n++;
+	}
+	document.getElementById('do').innerHTML = 'n = ' + n;
+</script>
+<pre>
+< p id="dw">< /p>
+< script type="text/javascript">
+	var i = 0;
+	do {
+		i++;
+		document.getElementById('dw').innerHTML = 'i = ' + i;
+	}
+	while(i < 5);
+< /script>
+</pre>
+<p id="dw"></p>
+<script type="text/javascript">
+	var i = 0;
+	do {
+		i++;
+		document.getElementById('dw').innerHTML = 'i = ' + i;
+	}
+	while(i < 5);
+</script>
+<p>The "do...while loop" is similar. You can create a loop - that EXECUTE UNTIL, that (this condition (i<5) evaluates to FALSE).<br>
+So, the condition is EVALUATED , after EXECUTING THE STATEMENT.(do ...this stuff - while (i < 5).</p>
+<p>Also you can use "break" and "continue"</p>
+<pre>
+	< p id="do1">< /p>
+< script type="text/javascript">
+	let n1 = 0;
+	while (n1 < 10){
+		n1++;
+		if (n1 == 3) continue;
+	}
+	document.getElementById('do1').innerHTML = n1;
+< /script>
+</pre>
+<p id="do1"></p>
+<script type="text/javascript">
+	let n1 = 0;
+	while (n1 < 10){
+		n1++;
+		if (n1 == 3) continue;
+	}
+	document.getElementById('do1').innerHTML = n1;
+</script>
+<p>The "continue COMMAND - means: Not run any code, after that command.<br>
+It skip anything below the "continue", and just gonna go back to the top - and DO another CHECK. (n< 5){n++}</p>
+<p>The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.</p>
+<pre>
+	n = 1, n = 2,   n = 4, n = 5 
+</pre>
+
+<h4>If we "break". "break" -is going to jump out of the loop COMPLETELY.</h4>
+<p>It's not gonna run any more iterations of the loop</p>
+<pre>
+< p id="do2">< /p>
+< script type="text/javascript">
+	let n2 = 0;
+	while (n2 < 10){
+		n2++;
+		if (n2 == 3) break;
+	}
+	document.getElementById('do2').innerHTML = n2;
+< /script>
+</pre>
+<p id="do2"></p>
+<script type="text/javascript">
+	let n2 = 0;
+	while (n2 < 10){
+		n2++;
+		if (n2 == 3) break;
+	}
+	document.getElementById('do2').innerHTML = n2;
+</script>
+
+<h3>break & continue</h3>
+<p>there are many times when you want to stop going through a loop early. You can use "break" keyword:</p>
+<pre>
+< p id="br">< /p>
+< script type="text/javascript">
+	for (var i = 0; i < 5; i++){
+		if ( i === 3) {
+			break;
+		}
+		document.getElementById('br').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="br"></p>
+<script type="text/javascript">
+	for (var i = 0; i < 5; i++){
+		if ( i === 3) {
+			break;
+		}
+		document.getElementById('br').innerHTML = i;
+	}
+</script>
+
+<h4>Stopping Loops</h4>
+<pre>
+< p id="st">< /p>
+< script type="text/javascript">
+	let arr2 = [1,2,3,4,5];
+	for(let i = 0; i < 5; i++){
+		if(i === 3){
+			break;
+		}
+		document.getElementById('st').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="st"></p>
+<script type="text/javascript">
+	let arr2 = [1,2,3,4,5];
+	for(let i = 0; i < 5; i++){
+		if(i === 3){
+			break;
+		}
+		document.getElementById('st').innerHTML = i;
+	}
+</script>
+
+<h4>continue</h4>
+<pre>
+< p id="c">< /p>
+< script type="text/javascript">
+	for(let i = 0; i < 10; i+=1){
+		if (i === 3){
+			continue;
+		}
+		document.getElementById('c').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="c"></p>
+<script type="text/javascript">
+	for(let i = 0; i < 10; i+=1){
+		if (i === 3){
+			continue;
+		}
+		document.getElementById('c').innerHTML = i;
+	}
+</script>
+
+<h3>Thinkster Looping Execises</h3>
+<p>1. "do" a console.log "while" num is less than 10</p>
+<pre>
+< p id="dowh">< /p>
+< script type="text/javascript">
+	let num3 = 0;
+	do{
+		document.getElementById('dowh').innerHTML = 'The Output number is: ' + num3;
+		num3++;
+	}
+	while(num3 < 10);	
+< /script>
+</pre>
+<p id="dowh"></p>
+<script type="text/javascript">
+	let num3 = 0;
+	do{
+		document.getElementById('dowh').innerHTML = 'The Output number is: ' + num3;
+		num3++;
+	}
+	while(num3 < 10);	
+</script>
+
+<h4>2. while num2 < 5, log your favorite movie title to the console</h4>
+<pre>
+< p id='wh1'>< /p>
+< script type="text/javascript">
+	num5 = 0;
+	while (num5 < 5) {
+		document.getElementById('wh1').innerHTML = "Home Front";
+		num5++;	
+	}
+< /script>
+</pre>
+<p id='wh1'></p>
+<script type="text/javascript">
+	num5 = 0;
+	while (num5 < 5) {
+		document.getElementById('wh1').innerHTML = "Home Front";
+		num5++;	
+	}
+</script>
+
+<h4>3. Use a for loop to loop over some code up to 6 times, but break out on the 4th time through the loop.</h4>
+<pre>
+< p id="fl1">< /p>
+< script type="text/javascript">
+	for(let y = 0; y < 6; y++){
+		if (y == 4){
+			break;
+		}
+		document.getElementById('fl1').innerHTML = y;
+	}
+< /script>
+</pre>
+<p id="fl1"></p>
+<script type="text/javascript">
+	for(let y = 0; y < 6; y++){
+		if (y == 4){
+			break;
+		}
+		document.getElementById('fl1').innerHTML = y;
+	}
+</script>
+
+<h4>4. Use a for loop to loop over some code up to 6 times, but skip the 4th time through the loop.</h4>
+<pre>
+< p id="cont">< /p>
+< script type="text/javascript">
+	for(let i =0; i < 6; i++){
+		if (i == 4){
+			continue;
+		}
+		document.getElementById('cont').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="cont"></p>
+<script type="text/javascript">
+	for(let i =0; i < 6; i++){
+		if (i == 4){
+			continue;
+		}
+		document.getElementById('cont').innerHTML = i;
+	}
+</script>
+
+<h3>17 JavaScript for/while loop exercises</h3>
+<h4>1. Write a JS code to print numbers from 1 to 10</h4>
+<pre>
+< p id="x1">< /p>
+< script type="text/javascript">
+	for (let i = 0; i<=10; i++){
+		document.getElementById('x1').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="x1"></p>
+<script type="text/javascript">
+	for (let i = 0; i<=10; i++){
+		document.getElementById('x1').innerHTML = i;
+	}
+</script>
+
+<h4>2. Write a JS code to print a 2D array</h4>
+<p id="x2"></p>
+<p id="x3"></p>
+<script type="text/javascript">
+	const rows = 10;
+	const columns = 8;
+
+	//const myArray = newArray(rows);
+	const myArray = [];
+
+	for(let i = 0; i < rows; i++){
+		myArray[i] = [];
+			for (let j = 0; j < columns; j++){
+				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what  we're putting in there.
+			}
+	}
+	document.getElementById('x2').innerHTML = myArray;
+	
+	const myArray2 = new Array(rows);
+	for (let i =0; i < myArray2.length; i++){
+		myArray2[i] = new Array(columns); // new Array with the length of columns
+	}
+	document.getElementById('x3').innerHTML = myArray2;
+
+</script>
+<pre>
+	*when you creating an "array" with "newArray() ANOTATION" - then it's gnna create an array with that NUMBER of ITEMS - (and all it's gonna be empty).
+	const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
+</pre>
 
 
 
