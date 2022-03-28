@@ -24,29 +24,6 @@
 </script>
 
 <h4>2. Write a JS code to print a 2D array</h4>
-<p id="x2"></p>
-<p id="x3"></p>
-<script type="text/javascript">
-	const rows = 10;
-	const columns = 8;
-
-	//const myArray = newArray(rows);
-	const myArray = [];
-
-	for(let i = 0; i < rows; i++){
-		myArray[i] = [];
-			for (let j = 0; j < columns; j++){
-				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what we're putting in there.
-			}
-	}
-	document.getElementById('x2').innerHTML = myArray;
-	
-	const myArray2 = new Array(rows);
-	for (let i =0; i < myArray2.length; i++){
-		myArray2[i] = new Array(columns); // new Array with the length of columns
-	}
-	document.getElementById('x3').innerHTML = myArray2;
-</script>
 
 <pre>
 < p id="x2">< /p>
@@ -74,19 +51,52 @@
 	document.getElementById('x3').innerHTML = myArray2;
 < /script>
 
-*when you creating an "array" with "newArray() ANOTATION" - then it's gnna create an array with that NUMBER of ITEMS - (and all it's gonna be empty).
+*when you creating an "array" with "newArray() ANOTATION" - then it's gonna create an array with that NUMBER of ITEMS - (and all it's gonna be empty).
 const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 </pre>
+
+<p id="x2"></p>
+<p id="x3"></p>
+<script type="text/javascript">
+	const rows = 10;
+	const columns = 8;
+
+	//const myArray = newArray(rows);
+	const myArray = [];
+
+	for(let i = 0; i < rows; i++){
+		myArray[i] = [];
+			for (let j = 0; j < columns; j++){
+				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what we're putting in there.
+			}
+	}
+	document.getElementById('x2').innerHTML = myArray;
+	
+	const myArray2 = new Array(rows);
+	for (let i =0; i < myArray2.length; i++){
+		myArray2[i] = new Array(columns); // new Array with the length of columns
+	}
+	document.getElementById('x3').innerHTML = myArray2;
+</script>
+
 <h4>Example: 3</h4>	
+<pre>
+< p id='x4'>< /p>
+< script type="text/javascript">
+	const myArray4 = [['a'],['b'],['c'],['d'],['e'],['f']];
+	document.getElementById('x4').innerHTML = myArray4;
+< /script>
+
+</pre>
 <p id='x4'></p>
 <script type="text/javascript">
 	const myArray4 = [['a'],['b'],['c'],['d'],['e'],['f']];
 	document.getElementById('x4').innerHTML = myArray4;
 </script>
 
-<h4>Nested Loops & 2D Arrays | Javascript |</h4>
+<h3>Nested Loops & 2D Arrays | Javascript |</h3>
 
-<h3>Nested Loop</h3>
+<h4>Nested Loop</h4>
 <pre>
 < p id="nl">< /p>
 < script type="text/javascript">
@@ -116,7 +126,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	0, 0, 0, - is all on the same loop number of "i".
 	"j" loop through 3 times. (j=0, j=1, j=2);
 
-	SO - FOr Every iteration of "i" - "j" will fully run/ we gonna get through every iteration of 'j' loop. (the loop inside of "j" it's gonna get FULLY EXECUTED).
+	So - For Every iteration of "i" - "j" will fully run/ we gonna get through every iteration of 'j' loop. (the loop inside of "j" it's gonna get FULLY EXECUTED).
 </pre>
 
 <h3>2 Dimensional Arrays</h3>
@@ -131,6 +141,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	[0]
 	]; 
 	document.getElementById('2D').innerHTML = dimensional += numberGrid[0] [0];
+	document.getElementById('2D').innerHTML = dimensional += numberGrid[2] [2];
 < /script>
 </pre>
 <p id="2D"></p>
@@ -159,6 +170,24 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <pre>
 	
 </pre>
+<pre>
+< p id="2D2">< /p>
+< p id="2D3">< /p>
+< script type="text/javascript">
+	let dimensional2 = '';
+	var numberGrid2 = [
+	[1,2,3],
+	[4,5,6],
+	[7,8,9],
+	[0]
+	]; 
+	 for(var i = 0; i < numberGrid2.length; i++){
+	 	for(var k = 0; k < numberGrid2[i].length; k++){
+	 		document.getElementById('2D2').innerHTML = dimensional2 += numberGrid2[i][k];
+	 	}
+	 	document.getElementById('2D3').innerHTML = dimensional2 += "< br>";
+	 }
+</pre>
 <p id="2D2"></p>
 <p id="2D3"></p>
 <script type="text/javascript">
@@ -178,7 +207,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 </script>
 <pre>
 	<b>k < numberGrid2[i].length</b> - here we're reffering to a SPECIFIC ROW inside of a number grid, and we getting the length of that array.
-	<b>numberGrid2[i] [k]</b> - it gives us VEVERY SINGLE ELEMENT inside of this array.[[],[],[],[]]. PRinting out every individual elements
+	<b>numberGrid2[i] [k]</b> - it gives us VEVERY SINGLE ELEMENT inside of this array.[[],[],[],[]]. Printing out every individual elements
 	<b>numberGrid2[i] [k]</b> - For each row (inside of this array[[],[],[]]) - we want to loop throught all the elements inside of it.
 	So each row is itself an array. With numberGrid[i] - I accessing THE SPECIFIC ROW [4,5,6]... in 2Dimensional array - and I get the length of it.
 </pre>
@@ -303,6 +332,107 @@ printArray2(arr2);
 	document.getElementById('del').innerHTML = newFunction3 += arr3;	
 </script>
 
+<h4>5. Write a JS code to demonstrate Async loop:</h4>
 
+<h4>6. Write a JS code to find the power of a number using for loop:</h4>
+<pre>
+< p id="pow">< /p>
+< script type="text/javascript">
+	let x = '';
+	function numPower(num, pow){
+		var res=1;
+		for(var i=0;i < pow;i++){
+			res=res*num;
+		}
+		return res;
+	}
+	document.getElementById('pow').innerHTML = x += numPower(4,3);
+</ script>
+</pre>
+<p id="pow"></p>
+<script type="text/javascript">
+	let x = '';
+	function numPower(num, pow){
+		var res=1;
+		for(var i=0;i<pow;i++){
+			res=res*num;
+		}
+		return res;
+	}
+	document.getElementById('pow').innerHTML = x += numPower(4,3);
+</script>
+<h4>Did you mean alternative for Math.pow? Here is one way with simple loop.</h4>
+<pre>
+< p id="pow1">< /p>
+< script type="text/javascript">
+	let x1 = '';
+	var p = 1;
+	function pow(base, power){
+		for(var i=0; i < power; i++){
+			p *= base
+		}
+		return p;
+	}
+	document.getElementById('pow1').innerHTML = x1 += pow(4,3);
+< /script>
+</pre>
+<p id="pow1"></p>
+<script type="text/javascript">
+	let x1 = '';
+	var p = 1;
+	function pow(base, power){
+		for(var i=0; i<power; i++){
+			p *= base
+		}
+		return p;
+	}
+	document.getElementById('pow1').innerHTML = x1 += pow(4,3);
+</script>
+<pre>
+< p id="pow2">< /p>
+< script type="text/javascript">
+	let x2 = '';
+	
+	function pow1(n, e){
+		let num = n;
+		for(let i = <b>1</b>; i < e; i++){
+			num =* n;
+		}
+		return num;
+	}
+	document.getElementById('pow2').innerHTML = x2 += pow1(4,3);
+< /script>
+</pre>
+
+<p id="pow2"></p>
+<script type="text/javascript">
+	let x2 = '';
+	
+	function pow1(n, e){
+		let num = n;
+		for(let i = 1; i < e; i++){
+			num *= n;
+		}
+		return num;
+	}
+	document.getElementById('pow2').innerHTML = x2 += pow1(-3,3);
+</script>
+
+<h4>7. Write a JS code to print a pattern using for loop:</h4>
+<p id="patt"></p>
+
+<script type="text/javascript">
+	let pattern = '';
+	function printPattern(range){
+		for(var i=1; i<=range; i++){
+			var str = '';
+			for(var j=1; j<=i; j++){
+				str += j+ " ";
+			}
+			return str;
+		}
+	}
+	printPattern(8);
+</script>
 </body>
 </html>

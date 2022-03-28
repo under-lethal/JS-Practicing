@@ -224,7 +224,7 @@ for of - will not work on a "person object" - because person is not ITERABLE.</p
 	let person = {fname: "Beau", lname:"Carnes", arms:2};
 	let text2 = "";
 	for(let x in person){
-		text3 += y + ": " + person1[y] + " ";	
+		text2 += y + ": " + person1[y] + " ";	
 	}
 	document.getElementById('fo3').innerHTML = text2;	
 < /script>
@@ -614,6 +614,21 @@ document.getElementById('ex5').innerHTML = movie2Output;
 </script>
 
 <h4>Convert all names to lowercase, execpt "Billy"</h4>
+<pre>
+< p id="fe3">< /p>
+< script type="text/javascript">
+	let dwarves2 = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
+	let dwarvesOut2 = '';
+	dwarves2.forEach(function(item){
+		if (item === 'Billy'){
+			item = item.toUpperCase();
+		}else{
+			item = item.toLowerCase();
+		}
+	});
+	document.getElementById('fe3').innerHTML = dwarvesOut2 += dwarves2;
+< /script>
+</pre>
 <p id="fe3"></p>
 <script type="text/javascript">
 	let dwarves2 = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
@@ -912,54 +927,80 @@ It skip anything below the "continue", and just gonna go back to the top - and D
 	}
 </script>
 
-<h3>17 JavaScript for/while loop exercises</h3>
-<h4>1. Write a JS code to print numbers from 1 to 10</h4>
+<h2>Functions in JavaScript</h2>
+<ul>
+	<li>Named/NORMAL Function</li>
+	<li>Anonymous Function (unnamed)</li>
+	<li>Arrow Function(=>)</li>
+	<li>SELF-Invoking Function</li>
+	<li>Function CONSTRUCTOR (Function as a Method)</li>
+	<li>Built-In Function()</li>	
+</ul>
+
+<p>It's also important to know the difference between an argument and a parameter.<br> 
+An argument is the value you pass into a function. <br>
+A parameter is the name you assign that value inside the function.</p>
 <pre>
-< p id="x1">< /p>
-< script type="text/javascript">
-	for (let i = 0; i<=10; i++){
-		document.getElementById('x1').innerHTML = i;
-	}
-< /script>
+function sayHello(name) {
+console.log('Hello ',  name);
+}
+sayHello('Preston');
 </pre>
-<p id="x1"></p>
-<script type="text/javascript">
-	for (let i = 0; i<=10; i++){
-		document.getElementById('x1').innerHTML = i;
+<p>In this example, the name variable in the sayHello function is the parameter. When the function is called at the end of the example, 'Preston' is the argument.</p>
+
+<h3>Named Functions()</h3>
+<p>Named functions in JavaScript is just a fancy way to refer to a function that uses the function keyword and then a name you can use as a reference to that function. Here's an example:</p>
+<pre>
+	function myFunction(someParameter) {
+    // Do something
 	}
+</pre>
+<p>A named function has 4 basic parts: the function keyword, the name you give it and use to refer to it, the parameter list, and the body of the function.</p>
+<p>NAMED Functions can also <u>be assigned</u> to ATTRIBUTES on objects - and then you CALL the Function - on the OBJECT</p>
+<pre>
+	function sayHi(){
+		console.log(`Hi my name is ${this.name}.`);
+	}
+
+	const person = {
+		name: "Preston Lamb",
+		<b>sayHi</b>
+	}
+	person.sayHi();
+</pre>
+<p id="named"></p>
+<script type="text/javascript">
+	let name0 = '';
+	function sayHi(){
+		document.getElementById('named').innerHTML = name0 += `Hi my name is ${this.name}.`;
+	}
+	const person2 = {
+		name: "Preston Lamb",
+		sayHi
+	}
+	person2.sayHi();
 </script>
 
-<h4>2. Write a JS code to print a 2D array</h4>
-<p id="x2"></p>
-<p id="x3"></p>
-<script type="text/javascript">
-	const rows = 10;
-	const columns = 8;
-
-	//const myArray = newArray(rows);
-	const myArray = [];
-
-	for(let i = 0; i < rows; i++){
-		myArray[i] = [];
-			for (let j = 0; j < columns; j++){
-				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what  we're putting in there.
-			}
-	}
-	document.getElementById('x2').innerHTML = myArray;
-	
-	const myArray2 = new Array(rows);
-	for (let i =0; i < myArray2.length; i++){
-		myArray2[i] = new Array(columns); // new Array with the length of columns
-	}
-	document.getElementById('x3').innerHTML = myArray2;
-
-</script>
+<p>NAMED Functions are - one of the most common ways that functions are called in JS.</p>
+<p>One other thing that is important to mention - is HOW TO Return a VALUE from a FUNCTION - using the [return] KEYWORD.</p>
 <pre>
-	*when you creating an "array" with "newArray() ANOTATION" - then it's gnna create an array with that NUMBER of ITEMS - (and all it's gonna be empty).
-	const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
-</pre>
+	function substract(sum1,sum2){
+		return sum1 - sum2;
+	}
 
-
+	Function takes two parameters [mu1,num2] - and RETURNS the value of "num1"- "num2".
+	That RETURNED VALUE - can be assigned to a VARIABLE, 
+	or LOGGED to the console,
+	or PASSED as the PARAMETER to another Function.
+	</pre>
+	<p id="min"></p>
+	<script type="text/javascript">
+		let minus = '';
+		function substract(sum1, sum2){
+			return sum1 - sum2;
+		}
+		document.getElementById('min').innerHTML = minus += substract(20,10);
+	</script>
 
 
 
