@@ -610,7 +610,7 @@ document.getElementById('ex5').innerHTML = movie2Output;
 	let dwarves = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
 	let dwarvesOut = '';
 	dwarves.forEach(function(item, index){return item});
-	document.getElementById('fe2').innerHTML = dwarvesOut += dwarves;
+	document.getElementById('fe2').innerHTML = dwarvesOut += dwarves + ', ';
 </script>
 
 <h4>Convert all names to lowercase, execpt "Billy"</h4>
@@ -956,7 +956,7 @@ sayHello('Preston');
 	}
 </pre>
 <p>A named function has 4 basic parts: the function keyword, the name you give it and use to refer to it, the parameter list, and the body of the function.</p>
-<p>NAMED Functions can also <u>be assigned</u> to ATTRIBUTES on objects - and then you CALL the Function - on the OBJECT</p>
+<h5>NAMED Functions can also <u>be assigned</u> to ATTRIBUTES on objects - and then you CALL the Function - on the OBJECT</h5>
 <pre>
 	function sayHi(){
 		console.log(`Hi my name is ${this.name}.`);
@@ -1001,6 +1001,171 @@ sayHello('Preston');
 		}
 		document.getElementById('min').innerHTML = minus += substract(20,10);
 	</script>
+
+<h2>Anonymous Function()</h2>
+<p>Another way you you can create a function - is by assigning a NORMAL Function but it doesn't HAVE A NAME.<br>
+You would only use (these CALLBACKS or by assigning them to a variable).</p>
+	<pre>
+		const myFunction = function (arg1){
+			//Do something
+		};
+		myFunction();
+	</pre>
+
+<p>Anonymus functions in JS are very similar to named functions , (but they don't have an indentifier).</p>
+<p>You can also have functions as <mark>ATTRIBUTES - on OBJECTS.</mark><br>
+These functions have a special name: <mark>METHODS".</mark></p>
+<h4>You can call it a METHOD or a Function</h4>
+<pre>
+< p id="hi">< /p>
+< script type="text/javascript">
+	let hello = '';
+	function sayHi1(){
+		document.getElementById('hi').innerHTML = hello += `Hi my name is ${this.name1}.`;
+	}
+	const person = {
+		name1: 'Preston Lamb',
+		<mark>sayHi1</mark>
+	};
+	<mark>person.sayHi1();</mark>
+< /script>
+</pre>
+<p id="hi"></p>
+<script type="text/javascript">
+	let hello = '';
+	function sayHi1(){
+		document.getElementById('hi').innerHTML = hello += `Hi my name is ${this.name1}.`;
+	}
+	const person = {
+		name1: 'Preston Lamb',
+		sayHi1
+	};
+	person.sayHi1();
+</script>
+
+<h5>or:</h5>
+<pre>
+< p id="hi2">< /p>
+< script type="text/javascript">
+	const person3 = {
+		name2: 'John Doe',
+		<mark>sayHi2()</mark>{
+			document.getElementById('hi2').innerHTML = `My name is ${this.name2}.`
+		}
+	};
+	<mark>person3.sayHi2();</mark>
+</pre>
+<p id="hi2"></p>
+<script type="text/javascript">
+	const person3 = {
+		name2: 'John Doe',
+		sayHi2(){
+			document.getElementById('hi2').innerHTML = `My name is ${this.name2}.`
+		}
+	};
+	person3.sayHi2();
+</script>
+
+<h5>or:(3)</h5>
+<pre>
+< p id="hello">< /p>
+< script type="text/javascript">
+	let aloha = '';
+	const pirate = {
+		name3:'Jack Sparrow',
+		<mark>sayHello: function()</mark>{
+			document.getElementById('hello').innerHTML = aloha += `My name is ${this.name3}.`
+		}
+	};
+	pirate.sayHello();
+< /script>
+</pre>
+<p id="hello"></p>
+<script type="text/javascript">
+	let aloha = '';
+	const pirate = {
+		name3:'Jack Sparrow',
+		sayHello: function(){
+			document.getElementById('hello').innerHTML = aloha += `My name is ${this.name3}.`
+		}
+	};
+	pirate.sayHello();
+</script>
+
+<p>For the most part, you'll use ANONYMOUS Functions as a CALLBACK Functions.</p>
+<pre>
+< p id="food">< /p>
+< script type="text/javascript">
+	let food = '';
+	const pizzas = ['Chesse', 'Pepperoni'];
+	pizzas.forEach(function(pizza){
+		document.getElementById('food').innerHTML = food += pizza;
+	});
+< /script>
+</pre>
+<p id="food"></p>
+<script type="text/javascript">
+	let food = '';
+	const pizzas = ['Chesse', 'Pepperoni'];
+	pizzas.forEach(function(pizza){
+		document.getElementById('food').innerHTML = food += pizza + " ";
+	});
+</script>
+
+<h3>Arow Function</h3>
+<h4>Arrow Function - are great when being used as a CALLBACK, but you don't only have to use them as callbacks.</h4>
+<pre>
+< p id="arrow">< /p>
+< script type="text/javascript">
+	const sayAloha = () => document.getElementById('arrow').innerHTML = 'Hi!';
+	sayAloha();
+< /script>
+</pre>
+<p id="arrow"></p>
+<script type="text/javascript">
+	const sayAloha = () => document.getElementById('arrow').innerHTML = 'Hi!';
+	sayAloha();
+</script>
+
+<h4>2 => ???</h4>
+<pre>
+< p id="itm">< /p>
+< script type="text/javascript">
+	let items = '';
+	const arrItems = ['Item 1', 'Item 2'];
+	arr.forEach((item0) => document.getElementById('itm').innerHTML = items += item0);	
+< /script>
+
+</pre>
+<p id="itm"></p>
+<script type="text/javascript">
+	let items = '';
+	const arrItems = ['Item 1', 'Item 2'];
+	arr.forEach((item0) => document.getElementById('itm').innerHTML = items += item0);	
+</script>
+
+<h4>3 => ???</h4>
+<pre>
+< p id="id">< /p>
+< script type="text/javascript">
+	let human1 = '';
+	const human = {
+		name: 'Josh Groban',
+		doSomething: () => document.getElementById('id').innerHTML = human1 += 'Does Something';
+	}
+	human.doSomething();
+< /script>
+</pre>
+<p id="id0"></p>
+<script type="text/javascript">
+	let human1 = '';
+	const human = {
+		name: 'Josh Groban',
+		doSomething: () => document.getElementById('id0').innerHTML = human1 += 'Does Something';
+	}
+	human.doSomething();
+</script>
+
 
 
 
