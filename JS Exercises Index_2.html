@@ -1127,7 +1127,7 @@ These functions have a special name: <mark>METHODS".</mark></p>
 	sayAloha();
 </script>
 
-<h4>2 => ???</h4>
+<h4>2 =></h4>
 <pre>
 < p id="itm">< /p>
 < script type="text/javascript">
@@ -1139,9 +1139,9 @@ These functions have a special name: <mark>METHODS".</mark></p>
 </pre>
 <p id="itm"></p>
 <script type="text/javascript">
-	let items = '';
+	let empty = '';
 	const arrItems = ['Item 1', 'Item 2'];
-	arr.forEach((item0) => document.getElementById('itm').innerHTML = items += item0);	
+	arrItems.forEach((item0) => document.getElementById('itm').innerHTML = empty += item0 + " ");	
 </script>
 
 <h4>3 => ???</h4>
@@ -1151,7 +1151,7 @@ These functions have a special name: <mark>METHODS".</mark></p>
 	let human1 = '';
 	const human = {
 		name: 'Josh Groban',
-		doSomething: () => document.getElementById('id').innerHTML = human1 += 'Does Something';
+		doSomething: () => document.getElementById('id').innerHTML = human1 += 'Does Something' //<mark>;</mark> - fara ";"
 	}
 	human.doSomething();
 < /script>
@@ -1161,13 +1161,551 @@ These functions have a special name: <mark>METHODS".</mark></p>
 	let human1 = '';
 	const human = {
 		name: 'Josh Groban',
-		doSomething: () => document.getElementById('id0').innerHTML = human1 += 'Does Something';
+		doSomething: () => document.getElementById('id0').innerHTML = human1 += 'Does Something' + ({name: 'Josh Groban'})
 	}
 	human.doSomething();
 </script>
 
+<h5>The first two examples are "one line" arrow functions.<br>
+It's also referred to as implicit return. (there is no "return" keyword used).<br>
+There is no "body" sourounded by curly brackets {}.</h5>
+
+<h5>Some callback Functions (like sort function on an array) - require you to return something from the callback function.</h5>
+
+<h4>Arrow Functions Youtube</h4>
+<h5>1. Has a shoter syntax  than a standard Function<br>
+2. Does not bind it's own "this".<br>
+3. Are best suited for NON Method Functions.<br>
+4. Arrow Function work really well with "higher-order Functions" such as: MAP, FILTER, REDUCE.<br>
+5. Take OTHER Functions as arguments - for processing COLLECTIONS of DATA.</h5>
+
+<h4># ways to write an Arrow Function</h4>
+<pre>
+	(p1,p2) => {statements}
+	(p1,p2) => EXPRESSION // you can put an XPRESSION without curly braces {};
+	(p1,p2) => {return expression} // this one is Equivalent to |^ this one.
+	<mark>If you put the "return" - (it's gonna return the value of this "expression").</mark>
+	<mark>If you don't put the "return" (it's still gonna return the value of this expression) - (as long as THERE is NO CURLY braces).</mark>
+</pre>
+
+<pre>
+	<mark>Parantheses are optional when you use only single parameter.</mark>
+	singleParam => {statements};
+	(singleParam) => {statements}; // these TWo are Equivalnet.
+</pre>
+
+<pre>
+	<mark>If you have NO Parameter - it requires Parameters.</mark>
+	() => {stametemnts}
+	() => {expression}
+	() => {return expression}
+</pre>
+
+<p>NORMAL FUNCTION</p>
+<pre>
+< p id="nf">< /p>
+< script type="text/javascript">
+	var multiply = function(x,y){
+		return x * y;
+	};
+< /script>
+</pre>
+
+<p id="nf"></p>
+<script type="text/javascript">
+	var multiply = function(x,y){
+		return x * y;
+	};
+	document.getElementById('nf').innerHTML = multiply(3,2);
+</script>
+
+<p>ARROW FUNCTION</p>
+<pre>
+< p id="af">< /p>
+< script type="text/javascript">
+	<mark>var multiply1 = (x, y) => {return x * y};</mark>
+	document.getElementById('af').innerHTML = multiply1(2,3);
+< /script>
+
+or
+<mark>var multiply = (x,y) => x*y;</mark>
+</pre>
+<p id="af"></p>
+<script type="text/javascript">
+	var multiply1 = (x, y) => {return x * y};
+	document.getElementById('af').innerHTML = multiply1(2,3);
+</script>
+<h5>Until arrow Functions() - every new functions defines it's OWN "this." VALUE.<br>
+Arrow Function() - does NOT create it's OWN "this." CONTEXT/VALUE. <BR>
+"this." has it's ORIGINAL meaning - for the ENCLOSING Context.</h5>
+
+<p id="af1"></p>
+<script type="text/javascript">
+	function personAge(){
+		this.age = 0;
+
+		setInterval(() => {
+			this.age++;
+		},1000);
+	}
+
+	var p = newPersonAge();
+</script>
+
+<h5>Whenever you're going to return an OBJECT - you always have to put the object in PARANTHESIS.</h5>
+<pre>
+< p id="af2">< /p>
+< script type="text/javascript">
+	let str = '';
+	var func = () => ({name: 'J. Doe'})
+	document.getElementById('af2').innerHTML = func();
+< /script>
+</pre>
+<p id="af2"></p>
+<script type="text/javascript">
+	let str = '';
+	var func = () => ({name: 'J. Doe'})
+	document.getElementById('af2').innerHTML = func();
+</script>
+
+<p>Some callbacks Functions(), (like the sort function on an array)<br>
+for example - require you to RETURN something from callbackFunction().<br>
+If you don't use the implicit <b>return syntax</b> AND INSTEAD use curly brackets {} - make sure the function you provide - uses <b>return</b> keyword.</p>
+
+<h5>If Arrow function() - is returning an OBJECT - you should (either) use {} - (and have a BODY to the Function()) - with the <b>return keyword</b> (that returns an object).</h5>
+<h5>OR - wrap your returned object in the paratheses () - in a ONE LINE arrow Function.</h5>
+<pre>
+< p id="afo">< /p>
+< script type="text/javascript">
+	const dogs = ['Max', 'Duke'];
+	const dogsObjects1 = dogs.map((dog) =>({name: dog}));
+	document.getElementById('afo').innerHTML = dogsObjects1;
+< /script>
+</pre>
+<p id="afo"></p>
+<script type="text/javascript">
+	const dogs = ['Max', 'Duke'];
+	const dogsObjects1 = dogs.map((dog) =>({name: dog}));
+	document.getElementById('afo').innerHTML = dogsObjects1;
+</script>
+
+<h5>Or</h5>
+<pre>
+< p id="afo1">< /p>
+< script type="text/javascript">
+	const dogsObjects2 = dogs.map((dog1) => {
+		return {name: dog1};
+	});
+	document.getElementById('afo1').innerHTML = dogsObjects2;
+< /script>
+</pre>
+<p id="afo1"></p>
+<script type="text/javascript">
+	const dogsObjects2 = dogs.map((dog1) => {
+		return {name: dog1};
+	});
+	document.getElementById('afo1').innerHTML = dogsObjects2;
+</script>
+
+<h3>Arrow Function - Exercises</h3>
+<p>1. Write a named function that logs the "name" parameter to the console.</p>
+<pre>
+< p id="nf1">< /p>
+< script type="text/javascript">
+	function myName(xName){
+		return xName;
+	}
+	document.getElementById('nf1').innerHTML = myName('Hi, my name is Sergiu.');
+< /script>
+</pre>
+<p id="nf1"></p>
+<script type="text/javascript">
+	
+	function myName(xName){
+		return xName;
+	}
+	document.getElementById('nf1').innerHTML =  myName('Hi, my name is Sergiu.');
+</script>
+
+<p>2. Write an arrow function that adds two numbers together using implicit return. Print the result to the console.</p>
+<pre>
+< p id="af3">< /p>
+< script type="text/javascript">
+	var sum3 = (a,b) => {
+		return a + b
+	}
+	document.getElementById('af3').innerHTML = sum3(2,3);
+< /script>
+</pre>
+<p id="af3"></p>
+<script type="text/javascript">
+	var sum3 = (a,b) => {
+		return a + b
+	}
+	document.getElementById('af3').innerHTML = sum3(2,3);
+</script>
+
+<p>or</p>
+<pre>
+< p id='af4'>< /p>
+< script type="text/javascript">
+	const add = (x,y) => {return x  + y};
+	<mark>const sumXY</mark> = <mark>add</mark>(3,2);
+	document.getElementById('af4').innerHTML = sumXY;
+< /script>
+</pre>
+<p id='af4'></p>
+<script type="text/javascript">
+	const add = (x,y) => {return x + y};
+	const sumXY = add(3,2);
+	document.getElementById('af4').innerHTML = sumXY;
+</script>
+
+<p>3. Write an arrow function that subtracts two numbers, not using implicit return. Print the result to the console.</p>
+<pre>
+< p id="af5">< /p>
+< script type="text/javascript">
+	let sub = (numA, numB) => {return numA - numB};
+	let substract1 = sub(110, 20);
+	document.getElementById('af5').innerHTML = substract1;
+< /script>
+</pre>
+<p id="af5"></p>
+<script type="text/javascript">
+	let sub = (numA, numB) => {return numA - numB};
+	let substract1 = sub(110, 20);
+	document.getElementById('af5').innerHTML = substract1;
+</script>
+
+<p> 4. Add a named function to the pizza object called "cook". Print a message to the console saying how long it will take to cook</p>
+<pre>
+< p id="nf2">< /p>
+< script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		cook
+	}
+	function cook(){
+		document.getElementById('nf2').innerHTML =  this.name + ' will take 15 minutes to cook';
+	}
+	pizza1.cook();
+< /script>
+</pre>
+<p id="nf2"></p>
+<script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		cook
+	}
+	function cook(){
+		document.getElementById('nf2').innerHTML =  this.name + ' will take 15 minutes to cook';
+	}
+	pizza1.cook();
+</script>
+
+<p>5. Add an arrow function to the dog object that logs "bark, bark" to the console when called.</p>
+<pre>
+< p id="af6">< /p>
+< script type="text/javascript">
+	const bigDog = {
+  name2: 'Amstrong',
+  <mark>bark: () =></mark> {
+  	document.getElementById('af6').innerHTML = <mark>this.name2</mark> + ' za big dog bark, bark'
+  }
+};
+bigDog.bark();
+</pre>
+
+<p id="af6"></p>
+<script type="text/javascript">
+	const bigDog = {
+  name2: 'Amstrong',
+  bark: () => {
+  	document.getElementById('af6').innerHTML = this.name2 + ' za big dog bark, bark'
+  }
+};
+bigDog.bark();
+</script>
+
+<h5> bark: function() {...} - instead of bark: <mark>() => {...}</mark></h5>
+<pre>
+< p id="af7">< /p>
+< script type="text/javascript">
+	const bigDog1 = {
+  name: 'Amstrong',
+  <mark>bark: function ()</mark>  {
+  	document.getElementById('af7').innerHTML = <mark>this.name</mark> + ' za big dog bark, bark'
+  }
+};
+bigDog1.bark();
+< /script>
+</pre>
+<p id="af7"></p>
+<script type="text/javascript">
+	const bigDog1 = {
+  name: 'Amstrong',
+  bark: function ()  {
+  	document.getElementById('af7').innerHTML = this.name + ' za big dog bark, bark'
+  }
+};
+bigDog1.bark();
+</script>
+
+<h3>Default Parameters</h3>
+<pre>
+	Example:
+
+< p id="ex6">< /p>
+< script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4);
+	document.getElementById('ex6').innerHTML = result;
+< /script>
+</pre>
+<p id="ex6"></p>
+<script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4);
+	document.getElementById('ex6').innerHTML = result;
+</script>
+<p>The result is "4" - instead of "NaN".<br>
+This "divide" Function() - expects two parameters. (top, bottom).<br>
+The <mark>=1</mark> after the bottom parameter - means that <mark>IF IS NOTHING IS PASSED INTO THE Function as the bottom parameter - its value wil be "1" instead of "undefined".</mark></p>
+
+<pre>
+	< p id="ex6">< /p>
+< script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4, 4);
+	document.getElementById('ex6').innerHTML = result; //1
+
+	const result = divide(16, 4); //4
+</script>
+</pre>
+<h5>Default parameters makes it so that a parameter value is initialized with some value, but this initialized value will be overwritten by whatever is passed in to the function.<br>
+If there's always some value in the parameter of a function; they won't be undefined unless explicitly passed that way. </h5>
+
+<pre>
+	function divide(top, bottom) {
+    console.log(top / bottom);
+}
+divide(5); // NaN -- because the "bottom" PARAMETER is undefined since nothing was passed in to the function. 
+</pre>
+
+<pre>
+	So let's provide some default parameters to this function.
+
+function divide(top, bottom = 1) {
+    console.log(top / bottom);
+}
+divide(5); // 5
+</pre>
+
+<h3>Named Parameters. Multiple Parameters</h3>
+<p>To USE named Parameters - all you need is to PASS a <u>SINGLE Object</u> to the Function - instead of multiple parameters.<br>
+Also, we have ACCESS to EACH of the ATTRIBUTES of the Object.</p>
+<h4>An example without named parameters:</h4>
+<pre>
+< p id="np">< /p>
+< script type="text/javascript">
+	function dogInfo(name, breed, age, foodPreference, likesToWalk){
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? <mark>'does'</mark> : 'does not'} like to walk.`
+	}
+	 document.getElementById('np'). innerHTML = dogInfo('Duke', 'Labradoodle', '3 years', 'anything', <mark>true</mark>);
+< /script>
+</pre>
+<p id="np"></p>
+<script type="text/javascript">
+	function dogInfo(name, breed, age, foodPreference, likesToWalk){
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`
+	}
+	 document.getElementById('np'). innerHTML = dogInfo('Duke', 'Labradoodle', '3 years', 'anything', true);
+</script>
+
+<h4>Now let's try with NAMED Parameters (Recomended)</h4>
+<pre>
+< p id="np1">< /p>
+< script type="text/javascript">
+	function dogInfo1<mark>({</mark>name, breed, age, foodPreference, likesToWalk<mark>})</mark> {
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`;
+	}
+	 document.getElementById('np1').innerHTML = dogInfo1({<mark>name: 'Duke', breed: 'Labardor', age:'3 years', likesToWalk: true, foodPreference: 'anything'</mark>});
+< /script>
+</pre>
+<p id="np1"></p>
+<script type="text/javascript">
+	function dogInfo1({name, breed, age, foodPreference, likesToWalk}) {
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`;
+	}
+	 document.getElementById('np1').innerHTML = dogInfo1({name: 'Duke', breed: 'Labardor', age:'3 years', likesToWalk: true, foodPreference: 'anything'});
+</script>
+
+<p>This time is very clear what each item is that - we're passing to the Function.<br>
+The object we pass in - has the attribute of each right next to it.<br>
+In this manner <u>there is no order</u> for the ATTRIBUTES on the Object, no matter how u order them</p>
+<h5>YouTube Example:</h5>
+<pre>
+< p id="yt">< /p>
+< p id='yt1'>< /p>
+< p id='yt2'>< /p>
+< script type="text/javascript">
+	// food prices
+	var beer_cost = 6.25;
+	var burger_cost = 4.75;
+	var pop_cost = 3.00;
+
+	//user's money
+	var account_balance = 15.75;
+
+	//drink beer
+	function drinkBeer(){
+		account_balance = account_balance - beer_cost;
+		document.getElementById('yt').innerHTML = account_balance;
+	}
+	
+
+	//eat burger
+	function eatBurger(){
+		account_balance -= burger_cost;
+		document.getElementById('yt1').innerHTML = account_balance;
+	}
+	
+
+	//drink pop
+	function drinkPop(){
+		account_balance -= pop_cost;
+		document.getElementById('yt2').innerHTML = account_balance;
+	}
+	
+	//Visit the carnival, eat and drink
+	var mealList = [drinkBeer, drinkPop, eatBurger, drinkPop];
+	function visitCarnival(mList){
+		for(var i = 0; num=mList.length; i < num; i++){
+			mList[i]();
+		}
+	}
+	visitCarnival(mealList);
+< /script>
+</pre>
+
+<p id="yt"></p>
+<p id='yt1'></p>
+<p id='yt2'></p>
+<script type="text/javascript">
+	// food prices
+	var beer_cost = 6.25;
+	var burger_cost = 4.75;
+	var pop_cost = 3.00;
+
+	//user's money
+	var account_balance = 15.75;
+
+	//drink beer
+	function drinkBeer(){
+		account_balance = account_balance - beer_cost;
+		document.getElementById('yt').innerHTML = account_balance;
+	}
+	
+
+	//eat burger
+	function eatBurger(){
+		account_balance -= burger_cost;
+		document.getElementById('yt1').innerHTML = account_balance;
+	}
+	
+
+	//drink pop
+	function drinkPop(){
+		account_balance -= pop_cost;
+		document.getElementById('yt2').innerHTML = account_balance;
+	}
+	
+	//Visit the carnival, eat and drink
+	var mealList = [drinkBeer, drinkPop, eatBurger, drinkPop];
+	function visitCarnival(mList){
+		for(var i = 0; num=mList.length; i < num; i++){
+			mList[i]();
+		}
+	}
+	visitCarnival(mealList);
+</script>
+<pre>
+	1. we have an array [] - and  inside here I'm gonna put the list of the Functions that I want to call.
+	2.[drink_beer, drink_pop, eat_burger, drink_soda]; - you'll notice I'm no putting the "()" - at the end of the "Functions" in the array.
+	I'm just PASSING the NAME of the Function - i'm not telling the function to run.
+	3. We're gonna calling our Function: "visitCarnival(mealList);" - and then i'm gonna passing this variable "mealist".
+	4. this is gonna make the Function "visitCarnival()" - run; Then we gonna take our array and we gonna pass it.
+	4.1 The content of (mealList) - are going to be PUT into this variable (mList).
+	5. mList[i] - (if i'm going to my array) - to that position [i] - what I'm I looking at is - "the name of the Function()" - (puting the "()" the end of it.mList[i]()).
+</pre>
 
 
+<h3>Rest Parameters</h3>
+<p>"Rest" parameters in functions take all the <b>arguments</b> (passed into a function) (starting from a gien point) - and put them into single parameter - inside the function - as an array.</p>
+<pre>
+< p id="rp">< /p>
+< script type="text/javascript">
+	function addNumbers(name, ...numbers){
+		let sum = 0;
+		for (const num of numbers){
+			sum += num;
+		}
+		return 'Total of ' + name + ': ' + sum;
+	}
+	const totalPrice = addNumbers('Price', 1,2,3,4,5);
+	 document.getElementById('rp').innerHTML = totalPrice;
+< /script>
+</pre>
+<p id="rp"></p>
+<script type="text/javascript">
+	function addNumbers(name, ...numbers){
+		let sum = 0;
+		for (const num of numbers){
+			sum += num;
+		}
+		return 'Total of ' + name + ': ' + sum;
+	}
+	const totalPrice = addNumbers('Price', 1,2,3,4,5);
+	 document.getElementById('rp').innerHTML = totalPrice;
+</script>
+<pre>
+	The numbers 1,2,3,4,5 - are ALL ADDED into the "numbers" parameter as the <b>rest</b> parameter.
+	<b><mark>Once you've declared a rest parameter</mark> you can't decalre any other parameters, (including_ other rest parameters, after it.</b>
+</pre>
+<h5>What is allows you to do is - to <mark>name</mark> a certain number of parameters to the function - and then <mark>catch</mark> the rest of them in an array.</h5>
+<pre>
+< p id="rp1"></p>
+< script type="text/javascript">
+	function addition(setName, ...numbers){
+		const total = <mark>numbers.reduce</mark>((prev, next) => (prev += next), <mark>0</mark>);
+		return `Total of ${setName}: ${total}`;
+	}
+	const result1 = addition('years', 1,2,3,4);
+	document.getElementById('rp1').innerHTML = result1;
+< /script>
+</pre>
+<p id="rp1"></p>
+<script type="text/javascript">
+	function addition(setName, ...numbers){
+		const total = numbers.reduce((prev, next) => (prev += next), 0);
+		return `Total of ${setName}: ${total}`;
+	}
+	const result1 = addition('years', 1,2,3,4);
+	document.getElementById('rp1').innerHTML = result1;
+</script>
+<h5>This function takes a <mark>parameter</mark> called <i>setName</i>.<br>
+Then, we capture the rest of the <mark>arguments</mark> passed to the function in the <i>numbers</i>array.<br>
+That <mark>arguments</mark> includes all the arguments or parameters passed to a function.<br>
+The <i>rest</i> parameter - only includes all the parameters that weren't named.<br>
+The <i>rest</i> parameter - is actually an array.<br>
+Arguments (array-like) - cannot have methods (for Each, .reduce) on arguments.
+</h5>
 
 <script type="text/javascript" src = "JS/JS_Exercises.js"></script>
 </body>

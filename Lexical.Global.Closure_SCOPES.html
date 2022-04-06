@@ -131,7 +131,8 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 </pre>
 
 <h4>Now to have access to the parent SCOPE - even after the PARENT Function() has CLOSED.</h4>
-<p>Instead of CALLING the "chidlFunction()"(INSIDE the parentFunction()) - WE actually need to "return"  - the childFunction().</p>
+<p>Instead of CALLING the "chidlFunction()"(INSIDE the parentFunction()) - WE actually need to "return"  - the childFunction().<br>
+THEN -we can use "const result"  - to call the CHILD Function()</p>
 <pre>
 		< p id="gs2">< /p>
 	< p id="gs3">< /p>
@@ -158,9 +159,11 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 			}
 			<mark>return childFunction();</mark>
 		}
-		parentFunction2();
+		<mark>const result</mark> = parentFunction2();
+		<mark>result();</mark> //6 3
 	< /script>
 </pre>
+<pre>If we call result() again - it will continue to INCREMENT. // 11 4 </pre>
 
 </body>
 </html>

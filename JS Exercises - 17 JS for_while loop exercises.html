@@ -332,6 +332,94 @@ printArray2(arr2);
 	document.getElementById('del').innerHTML = newFunction3 += arr3;	
 </script>
 
+<pre>
+	It's pretty easy to remove an element from the "back" or "front" of an "array"  -usin POP or SHIFT. But what if you want to remove an element in the middle?
+	Maybe using "delete" COMMAND. 
+</pre>
+<pre>
+< p id="del1"></p>
+< script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	delete arry[2]; // to delete the 3're element - specify the array and then the POSITION [2].
+
+	this is what it looks like.
+	(5) [1,2, empty , 4, 5]
+
+	//it did remove the VALUE in a way and left it empty.
+	If I want the lenght. of the array - is still 5. (because that element is simply empty).
+	arry.length; //5
+
+	If I want to leave the length the same - but I wanna remove the value - I WILL REPLACE IT with a "null".
+	arry[2] = null;
+	//(5) [1,2, null , 4, 5] - null means NOTHING but somethig to ASSIGN.
+	I assigned nothing to it - where 'undefined' is something I like to keep as beeing assigned by JS (itself)  - not by me.
+< /script>
+</pre>
+<h5>Let's make a different way - of doing this: (the other/better way - is using "splice"</h5>
+<pre>
+	'Splice' are sounds very simmilar to "slice" - but they are very different when acting on arrays.
+	"Splice" allows you to ADD and to REMOVE elements to an Array. It does Both things.
+
+	Let's remove that 3'rd element - with 'splice()'
+
+	let arry =  [1,2,3,4,5];
+	arry.splice(2, 1); //2 - indicate the index, '1' - how many elements I want to remove.
+	What this will return - is the element/elements that we're remove.
+	As we can see "splice()" mutate/changes the array you're working on.
+</pre>
+
+<h5>If you want to remove an 'element' but not to CHANGE/mutate the original Array - <mark>you could CLONE the array</mark> and remove the elements.</h5>
+<p>In order to do that - we neet to SET UP  a Function()</p>
+<pre>
+< p id="rem">< /p>
+< p id="rem1">< /p>
+< script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	let output = '';
+	let output1 = '';
+
+	const removeElements = function(a, index){
+		let newArray1 = [...a];
+		newArray1.splice(index, 1);
+		return newArray1;
+	};
+	let newArray1 = removeElements(arry, 2);
+	document.getElementById('rem').innerHTML = output += arry;
+	document.getElementById('rem1').innerHTML = output1 += newArray1;
+< /script>
+</pre>
+
+<pre>
+	1. Call a function (removeElements) - pass an ARRAY and 'index of what we want to remove'. (function(a, index)).
+	2. In order to "mutate" this array - even it's passed into a NEW VARIABLE. function(<mark>a</mark>, index) - passed by refference in JS. [if we will change it (with'a') - it will mutate the array]. <mark>'a' is 'arry'</mark>.
+	3. IN ORDER TO PREVENT THAT FROM HAPPENING  - we first need to CLONE IT.
+	3.1 A really <mark>quick way</mark> to CLONE an Array is using a "SPREAD OPERATOR" - <mark>[...a]</mark>
+	3.2 The "spread OP" - will take this array 'a'/arry  - and it SPREADS OUT all the Elements.
+	...and it spreads them all out - inside of this square brackets '[...a]' - ASSIGNED TO "let newArray' VARIABLE.
+	4. Once we get that "newArray" - then we can do the splice. <mark>newArray.splice(index, 1)</mark>
+	5. Finally - <mark>return</mark> newArray.
+	that ALLOWS us to modify the array - without MUTATING  the original array.
+	6. It will give us a NEW Array in return.
+	<mark>let newArray = removeElement(arry, 2)</mark>
+	<mark>2</mark> - in this case  - indicates the INDEX THAT WE WANT TO REMOVE.
+</pre>
+<p id="rem"></p>
+<p id="rem1"></p>
+<script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	let output = '';
+	let output1 = '';
+
+	const removeElements = function(a, index){
+		let newArray1 = [...a];
+		newArray1.splice(index, 1);
+		return newArray1;
+	};
+	let newArray1 = removeElements(arry, 2);
+	document.getElementById('rem').innerHTML = output += arry;
+	document.getElementById('rem1').innerHTML = output1 += newArray1;
+</script>
+
 <h4>5. Write a JS code to demonstrate Async loop:</h4>
 
 <h4>6. Write a JS code to find the power of a number using for loop:</h4>
@@ -429,7 +517,7 @@ printArray2(arr2);
 			for(var j=1; j<=i; j++){
 				str += j+ " ";
 			}
-			return str;
+			document.getElementById('patt').innerHTML = str;
 		}
 	}
 	printPattern(8);
