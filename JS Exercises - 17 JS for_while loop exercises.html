@@ -522,5 +522,160 @@ printArray2(arr2);
 	}
 	printPattern(8);
 </script>
+
+<h4>Codeademy Exercise - Kelvin Weather</h4>
+<pre>
+< p id="kw">< /p>
+< script type="text/javascript">
+	//The forecast today is 293 Kelvin. To start, create a variable named kelvin, and set it equal to 293
+	<mark>const kelvin = 293;</mark>
+	
+	// convert Kelvin to Celsius by subtracting 273 from the kelvin variable. Store the result in another variable, named celsius.
+	<mark>let celsius = kelvin - 273;</mark>
+	
+	//Use this equation to calculate Fahrenheit, then store the answer in a variable named fahrenheit. Fahrenheit = Celsius * (9/5) + 32
+	<mark>let fahrenheit = celsius * (9/5) + 32;</mark>
+
+//When you convert from Celsius to Fahrenheit, you often get a decimal number.Use the .floor() method from the built-in Math object to round down the Fahrenheit temperature. Save the result to the fahrenheit variable.
+	<mark>fahrenheit = Math.floor(fahrenheit);
+	document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`</mark>
+< /script>
+</pre>
+<p id="kw"></p>
+<script type="text/javascript">
+	//The forecast today is 293 Kelvin. To start, create a variable named kelvin, and set it equal to 293
+	const kelvin = 293;
+	// convert Kelvin to Celsius by subtracting 273 from the kelvin variable. Store the result in another variable, named celsius.
+	let celsius = kelvin - 273;
+	//Use this equation to calculate Fahrenheit, then store the answer in a variable named fahrenheit. Fahrenheit = Celsius * (9/5) + 32
+	let fahrenheit = celsius * (9/5) + 32;
+
+//When you convert from Celsius to Fahrenheit, you often get a decimal number.Use the .floor() method from the built-in Math object to round down the Fahrenheit temperature. Save the result to the fahrenheit variable.
+	fahrenheit = Math.floor(fahrenheit);
+	document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`
+</script>
+
+<h4>W3School Exercise</h4>
+<h5>This example calls a function to convert from Fahrenheit to Celsius:</h5>
+<pre>
+< p id="fh"></p>
+< script type="text/javascript">
+	function toCelsius(f){
+		return (5/9) * (f-32);
+	}
+	document.getElementById('fh').innerHTML = toCelsius(25);
+< /script>
+</pre>
+<p id="fh"></p>
+<script type="text/javascript">
+	function toCelsius(f){
+		return (5/9) * (f-32);
+	}
+	document.getElementById('fh').innerHTML = toCelsius(25);
+</script>
+
+<h5>If you’d like extra practice, try this: <br>
+Convert celsius to the Newton scale using the equation below<br>
+Newton = Celsius * (33/100)<br>
+
+Round down the Newton temperature using the .floor() method<br>
+Use console.log and string interpolation to log the temperature in newton to the console</h5>
+
+<pre>
+< p id="N">< /p>
+< script type="text/javascript">
+	let celsius1 = 25;
+	let newton = celsius1 * (33/100);
+	newton = Math.floor(newton);
+	document.getElementById('N').innerHTML = `The outside temperature (in Newton) is ${newton}.`
+< /script>
+</pre>
+
+<p id="N"></p>
+<script type="text/javascript">
+	let celsius1 = 25;
+	let newton = celsius1 * (33/100);
+	newton = Math.floor(newton);
+	document.getElementById('N').innerHTML = `The outside temperature (in Newton) is ${newton}.`
+</script>
+
+<h5>Dog Years</h5>
+<pre>
+< p id="dy">< /p>
+< p id="dy1">< /p>
+< script type="text/javascript">
+	//Create a variable named myAge, and set it equal to your age as a number.
+	<mark>var myAge = 36;</mark>
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	<mark>var earlyYears = 2;</mark>
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	<mark>earlyYears = earlyYears * 10.5;</mark>
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. 
+	//Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	<mark>var laterYears = myAge - 2;</mark>
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. 
+	//Use the multiplication assignment operator to multiply and assign in one step.
+	<mark>laterYears * 4;</mark>
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	<mark>var myAgeInDogYears = earlyYears + laterYears;</mark>
+
+	//If you’d like to check your work at this point, print earlyYears and laterYears to the console. Are the values what you expected?
+	<mark>document.getElementById('dy').innerHTML = myAgeInDogYears;</mark>
+
+	//Let’s use a string method next.
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	<mark>var myName = 'Sergiu'.toLowerCase();</mark>
+
+	//Write a console.log statement that displays your name and age in dog years. 
+	//Use string interpolation to display the value in the following sentence:
+
+	document.getElementById('dy1').innerHTML = <mark>`My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`</mark>
+</pre>
+<p id="dy"></p>
+<p id="dy1"></p>
+<script type="text/javascript">
+	//Create a variable named myAge, and set it equal to your age as a number.
+	var myAge = 36;
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	var earlyYears = 2;
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	earlyYears = earlyYears * 10.5;
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. 
+	//Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	var laterYears = myAge - 2;
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. 
+	//Use the multiplication assignment operator to multiply and assign in one step.
+	laterYears * 4;
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	var myAgeInDogYears = earlyYears + laterYears;
+
+	//If you’d like to check your work at this point, print earlyYears and laterYears to the console. Are the values what you expected?
+	document.getElementById('dy').innerHTML = myAgeInDogYears;
+
+	//Let’s use a string method next.
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	var myName = 'Sergiu'.toLowerCase();
+
+	//Write a console.log statement that displays your name and age in dog years. 
+	//Use string interpolation to display the value in the following sentence:
+
+	document.getElementById('dy1').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
+
+
+
+
+</script>
 </body>
 </html>

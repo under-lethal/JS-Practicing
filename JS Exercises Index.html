@@ -91,15 +91,101 @@
  	<div id="ex7"></div>
  	<div id="ex8"></div>
 
- 	<h3>Value vs Reference</h3>
+ 	<h3><mark>Value vs Reference</mark></h3>
  	<p>Declare a variable with a value of a number, string, or boolean, then copy it to another Variable.<br>
  	Log both variables, then change the value of one and log them again.<br>
  	Declare a variable with a value of an object or an array, then copy it to another Variable.<br>
  	Log both variables, then change the value of an attribute on one object or add an item to one array and log them again</p>
  	<div id="ex9"></div>
 
+ 	<h4>Value</h4>
+ 	<p>When a variable is assigned a value of a string, number, boolean, null, or undefined, they are storing that information <b>by value</b>.<br>
+ 	In essence, they contain the value in the variable. If you change the value they are storing, they forget the old value and now contain the new value.</p>
+
  	<h3>JavaScript Data Types</h3>
- 	<p>For each expression, predict what you think the output will be in a comment (//) without first running the command.</p>
+ 	<p>For each expression, predict what you think the output will be in a comment (//) without first running the command.<br>
+ 	Where this really matters is when you declare a second variable and initialize it to the first variable.
+ 	</p>
+ 	<pre>
+ 		let myRating = 5;
+ 		let yourRating = myRating;
+ 		console.log(myRating, yourRating); // <mark>5 5</mark>
+ 	</pre>
+ 	<p>In this example "myRating" is assigned the value of "5", and "yourRating" is assigned the value of "myRating".<br>
+ 		So what happen if you reasing the value of "myRating" or reasign the value of "yourRating".<br>
+ 		<b>Well, because these variables are STORED (by value), they CAN CHANGE INDEPENDENLTY of each other.</b></p>
+ 	<pre>
+ 		myRating = 9;
+ 		console.log(myRating, yourRating); // <mark>9 5</mark>
+ 	</pre>
+ 	<p>The same thing happens if you passed myRating into a function. If the function changed the value of that parameter, <mark>myRating</mark> would be unaffected.</p>
+ 	<pre>
+ 		myRating = 9;
+ 		console.log(myRating, yourRating); 
+
+ 		function multiplyRating(rating){
+ 			return rating * 10;
+ 		}
+ 		let newRating = multiplyRating(myRating);
+ 		console.log(myRating, newRating); //<mark>9 90</mark>
+ 	</pre>
+ 	<p id="va"></p>
+ 	<p id="va1"></p>
+ 	<script type="text/javascript">
+ 		let myRating = 9;
+ 		document.getElementById('va').innerHTML = myRating;
+
+ 		function multiplyRating(rating){
+ 			return rating * 10;
+ 		}
+ 		let newRating = multiplyRating(myRating);
+ 		document.getElementById('va1').innerHTML = myRating + " " + newRating;
+ 	</script>
+
+ 	<h4>Reference</h4>
+ 	<p>When a var STORES its data by 'Reference' - all it contains is the location in memory where the data is stored.<br>
+ 		When you copy that 'var', or pass it to a function, the location in memory is all that is copied.<br>
+ 		That means - that all variables are POINTING to the SAME PLACE in MEMORY.<br>
+ 	If one of them change the value - all of them will reflect the change.</p>
+ 	<pre> 		 	
+ 	< p id="ref">< /p>
+ 	< p id="ref1">< /p>
+ 	< p id="ref2">< /p>
+ 	< script type="text/javascript">
+ 		let dog = {name: 'Duke'};
+ 		let dog2 = dog;
+ 		document.getElementById('ref').innerHTML = dog.name +' '+dog2.name;
+
+ 		dog.name = 'Max';
+ 		document.getElementById('ref1').innerHTML = dog.name +' '+dog2.name;
+
+ 		function changeName(dogObj){
+ 			dogObj.name = 'Fido';
+ 		}
+ 		changeName(dog2);
+ 		document.getElementById('ref2').innerHTML = dog.name + " " +dog2.name;
+ 	< /script>
+ 	</pre>
+ 	<p id="ref"></p>
+ 	<p id="ref1"></p>
+ 	<p id="ref2"></p>
+ 	<script type="text/javascript">
+ 		let dog = {name: 'Duke'};
+ 		let dog2 = dog;
+ 		document.getElementById('ref').innerHTML = dog.name +' '+dog2.name;
+
+ 		dog.name = 'Max';
+ 		document.getElementById('ref1').innerHTML = dog.name +' '+dog2.name;
+
+ 		function changeName(dogObj){
+ 			dogObj.name = 'Fido';
+ 		}
+ 		changeName(dog2);
+ 		document.getElementById('ref2').innerHTML = dog.name + " " +dog2.name;
+ 	</script>
+<p>As we can see - CHANGEING the name ATTR - on one object - change the NAME attribute on ALL of the OBJECTS.<BR>
+That's because in reality - all of the variables are POINTING to the same object, at a location in MEMORY.</p>
+
  	<pre>
  		typeof("potato"); //string
  		typeof(5.5);	//number

@@ -1707,6 +1707,73 @@ The <i>rest</i> parameter - is actually an array.<br>
 Arguments (array-like) - cannot have methods (for Each, .reduce) on arguments.
 </h5>
 
-<script type="text/javascript" src = "JS/JS_Exercises.js"></script>
+<h4>Exercises</h4>
+<p> 1. Write a function that prints a welcome message to the console, including the "name" parameter. Provide a default parameter. <br>
+Call the function twice, once passing an argument to the function and once without.</p>
+<pre>
+< p id="ex7">< /p>
+< script type="text/javascript">
+	function myName1(name){
+		document.getElementById('ex7').innerHTML = `Hello, my name is: ${name}.`
+	}
+	myName1('Sergiu');
+< /script>
+
+</pre>
+<p id="ex7"></p>
+<script type="text/javascript">
+	function myName1(name){
+		return `Hello, my name is: ${name}.`
+	}
+	document.getElementById('ex7').innerHTML = myName1('Sergiu');
+</script>
+<pre>
+		function myName1(name){
+		return `Hello, my name is: ${name}.`;
+	}
+	<mark>myName1();</mark>
+'Hello, my name is: <mark>undefined</mark>.'
+</pre>
+
+<p>2. Write a function called "createPizza" that takes a list of named parameters. <br>
+// Print the different parts of the pizza to the console</p>
+<pre>
+< p id="ex8">< /p>
+< script type="text/javascript">
+	function createPizza(<mark>{</mark>name, price, ingredients<mark>}</mark>){
+		 return `This ${name} pizza cost ${price} and contains these few ingredients: ${ingredients}.`
+	}
+	document.getElementById('ex8').innerHTML = createPizza({name: 'Italiano', price: '5 $', ingredients: ['salami', 'tomatoes', 'cedar' ]});
+< /script>
+</pre>
+<p id="ex8"></p>
+<script type="text/javascript">
+	function createPizza({name, price, ingredients}){
+		 return `This ${name} pizza cost ${price} and contains these few ingredients: ${ingredients}.`
+	}
+	document.getElementById('ex8').innerHTML = createPizza({name: 'Italiano', price: '5 $', ingredients: ['salami', 'tomatoes', 'cedar' ]});
+</script>
+
+<p>. Write a function called "describeDog" that takes two parameters: name and hobbies<br>
+// Print a message with the dogs names and its hobbies</p>
+<pre>
+< p id="ex9">< /p>
+< script type="text/javascript">
+	function describeDog<mark>(</mark>name, <mark>...hobbies)</mark>{  //...hobbies - REST Parameter
+		return `${name} has these two hobbies: ${hobbies}.`
+	}
+	document.getElementById('ex9').innerHTML = describeDog<mark>('Buff', 'running', 'playing')</mark>
+< /script>
+</pre>
+
+<p id="ex9"></p>
+<script type="text/javascript">
+	function describeDog(name, ...hobbies){
+		return `${name} has these two hobbies: ${hobbies}.`
+	}
+	document.getElementById('ex9').innerHTML = describeDog('Buff', 'running', 'playing')
+</script>
+
+
 </body>
 </html>
