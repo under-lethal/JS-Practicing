@@ -403,6 +403,143 @@ Put your first and last name as values to those keys.<br>
 	document.getElementById('ex4').innerHTML = person1['lastName'];	
 </script>
 
+<h4>Stringify-ing Objects and Parsing Objects</h4>
+
+<p>When you're debuggin your application that you need to print an object to the console so you can see what information was in the object at a given time.<br>
+The JSON class's <mark>stringify</mark> method is perfect for doing this.<br>
+It prints the object out as a STRING instead of as a REAL OBJECT.</p>
+<pre>
+< p id="so">< /p>
+< script type="text/javascript">
+	const pizza = {
+		name: 'Peperoni',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so').innerHTML = <mark>JSON.stringify(pizza);</mark>
+< /script>
+</pre>
+<p id="so"></p>
+<script type="text/javascript">
+	const pizza = {
+		name: 'Peperoni',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so').innerHTML = JSON.stringify(pizza);
+</script>
+<h5>If you want the object to print out with indentation instead of on one line, you call the function like this:</h5>
+<pre>
+	console.log(JSON.stringify(pizza, null, 2)); 
+
+/* Console:
+{
+    "name":"Pepperoni",
+    "price":8,
+    "toppings":[
+        "marinara",
+        "cheese",
+        "pepperoni"
+    ]
+}
+*/
+</pre>
+<p id="so1"></p>
+<script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so1').innerHTML = JSON.stringify(pizza1, null, 2);
+</script>
+
+<h5>Finally, if you want to remove any information from the printed string (for example, sensitive information), you can pass in an array of strings.<br> The array that's passed in should include the strings you want to keep in the printed object:</h5>
+<pre>
+	console.log(JSON.stringify(pizza, <mark>['name', 'price']</mark>, 2)); 
+
+/* Console:
+{
+    "name":"Pepperoni",
+    "price":8
+}
+*/
+</pre>
+
+<h5>To convert a string to an object, you can do the following:</h5>
+<pre>
+	<mark>const pizzaString = JSON.stringify(pizza);
+	const newPizzaObject = JSON.parse(pizzaString);</mark>
+</pre>
+
+
+<h3>Object's Keys</h3>
+<p>Somethimes you will need to do something with the keys on an object.<br>
+Maybe you want to <mark>OUTPUT</mark> what information is available on the OBJECT.<br>
+or, you want to <mark>CREATE</mark> a <b>new object</b> (with the same data) but changing the KEY NAMES.<BR>
+Having acces to what those keys are - would be really.</p>
+<pre>
+< p id="ok">< /p>
+< script type="text/javascript">
+	const dog = {
+		name: 'Duke',
+		age: 3
+	}
+	document.getElementById('ok').innerHTML = <mark>Object.keys(dog)</mark>; // <mark>['name', 'age']</mark>
+</script>
+</pre>
+<p id="ok"></p>
+<script type="text/javascript">
+	const dog = {
+		name: 'Duke',
+		age: 3
+	}
+	document.getElementById('ok').innerHTML = Object.keys(dog);
+</script>
+
+<h4>Thinkster Exercises</h4>
+<p>1. Log the keys of the following object as an array.<br>
+2. Loop over the above keys and print the keys to the console in all caps.<br>
+3. Convert the above object to a string, stored in a variable, and print it to the console with all the keys and spacing set to 3.<br>
+4. Convert the above object to a string but remove the price of the pizza and spacing set to 2.<br>
+5. Take the string representation of the pizza object from 3 or 4 and convert it back to an object.<br> Print the object to the console.</p>
+
+<p id="ex5"></p>
+<p id="ex6"></p>
+<p id="ex7"></p>
+<p id="ex8"></p>
+<p id="ex9"></p>
+<script type="text/javascript">
+	const pizza2 = {
+  name: 'pepperoni',
+  price: 8,
+  toppings: ['marinara', 'cheese', 'pepperoni']
+}
+const keys = Object.keys(pizza2);
+document.getElementById('ex5').innerHTML = keys;
+
+//2
+let newPizza = '';
+for(let x in pizza2){
+	newPizza += x  + " ";
+}
+document.getElementById('ex6').innerHTML = newPizza.toUpperCase();
+
+//3
+const pizzaString = JSON.stringify(pizza2, null, 3);
+document.getElementById('ex7').innerHTML = pizzaString;
+
+//4
+const pizzaString1 = JSON.stringify(pizza2,['name', 'toppings']);
+document.getElementById('ex8').innerHTML = pizzaString1;
+
+//5
+const newPizzaObject = JSON.parse(pizzaString);
+document.getElementById('ex9').innerHTML = newPizzaObject;
+
+</script>
+
+
 
 
 </body>
