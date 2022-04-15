@@ -449,6 +449,20 @@ printArray2(arr2);
 	}
 	document.getElementById('pow').innerHTML = x += numPower(4,3);
 </script>
+<pre>
+	How it works:
+	var i = 0; i < pow(3); i++;
+	1 = 1 * 4 //4
+	res = 4;
+
+	var i = 1; 1 < pow(3); i++;
+	res = 4 * 4 //16;
+	res = 16;
+
+	var i = 2; 2< pow(3); i++;
+	res = 16 * 4 //64
+	res = 64; (4x4x4 = 64)
+</pre>
 <h4>Did you mean alternative for Math.pow? Here is one way with simple loop.</h4>
 <pre>
 < p id="pow1">< /p>
@@ -507,8 +521,23 @@ printArray2(arr2);
 </script>
 
 <h4>7. Write a JS code to print a pattern using for loop:</h4>
+<pre>
+< p id="patt">< /p>
+< script type="text/javascript">
+	let pattern = '';
+	function printPattern(range){
+		for(var i=1; i<=range; i++){
+			var str = '';
+			for(var j=1; j<=i; j++){
+				str += j+ " ";
+			}
+			document.getElementById('patt').innerHTML = str;
+		}
+	}
+	printPattern(8);
+< /script>
+</pre>
 <p id="patt"></p>
-
 <script type="text/javascript">
 	let pattern = '';
 	function printPattern(range){
@@ -672,10 +701,65 @@ Use console.log and string interpolation to log the temperature in newton to the
 	//Use string interpolation to display the value in the following sentence:
 
 	document.getElementById('dy1').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
-
-
-
-
 </script>
+
+<h3>8. Write a JS code to find the no of digits in a number</h3>
+<pre>
+< p id="digi">< /p>
+< p id="digi1">< /p>
+< script type="text/javascript">
+	var count = 0; //return 1 for pow=0
+	while(num!=0){
+		num = Math.floor(num/10);
+		count++;
+	}
+	return count;
+	document.getElementById('digi').innerHTML = digitCount(8367); //4
+	document.getElementById('digi1').innerHTML = digitCount(563349); //6
+< /script>
+</pre>
+
+<p id="digi"></p>
+<p id="digi1"></p>
+<script type="text/javascript">
+	var count = 0; //return 1 for pow=0
+	while(num!=0){
+		num = Math.floor(num/10);
+		count++;
+	}
+	return count;
+	document.getElementById('digi').innerHTML = digitCount(8367); //4
+	document.getElementById('digi1').innerHTML = digitCount(563349); //6
+</script>
+
+<pre>
+	1. Use while loop.
+	var count = 0;
+	while (num(2236) != 0){
+		num = Math.floor(2236/10); //223.6 Math.floor(223)
+		count++ //1		
+	}
+	return count; //1
+
+	var count = 1;
+	while(223.6 != 0){
+		num = Math.floor(223.6/10); //22.36 Math.floor(22)
+		count++; //2
+	}
+
+	var count = 2;
+	while(22.36 != 0){
+		num = Math.floor(22.36/10); //2.236 Math.floor(2)
+		count++; //3
+	}
+
+	var count = 3
+	while(2.236 != 0){
+		num = Math.floor(2.236 != 0); // 0.2236 Math.floor(0)
+		count++; //4
+	}
+</pre>
+
+
 </body>
 </html>

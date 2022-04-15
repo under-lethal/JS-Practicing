@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Codecademy</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+	<h2>Kelvin Weather</h2>
+	<pre>
+	< p id='kw'>< /p>
+	< p id='kw1'>< /p>
+	< script type="text/javascript">
+		// declare a const var name 'kelvin'
+		const kelvin = 0;
+
+		// convert Kelvin to Celsius
+		let celsius = kelvin - 273;
+
+		//calculate Fehrenheit then round the number save to fahrenheit
+		//Fahrenheit = Celsius * (9/5) + 32
+		let fahrenheit = celsius * (9/5) + 32;
+
+		//use the 'Math.floor()' method from the built-in Math object - to round down the Fahrenheit temperature.
+		fahrenheit = Math.floor(fahrenheit);
+		document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`
+
+		//convert to Newton
+		let newton = celsius *(33/100);
+
+		//Round Down
+		newton = Math.floor(newton);
+		document.getElementById('kw1').innerHTML = `The temperature is ${newton} degrees Newton.`
+	</pre>
+	<p id='kw'></p>
+	<p id='kw1'></p>
+	<script type="text/javascript">
+		// declare a const var name 'kelvin'
+		const kelvin = 0;
+
+		// convert Kelvin to Celsius
+		let celsius = kelvin - 273;
+
+		//calculate Fehrenheit then round the number save to fahrenheit
+		//Fahrenheit = Celsius * (9/5) + 32
+		let fahrenheit = celsius * (9/5) + 32;
+
+		//use the 'Math.floor()' method from the built-in Math object - to round down the Fahrenheit temperature.
+		fahrenheit = Math.floor(fahrenheit);
+		document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`
+
+		//convert to Newton
+		let newton = celsius *(33/100);
+
+		//Round Down
+		newton = Math.floor(newton);
+		document.getElementById('kw1').innerHTML = `The temperature is ${newton} degrees Newton.`
+	</script>
+<h2>Dog Years</h2>
+<pre>
+< p id="dy">< /p>
+< script type="text/javascript">
+	// Create a variable named myAge, and set it equal to your age as a number.
+	var myAge = 36;
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	var earlyYears = 2;
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	earlyYears = earlyYears * 10.5;
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	var laterYears = myAge - 2;
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. Use the multiplication assignment operator to multiply and assign in one step.
+	laterYears * 4;
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	var myAgeInDogYears = earlyYears + laterYears;
+
+	//Let’s use a string method next. 
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	var myName = 'Sergiu'.toLowerCase();
+
+	//Write a console.log statement that displays your name and age in dog years. Use string interpolation to display the value in the following sentence:
+	document.getElementById('dy').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
+< /script>
+</pre>
+<p id="dy"></p>
+<script type="text/javascript">
+	// Create a variable named myAge, and set it equal to your age as a number.
+	var myAge = 36;
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	var earlyYears = 2;
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	earlyYears = earlyYears * 10.5;
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	var laterYears = myAge - 2;
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. Use the multiplication assignment operator to multiply and assign in one step.
+	laterYears * 4;
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	var myAgeInDogYears = earlyYears + laterYears;
+
+	//Let’s use a string method next. 
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	var myName = 'Sergiu'.toLowerCase();
+
+	//Write a console.log statement that displays your name and age in dog years. Use string interpolation to display the value in the following sentence:
+	document.getElementById('dy').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
+</script>
+
+<h2>CONDITIONAL STATEMENTS</h2>
+<p>These if-else decisions can be modeled in code by creating conditional statements. A conditional statement checks a specific condition(s) and performs a task based on the condition(s).</p>
+
+<h3>If Statement</h3>
+<p>We often perform a task based on a condition. For example, if the weather is nice today, then we will go outside. If the alarm clock rings, then we’ll shut it off. If we’re tired, then we’ll go to sleep.</p>
+<pre>
+< p id='is'>< /p>
+< p id='is1'>< /p>
+< script type="text/javascript">
+	let sale = true;
+	sale = false;
+	if(sale){
+		document.getElementById('is').innerHTML = 'Time to buy!'
+	}
+		document.getElementById('is1').innerHTML = sale;
+< /script>
+</pre>
+<p id='is'></p>
+<p id='is1'></p>
+<script type="text/javascript">
+	let sale = true;
+	sale = false;
+	if(sale){
+		document.getElementById('is').innerHTML = 'Time to buy!'
+	}
+		document.getElementById('is1').innerHTML = sale;
+</script>
+
+<h3>If...Else Statements</h3>
+<p>In the previous exercise, we used an if statement that checked a condition to decide whether or not to run a block of code. In many cases, we’ll have code we want to run if our condition evaluates to false.<br>If we wanted to add some default behavior to the if statement, we can add an else statement to run a block of code when the condition evaluates to false. </p>
+<pre>
+	if (false) {
+  console.log('The code in this block will not run.');
+} else {
+  console.log('But the code in this block will!');
+}
+ 
+// But the code in this block will!
+</pre>
+<pre>
+< p id="ie">< /p>
+< p id="ie1">< /p>
+< script type="text/javascript">
+	let sale1 = true;
+	sale = false;
+
+	if(sale){
+		document.getElementById('ie').innerHTML = 'Time to buy!'
+	}else{
+		document.getElementById('ie1').innerHTML = 'Time to wait for a sale.'
+	}
+< /script>
+</pre>
+<p id="ie"></p>
+<p id="ie1"></p>
+<script type="text/javascript">
+	let sale1 = true;
+	sale = false;
+
+	if(sale){
+		document.getElementById('ie').innerHTML = 'Time to buy!'
+	}else{
+		document.getElementById('ie1').innerHTML = 'Time to wait for a sale.'
+	}
+</script>
+
+<h3>Comparison Operators</h3>
+<p>When writing conditional statements, sometimes we need to use different types of operators to compare values. These operators are called comparison operators.</p>
+<p>Here is a list of some handy comparison operators and their syntax:</p>
+<ul>
+	<li>Less than: <</li>
+	<li>Greater than: ></li>
+	<li>Less than or equal to: <=</li>
+	<li>Greater than or equal to: >=</li>
+	<li>Is equal to: ===</li>
+	<li>Is not equal to: !==</li>
+</ul>
+
+<p>Comparison operators compare the value on the left with the value on the right. For instance:</p>
+<pre>
+	10 < 12 // Evaluates to true
+
+	It can be helpful to think of comparison statements as questions. When the answer is “yes”, the statement evaluates to true, and when the answer is “no”, the statement evaluates to false. 
+	The code above would be asking: is 10 less than 12? Yes! So 10 < 12 evaluates to true.
+</pre>
+<pre>
+	let hungerLevel = 7;
+
+if (hungerLevel > 7) {
+  console.log('Time to eat!');
+} else {
+  console.log('We can eat later!');
+};
+</pre>
+<p id="co"></p>
+<p id="co1"></p>
+<script type="text/javascript">
+	let hungerLvl = 7;
+	if(hungerLvl > 7){
+		document.getElementById('co').innerHTML = 'Time to Eat!';
+	}else{
+		document.getElementById('co').innerHTML = 'We can eat later!';		
+	}
+</script>
+
+<h3>Logical Operators</h3>
+<p>Working with <mark>conditionals</mark> means that we will be using <mark>booleans</mark>, <b>true</b> or <b>false</b> values.<br>
+There are three logical operators:</p>
+<ul>
+	<li>the and operator (&&)</li>
+	<li>the or operator (||)</li>
+	<li>the not operator, otherwise known as the bang operator (!)</li>
+</ul>
+
+<p>When we use the <mark>&&</mark> operator, we are checking that <b>two things are true</b>:</p>
+<pre>
+< p id="lo">< /p>
+< p id="lo1"></p>
+< script type="text/javascript">
+	let stopLight = 'red';
+	if(stopLight === 'green' <mark>&&</mark> pedestrians === 0){
+		document.getElementById('lo').innerHTML = 'Go!';
+	}else{
+		document.getElementById('lo1').innerHTML = 'Stop!';
+	}
+< /script>
+</pre>
+<p id="lo"></p>
+<p id="lo1"></p>
+<script type="text/javascript">
+	let stopLight = 'red';
+	if(stopLight === 'green' && pedestrians === 0){
+		document.getElementById('lo').innerHTML = 'Go!';
+	}else{
+		document.getElementById('lo1').innerHTML = 'Stop!';
+	}
+</script>
+<p>When you use the and (&&) operator, you're telling the program to do something if this value is <b>true</b> and if that value is true. <b>Both values need to evaluate to true.</b></p>
+<pre>
+<mark>true && true --> true;</mark>
+true && false --> false;
+false && true --> false;
+false && false --> false;
+</pre>
+
+<p>If we only care about <b>either condition being true</b>, we can use the <mark>||</mark> operator:</p>
+<pre>
+< p id="or">< /p>
+< p id="or1">< /p>
+< script type="text/javascript">
+	let day = 'Saturday';	
+	if(day === 'Saturday' <mark>||</mark> day === 'Sunday'){
+		document.getElementById('or').innerHTML = 'Enjoy the weekend!';
+	}else{
+		document.getElementById('or1').innerHTML = 'Do some work!';
+	}
+< /script>
+</pre>
+<p id="or"></p>
+<p id="or1"></p>
+<script type="text/javascript">
+	let day = 'Saturday';
+	if(day === 'Saturday' || day === 'Sunday'){
+		document.getElementById('or').innerHTML = 'Enjoy the weekend!';
+	}else{
+		document.getElementById('or1').innerHTML = 'Do some work!';
+	}
+</script>
+<p>In the code example above, if either day === 'Saturday' or day === 'Sunday' evaluates to true the if‘s condition will evaluate to true and its code block will execute. If the first condition in an || statement evaluates to true, the second condition won’t even be checked</p>
+<p>Only if day === 'Saturday' evaluates to false will day === 'Sunday' be evaluated.</p>
+<p>The code in the else statement above will execute only if both comparisons evaluate to false.</p>
+<pre>
+<mark>true || true --> true;</mark>
+<mark>true || false --> true;</mark>
+<mark>false || true --> true;</mark>
+false || false --> false;
+</pre>
+
+<p>The <b>! not</b> operator <b>reverses, or negates</b>, <mark>the value of a boolean</mark>:</p>
+<pre>
+let excited = true;
+console.log(!excited); // Prints false
+ 
+let sleepy = false;
+console.log(!sleepy); // Prints true
+</pre>
+<p>Essentially, the ! operator will either <mark>take a true value and pass back false</mark>, or it will <mark>take a false value and pass back true</mark>.</p>
+<p id="tf"></p>
+<script type="text/javascript">
+	let mood = 'Sleepy';
+	let tirednessLevel = 6;
+
+	if(mood === 'Sleepy' && tirednessLevel > 8){
+		document.getElementById('tf').innerHTML = 'time to sleep';
+	}
+</script>
+
+<h3>Truthy and Falsy</h3>
+<p>Sometimes, you’ll want to check if a variable exists and you won’t necessarily want it to equal a specific value — you’ll only check to see if the variable has been assigned a value.</p>
+<pre>
+let <mark>myVariable</mark> = 'I Exist!';
+ 
+if (<mark>myVariable</mark>) {
+   console.log(<mark>myVariable</mark>)
+} else {
+   console.log('The variable does not exist.')
+}
+
+The code block in the if statement will run because myVariable has a truthy value;
+it evaluates to true because it has been assigned a non-falsy value.
+</pre>
+<p>The list of falsy values includes:</p>
+<ul>
+	<li>0</li>
+	<li>Empty strings like "" or ''</li>
+	<li>null which represent when there is no value at all</li>
+	<li>undefined which represent when a declared variable lacks a value</li>
+	<li>NaN, or Not a Number</li>
+</ul>
+<h4>Example true:</h4>
+<pre>
+< p id='tf'>< /p>
+< p id='tf1'>< /p>
+< script type="text/javascript">
+	let <mark>myVariable</mark> = 'I Exist!';
+	fi (<mark>myVariable</mark>){
+		document.getElementById('tf').innerHTML = <mark>myVariable</mark>;
+	}else{
+		document.getElementById('tf1').innerHTML = 'The variable does not exist.'
+	}
+< /script>
+</pre>
+<p id='tf'></p>
+<p id='tf1'></p>
+<script type="text/javascript">
+	let myVariable1 = 'I Exist!';
+	if (myVariable1){
+		document.write(myVariable1);
+	}else{
+		document.getElementById('tf1').innerHTML = 'The variable does not exist.'
+	}
+</script>
+
+<h4>Example false:</h4>
+<pre>
+let numberOfApples = <mark>0</mark>;
+ 
+if (numberOfApples){
+   console.log('Let us eat apples!');
+} else {
+   console.log(<mark>'No apples left!'</mark>);
+}
+ 
+// Prints 'No apples left!'
+</pre>
+<p id='tf2'></p>
+<p id='tf3'></p>
+<script type="text/javascript">
+	let numberOfApples = 0;
+	if(numberOfApples){
+		document.getElementById('tf2').innerHTML = 'Let us eat apples!';
+	}else{
+		document.getElementById('tf3').innerHTML = 'No apples left!';
+	}
+</script>
+
+<h3>Truthy and Falsy Assignment</h3>
+<p>Say you have a website and want to take a user’s username to make a personalized greeting. Sometimes, the user does not have an account, making the username variable falsy.<br><b>The code below checks if username is defined and assigns a default string if it is not</b>:</p>
+<pre>
+< p id="tf4">< /p>
+< script type="text/javascript">
+	let username = '';
+	let defaultName;
+
+	if(username){
+		defaultName = username;
+	}else{
+		defaultName = 'Stranger';
+	}
+	document.getElementById('tf4').innerHTML = defaultName;
+< /script>
+</pre>
+<p id="tf4"></p>
+<script type="text/javascript">
+	let username = '';
+	let defaultName;
+
+	if(username){
+		defaultName = username;
+	}else{
+		defaultName = 'Stranger';
+	}
+	document.getElementById('tf4').innerHTML = defaultName;
+</script>
+<h5>or:</h5>
+<pre>
+< p id="tf5">< /p>
+< script type="text/javascript">
+	let username1 = '';<mark>//falsy</mark>
+	<mark>let defaultName1 = username1 || 'Stranger';</mark>
+	document.getElementById('tf5').innerHTML = defaultName1;
+< /script>
+</pre>
+<p id="tf5"></p>
+<script type="text/javascript">
+	let username1 = '';
+	let defaultName1 = username1 || 'Stranger';
+	document.getElementById('tf5').innerHTML = defaultName1;
+</script>
+<p>Because || or statements check the left-hand condition first, the variable defaultName will be assigned the actual value of username if it is truthy, and it will be assigned the value of 'Stranger' if username is falsy</p>
+<pre>
+< p id="tf6">< /p>
+< script type="text/javascript">
+	let username2 = <mark>'asdf';</mark> <mark>//truthy</mark>
+	let defaultName2 = username2 || 'Stranger';
+	document.getElementById('tf6').innerHTML = defaultName2;
+</pre>
+<p id="tf6"></p>
+<script type="text/javascript">
+	let username2 = 'asdf';
+	let defaultName2 = username2 || 'Stranger';
+	document.getElementById('tf6').innerHTML = defaultName2;
+</script>
+<p>This concept is also referred to as <b>short-circuit evaluation</b>.</p>
+
+<h4>Exercise:</h4>
+<pre>
+< p id="ex1">< /p>
+< script type="text/javascript">
+	let tool = <mark>''</mark>;
+	
+	//Let’s use short-circuit evaluation to assign a value to writingUtensil.
+	//Assign to writingUtensil the value of tool and if tool is falsy, assign a default value of 'pen'.
+	let writtingUtensil = tool || <mark>'pen';</mark>
+	document.getElementById('ex1').innerHTML = `The ${writtingUtensil} is mightier than the sword.`
+< /script>
+</pre>
+<p id="ex1"></p>
+<script type="text/javascript">
+	let tool = '';
+	
+	//Let’s use short-circuit evaluation to assign a value to writingUtensil.
+	//Assign to writingUtensil the value of tool and if tool is falsy, assign a default value of 'pen'.
+	let writtingUtensil = tool || 'pen';
+	document.getElementById('ex1').innerHTML = `The ${writtingUtensil} is mightier than the sword.`
+</script>
+<p>Notice that text 'The pen is mightier than the sword' logged to the console. Which means the value of writingUtensil is 'pen'.<br>
+What if we reassign the value of tool to 'marker'. Let’s see what happens to the value of writingUtensil.</p>
+<pre>
+< p id="ex2">< /p>
+< script type="text/javascript">
+	let tool2 = <mark>'marker'</mark>;
+	let writtingUtensil2 = tool2 || 'pen';
+	document.getElementById('ex2').innerHTML = <mark>writtingUtensil2;</mark>
+< /script>
+</pre>
+<p id="ex2"></p>
+<script type="text/javascript">
+	let tool2 = 'marker';
+	let writtingUtensil2 = tool2 || 'pen';
+	document.getElementById('ex2').innerHTML = writtingUtensil2;
+</script>
+
+<h3>Ternary Operator</h3>
+<p>In the spirit of using short-hand <b>SYNTAX</b>, we can use a <mark>ternary operator</mark> - <b>to simplify an <i>if...else</i> STATEMENT.</b></p>
+<pre>
+< p id="to">< /p>
+< p id="to1">< /p>
+< script type="text/javascript">
+	let nightTime = true;
+	if(isNightTime){
+		document.getElementById('to').innerHTML = 'Turn on the lights!';
+	}else{
+		document.getElementById('to1').innerHTML = 'Turn on the lights!';
+	}
+< /script>
+</pre>
+<p id="to"></p>
+<p id="to1"></p>
+<script type="text/javascript">
+	let isNightTime = true;
+	if(isNightTime){
+		document.getElementById('to').innerHTML = 'Turn on the lights!';
+	}else{
+		document.getElementById('to1').innerHTML = 'Turn off the lights!';
+	}
+</script>
+<p>We can use a ternary operator to perform the same functionality:</p>
+<pre>
+< p id='to2'>< /p>
+< p id='to3'>< /p>
+< script type="text/javascript">
+  let isNightTime1 = true;
+	isNightTime <mark>?</mark> document.getElementById('to2').innerHTML = 'Turn on the lights!' <mark>:</mark>
+	document.getElementById('to3').innerHTML = 'Turn off the lights!';
+< /script>
+</pre>
+<p id='to2'></p>
+<p id='to3'></p>
+<script type="text/javascript">
+	let isNightTime1 = true;
+	isNightTime1 ? document.getElementById('to2').innerHTML = 'Turn on the lights!' :
+	document.getElementById('to3').innerHTML = 'Turn off the lights!';
+</script>
+<p>In the example above:</p>
+<ul>
+	<li>The condition, isNightTime, is provided before the ?.</li>
+	<li><mark>If the condition evaluates to true</mark>, <b>the first expression executes</b>.</li>
+	<li><mark>If the condition evaluates to false</mark>, <b>the second</b> expression executes.</li>
+</ul>
+
+<h4>Exercises</h4>
+<pre>
+< p id="ex3">< /p>
+< p id="ex4">< /p>
+< p id="ex5">< /p>
+< script type="text/javascript">
+	let isLocked = false;
+	isLocked <mark>?</mark> document.getElementById('ex3').innerHTML = 'You will need a key to open the door.' <mark>:</mark>
+	document.getElementById('ex3').innerHTML = 'You will not need a key to open the door.'
+
+	let isCorect = true;
+	isCorect <mark>?</mark> document.getElementById('ex4').innerHTML = 'Correct!' <mark>:</mark>
+	document.getElementById('ex4').innerHTML = 'Incorrect!'
+
+	let favoritePhrase = 'Love That!';
+	favoritePhrase === 'Love That!' <mark>?</mark> document.getElementById('ex5').innerHTML = 'I love that!' <mark>:</mark>
+	document.getElementById('ex5').innerHTML = "I don't love that!";
+< /script>
+</pre>
+<p id="ex3"></p>
+<p id="ex4"></p>
+<p id="ex5"></p>
+<script type="text/javascript">
+	let isLocked = false;
+	isLocked ? document.getElementById('ex3').innerHTML = 'You will need a key to open the door.' :
+	document.getElementById('ex3').innerHTML = 'You will not need a key to open the door.'
+
+	let isCorect = true;
+	isCorect ? document.getElementById('ex4').innerHTML = 'Correct!' :
+	document.getElementById('ex4').innerHTML = 'Incorrect!'
+
+	let favoritePhrase = 'Love That!';
+	favoritePhrase === 'Love That!' ? document.getElementById('ex5').innerHTML = 'I love that!' :
+	document.getElementById('ex5').innerHTML = "I don't love that!";
+</script>
+
+<pre>
+	let isLocked = false;
+
+if (isLocked) {
+	console.log('You will need a key to open the door.');
+}else{
+	console.log('You will not need a key to open the door.');
+} 
+
+let isCorrect = true;
+if(isCorrect){
+	console.log('Correct!')
+}else{
+	console.log('Incorrect!');
+} 
+
+let favoritePhrase = 'Love That!';
+if(favoritePhrase === 'Love That!'){
+	console.log('I love that!')
+}else{
+	console.log("I don't love that!");
+} 
+</pre>
+
+<h3>Else If Statements</h3>
+<p>We can add more conditions to our if...else with an else if statement. The else if statement allows for more than two possible outcomes.<br>You can add as many else if statements as you’d like, to make more complex conditionals!</p>
+<p><mark>The else if statement always comes <b>after</b> the <b>if</b> statement</mark> and <b>before</b> the else statement.<br> The else if statement also takes a condition. Let’s take a look at the syntax:</p>
+<pre>
+< p id="ei">< /p>
+< p id="ei1">< /p>
+< p id="ei2">< /p>
+< p id="ei3">< /p>
+< script type="text/javascript">
+	let stopLight1 = 'yellow';
+
+	if(stopLight1 === 'red'){
+		document.getElementById('ei').innerHTML = 'Stop!';
+	}<mark>else if</mark>(stopLight1 === 'yellow'{
+		document.getElementById('ei1').innerHTML = 'Slow Down!';
+	}<mark>else if</mark>(stopLight1 === 'green'){
+		document.getElementById('ei2').innerHTML = 'Go!';
+	}else{
+		document.getElementById('ei3').innerHTML = 'Caution, unkown!';
+	}
+< /script>
+</pre>
+<p id="ei"></p>
+<p id="ei1"></p>
+<p id="ei2"></p>
+<p id="ei3"></p>
+<script type="text/javascript">
+	let stopLight1 = 'yellow';
+
+	if(stopLight1 === 'red'){
+		document.getElementById('ei').innerHTML = 'Stop!';
+	}else if(stopLight1 === 'yellow'{
+		document.getElementById('ei1').innerHTML = 'Slow Down!';
+	}else if(stopLight1 === 'green'){
+		document.getElementById('ei2').innerHTML = 'Go!';
+	}else{
+		document.getElementById('ei3').innerHTML = 'Caution, unkown!';
+	}
+</script>
+
+<p>The else if statements allow you to have multiple possible outcomes. if/else if/else statements are read from top to bottom, so the first condition that evaluates to true from the top to bottom is the block that gets executed.</p>
+<pre>
+	In the example above, since <mark>stopLight === 'red'</mark> evaluates to <b>false</b> and <mark>stopLight === 'yellow'</mark> evaluates to <b>true</b>, the code inside the first else if statement is executed.
+
+	The rest of the conditions are not evaluated. If none of the conditions evaluated to true, then the code in the else statement would have executed.
+</pre>
+
+<h4>Let’s create a program that keeps track of the way the environment changes with the seasons.<br> Write a conditional statement to make this happen!</h4>
+<pre>
+< p id="ie4">< /p>
+< p id="ie5">< /p>
+< p id="ie6">< /p>
+< p id="ie7">< /p>
+
+< script type="text/javascript">
+	let season = 'summer';
+	if(season === 'spring'){
+		document.getElementById('ie4').innerHTML = 'It\s spring! The trees are budding!';
+	}else if(season === 'summer'){
+		document.getElementById('ie5').innerHTML = 'It\'s sunny and warm because it\'s summer!';
+	}else if(season === 'fall'){
+		document.getElementById('ie6').innerHTML = 'It\'s fall! Leaves are falling!';
+	}else{
+		document.getElementById('ie7').innerHTML = 'Invalid season.';
+	}
+< /script>
+</pre>
+<p id="ie4"></p>
+<p id="ie5"></p>
+<p id="ie6"></p>
+<p id="ie7"></p>
+
+<script type="text/javascript">
+	let season = 'summer';
+	if(season === 'spring'){
+		document.getElementById('ie4').innerHTML = 'It\s spring! The trees are budding!';
+	}else if(season === 'summer'){
+		document.getElementById('ie5').innerHTML = 'It\'s sunny and warm because it\'s summer!';
+	}else if(season === 'fall'){
+		document.getElementById('ie6').innerHTML = 'It\'s fall! Leaves are falling!';
+	}else{
+		document.getElementById('ie7').innerHTML = 'Invalid season.';
+	}
+</script>
+
+<h3>The "switch" keyword</h3>
+<p>In programming, we finding ourselves needing to check multiple values and handling each of them differenlty.</p>
+<pre>
+< p id="sw">< /p>
+< p id="sw1">< /p>
+< p id="sw2">< /p>
+
+< script type="text/javascript">
+	let groceryItem = 'papaya';
+	if(groceryItem === 'tomato'){
+		document.getElementById('sw').innerHTML = 'Tomatoes are $0.49';
+	}else if(groceryItem === 'papaya'){
+		document.getElementById('sw1').innerHTML = 'Papayas are $1.29';
+	}else{
+		document.getElementById('sw2').innerHTML = 'Invalid Item';
+	}
+< /script>
+</pre>
+<p id="sw"></p>
+<p id="sw1"></p>
+<p id="sw2"></p>
+<script type="text/javascript">
+	let groceryItem = 'papaya';
+	if(groceryItem === 'tomato'){
+		document.getElementById('sw').innerHTML = 'Tomatoes are $0.49';
+	}else if(groceryItem === 'papaya'){
+		document.getElementById('sw1').innerHTML = 'Papayas are $1.29';
+	}else{
+		document.getElementById('sw2').innerHTML = 'Invalid Item';
+	}
+</script>
+
+<p>In the code above, we have a series of conditions checking for a value that matches a groceryItem variable. Our code works fine, but imagine if we needed to check 100 different values!<br> Having to write that many else if statements sounds like a pain!</p>
+
+<p>A <mark>switch</mark> statement provides an alternative syntax that is easier to read and write</p>
+<pre>
+< p id="sw3">< /p>
+< p id="sw4">< /p>
+< p id="sw5">< /p>
+< p id="sw6">< /p>
+< script type="text/javascript">
+	let groceryItem1 = 'papaya';
+	<mark>switch(groceryItem1)</mark> {
+		<mark>case 'tomato':</mark>
+		document.getElementById('sw3').innerHTML = 'Tomatoes are $0.49';
+		<mark>break;</mark>
+		<mark>case 'lime':</mark>
+		document.getElementById('sw4').innerHTML = 'Limes are $1.49';
+		<mark>break;</mark>
+		<mark>case 'papaya':</mark>
+		document.getElementById('sw5').innerHTML = 'Papayas are $1.29';
+		<mark>break;</mark>
+		<mark>default:</mark>
+		document.getElementById('sw6').innerHTML = 'Invalid Item';		
+	}
+< /script>
+</pre>
+<p id="sw3"></p>
+<p id="sw4"></p>
+<p id="sw5"></p>
+<p id="sw6"></p>
+<script type="text/javascript">
+	let groceryItem1 = 'papaya';
+	switch(groceryItem1) {
+		case 'tomato':
+		document.getElementById('sw3').innerHTML = 'Tomatoes are $0.49';
+		break;
+		case 'lime':
+		document.getElementById('sw4').innerHTML = 'Limes are $1.49';
+		break;
+		case 'papaya':
+		document.getElementById('sw5').innerHTML = 'Papayas are $1.29';
+		break;
+		default:
+		document.getElementById('sw6').innerHTML = 'Invalid Item';		
+	}
+</script>
+
+<pre>
+	1.The switch keyword <mark>initiates the statement</mark> and is followed by ( ... ), which contains the value that each case will compare.
+	2.Inside the block, { ... }, there are <mark>multiple cases</mark>. The <mark>case</mark> keyword <mark>checks</mark> if the expression matches the specified value that comes after it.
+	3.The value following the first case is 'tomato'. If the value of groceryItem equalled 'tomato', that case‘s console.log() would run.
+	4.The <b>break keyword</b> tells the computer to <mark>exit the block and not execute any more code or check any other cases inside the code block</mark>.
+	5.<mark>Without break</mark> keywords, <b>the first matching case will run</b>, <mark>but so will every subsequent case regardless of whether or not it matches—including the default</mark>.
+</pre>
+
+<pre>
+	let athleteFinalPosition = 'first place';
+switch(athleteFinalPosition){
+  case 'first place':
+    console.log('You get the gold medal!');
+    break;
+  case 'second place':
+    console.log('You get the silver medal!');
+    break;
+  case 'third place':
+  console.log('You get the bronze medal!');
+    break;
+  default:
+  console.log('No medal awarded.');
+  break;
+}
+</pre>
+
+<h3>Magic Eight Ball</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

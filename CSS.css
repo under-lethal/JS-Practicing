@@ -16,7 +16,7 @@
 		
 		h2::before{
 			counter-increment: section;
-			content: counter(subsection) "." counter(section)" ";
+			content: counter(section) "." counter(subsection)" ";
 		}
 
 		hr{
