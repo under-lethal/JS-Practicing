@@ -778,6 +778,222 @@ switch(athleteFinalPosition){
 </pre>
 
 <h3>Magic Eight Ball</h3>
+<h4>Tasks</h4>
+<pre>
+< p id='mb'>< /p>
+< p id='mb1'>< /p>
+< script type="text/javascript">
+//In the first line of the program, define a variable called userName that is set to an empty string.
+//If the user wants, they can enter their name in between the quotation marks.
+<mark>let userName = 'Alen';</mark>
+
+//Below this variable, create a ternary expression that decides what to do if the user enters a name or not. If the user enters a name — like 'Jane' — use string interpolation to log Hello, Jane! to the console. Otherwise, simply log Hello!.
+<mark>userName ? document.getElementById('mb').innerHTML = `Hello, ${userName}` :
+document.getElementById('mb').innerHTML = 'Hello!';</mark>
+
+//Create a variable named userQuestion. The value of the variable should be a string that is the question the user wants to ask the Magic Eight Ball.
+<mark>let userQuestion = 'Do I have to wake Up today?';</mark>
+
+//Write a console.log() for the userQuestion, stating what was asked. You can include the user’s name in the console.log() statement, if you wish!
+<mark>document.getElementById('mb1').innerHTML = `${userName} asked: ${userQuestion}`;</mark>
+
+//We need to generate a random number between 0 and 7.
+//Create another variable, and name it randomNumber. Set it equal to this expression, which uses two methods (Math.floor() and Math.random()) from the Math library.
+<mark>let randomNumber = Math.floor(Math.random() * 8);</mark>
+
+*since we only need a NUMBER between (0-7) we will "times(*)" by 8.
+
+//Create one more variable named eightBall, and set it equal to an empty string. We will save a value to this variable in the next steps, depending on the value of randomNumber.
+let eightBall = '';
+
+//We need to create a control flow that takes in the randomNumber we made in step 5, and then assigns eightBall to a reply that a Magic Eight Ball would return. Think about utilizing if/else or switch statements. Here are 8 Magic Eight Ball phrases that we’d like to save to the variable eightBall:
+switch(randomNumber){
+	case 0:
+  eightBall = 'Is is certain';
+  break;
+   case 1:
+  eightBall = 'It is decidedly so';
+  break;
+   case 2:
+  eightBall = 'Reply hazy try again';
+  break;
+   case 3:
+  eightBall = 'Cannot predict now';
+  break;
+   case 4:
+  eightBall = 'Do not count on it';
+  break;
+   case 5:
+  eightBall = 'My sources say no';
+  break;
+   case 6:
+  eightBall = 'Outlook not so good';
+  break;
+   case 7:
+  eightBall = 'Signs point to yes';
+  break;
+}
+//Write a console.log() to print the Magic Eight Ball’s answer, the value of the eightBall variable.
+document.getElementById('mb2').innerHTML = eightBall;
+< /script>
+</pre>
+<p id='mb'></p>
+<p id='mb1'></p>
+<p id='mb2'></p>
+<script type="text/javascript">
+//In the first line of the program, define a variable called userName that is set to an empty string.
+//If the user wants, they can enter their name in between the quotation marks.
+let userName = 'Alen';
+
+//Below this variable, create a ternary expression that decides what to do if the user enters a name or not. If the user enters a name — like 'Jane' — use string interpolation to log Hello, Jane! to the console. Otherwise, simply log Hello!.
+userName ? document.getElementById('mb').innerHTML = `Hello, ${userName}` :
+document.getElementById('mb').innerHTML = 'Hello!';
+
+//Create a variable named userQuestion. The value of the variable should be a string that is the question the user wants to ask the Magic Eight Ball.
+let userQuestion = 'Do I have to wake Up today?';
+
+//Write a console.log() for the userQuestion, stating what was asked. You can include the user’s name in the console.log() statement, if you wish!
+document.getElementById('mb1').innerHTML = `${userName} asked: ${userQuestion}`;
+
+//We need to generate a random number between 0 and 7.
+//Create another variable, and name it randomNumber. Set it equal to this expression, which uses two methods (Math.floor() and Math.random()) from the Math library.
+let randomNumber = Math.floor(Math.random() * 8);
+
+//Create one more variable named eightBall, and set it equal to an empty string. We will save a value to this variable in the next steps, depending on the value of randomNumber.
+let eightBall = '';
+
+//We need to create a control flow that takes in the randomNumber we made in step 5, and then assigns eightBall to a reply that a Magic Eight Ball would return. Think about utilizing if/else or switch statements. Here are 8 Magic Eight Ball phrases that we’d like to save to the variable eightBall:
+switch(randomNumber){
+	case 0:
+  eightBall = 'Is is certain';
+  break;
+   case 1:
+  eightBall = 'It is decidedly so';
+  break;
+   case 2:
+  eightBall = 'Reply hazy try again';
+  break;
+   case 3:
+  eightBall = 'Cannot predict now';
+  break;
+   case 4:
+  eightBall = 'Do not count on it';
+  break;
+   case 5:
+  eightBall = 'My sources say no';
+  break;
+   case 6:
+  eightBall = 'Outlook not so good';
+  break;
+   case 7:
+  eightBall = 'Signs point to yes';
+  break;
+}
+//Write a console.log() to print the Magic Eight Ball’s answer, the value of the eightBall variable.
+document.getElementById('mb2').innerHTML = `Magic eight Ball says: ${eightBall}.`;
+</script>
+
+<h3>Race Day</h3>
+<h4>There are adult runners <mark>(over 18 years of age)</mark> and youth runners <mark>(under 18 years of age)</mark>.<br> They can register <mark>early or late</mark>.<br> Runners are assigned a <mark>race number</mark> and start time based on their age and registration.</h4>
+
+<h5>Race Number:</h5>
+<ul>
+	<li>Early adults receive a <mark>race number at or above 1000</mark>.</li>
+	<li>All others receive a number <mark>below 1000</mark>.</li>
+</ul>
+
+<h5>Start Time:</h5>
+<ul>
+	<li>Adult registrants run at 9:30 am or 11:00 am.</li>
+			<ul>
+				<li>Early adults run at 9:30 am.</li>
+				<li>Late adults run at 11:00 am.</li>
+			</ul>
+	<li>Youth registrants run at 12:30 pm (regardless of registration).</li>
+</ul>
+
+<h4>Tasks</h4>
+<pre>
+	<b>Race numbers are assigned randomly. We’ve provided the necessary code at the top of the file.</b>
+	< p id="race"></p>
+  < script type="text/javascript">
+	<mark>let raceNumber = Math.floor(Math.random() * 1000);</mark>
+
+	<b>Create a variable that indicates whether a runner registered early or not. Set it equal to a Boolean value. You’ll change this later as you test different runner conditions.</b>
+	<mark>let registeredEarly  = true;</mark>
+
+	<b>Create a variable for the <mark>runner’s age</mark> and set it equal to a number. You’ll change this later as you test different runner conditions.</b>
+	<mark>let runnerAge = 19;</mark>
+
+	<b>Create a <mark>control flow statement</mark> that checks whether the runner is an adult AND registered early. Add 1000 to their raceNumber if this is true.</b>
+	<mark>if(runnerAge > 18 && registeredEarly){
+		raceNumber += 1000;
+	}</mark>
+
+	<b>Create a separate control flow statement below the first (starting with if again). This <mark>statement will check age and registration time to determine race time</mark>.<br>
+	For runners <mark>over 18 who registered early</mark>, log a statement to the console telling them that <mark>they will race at 9:30 am</mark>. <mark>Include their raceNumber</mark>.</b>
+	<mark>if(runnerAge > 18 && registeredEarly){
+		document.getElementById().innerHTML = `For those who registred Ealry the race will start at 9:30 am: Your race numebr is: ${raceNumber}.`
+	}
+</mark>
+
+	<b>Late adults run at 11:00 am”.
+	Since we already checked for early adults we can write a statement like this: else if runner is over 18 AND did not register early they will race at 11:00am.
+	Write the corresponding else if statement.
+	Within that, log a string to the console telling them that they will race at 11:00 am. Include their raceNumber.</b>
+	<mark> else if(runnerAge > 18 && !registredEarly){
+			document.getElementById('race').innerHTML = `For those who registred Ealry the race will start at 11:00 am. Your race numebr is: ${raceNumber}.`
+	}</mark>
+
+	<b>
+	“Youth registrants run at 12:30 pm (regardless of registration)”.
+	For people who are under 18, log a statement to the console telling them that they will race at 12:30 pm. Include their raceNumber.</b>
+	<mark>	else if(runnerAge < 18){document.getElementById('race2').innerHTML = `For those who registred Ealry the race will start at 12:30 am. Your race numebr is: ${raceNumber}.`
+	}</mark>
+
+
+	Enter different combinations of values for the two variables you created and run your code several times. Verify that the correct statements are printing to the console!
+	You can check your work using the examples provided in the hint.
+
+	<b>Don’t forget about runners exactly 18 years old!
+	Add an else statement that logs a statement to the console telling the runner to see the registration desk.</b>
+	<mark>else{
+		document.getElementById('race3').innerHTML = `See the registration desk!`
+	}</mark>
+
+</pre>
+
+<p id="race"></p>
+<p id="race1"></p>
+<p id="race2"></p>
+<p id="race3"></p>
+<script type="text/javascript">
+	let raceNumber = Math.floor(Math.random() * 1000);
+	let registredEarly  = true;
+	let runnerAge = 19;
+	
+	if(runnerAge > 18 && registredEarly){
+		 raceNumber += 1000;
+	}
+
+	if(runnerAge > 18 && registredEarly){
+		document.getElementById('race').innerHTML = `For those who registred Ealry the race will start at 9:30 am. Your race number is: ${raceNumber}.`
+	}
+
+	else if(runnerAge > 18 && !registredEarly){
+		document.getElementById('race1').innerHTML = `For those who registred Ealry the race will start at 11:00 am. Your race number is: ${raceNumber}.`
+	}
+
+	else if(runnerAge < 18){
+		document.getElementById('race2').innerHTML = `For those who registred Ealry the race will start at 12:30 am. Your race number is: ${raceNumber}.`
+	}
+
+	else{
+		document.getElementById('race3').innerHTML = `See the registration desk!`
+	}
+</script>
+
+
 
 
 
