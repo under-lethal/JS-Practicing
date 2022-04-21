@@ -1400,6 +1400,123 @@ The <mark>return</mark> keyword can be REMOVED.</i></b></p>
 	document.getElementById('af2').innerHTML = plantNeedsWater3();
 </script>
 
+<h2>Build - Rock, Paper, Scissors</h2>
+<p>Rock paper scissors is a classic two player game.<br>
+The items are compared, and whichever player chooses the more powerful item wins.</p>
+<p>The possible outcomes are:</p>
+<ul>
+	<li>Rock destroys scissors.</li>
+	<li>Scissors cut paper.</li>
+	<li>Paper covers rock.</li>
+	<li>If there’s a tie, then the game ends in a draw.</li>
+</ul>
+
+<p>Our code will break the game into four parts:</p>
+<ol>
+	<li>Get the user’s choice.</li>
+	<li>Get the computer’s choice.</li>
+	<li>Compare the two choices and determine a winner.</li>
+	<li>Start the program and display the results.</li>
+</ol>
+
+
+
+
+<p id="rps"></p>
+<p id="rps1"></p>
+<p id="rps2"></p>
+<p id="rpsf"></p>
+<script type="text/javascript">
+	//Create a function named "getUserChoice" tha takes a SINGLE parameter "userInput" - then use toLowerCase(). (in case user insert "Rock" instead of "rock").
+	const getUserChoice = userInput => {
+		userInput.toLowerCase();
+
+	//make sure that the USER type a VALID choice:(rock, paper, scissors). [using if/else - statement]
+		if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+			return userInput;
+		}else{
+			document.getElementById('rps').innerHTML = 'You should pick between the: rock, paper and scissors!'
+		}
+	};
+	
+	//Computer Make a Choice. 
+	//create a function computerMakeAChoice with no parameters. Inside the block utilize Math.random and Math.floor() - depending on the number(*3) - return either 'rock, paper, scissors'
+	const getComputerChoice = ()=>{
+		const randomNumber = Math.floor(Math.random() * 3);
+
+		switch (randomNumber){
+			case 0:
+				return 'rock';
+			case 1:
+				return 'paper';
+			case 2:
+				return 'scissors';
+		}
+	}
+
+	//Time to DETERMINE  a Winner
+	//Create a function "determineWinner" - that takes 2 parameters - 'userChoice"/"computerChoice".
+	//This function will COMPARE - the 2 CHOICES - and then return if the human player LOST, WON or TIED.
+
+	//if the GAME is not a TIE - you need to determine a WINNNER.
+	//writting an "if" statement that checks if the (userChoice) is (rock).
+	//inside the "if" statement - write another "if/else" statement. The inner "if/else" should check if the (computerChoice) is "paper".
+	//if so - retunr a message that the computer WON. If NOT - return a message that USER won.
+	const determineWinner = (userChoice, computerChoice) => {
+		if(userChoice === computerChoice){
+			return 'The game is a TIE!'
+		}
+		if(userChoice ==='rock'){
+			if(computerChoice === 'paper'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		} 
+	
+
+	//next write another "if" statement - for "if" the "userChoice" is 'paper'.
+	//inside this 'if' statement - the (computerChoice) must be either 'scissors' or'rock'.
+	//Write the logic that will return a winner.
+
+		if(userChoice === 'paper'){
+			if(computerChoice === 'scissors'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		}
+
+	//write yet another "if" statement for if the "userChoice" is 'scissors'
+		if(userChoice === 'scissors'){
+			if(computerChoice === 'rock'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		}
+	};
+
+	//Everything is SET now. Now you need to start the game and log the results.
+	//Create a function "playGame".
+	//Inside the 'playGame()' function create a VAR named "userChoice" = getUserChoice() - passing in either "rock", "paper" or "scissors" as an argument.
+
+	//create another VAR named "computerChoice" = the RESULT of calling getComputerChoice();
+
+	const playGame = () => {
+		let userChoice = getUserChoice('rock');
+		let computerChoice = getComputerChoice();
+	document.getElementById('rpsf').innerHTML = determineWinner(userChoice, computerChoice);
+	}
+	
+	playGame();
+
+	//Finally - let's determine who WON.
+	//INSIDE THE "playGame()" func. call the "determineWinner()" func.
+	//Pass in the "userChoice" and "computerChoice" as its parameters.
+	//Make sure to put this function call inside of a c.log() statement - so you cansee the result.
+</script>
+
 
 
 
