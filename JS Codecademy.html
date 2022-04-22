@@ -1418,20 +1418,16 @@ The items are compared, and whichever player chooses the more powerful item wins
 	<li>Compare the two choices and determine a winner.</li>
 	<li>Start the program and display the results.</li>
 </ol>
-
-
-
-
-<p id="rps"></p>
-<p id="rps1"></p>
-<p id="rps2"></p>
-<p id="rpsf"></p>
-<script type="text/javascript">
+<pre>
+< p id="rps"></p>
+< p id="rpsf"></p>
+< script type="text/javascript">
 	//Create a function named "getUserChoice" tha takes a SINGLE parameter "userInput" - then use toLowerCase(). (in case user insert "Rock" instead of "rock").
 	const getUserChoice = userInput => {
 		userInput.toLowerCase();
 
 	//make sure that the USER type a VALID choice:(rock, paper, scissors). [using if/else - statement]
+	//If it does - return the 'userInput'
 		if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
 			return userInput;
 		}else{
@@ -1440,7 +1436,8 @@ The items are compared, and whichever player chooses the more powerful item wins
 	};
 	
 	//Computer Make a Choice. 
-	//create a function computerMakeAChoice with no parameters. Inside the block utilize Math.random and Math.floor() - depending on the number(*3) - return either 'rock, paper, scissors'
+	//create a function getComputerChoice with no parameters. Inside the block utilize Math.random and Math.floor() - depending on the number(*3) - 
+	//Then depending on the NUMBER - return either 'rock, paper, scissors'
 	const getComputerChoice = ()=>{
 		const randomNumber = Math.floor(Math.random() * 3);
 
@@ -1457,6 +1454,7 @@ The items are compared, and whichever player chooses the more powerful item wins
 	//Time to DETERMINE  a Winner
 	//Create a function "determineWinner" - that takes 2 parameters - 'userChoice"/"computerChoice".
 	//This function will COMPARE - the 2 CHOICES - and then return if the human player LOST, WON or TIED.
+	//Within the "determineWinner()" func. write a "if" statement that checks if the "userChoice" parameter is === "computerChoice" parameter. If so - retunr a string that the game was a TIE!
 
 	//if the GAME is not a TIE - you need to determine a WINNNER.
 	//writting an "if" statement that checks if the (userChoice) is (rock).
@@ -1466,6 +1464,107 @@ The items are compared, and whichever player chooses the more powerful item wins
 		if(userChoice === computerChoice){
 			return 'The game is a TIE!'
 		}
+
+		//Determine the winner
+		if(userChoice ==='rock'){
+			if(computerChoice === 'paper'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		} 
+	
+
+	//next write another "if" statement - for "if" the "userChoice" is 'paper'.
+	//inside this 'if' statement - the (computerChoice) must be either 'scissors' or'rock'.
+	//Write the logic that will return a winner.
+
+		if(userChoice === 'paper'){
+			if(computerChoice === 'scissors'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		}
+
+	//write yet another "if" statement for if the "userChoice" is 'scissors'
+		if(userChoice === 'scissors'){
+			if(computerChoice === 'rock'){
+				return 'Computer Won!';
+			}else{
+				return 'User Won!';
+			}
+		}
+	};
+
+	//Everything is SET now. Now you need to start the game and log the results.
+	//Create a function "playGame".
+	//Inside the 'playGame()' function create a VAR named "userChoice" = getUserChoice() - passing in either "rock", "paper" or "scissors" as an argument.
+
+	//create another VAR named "computerChoice" = the RESULT of calling getComputerChoice();
+
+	const playGame = () => {
+		let userChoice = getUserChoice('rock');
+		let computerChoice = getComputerChoice();
+	document.getElementById('rpsf').innerHTML = determineWinner(userChoice, computerChoice);
+	}
+	
+	playGame();
+
+	//Finally - let's determine who WON.
+	//INSIDE THE "playGame()" func. call the "determineWinner()" func.
+	//Pass in the "userChoice" and "computerChoice" as its parameters.
+	//Make sure to put this function call inside of a c.log() statement - so you cansee the result.
+< /script>
+</pre>
+
+<p id="rps"></p>
+<p id="rpsf"></p>
+<script type="text/javascript">
+	//Create a function named "getUserChoice" tha takes a SINGLE parameter "userInput" - then use toLowerCase(). (in case user insert "Rock" instead of "rock").
+	const getUserChoice = userInput => {
+		userInput.toLowerCase();
+
+	//make sure that the USER type a VALID choice:(rock, paper, scissors). [using if/else - statement]
+	//If it does - return the 'userInput'
+		if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+			return userInput;
+		}else{
+			document.getElementById('rps').innerHTML = 'You should pick between the: rock, paper and scissors!'
+		}
+	};
+	
+	//Computer Make a Choice. 
+	//create a function getComputerChoice with no parameters. Inside the block utilize Math.random and Math.floor() - depending on the number(*3) - 
+	//Then depending on the NUMBER - return either 'rock, paper, scissors'
+	const getComputerChoice = ()=>{
+		const randomNumber = Math.floor(Math.random() * 3);
+
+		switch (randomNumber){
+			case 0:
+				return 'rock';
+			case 1:
+				return 'paper';
+			case 2:
+				return 'scissors';
+		}
+	}
+
+	//Time to DETERMINE  a Winner
+	//Create a function "determineWinner" - that takes 2 parameters - 'userChoice"/"computerChoice".
+	//This function will COMPARE - the 2 CHOICES - and then return if the human player LOST, WON or TIED.
+	//Within the "determineWinner()" func. write a "if" statement that checks if the "userChoice" parameter is === "computerChoice" parameter. If so - retunr a string that the game was a TIE!
+
+	//if the GAME is not a TIE - you need to determine a WINNNER.
+	//writting an "if" statement that checks if the (userChoice) is (rock).
+	//inside the "if" statement - write another "if/else" statement. The inner "if/else" should check if the (computerChoice) is "paper".
+	//if so - retunr a message that the computer WON. If NOT - return a message that USER won.
+	const determineWinner = (userChoice, computerChoice) => {
+		if(userChoice === computerChoice){
+			return 'The game is a TIE!'
+		}
+
+		//Determine the winner
 		if(userChoice ==='rock'){
 			if(computerChoice === 'paper'){
 				return 'Computer Won!';
@@ -1517,23 +1616,57 @@ The items are compared, and whichever player chooses the more powerful item wins
 	//Make sure to put this function call inside of a c.log() statement - so you cansee the result.
 </script>
 
+<h3>The Easiest Way</h3>
+<pre>
+< p id="ew">< /p>
+< p id="ew1">< /p>
+< p id="ew2">< /p>
+< script type="text/javascript">
+ var playerOne = prompt("Rock, Paper, or Scissors");
+ var playerTwo = prompt("Rock, Paper, or Scissors");
 
+var game = function(pl1,pl2){
+  var r = "Rock";
+  var p = "Paper";
+  var s = "Scissors";
+  if(pl1 === pl2){
+    document.getElementById('ew').innerHTML = "Tie";
+  }else{
+    if(pl1===r&&pl2===s || pl1===p&&pl2===r || pl1===s&&pl2===p){
+      document.getElementById('ew1').innerHTML = "Player One Wins!";            
+    }else{
+      document.getElementById('ew2').innerHTML = "Player Two Wins!";   
+    }
+  }
+};
 
+game(playerOne, playerTwo);
+</pre>
 
+<!--<p id="ew"></p>
+<p id="ew1"></p>
+<p id="ew2"></p>
+<script type="text/javascript">
+ var playerOne = prompt("Rock, Paper, or Scissors");
+ var playerTwo = prompt("Rock, Paper, or Scissors");
 
+var game = function(pl1,pl2){
+  var r = "Rock";
+  var p = "Paper";
+  var s = "Scissors";
+  if(pl1 === pl2){
+    document.getElementById('ew').innerHTML = "Tie";
+  }else{
+    if(pl1===r&&pl2===s || pl1===p&&pl2===r || pl1===s&&pl2===p){
+      document.getElementById('ew1').innerHTML = "Player One Wins!";            
+    }else{
+      document.getElementById('ew2').innerHTML = "Player Two Wins!";   
+    }
+  }
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
+game(playerOne, playerTwo);
+</script> -->
 
 
 
