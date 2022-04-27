@@ -103,7 +103,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	let nested = '';
 	for(var i = 0; i < 4; i++){
 		for (var j = 0; j < 3; j++){
-			document.getElementById('nl').innerHTML = nested += 'i= ' + i  + ', j= ' + j + "<br>";
+			document.getElementById('nl').innerHTML = nested += <mark>'i= ' + i</mark>  + <mark>', j= ' + j + "</mark>< br>";
 		}
 		
 	}
@@ -244,7 +244,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	let newFunction2 = ''
 	function printArray2(arr2){
 		for(var i = 0; i < arr2.length; i++){
-			if(arr2[i]%2 == 0){
+			if(<mark>arr2[i]%2 == 0</mark>){
 				document.getElementById('ex3').innerHTML = newFunction2 += arr2[i] + " ";
 			}			
 		}
@@ -275,7 +275,7 @@ printArray2(arr2);
 
 	function printOdd(numb){	
 		for(var i = 0; i < numb.length; i++){
-				if (numb[i]%2 !== 0){
+				<mark>if (numb[i]%2 !== 0)</mark>{
 				document.getElementById('ex4').innerHTML = numb2 += numb[i] + " ";
 			}
 		}
@@ -298,15 +298,15 @@ printArray2(arr2);
 	printOdd(numb);
 </script>
 
-<h3>Write a JS code to delete all occurrence of element in given array</h3>
+<h3>4.Write a JS code to delete all occurrence of element in given array</h3>
 <pre>
 	< p id="del">< /p>
 < script type="text/javascript">
 	var newFunction3 = '';
 	function deleteElement(arr3, elem){
 		for(var i = 0; i < arr3.length; i++){
-			if(arr3[i]==elem){
-				arr3.splice(i, 1); //Delete an element from array (At position i, remove 1 item:)
+			if<mark>(arr3[i]==elem)</mark>{
+				<mark>arr3.splice(i, 1);</mark> //Delete an element from array (At position i, remove 1 item:)
 			}
 		}
 		return arr3;
@@ -318,7 +318,7 @@ printArray2(arr2);
 </pre>
 <p id="del"></p>
 <script type="text/javascript">
-	var newFunction3 = '';
+	
 	function deleteElement(arr3, elem){
 		for(var i = 0; i < arr3.length; i++){
 			if(arr3[i]==elem){
@@ -329,7 +329,7 @@ printArray2(arr2);
 	}
 	var arr3 = [23,56,4,78,5,63,45,210];
 	arr3 = deleteElement(arr3, 56);	
-	document.getElementById('del').innerHTML = newFunction3 += arr3;	
+	document.getElementById('del').innerHTML = arr3;	
 </script>
 
 <pre>
@@ -420,9 +420,9 @@ printArray2(arr2);
 	document.getElementById('rem1').innerHTML = output1 += newArray1;
 </script>
 
-<h4>5. Write a JS code to demonstrate Async loop:</h4>
+<h3>5. Write a JS code to demonstrate Async loop:</h3>
 
-<h4>6. Write a JS code to find the power of a number using for loop:</h4>
+<h3>6. Write a JS code to find the power of a number using for loop:</h3>
 <pre>
 < p id="pow">< /p>
 < script type="text/javascript">
@@ -502,7 +502,7 @@ printArray2(arr2);
 		}
 		return num;
 	}
-	document.getElementById('pow2').innerHTML = x2 += pow1(4,3);
+	document.getElementById('pow2').innerHTML = x2 += pow1(-3,3);
 < /script>
 </pre>
 
@@ -628,7 +628,7 @@ Use console.log and string interpolation to log the temperature in newton to the
 	document.getElementById('N').innerHTML = `The outside temperature (in Newton) is ${newton}.`
 </script>
 
-<h5>Dog Years</h5>
+<h4>Dog Years</h4>
 <pre>
 < p id="dy">< /p>
 < p id="dy1">< /p>
@@ -702,6 +702,20 @@ Use console.log and string interpolation to log the temperature in newton to the
 
 	document.getElementById('dy1').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
 </script>
+<h3>Console:</h3>
+<pre>
+var userAge = 36;
+var laterYears = userAge - 2;
+var earlyYears = (laterYears * 4) + (2*10.5);
+
+function myAgeInDogYears(){
+    return `Your age ${userAge} in dog-years is ${earlyYears}!`;
+}
+
+undefined
+myAgeInDogYears();
+<mark>'Your age 36 in dog-years is 157!'</mark>
+</pre>
 
 <h3>8. Write a JS code to find the no of digits in a number</h3>
 <pre>
@@ -760,6 +774,63 @@ Use console.log and string interpolation to log the temperature in newton to the
 	}
 </pre>
 
+<h3>Youtube Example: Find SUM of DIGITS of a Number:</h3>
+<pre>
+< p id="nd"></p>
+< script type="text/javascript">
+	
+	var n, rem, sum = 0; // declare a variable
+	// promt is used to accept a STRING.
+	// parseInt - The parseInt method parses a value as a string and returns the first integer.
+	//40.33 -> 40, 34 45 66 -> 34, 40 years -> 40;
+	
+	n = parseInt(prompt("Enter any number")); // you can ENTER a NUMBER INTO it(STRING) - BUT you have to convert into an INTEGER number .
+	// This number will be ASSIGN To "n" variable;
 
+	//This block of code - will be executed (again and again) - as long as "n!=0"
+	while(n!=0){
+		rem = n%10;
+		sum=sum+rem;
+		n=parseInt(n/10);
+	}
+
+	// "n" is supppose to be - any number you INSTERT.
+	// n%10 - this wil give us a REMINDER. 123%10->3 | reminder =3. (12345%10->5, 1234%10->4;)
+	//sum=sum+rem; - sum is initialized to "0". 0+3 = 3; 3 vill be assigned to "sum." sum=3.
+	//parseInt - parse any number into an INTEGER. 123 /10 = 12. 12 !=0
+	//n=parseINt(n/10); - n is now "12".
+	// 12 != 0 - true; | 12%10 - 2 | sum = 2 + rem(3) -> 5 |n = 12/10 = 1.2; parseInt(1.2) -> 1
+	// 1 !=0 - true; | 1%10 - 1 | sum = 1 + rem(5) -> 6| n = 1/10 = 0.1 parseInt(0.1) -> 0;
+	// 0!=0 - false;
+	
+	alert('Sum of digits is ' + sum);
+< /script>
+</pre>
+<p id="nd"></p>
+<script type="text/javascript">
+	var n, rem, sum = 0; // declare a variable
+	// promt is used to accept a STRING.
+	// parseInt - The parseInt method parses a value as a string and returns the first integer.
+	//40.33 -> 40, 34 45 66 -> 34, 40 years -> 40;
+	n = parseInt(prompt("Enter any number")); // you can ENTER a NUMBER INTO it(STRING) - BUT you have to convert into an INTEGER number .
+	// This number will be ASSIGN To "n" variable;
+
+	//This block of code - will be executed (again and again) - as long as "n!=0"
+	while(n!=0){
+		rem = n%10;
+		sum=sum+rem;
+		n=parseInt(n/10);
+	}
+
+	// "n" is supppose to be - any number you INSTERT.
+	// n%10 - this wil give us a REMINDER. 123%10->3 | reminder =3. (12345%10->5, 1234%10->4;)
+	//sum=sum+rem; - sum is initialized to "0". 0+3 = 3; 3 vill be assigned to "sum." sum=3.
+	//parseInt - parse any number into an INTEGER. 123 /10 = 12. 12 !=0
+	//n=parseINt(n/10); - n is now "12".
+	// 12 != 0 - true; | 12%10 - 2 | sum = 2 + rem(3) -> 5 |n = 12/10 = 1.2; parseInt(1.2) -> 1
+	// 1 !=0 - true; | 1%10 - 1 | sum = 1 + rem(5) -> 6| n = 1/10 = 0.1 parseInt(0.1) -> 0;
+	// 0!=0 - false;
+	document.getElementById('nd').innerHTML = 'Sum of digits is ' + sum;
+</script>
 </body>
 </html>

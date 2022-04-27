@@ -212,6 +212,21 @@
 	Anywhere inside the "courseInfo" - the we want to use the "courseName VARIABLE" - is allowed. But  - we can use it - outside of the Function().
 	</p>
 
+	<h3>Another Example:</h3>
+	<pre>
+	function run(){
+    	var name = "Preston";
+    
+	    	function sayHi() {
+	        	console.log(`Hi ${name}!`);
+	    	}
+	    	sayHi();
+	}
+
+	run();
+	Hi Preston!
+	</pre>
+
 	<h2>Hoisitng</h2>
 	<p>There we have a Funciton() called "run()".<br>
 		We declare and initialize  - a variable called "name".<br>
@@ -243,7 +258,7 @@
 	<h3>Block Scope</h3>
 	<p>1.A variable with BLOCK SCOPE is - DECLARED using "let" or "const".<br>
 	2. Only usable - in the block - where is declared. <br>
-	3. Rpoduce an "Refference Error" - if its use before DECLARATION.</p>
+	3. Produce an "Refference Error" - if its use before DECLARATION.</p>
 	<pre>
 		function sayHello() {
 			console.log(name); ReferenceError
@@ -335,14 +350,14 @@
 
 	<h3>REMEMBER!</h3>
 	<p><b>In Function() SCOPE - the variables - (using the "var " keyword) - hoisting happens "behind the scenes" - and WE CAN USE VARIABLES before - they're DECLARED and INITIALIZED. <br>
-	Block Scope - (where variables declared in "let" and "const" - cannot be used before they're DECLARED</b></p>
+	Block Scope - (where variables declared in "let" and "const" - cannot be used before they're DECLARED).</b></p>
 
 	<h2>var, let, const</h2>
 	<p>..the scope of the variables - depending on HOW you DECLARE them.<br>
 	There are 3 different ways of declaring variables in JS: var, let & const.</p>
 
 	<h3>var</h3>
-	<p>When we declare VARIABLES with the "var" keyword  - that VAR is <u>EITHER</u>: Function() or GLOBAL scope.(depending on - where is DECLARED.<br>
+	<p>When we declare VARIABLES with the "var" keyword  - that VAR is <u>EITHER</u>: Function() or GLOBAL scope.(depending on - where is DECLARED).<br>
 	This "var" - can be used BEFORE they're declared - in the're scope, due to hoisting.<br>
 	In modern JS Files - "var" is (generaly) - not recommendet. (because it can be HOISTED - and the SCOPE is MORE Free).</p>
 
@@ -481,11 +496,11 @@
 	  	console.log(number, number2); //10 5 
 	  </pre>
 	  <p>The first VAR  - has its VALUE CHANGED. The second one - is unchanged.<br>
-	  	That's because NUMBERS(like: strings, booleans, undefined and null) - are STORED BY VALUE.<br>
-	  	When you change ONE variable - it HAS NO EFFECT - on any of tHe copy VARIABLES.</p>
+	  	<mark>That's because NUMBERS(like: strings, booleans, undefined and null) - are STORED BY VALUE</mark>.<br>
+	  	When you change ONE variable - it HAS NO EFFECT - on any of the copy VARIABLES.</p>
 
-	<h3>An EXAMPLE OF a VARIABLE - whose data -is stored by REFERENCE:</h3>
-	<p>lET'S CREATE A "PERSON OBJECT" - that has an ATTRIBUTE - of "name".<br>
+	<h3>An EXAMPLE OF a VARIABLE - whose data - is stored by REFERENCE:</h3>
+	<p>LET'S CREATE A "PERSON OBJECT" - that has an ATTRIBUTE - of "name".<br>
 	Then declare a second person - an INITIALIZED (to OUR FISRT "person"). Then log - these VAR to the console.</p>
 
 	<pre>
@@ -511,7 +526,7 @@
 		That's because these TWO VAR (person, person2) - are poiting to the same LOCATION - IN MEMORY.<br>
 	If you change ONE - you automatically CHANGE - any othe variable it's poiting to the same location in MEMORY.</p>
 
-	<p>lET'S SEE WHAT HAPPEN IF WE pass any of these variables into a Function - and change thata ATTRIBUTE (in the Function()).</p>
+	<p>lET'S SEE WHAT HAPPEN IF WE pass any of these variables into a Function - and change data ATTRIBUTE (in the Function()).</p>
 	<pre>
 		function changeName(obj){
 			obj.name = 'Brooke';
@@ -520,8 +535,8 @@
 		console.log(person, person2); //{name:"Brooke"} {name:"Brooke"}
 	</pre>
 	<p>We created a Function() - that TAKES an OBJECT (as a parameter). It CHANGES the "name" attribute (of the object).<br>
-	The we call the Function() - and pass the (person) OBJECT.<br>
-	After that - we LOG (person, person2) - VARIABLES. Both of them - has their name changed.(becasue both of those VARIABLES  - point to the same location in MEMORY.<br>
+	Then we call the Function() - and pass the (person) OBJECT.<br>
+	After that - we LOG (person, person2) - VARIABLES. Both of them - has their name changed. (becasue both of those VARIABLES  - point to the same location in MEMORY).<br>
 	In addition  - the Object (that was passed in the Function()) - also points to the same location in memory.</p>
 
 	<h3>Some Variables  - save their DATA by VALUE - and some by REFERENCE.</h3>
