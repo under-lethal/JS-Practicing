@@ -9,26 +9,211 @@
 <body>
 	<h3>Global Scope</h3>
 	<p>Create a variable with GLOBAL SCOPE - and then PRINT it to the (console) - by using it INSIDE a Function.</p>
+	<pre>
+	< div id="ex1">< /div>
+	< script type="text/javascript">
+		<mark>let name = "John";</mark>
+		function printName(){
+		document.getElementById('ex1').innerHTML = name;
+		};
+		printName();
+	< /script>
+	</pre>
 	<div id="ex1"></div>
+	<script type="text/javascript">
+		let name = "John";
+		function printName(){
+		document.getElementById('ex1').innerHTML = name;
+		};
+		printName();
+	</script>
+	
 
 	<h3>Function Scope</h3>
 	<p>Create a Function - and then create a variable inside that Funciton. Print the variable to the console:<br>
 	1. Inside the function (both before and after declaration).<br>
-	2. outside the Function - to see the difference.</p>
+	2. Outside the Function - to see the difference.</p>
+	<pre>
+	< div id="ex2">< /div>
+	< script type="text/javascript">
+		//Function Scope
+		function run(){
+			<mark>let animal = 'dog';</mark>
+			document.getElementById('ex2').innerHTML = animal;
+		}
+		run();
+	< /script>
+	</pre>
 	<div id="ex2"></div>
+	<script type="text/javascript">
+		//Function Scope
+		function run(){
+			let animal = 'dog';
+			document.getElementById('ex2').innerHTML = animal;
+		}
+		run();
+	</script>
 
 	<h4>Nested Function</h4>
+	<pre>
+	< div id="ex2a"></div>
+	< script type="text/javascript">
+		function two(){
+			return <mark>function()</mark>{
+				document.getElementById('ex2a').innerHTML = "Nested Function."
+			}
+		}
+		<mark>let myFunction = two();</mark>
+		myFunction();
+	< /script>
+	</pre>
 	<div id="ex2a"></div>
+	<script type="text/javascript">
+		//Nested Function
+		function two(){
+			return function(){
+				document.getElementById('ex2a').innerHTML = "Nested Function."
+			}
+		}
+		let myFunction = two();
+		myFunction();
+	</script>
 
 	<h4>Another Nested Function</h4>
+	<pre>
+	< div id="ex2b"></div>
+	< script type="text/javascript">
+		function sayHi(fname,lname){
+			<mark>function getFullName()</mark>{
+				return fname + ' ' + lname;
+			}
+			<mark>return getFullName()</mark>;
+		}
+		<mark>var message = sayHi("Andy", "Anderson");</mark>
+		document.getElementById('ex2b').innerHTML = <mark>message;</mark>
+	< /script>
+	</pre>
 	<div id="ex2b"></div>
+	<script type="text/javascript">
+		function sayHi(fname,lname){
+			function getFullName(){
+				return fname + ' ' + lname;
+			}
+			return getFullName();
+		}
+		var message = sayHi("Andy", "Anderson");
+		document.getElementById('ex2b').innerHTML = message;
+	</script>
+
+	<h4>Another Nested Function 2:</h4>
+	<pre>
+	< div id="nf">< /div>
+	< script type="text/javascript">
+		function myDog(name){
+			function outputMyDog(){
+				return name;
+			}
+			<mark>return outputMyDog()</mark>;
+		}
+	<mark>var output = myDog("Radar2")</mark>;
+	document.getElementById('nf').innerHTML = output;
+	 /script>
+	</pre>
+	<div id="nf"></div>
+	<script type="text/javascript">
+		function myDog(name){
+			function outputMyDog(){
+				return name;
+			}
+			return outputMyDog();
+		}
+	var output = myDog("Radar2");
+	document.getElementById('nf').innerHTML = output;
+	</script>
 
 	<h3>Block Scope</h3>
 	<p>// Create a function, and then - create a variable inside an if statement in that function.<br> 
-	// Print the variable to the console inside the block and outside the block to see the difference.<br>
-	// Note: StackBlitz may hide the error from you; you can look in the page's developer tools to see the answer, or copy this section to an HTML page.</p>
-	<div id="ex3"></div><br>
-	<div id="x3"></div><br>
+	// Print the variable to the console inside the block and outside the block to see the difference.
+	</p>
+	<pre>
+	< div id="ex3">< /div>
+	< script type="text/javascript">
+		function watchCourse(){
+			const courseName = 'JS Fundamentals';
+			let started = true;
+
+			if(started){
+				let progress = 50;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}.`;
+			}else{
+				let progress = 0;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}`;
+			}
+		}
+
+		watchCourse();
+	< /script>
+	</pre>
+	<div id="ex3"></div>
+	<script type="text/javascript">
+		function watchCourse(){
+			const courseName = 'JS Fundamentals';
+			let started = true;
+
+			if(started){
+				let progress = 50;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}.`;
+			}else{
+				let progress = 0;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}`;
+			}
+		}
+
+		watchCourse();
+	</script>
+	<h4>Ex: 2</h4>
+	<pre>
+	< div id="x3">< /div>
+	< div id="x4">< /div>
+	< script type="text/javascript">
+		function play(numberOfPlayers){
+		if (numberOfPlayers === 1){
+			var game = 'Super Mario Odyssey';
+		} else {
+			var game = 'Super Smash Brothers';
+		}
+		function format(){
+			return `You're playing ${game}.`;
+		}
+		return format();
+	}
+	var game0 = play(1);
+	document.getElementById('x3').innerHTML = game0;
+	var game0 = play(0);
+	document.getElementById('x4').innerHTML = game0;
+	< /script>
+	</pre>
+	<div id="x3"></div>
+	<div id="x4"></div>
+	<script type="text/javascript">
+		function play(numberOfPlayers){
+		if (numberOfPlayers === 1){
+			var game = 'Super Mario Odyssey';
+		} else {
+			var game = 'Super Smash Brothers';
+		}
+		function format(){
+			return `You're playing ${game}.`;
+		}
+		return format();
+	}
+	var game0 = play(1);
+	document.getElementById('x3').innerHTML = game0;
+	var game0 = play(0);
+	document.getElementById('x4').innerHTML = game0;
+	</script>
+
+
 	<div id="x4"></div>
 
 	<h3>var</h3>
@@ -87,7 +272,7 @@
  	On the object or array, try adding to the array or altering an attribute on the object as well as reassigning the value.</p>
  	<div id="ex4"></div>
  	<div id="ex5"></div>
- 	<div id="ex6"></div>
+ 
  	<div id="ex7"></div>
  	<div id="ex8"></div>
 

@@ -2506,8 +2506,473 @@ console.log(nestedArr[1]<mark>[0]</mark>); // <mark>Output: 2</mark>
 
 	//7.join();
 	let sentence = secretMessage.join();
-	document.getElementById('sm8').innerHTML = secretMessage;
+	document.getElementById('sm8').innerHTML = secretMessage;	
+</script>
+
+<h2>Loops</h2>
+<p>A loop is a programing tool - that REPEATS <b>a set of instructions</b> - until a  SPECIFIED CONDITION -called a <i>stoping condition</i> is reached.</p>
+<pre>
+< p id="fl"></p>
+< script type="text/javascript">
+	for(let counter = 5; counter < 11; counter++){
+		document.getElementById('fl').innerHTML = counter;
+	}
+< /script>
+</pre>
+<p id="fl"></p>
+<script type="text/javascript">
+	for(let counter = 5; counter < 11; counter++){
+		document.getElementById('fl').innerHTML = counter;
+	}
+</script>
+
+<h3>Looping in reverse</h3>
+<p>What if we want the for loop to log 3, 2, 1, and then 0?</p>
+<pre>
+< p id="rl">< /p>
+< script type="text/javascript">
+	for(let counter = <mark>5</mark>; counter <mark>>= 0</mark>; counter<mark>--</mark>){
+		document.getElementById('rl').innerHTML = counter;
+	}
+< /script>
+</pre>
+<p id="rl"></p>
+<script type="text/javascript">
+	for(let counter = 5; counter >= 0; counter--){
+		document.getElementById('rl').innerHTML = counter;
+	}
+</script>
+
+<h3>Looping through Arrays</h3>
+<p>We can use a <mark>for loop</mark> to perform the same operation - on each element on an array.<br>
+To loop through each element in an array, a for loop should use the <mark>array’s .length property</mark> in its condition.</p>
+<pre>
+< p id="la">< /p>
+< script type="text/javascript">
+	let vacationSpots = ['Bali', 'Paris', 'Turin'];
+	let text = "";
+	for (let i = 0; i < vacationSpots.length; i++){
+		text +=  'I would love to visit ' + vacationSpots[i] + "<br>";
+	}
+	document.getElementById('la').innerHTML = text;
+< /script>
+</pre>
+<p id="la"></p>
+<script type="text/javascript">
+	let vacationSpots = ['Bali', 'Paris', 'Turin'];
+	let text = "";
+	for (let i = 0; i < vacationSpots.length; i++){
+		text +=  'I would love to visit ' + vacationSpots[i] + "<br>";
+	}
+	document.getElementById('la').innerHTML = text;
+</script>
+
+<h3>Nested Loops</h3>
+<p>When we have a loop RUNNING - inside of - another loop.<br>
+<b>Nested loop - <u>compare</u> the elements in two arrays.<br>
+For each round of <u>OUTER for loop</u> - the <u>INNER for loop</u> will run completely.</b><br>
+(comparing the current element [6],[fromthe OUTER array] - to <mark>each element</mark> in the inner array. <br>
+When it finds a match - it prints a string to the console.</p>
+<pre>
+< p id='nl'>< /p>
+< script type="text/javascript">
+	let myArray = [6, 19, 20];
+	let yourArray = [16, 19, 2];
+	let myOutput = "";
+	for(let i = 0; i < myArray.length; i++){
+		for (let j = 0; j < yourArray.length; j++){
+			if(myArray<mark>[i]</mark> === yourArray<mark>[j]</mark>){
+				document.getElementById('nl').innerHTML = myOutput += 'Both loops have the number: ' + myArray[i]
+			}
+		}
+	};
+< /script>
+</pre>
+<p id='nl'></p>
+<script type="text/javascript">
+	const myArray = [6, 19, 20];
+	const yourArray = [16, 19, 2];
+	let myOutput = "";
+	for(let i = 0; i < myArray.length; i++){
+		for (let j = 0; j < yourArray.length; j++){
+			if(myArray[i] === yourArray[j]){
+				document.getElementById('nl').innerHTML = myOutput += 'Both loops have the number: ' + myArray[i]
+			}
+		}
+	};
+</script>
+
+<h4>Another Exercise</h4>
+<pre>
+< p id="aex">< /p>
+< script type="text/javascript">
+	let bobsFollowers = ['Adam', 'Beatrice', 'Camille', 'Drake'];
+	let tinasFollowers = ['Silvester', 'Adam', 'Camille'];
+	<mark>let mutualFollowers = [];</mark>
 	
+	for(let i = 0; i < bobsFollowers.length; i++){
+		for(let j = 0; j < tinasFollowers.length; j++){
+			if(bobsFollowers<mark>[i]</mark> === tinasFollowers<mark>[j]</mark>){
+				mutualFollowers.push(<mark>bobsFollowers[i]</mark>);
+				document.getElementById('aex').innerHTML ='Mutuals friends are: ' + <mark>mutualFollowers</mark> + ".";
+			}
+		}
+	}
+< /script>
+</pre>
+<p id="aex"></p>
+<script type="text/javascript">
+	let bobsFollowers = ['Adam', 'Beatrice', 'Camille', 'Drake'];
+	let tinasFollowers = ['Silvester', 'Adam', 'Camille'];
+	let mutualFollowers = [];
+	
+	for(let i = 0; i < bobsFollowers.length; i++){
+		for(let j = 0; j < tinasFollowers.length; j++){
+			if(bobsFollowers[i] === tinasFollowers[j]){
+				mutualFollowers.push(bobsFollowers[i]);
+				document.getElementById('aex').innerHTML ='Mutuals friends are: ' + mutualFollowers + ".";
+			}
+		}
+	}
+</script>
+
+<h3>The "while" Loop</h3>
+<p>...let's convert a "for loop" into "while loop".</p>
+<pre>
+< p id="fl">< /p>
+< p id="wl"></p>
+< script type="text/javascript">
+	for (let counterOne = 1; counterOne < 4; counterOne++){
+		document.getElementById('fl').innerHTML = counterOne;
+	}
+
+	<mark>let counterTwo = 1</mark>;
+	<mark>while</mark> (counterTwo < 4){
+		document.getElementById('wl').innerHTML = <mark>counterTwo</mark>;
+		<mark>counterTwo++</mark>;
+	}
+	//"counterTwo" var - declared before the loop.
+	//We start our loop with the keyword <mark>while<? followed by <mark>our stopping condition</mark>, or test condition.
+	//loop will run  - until the CONDITION - evaluates to "false".
+</script>
+</pre>
+<p id="fl"></p>
+<p id="wl"></p>
+<script type="text/javascript">
+	for (let counterOne = 1; counterOne < 4; counterOne++){
+		document.getElementById('fl').innerHTML = counterOne;
+	}
+
+	let counterTwo = 1;
+	while (counterTwo < 4){
+		document.getElementById('wl').innerHTML = counterTwo;
+		counterTwo++;
+	}
+</script>
+
+<h4>3.Create a <i>while loop</i> with <i>a condition</i> that checks if the "currentCard" <mark>does not have that value</mark> 'spade'.</h4>
+<pre>
+< p id="wl2"></p>
+< script type="text/javascript">
+	const cards = ['diamond', 'spade', 'heart', 'club'];
+	let currentCard;
+	let output1 = '';
+
+	//<b>Create a while loop with a condition that checks if the currentCard does not have that value 'spade'</b>.
+
+	while(<mark>currentCard != 'spade'</mark>){
+		currentCard = <mark>cards[Math.floor(Math.random() * 4)];</mark>
+		document.getElementById('wl2').innerHTML = output1 += currentCard + "< br>";
+	}
+< /script>
+
+</pre>
+
+<p id="wl2"></p>
+<script type="text/javascript">
+	const cards = ['diamond', 'spade', 'heart', 'club'];
+	let currentCard;
+	let output1 = '';
+
+//Create a while loop with a condition that checks if the currentCard does not have that value 'spade'.
+	while(currentCard != 'spade'){
+		currentCard = cards[Math.floor(Math.random() * 4)];
+		document.getElementById('wl2').innerHTML = output1 += currentCard + "<br>";
+	}
+</script>
+
+<h3>Do...While Statements</h3>
+<h4>In some cases, you want <mark>a piece of code to run at least once</mark> - <i>and then loop based on a specific condition after its initial run</i>.</h4>
+<p>A <mark>do...while statement</mark> says to <b><u>do a task once</u></b> and then - <u><i>keep doing it until a specified condition is no longer met</i></u>.</p>
+<pre>
+< p id="dw">< /p>
+< script type="text/javascript">
+	let countString = '';
+	<mark>let i = 0;</mark>
+
+	do{
+		<mark>countString = countString + i;</mark>
+		<mark>i++;</mark>
+	}<mark>while</mark> (i < 5);
+	document.getElementById('dw').innerHTML = countString;
+< /script>
+</pre>
+
+<p id="dw"></p>
+<script type="text/javascript">
+	let countString = '';
+	let i = 0;
+
+	do{
+		countString = countString + i;
+		i++;
+	}while (i < 5);
+	document.getElementById('dw').innerHTML = countString;
+</script>
+
+<p>First, <mark>the code block</mark> after the <mark>do</mark> keyword is executed once. <b>Then the condition is evaluated</b>.<br>
+If the condition evaluates to true, the block will execute again. The looping stops when the condition evaluates to false.<br>
+The code block <i>makes changes</i> to the <mark>countString variable</mark> by <u>appending the string form of the i variable to it</u>.</p>
+
+<p id="dw1"></p>
+<p id="dw2"></p>
+<script type="text/javascript">
+	//Depending on the recipe, a different number of cups of sugar is required. 
+	//Create the variable cupsOfSugarNeeded, and assign it a number value of your choosing.
+	let cupsOfSugarNeeded = 4;
+	//The cups of sugar must be added to the batter - one at a time.
+	//Declare the variable cupsAdded and assign it the value 0.
+	let cupsAdded = 0;
+
+	do{
+		cupsAdded++;
+		document.getElementById('dw1').innerHTML = cupsAdded + ' cup was added';
+
+	//Create a do...while loop which increments cupsAdded by one while cupsAdded is less than cupsOfSugarNeeded.	
+	}while(cupsAdded < cupsOfSugarNeeded){
+		document.getElementById('dw2').innerHTML = cupsAdded;
+	}
+</script>
+
+<h3>The "break" keyword/command</h3>
+<p>The break keyword allows programs to “break” out of the loop from within the loop’s block.</p>
+<pre>
+< p id="br">< /p>
+< p id="br1">< /p>
+< script type="text/javascript">
+	for(let i = 0; i < 9; i++){
+		if( i < 2){
+			<mark>break;</mark>
+		}
+		document.getElementById('br').innerHTML = 'Banana.';
+	}
+		document.getElementById('br1').innerHTML = 'Orange you glad I broke out the loop!';
+
+< /script>
+</pre>
+<p id="br"></p>
+<p id="br1"></p>
+<script type="text/javascript">
+	for(let i = 0; i < 9; i++){
+		if(i < 2){
+			break;
+		}
+		document.getElementById('br').innerHTML = 'Banana.';
+	}
+		document.getElementById('br1').innerHTML = 'Orange you glad I broke out the loop!';
+</script>
+
+<h4>Exercise 2</h4>
+<pre>
+< p id="br2">< /p>
+< p id="br3">< /p>
+< script type="text/javascript">
+	
+	//Log each element from rapperArray in a for loop with the iterator variable i.
+	const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+	
+	let outNames = '';
+	for(let i = 0; i < rapperArray.length; i++){
+		document.getElementById('br2').innerHTML = outNames += rapperArray[i] + "<br>";
+		if(<mark>rapperArray[i]</mark> === <mark>'Notorious B.I.G.'</mark>){
+			<mark>break;</mark>
+		}
+	}
+	document.getElementById('br3').innerHTML = "And if you don't know, now you know.";
+</script>
+</pre>
+<p id="br2"></p>
+<p id="br3"></p>
+<script type="text/javascript">
+	//Log each element from rapperArray in a for loop with the iterator variable i.
+	const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+	let outNames = '';
+	for(let i = 0; i < rapperArray.length; i++){
+		document.getElementById('br2').innerHTML = outNames += rapperArray[i] + "<br>";
+		if(rapperArray[i] === 'Notorious B.I.G.'){
+			break;
+		}
+	}
+	document.getElementById('br3').innerHTML = "And if you don't know, now you know.";
+</script>
+
+<h4>Youtube while / do...while</h4>
+<p>The <mark>while loop</mark> creates a LOOP that EXECUTES - (a SPECIFIED statement) - as long if the test condition, evaluates to "true".<br>
+The condition is evaluated before executing the "statement {}.</p>
+<pre>
+< p id="wh"></p>
+< script type="text/javascript">
+	<mark>var n = 0;</mark>
+	while (n < 5){
+		n++;
+		console.log("n = " + n);
+	}
+< /script>
+</pre>
+<p id="wh"></p>
+<script type="text/javascript">
+	var n = 0;
+
+	while (n < 5){
+		n++;
+		console.log("n = " + n);
+	}
+</script>
+<p><b>The important thing to know about "while" and "do... while" loops - is that <mark>it's not automatically increment (i++) your counter</mark> - like "for loop"</b></p>
+
+<p>The "do...while loop" -create a LOOP that EXECUTES (until "this" test CONDITION (i < 5) - evaluates to "false").<br>
+<b>The condition is EVALUATED - after executing the STATEMENT. (So - the block code - are going to RUN - (at least) - one time.</b></p>
+<pre>
+	<mark>var i = 5;</mark>
+	do{
+		<mark>i++;</mark>
+		console.log('i= ' + i);
+	}while(i < 5); <mark>//"i = 6"</mark>
+
+	<mark>In "while loop" - it's going to check if (i < 5) at the beginning - after that it's gonna run the code {}.} </mark>
+</pre>
+
+<pre>
+BREAK & CONTINUE
+
+	<mark>var n = 0;</mark>
+	while (n < 5){
+		<mark>if (n === 3) continue</mark>;
+		n++;
+		console.log("n = " + n);
+	}
+
+	// n = 1,2, ., 4,5.
+	The "continue" command - means to: NOT RUN any CODE after that commmand.
+	Just go to the next <b>iteration</b> of the loop. 
+	<mark>Anything below the "continue" - it's gonna SKIP - and get back to the TOP.</mark>
+	// n = 1,2, ., 4,5. - n != 3 - because it's SKIPPED n=3.
+
+	BREAK
+	<mark>var n = 0;</mark>
+	while (n < 5){
+		<mark>if (n === 3) break</mark>;
+		n++;
+		console.log("n = " + n);
+	}
+
+	"break" - it's gonna JUMP OUT of the LOOP completely. 
+	It's not gonna run any more <b>iterations</b> of the loop.
+	// n = 1, n = 2;
+</pre>
+
+<h3>Whale Talk</h3>
+<p>A. Take a phrase like 'turpentine and turtles' and TRANSLATE it into its "whale talk" equivalent: "UUEEEEAUUEE". <br>
+1.There are no consonants. Only vowels excluding "Y".<br>
+2.The "u"-s and 'e'-s are extra long - so we <b>must double them in out program</b>.
+</p>
+<p>1.Create a Variable named <mark>input</mark> that is equal to any phase you like. (The var will contain the text you want to TRANSLATE into "whale talk".<br>
+2.Whales only speak in vowels so you need <b>an array of vowels</b> to be EXTRACTED from the <mark>input</mark> variable.<br>
+Set the array equal to a variable named 'vowels' - <mark>that will not be updated</mark>.<br>
+3.<b>Create a variable</b> named <mark>resultArray</mark> - and set it = to an "empty array. "[]".<br>
+Here we're STORE our vowels.<br>
+4.Create a <mark>loop</mark> <b>to iterate through EACH LETTER</b> of the <mark>input variable text</mark>.<br>In a later step, we will COMPARE <b>each letter</b> with our <b>vowels</b>.<br>
+5.Log the <b>iterator numbered position</b> inside the <mark>for loop</mark> and run your code.<br>
+(this should count the number of characters in your <mark>input string</mark>.<br>
+6. Create a <b>nested for loop inside</b> of <mark>for loop</mark> you just wrote.<br>
+Make the inner loop - iterate - <b>through the vowels array</b> - each time the outer loops runs.<br>
+This will enable you <b>to check each letter of <mark>input</mark> against all the <mark>vowels elements</mark> during each iteration.</b><br>
+7. Inside <b>the second for loop</b> - write a code block that compares (input[i] === vowels[i]).<br>
+8. Whales <b>double</b> their "e"s and "u"s in their language.<br>
+Write a if() statement - that checks if each letter in the <mark>input string</mark> is === to 'e'. If so, <mark>push input[i]</mark> to the <mark>resultArray</mark>.<br>
+<b>This "if()" statement - belongs <mark>after</mark> the INNER FOR LOOP -  inside the OUTER FOR LOOP.</b><br>this is because you want to perform this check  - ONCE FOR EVERY LETTER in the <b>input</b>.<br>
+<span style:color="red">Next, you want to DOUBLE letter "u"</span> so you want to mimic the code <b>from the last step.</b> Re-create the "if()" statement, <span style: color="red">but modify it so it pushes the letter "u" a SECOND TIME.</span><br>
+9. log(resultArray). <br>
+10.Notice when we log the array, the output has commas between each letter. To produce proper whale language, we want CAPITALIZE the array and - PUT THEM TOGETHER AS ONE STRING.
+</p>
+
+<pre>
+< p id="wt">< /p>
+< p id="wt1">< /p>
+< p id="wt2">< /p>
+
+< script type="text/javascript">
+	const input = "tupertine and turltes";
+	let vowels = ['a' ,'e', 'i', 'o', 'u'];
+	let resultArray = [];
+	let outWhale = '';
+	let outputVowels = '';
+	
+
+	for(let i = 0; i < input.length; i++){
+		document.getElementById('wt').innerHTML = outWhale += i + ", ";
+		for(let j = 0; j < vowels.length; j++){
+			document.getElementById('wt1').innerHTML = outputVowels += j + ', ';
+			if(input[i] === vowels[j]){
+				resultArray.push(input[i]);
+			}
+		}
+		if(input[i] === 'e'){
+			resultArray.push(input[i]);
+		}
+		if(input[i] === 'u'){
+			resultArray.push(input[i]);
+		}
+	}
+	document.getElementById('wt2').innerHTML = resultArray + ', ';
+
+	
+	OR:
+			if(input[i] === 'e' || input[i] === 'u'){
+			resultArray.push(input[i]);
+		}
+	}
+	document.getElementById('wt2').innerHTML = resultArray<mark>.join('').toUpperCase()</mark> + ', ';
+</pre>
+
+<p id="wt"></p>
+<p id="wt1"></p>
+<p id="wt2"></p>
+
+<script type="text/javascript">
+	const input = "tupertine and turltes";
+	let vowels = ['a' ,'e', 'i', 'o', 'u'];
+	let resultArray = [];
+	let outWhale = '';
+	let outputVowels = '';
+	
+
+	for(let i = 0; i < input.length; i++){
+		document.getElementById('wt').innerHTML = outWhale += i + ", ";
+		for(let j = 0; j < vowels.length; j++){
+			document.getElementById('wt1').innerHTML = outputVowels += j + ', ';
+			if(input[i] === vowels[j]){
+				resultArray.push(input[i]);
+			}
+		}
+		if(input[i] === 'e'){
+			resultArray.push(input[i]);
+		}
+		if(input[i] === 'u'){
+			resultArray.push(input[i]);
+		}
+	}
+	document.getElementById('wt2').innerHTML = resultArray.join('').toUpperCase() + ', ';
 </script>
 </body>
 </html>

@@ -8,7 +8,7 @@ printName();
 
 //Function Scope
 function run(){
-	let animal = 'Radar';
+	let animal = 'dog';
 	document.getElementById('ex2').innerHTML = animal;
 }
 run();
