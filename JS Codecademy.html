@@ -601,7 +601,7 @@ if(favoritePhrase === 'Love That!'){
 
 	if(stopLight1 === 'red'){
 		document.getElementById('ei').innerHTML = 'Stop!';
-	}<mark>else if</mark>(stopLight1 === 'yellow'{
+	}<mark>else if</mark>(stopLight1 === 'yellow'){
 		document.getElementById('ei1').innerHTML = 'Slow Down!';
 	}<mark>else if</mark>(stopLight1 === 'green'){
 		document.getElementById('ei2').innerHTML = 'Go!';
@@ -619,7 +619,7 @@ if(favoritePhrase === 'Love That!'){
 
 	if(stopLight1 === 'red'){
 		document.getElementById('ei').innerHTML = 'Stop!';
-	}else if(stopLight1 === 'yellow'{
+	}else if(stopLight1 === 'yellow'){
 		document.getElementById('ei1').innerHTML = 'Slow Down!';
 	}else if(stopLight1 === 'green'){
 		document.getElementById('ei2').innerHTML = 'Go!';
@@ -2331,17 +2331,17 @@ One method, .push() allows us to <mark>add items to <b><i>the end</i></b> of an 
 <p id="sh"></p>
 <p id="sh1"></p>
 <script type="text/javascript">
-	const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
-	let groceryRemoved = groceryList.shift();
-	document.getElementById('sh').innerHTML = groceryList;	
+	const groceryList2 = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+	let groceryRemoved = groceryList2.shift();
+	document.getElementById('sh').innerHTML = groceryList2;	
 	document.getElementById('sh1').innerHTML = groceryRemoved;
 </script>
 
 <pre>
-const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+const groceryList2 = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
 
-groceryList.shift();
-console.log(groceryList); [ 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains' ]
+groceryList2.shift();
+console.log(groceryList2); [ 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains' ]
 
 groceryList.<mark>unshift('popcorn')</mark>;
 console.log(groceryList); [ <mark>'popcorn'</mark>, 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains' ]
@@ -2451,7 +2451,7 @@ console.log(nestedArr[1]<mark>[0]</mark>); // <mark>Output: 2</mark>
 
 <p id="na"></p>
 <script type="text/javascript">
-	const const numberClusters = [[1,2],[3,4],[5,6]];
+	const numberClusters = [[1,2],[3,4],[5,6]];
 	const target = numberClusters [2][1];
 	document.getElementById('na').innerHTML = target;
 </script>
@@ -2656,11 +2656,11 @@ When it finds a match - it prints a string to the console.</p>
 	//loop will run  - until the CONDITION - evaluates to "false".
 </script>
 </pre>
-<p id="fl"></p>
+<p id="fl2"></p>
 <p id="wl"></p>
 <script type="text/javascript">
 	for (let counterOne = 1; counterOne < 4; counterOne++){
-		document.getElementById('fl').innerHTML = counterOne;
+		document.getElementById('fl2').innerHTML = counterOne;
 	}
 
 	let counterTwo = 1;
@@ -2974,5 +2974,1531 @@ Write a if() statement - that checks if each letter in the <mark>input string</m
 	}
 	document.getElementById('wt2').innerHTML = resultArray.join('').toUpperCase() + ', ';
 </script>
+
+<h2>Functions as Data</h2>
+<p>JS Functions - can be assigned to VARIABLES - <b>and we can REASSIGN them to new variables</b>.</p>
+<pre>
+< p id="fd">< /p>
+< script type="text/javascript">
+	<mark>const announceThatImAmDoingImportantWork = () =></mark> {
+		document.getElementById('fd').innerHTML = "I’m doing very important work!";
+	}
+< /script>
+</pre>
+<p id="fd"></p>
+<script type="text/javascript">
+	const announceThatImAmDoingImportantWork = () => {
+		document.getElementById('fd').innerHTML = "I’m doing very important work!";
+	}
+</script>
+
+<p>Let's pretend this function does important work and <b>needs to be called repeatedly.</b><br>
+To rename this function without sacrificing the source code, <mark>we can re-assign the function to a variable</mark> - with a suitably short name:</p>
+<pre>
+	<mark>const busy</mark> = announceThatIAmDoingImportantWork; 
+	<mark>busy();</mark> // This function call barely takes any space!
+</pre>
+<p><b>"busy" is a variable that holds a REFFERENCE to our original function.</b><br>
+If we look up at the address in memory of "busy" - and the address in memory of "announceThatIAmDoingImportantWork" - they would point to the same place.<br>
+<mark>Our new busy() function can be invoked with parentheses as if that was the name we originally gave our function.</mark><br>
+<mark>Notice how we assign announceThatIAmDoingImportantWork <b>without parentheses</b> as the value to the busy variable.</mark><br>
+<b>We want to assign the value of the function itself, not the value it returns when invoked.</b><br>
+Since functions are a type of object, <mark>they have properties such as <b>.length</b> and <b>.name</b>, and methods such as <b>.toString()</b>.</mark></p>
+<h4>Exercise</h4>
+<p>1. 1.
+We’ve defined a function with a very long name: checkThatTwoPlusTwoEqualsFourAMillionTimes. This function takes a long time to execute. It checks whether 2 + 2 = 4, but it does it a million times (just to be really sure)!
+Using const, declare a shorter-named variable, isTwoPlusTwo that will be easier to work with. Assign checkThatTwoPlusTwoEqualsFourAMillionTimes as its value.
+<pre>
+	const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+  for(let i = 1; i <= 1000000; i++) {
+    if ( (2 + 2) != 4) {
+      console.log('Something has gone very wrong :( ');
+    }
+  }
+};
+
+<mark>const isTwoPlusTwo = checkThatTwoPlusTwoEqualsFourAMillionTimes;</mark>
+
+2.Invoke your isTwoPlusTwo() function;
+<mark>isTwoPlusTwo();</mark>
+
+3.Hmmm, if we forgot the original name of our function. Is there a way we could figure it out?
+Use <b>isTwoPlusTwo</b> to console.log() <mark>the name property of the function</mark> we assigned to isTwoPlusTwo.
+<mark>console.log(isTwoPlusTwo.<b>name</b>);</mark>
+</pre>
+
+<p id="fd1"></p>
+<p id="fd2"></p>
+<script type="text/javascript">
+	const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+		for (let i = 1; i<=1000000; i++) {
+			if((2+2) != 4){
+				document.getElementById('fd1').innerHTML = "Something has gone very wrong :(";
+			}		
+		}
+	};
+
+	const isTwoPlusTwo = checkThatTwoPlusTwoEqualsFourAMillionTimes;
+	isTwoPlusTwo();
+	document.getElementById('fd2').innerHTML = isTwoPlusTwo.name;
+</script>
+
+<h2>Functions AS Parameters / <mark>Callback Functions</mark> / Higher-Order Function</h2>
+<p> Since functions can behave like any other type of data in JavaScript, <b><mark>it might not surprise you to learn that functions can accept other functions</b> <u>as parameters</u></mark>.<br>
+<mark>Callback functions get invoked</mark> during the execution of the <b>higher-order function</b>.<br>
+<b>Higher-Order Function</b> - takes one or more functions as arguments.
+</p>
+<p>When we invoke a <b>higher-order function</b>, and pass another function in as an argument, <b><mark>we don’t invoke the argument function.</mark></b><br>
+Invoking it would evaluate to passing in the return value of that function call. <br>
+With callback functions, <mark><b>we pass in the function itself</b> by typing the function name without the parentheses</mark>:</p>
+<pre>
+< p id="ho">< /p>
+< script type="text/javascript">
+	const higherOrderFunc = param => {
+		param();
+		return `I just invoked ${param.name} as a callback function!`
+	}
+		const anotherFunc = () => {
+  	return 'I\'m being invoked by the higher-order function!';
+	}		
+ 
+	document.getElementById('ho').innerHTML = higherOrderFunc(anotherFunc);
+< /script>
+
+We wrote a higher-order function higherOrderFunc that accepts <mark>a single parameter, param</mark>. 
+Inside the body, <b>param gets invoked</b> using parentheses. 
+And finally, a string is returned, telling us the name of the callback function that was passed in.
+
+Below the higher-order function, we have another function aptly named <mark>anotherFunc</mark>. 
+This function aspires to be called <mark>inside the higher-order function</mark>.
+
+Lastly, <mark>we invoke higherOrderFunc()</mark>, <b>passing in anotherFunc as its argument</b>.
+</pre>
+<p id="ho"></p>
+<script type="text/javascript">
+	const higherOrderFunc = param => {
+		param();
+		return `I just invoked ${param.name} as a callback function!`
+	}
+	const anotherFunc = () => {
+  return 'I\'m being invoked by the higher-order function!';
+	} 
+	document.getElementById('ho').innerHTML = higherOrderFunc(anotherFunc);
+</script>
+
+<h2>Youtube Example:</h2>
+<h3>for loop</h3>
+<pre>
+< p id="yt">< /p>
+< script type="text/javascript">
+	const companies= [
+  {name: "Company One", category: "Finance", start: 1981, end: 2004},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+//for Loop
+let companiesOut = '';
+for(let i = 0; i < companies.length; i++){
+	document.getElementById('yt').innerHTML = companiesOut += "name: " + companies[i].name + ", " + "category: "+ companies[i].category + ", " + "start: " + companies[i].start  + ": " + "end: " + companies[i].end + "< br>";
+}
+< /script>
+</pre>
+<p id="yt"></p>
+<script type="text/javascript">
+	let companies= [
+  {name: "Company One", category: "Finance", start: 1981, end: 2004},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+let ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+//for Loop
+let companiesOut = '';
+for(let i = 0; i < companies.length; i++){
+	document.getElementById('yt').innerHTML = companiesOut += "name: " + companies[i].name + ", " + "category: "+ companies[i].category + ", " + "start: " + companies[i].start  + ": " + "end: " + companies[i].end + "<br>";
+}
+</script>
+
+<h3>forEach()</h3>
+<pre>
+< p id = "fe1"></p>
+< script type="text/javascript">
+//forEach() - a much easy and elegant way to loop THROUGH Data:
+//It doesn't trurn anything back to you (like a for loop do).
+
+
+let companyOut = '';
+companies.forEach(function(company){
+	document.getElementById('fe1').innerHTML = company;
+});
+< /script>
+</pre>
+
+<p id = "fe1"></p>
+<script type="text/javascript">
+//forEach() - a much easy and elegant way to loop THROUGH Data:
+//It doesn't trurn anything back to you (like a for loop do).
+
+
+let companyOut = '';
+companies.forEach(function(company){
+	document.getElementById('fe1').innerHTML = company;
+});
+</script>
+
+<h3>Filter vs forLoop</h3>
+<pre>
+< p id="fil">< /p>
+< script type="text/javascript">
+let ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+let outputAges = '';
+	let canDrink = [];
+	for(let i = 0; i< ages.length; i++){
+		if(ages[i] >= 21){
+			canDrink.push(ages[i]);
+		}
+	}
+	document.getElementById('fil').innerHTML = outputAges += canDrink;
+< /script>
+</pre>
+
+<p id="fil"></p>
+<script type="text/javascript">
+
+let outputAges = '';
+	let canDrink = [];
+	for(let i = 0; i<ages.length; i++){
+		if(ages[i] >= 21){
+			canDrink.push(ages[i]);
+		}
+	}
+	document.getElementById('fil').innerHTML = outputAges += canDrink;
+</script>
+
+<h4>Filter</h4>
+<pre>
+< p id="fl1">< /p>
+< script type="text/javascript">
+	let numbers = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+	//let outputNumb = '';
+	//let over20 = numbers.filter(function(numb){
+		//if(numb >= 21){
+		//	return true;
+		//}
+	//}); 
+	//document.getElementById('fl1').innerHTML = outputNumb += over20;
+
+	-------------------------------------------------------------------
+	let over20 = numbers.filter(numb => numb >= 21);
+	document.getElementById('fl1').innerHTML = over20;
+< /script>
+</pre>
+<p id="fl1"></p>
+<script type="text/javascript">
+	let numbers = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+	//let outputNumb = '';
+	//let over20 = numbers.filter(function(numb){
+		//if(numb >= 21){
+		//	return true;
+		//}
+	//}); 
+	//document.getElementById('fl1').innerHTML = outputNumb += over20;
+
+	let over20 = numbers.filter(numb => numb >= 21);
+	document.getElementById('fl1').innerHTML = over20;
+</script>
+
+<h4>Filter retail companies</h4>
+<p>Each company has a category. <br>
+We wanna just an array (NOT an NEW ARRAY - like "map") (JUST an ARRAY).<br>
+We just gonna filter - our RETAIL.</p>
+<pre>
+< p id="far1">< /p>
+< script type="text/javascript">
+	let companies3= [
+  {name: "Company One", category: "Finance", start: 1981, end: 2004},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+
+	//let outputC = '';
+	//const retailCompanies = companies3.filter(function(company){
+		//if(company.category === 'Retail'){
+		//	return true;
+	//	}
+	//});
+	//document.getElementById('far1').innerHTML = outputC += retailCompanies;
+
+	const retailCompanies = companies3.filter(company => company.category === 'Retail');
+	document.getElementById('far1').innerHTML =  retailCompanies;
+< /script>
+
+</pre>
+<p id="far1"></p>
+<script type="text/javascript">
+	//let outputC = '';
+	//const retailCompanies = companies3.filter(function(company){
+		//if(company.category === 'Retail'){
+		//	return true;
+	//	}
+	//});
+	//document.getElementById('far1').innerHTML = outputC += retailCompanies;
+
+	const retailCompanies = companies.filter(company => company.category === 'Retail');
+	document.getElementById('far1').innerHTML =  retailCompanies;
+</script>
+
+<h4>Get 80s Companies</h4>
+<pre>
+< p id="f80"></p>
+< script type="text/javascript">
+	const eightiesCompanies = companies3.filter(company => (company.<mark>start >= 1980</mark> && company.<mark>start < 1990</mark>));
+	document.getElementById('f80').innerHTML = eightiesCompanies;
+< /script>
+</pre>
+
+<p id="f80"></p>
+<script type="text/javascript">
+	const eightiesCompanies = companies.filter(company => (company.start >= 1980 && company.start < 1990));
+	//const eightiesCompanies2 = companies.map(function (company) => {
+		//return `${company.name} [${company.start>= 1980} && ${company.start < 1990}]`+ "< br>";
+	//});
+	document.getElementById('f80').innerHTML = eightiesCompanies;
+</script>
+
+<h4>Companies that lasted at least 10 years, or more (OVER and = 10 years).</h4>
+<pre>
+< p id="l10">< /p>
+< script type="text/javascript">
+	const lastedTenYears = companies.filter(company => (company.end - company.start <mark>= 10</mark>));
+	document.getElementById('l10').innerHTML = lastedTenYears;
+< /script>
+</pre>
+<p id="l10"></p>
+<script type="text/javascript">
+	const lastedTenYears = companies.filter(company => (company.end - company.start >= 10)).map(company =>({result : company}));
+	document.getElementById('l10').innerHTML = lastedTenYears;
+</script>
+
+<h3>map</h3>
+<p>...instead of FILTERING things out we can CREATE new ARRAYS (from a current array).<br>
+Let's just grab all of the COMPANY Names - and put them into their own array.</p>
+
+<h4>Create an array of company names:</h4>
+<pre>
+< p id="m">< /p>
+< script type="text/javascript">
+	const companyNames = companies.map(function(company){
+		<mark>return `${company.name} [${company.start} - ${company.end}]`</mark>+ "< br>";
+	});
+	document.getElementById('m').innerHTML = companyNames; 
+< /script>
+</pre>
+<p id="m"></p>
+<script type="text/javascript">
+	const companyNames = companies.map(function(company){
+		return `${company.name} [${company.start} - ${company.end}]`+ "<br>";
+	});
+	document.getElementById('m').innerHTML = companyNames; 
+</script>
+<pre>
+	SHORTHAND WAY:
+		const companyNames = companies.map(company <mark>=></mark> 
+		 `${company.name} [${company.start} - ${company.end}]`+ "< br>";
+	);
+	document.getElementById('m').innerHTML = companyNames;
+</pre>
+
+<h4>The Ages Array</h4>
+<p>...we'll take each one and - we'll get the SQUARE Root. (we juts use the "math." object for that).</p>
+<pre>
+< p id="aa"></p>
+< script type="text/javascript">
+	const agesSquare = ages.map(age => Math.sqrt(age));
+	const agetTimesTwo = ages.map(age => age *2);
+	document.getElementById('aa').innerHTML = agetTimesTwo;
+< /script>
+</pre>
+<p id="aa"></p>
+<script type="text/javascript">
+	let ages0 = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+	const agesSquare = ages0.map(age => Math.sqrt(age));
+	const agetTimesTwo = ages0.map(age => age *2);
+	document.getElementById('aa').innerHTML = agetTimesTwo;
+</script>
+
+<pre>
+	OR:
+	< p id="aa"></p>
+< script type="text/javascript">
+	const ageMap = ages
+	<mark>.map(age => Math.sqrt(age))
+	.map(age => age *2);</mark>
+	document.getElementById('aa').innerHTML = ageMap;
+< /script>
+</pre>
+
+<h3>Sort (by date)("start year"):</h3>
+
+<p>Pass to VALUES (to the function) (in this case, two "comanies") - and will COMPARE THEM.<br>
+We gonna compare the "start dates" - <b>and the we retunr "1" or "-1".</b><br>
+In each iteration it'll take two companies - and COMPARE them. (c1, c2).</p>
+<pre>
+< p id="srt">< /p>
+< script type="text/javascript">
+	const sortedCompanies = companies.sort(function(c1, c2){
+		if(c1.start > c2.start){
+			return 1;
+		}else{
+			return -1;
+		}
+	});
+	document.getElementById('srt').innerHTML = sortedCompanies;
+< /script>
+</pre>
+<p id="srt"></p>
+<script type="text/javascript">
+	const sortedCompanies = companies.sort(function(c1, c2){
+		if(c1.start > c2.start){
+			return 1;
+		}else{
+			return -1;
+		}
+	});
+	document.getElementById('srt').innerHTML = sortedCompanies;
+</script>
+
+<pre>
+	SHORTED-fORM/HAND:
+
+	const sortedCompanies = <mark>companies.sort</mark>((a,b) => <mark>a.start > b.start</mark> ? <mark>1</mark> : <mark>-1</mark>);
+	document.getElementById('srt').innerHTML = sortedCompanies;
+</pre>
+
+<h3>Sort ("ages")</h3>
+<p>We wanna sort (ages) from highest lowest to highest </p>
+<pre>
+< p id="sa"></p>
+< script type="text/javascript">	
+	const sortAges = ages.sort((a,b) => a - b);
+	document.getElementById('sa').innerHTML = sortAges;
+< /script>
+</pre>
+<p id="sa"></p>
+<script type="text/javascript">	
+	const sortAges = ages.sort((a,b) => a - b);
+	document.getElementById('sa').innerHTML = sortAges;
+</script>
+
+<h3>reduce</h3>
+<p>let's gonna ADD IT "ages" together</p>
+<pre>
+< p id="rd">< /p>
+< script type="text/javascript">
+	let ageSum = 0;	
+	for(var n = 0; n< ages.length; n++){
+		<mark>ageSum += ages[n];</mark>
+	}
+	document.getElementById('rd').innerHTML = ageSum;
+< /script>
+</pre>
+<p id="rd"></p>
+<script type="text/javascript">
+	let ageSum = 0;	
+	for(var n = 0; n<ages.length; n++){
+		ageSum += ages[n];
+	}
+	document.getElementById('rd').innerHTML = ageSum;
+</script>
+
+<h4>We can do this with "reduce()"</h4>
+<pre>
+< p id="rdc"></p>
+< script type="text/javascript">
+	const ageSum1 = ages.reduce(function(total, age){
+		return total + age;
+	}, <mark>0</mark>);
+	document.getElementById('rdc').innerHTML = ageSum1;
+< /script>
+
+OR:
+		const ageSum1 = ages.reduce(<mark>(total, age)</mark> => total + age, <mark>0</mark>);
+	document.getElementById('rdc').innerHTML = ageSum1;
+
+</pre>
+<p id="rdc"></p>
+<script type="text/javascript">
+	const ageSum1 = ages.reduce(function(total, age){
+		return total + age;
+	}, 0);
+	document.getElementById('rdc').innerHTML = ageSum1;
+</script>
+<h5>0 - is the second parameter. 0 is a "var = 0". It's gonna START at "0".</h5>
+
+<h4>Another example with "reduce. Let's get the TOTAL years for ALL COMPANIES.</h4>
+<p>Get all years for all companies:</p>
+<pre>
+< p id="rdc1">< /p>
+< script type="text/javascript">
+	const totalYears = companies.reduce(function(total, company){
+		return <mark>total</mark> + <mark>(company.end - company.start)</mark>;
+	},0);
+	document.getElementById('rdc1').innerHTML = totalYears;
+< /script>
+</pre>
+<p id="rdc1"></p>
+<script type="text/javascript">
+	const totalYears = companies.reduce(function(total, company){
+		return total + (company.end - company.start);
+	},0);
+	document.getElementById('rdc1').innerHTML = totalYears;
+</script>
+
+<h3>Combine methods (map(), filter(), sort(), reduce());</h3>
+<pre>
+< p id="comb"></p>
+< script type="text/javascript">
+	const combined = ages 
+		.map(age => age * 2)
+		.filter(age => age <mark>=</mark> 40)
+		.sort((a,b) => a <mark>-</mark> b)
+		.reduce((a,b) => a <mark>+</mark> b, <mark>0</mark>);
+		document.getElementById('comb').innerHTML = combined;
+< /script>
+</pre>
+<p id="comb"></p>
+<script type="text/javascript">
+	const combined = ages 
+		.map(age => age * 2)
+		.filter(age => age >= 40)
+		.sort((a,b) => a - b)
+		.reduce((a,b) => a+b, 0);
+		document.getElementById('comb').innerHTML = combined;
+</script>
+
+<h3>Youtube Examples 2:</h3>
+<h4>***MAP***</h4>
+<h5>1.Get an array of all names</h5>
+<pre>
+	const names = characters.map(function(character) {return `${character.name}`});
+	document.getElementById('map').innerHTML =  names;
+</pre>
+<p id='map'></p>
+
+<h5>2.Get an array of all heights</h5>
+<pre>
+	const heights = characters.map(character => character.height);
+	document.getElementById('map1').innerHTML =  heights;
+</pre>
+<p id='map1'></p>
+
+<h5>3. Get an array of objects with just name and height properties</h5>
+<pre>
+const minifiedOutputs = characters.map(character => <mark>(</mark>{<mark>name:</mark> character.name, <mark>height</mark>: character.height}<mark>)</mark>);
+document.getElementById('map2').innerHTML = minifieOutputs;
+
+<mark>The syntex is ODD. So we need to WRAP this "return" Value ().</mark> SINCE THAT'S AN object we need to <mark>wrap it in paranthesses</mark> - TO SHOW THAT IS an implicit () return of an object.
+</pre>
+<p id='map2'></p>
+
+<h5>4.Get an array of all first names</h5>
+<pre>
+	Our "FirstName are separated by a SPACE." So we need to use charecter.name<mark>.split(' ')</mark>[0])
+	".split" - we'll give you the ARRAY (of things) - <b>separated by spaces</b>
+	<b>[0](zero index, inside of the RESULTING array)</b> - will get us the FIRST ONE! (In Our Case - the "FirstName").
+</pre>
+<p id='map3'></p>
+
+<script type="text/javascript">
+	const characters = [
+    {
+        name: 'Luke Skywalker',
+        height: '172',
+        mass: '77',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+    {
+        name: 'Darth Vader',
+        height: '202',
+        mass: '136',
+        eye_color: 'yellow',
+        gender: 'male',
+    },
+    {
+        name: 'Leia Organa',
+        height: '150',
+        mass: '49',
+        eye_color: 'brown',
+        gender: 'female',
+    },
+    {
+        name: 'Anakin Skywalker',
+        height: '188',
+        mass: '84',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+];
+//***MAP***
+//Get an array of all names
+
+const names = characters.map(function(character) {return `${character.name}` + " "});
+document.getElementById('map').innerHTML =  names;
+
+//Get an array of all heights
+const heights = characters.map(character => character.height);
+document.getElementById('map1').innerHTML =  heights;
+
+//Get an array of objects with just name and height properties
+const minifiedOutputs = characters.map(character => ({name: character.name, height: character.heigh}));
+document.getElementById('map2').innerHTML = minifiedOutputs;
+
+//Get an array of all first names
+const firstNames = characters.map(character => character.name.split(' ')[0] + '<mark>');
+document.getElementById('map3').innerHTML = firstNames;
+</script>
+
+<h3>Youtube Example 2</h3>
+<p>you want to construct some HTML markup - using the elements in these array.<br>
+The "map Method" - use a callBack Funcion / arrow Function - then add some HTML markup. (< li>) - to display each number using a bullet point.<br>
+(By default)',' - comma - is used as separator. (and we don't want to have comma).</p>
+<pre>
+< p id="yt2">< /p>
+< script type="text/javascript">
+	const numbersA = [1, -1, 2, 3];
+	const filtered = numbersA.filter( n => n <mark> >= </mark> 0);
+	const items = <mark>filtered.map</mark>(n => '< li>' + n + '< /li>');
+	const html = <mark>items.join('')</mark>;
+	document.getElementById('yt2').innerHTML = html;
+< /script>
+</pre>
+<p id="yt2"></p>
+<script type="text/javascript">
+	const numbersA = [1, -1, 2, 3];
+	const filtered = numbersA.filter( n => n >= 0);
+	const items = filtered.map(n => '<li>' + n + '</li>');
+	const html = items.join('');
+	document.getElementById('yt2').innerHTML = html;
+</script>
+<p>CONSLUSION: We can use the <b>map method</b> <span style="color:red"> to map each element in an array</span> - into something else.<br>
+In this EXAMPLE we <b>mapping</b> thse numbers [1,-1,2,3,] - to STRINGS. (but we can map them to OBJECTS</p>
+
+<p id="obj"></p>
+<script type="text/javascript">
+	const items1 = filtered.map(n => {
+		const obj = {value: n};
+		return obj;
+	})
+	document.getElementById('obj').innerHTML = items1;
+</script>
+
+<pre>
+	OR:
+	< p id="obj"></p>
+< script type="text/javascript">
+	const items1 = filtered.map(n => <mark>(</mark>{value: n}<mark>)</mark> );		
+	document.getElementById('obj').innerHTML = <mark>items1</mark>;
+</script>
+</pre>
+
+<h4>Filter (an array) (return ionly the positive numbers)</h4>
+<pre>
+< p id="f1">< /p>
+< script type="text/javascript">
+	const numbersB = [1, -1, 2, 3];
+	const filteredB = numbersB.filter(function(value){
+		return value >= 0;
+	});
+	document.getElementById('f1').innerHTML = filteredB;
+< /script>
+
+This filter.method() will loop through this array[] - and <mark>EXECUTE this callBack Function() for each number/element.</mark>.
+If the "element" - matches this criteria: (return <mark>value >= 0</mark>;) - it will add this elemnt to a new array - and finally (we get that new array: [1,2,3]).
+</pre>
+<p id="f1"></p>
+<script type="text/javascript">
+	const numbersB = [1, -1, 2, 3];
+	const filteredB = numbersB.filter(function(value){
+		return value >= 0;
+	});
+	document.getElementById('f1').innerHTML = filteredB;
+</script>
+<pre>
+	Shorted Hand:
+	const filteredB = numbersB.filter(n/value => n >= 0);
+	document.getElementById('f1').innerHTML = filteredB;	
+</pre>
+
+<h4>sort()</h4>
+<p>The array sorts method - sorts the elements of an array, by manipulating the array.<br>
+The sort() sorts the elements as strings in alphabetical and ascending order.</p>
+<pre>
+< p id="srt1">< /p>
+< script type="text/javascript">
+	const names1 = ['Liam', 'Florin', 'Jai', 'Aron'];
+	<mark>names1.sort()</mark>;
+	document.getElementById('srt1').innerHTML = names1.join(', ');
+< /script>
+</pre>
+<p id="srt1"></p>
+<script type="text/javascript">
+	const names1 = ['Liam', 'Florin', 'Jai', 'Aron'];
+	names1.sort();
+	document.getElementById('srt1').innerHTML = names1.join(', ');
+</script>
+
+<h5>Array of numbers</h5>
+<pre>
+	<b>To avoud that: 10,105,18,24...</b> <mark>provide a compare Function to compare them</mark>.
+	
+	<b>In compare Function we have 3 scenarios:</b>
+	If the return of this function it will be <b> < 0</b> <mark><b>a</b> will comes first</mark>.
+	If the return of this function it will be <b> = 0</b> <mark>nothing will be changed</mark>.
+	If the return of this function it will be <b> > 0</b> <mark><b>b</b> will comes first</mark>.
+</pre>
+<pre>
+< p id="an">< /p>
+< script type="text/javascript">
+	const numbersC = [74, 18, 10, 5, 84, 24 ,105];
+	numbersC.sort(compareFunction);
+	document.getElementById('an').innerHTML = numbersC;
+	
+	function compareFunction(a,b){
+		return a - b;
+	}	
+< /script>
+</pre>
+<p id="an"></p>
+<script type="text/javascript">
+	const numbersC = [74, 18, 10, 5, 84, 24 ,105];
+	numbersC.sort(compareFunction);
+	document.getElementById('an').innerHTML = numbersC;
+
+	function compareFunction(a,b){
+		return a - b;
+	}	
+</script>
+
+<h5>Work with an Array of Objects</h5>
+<p id="ao"></p>
+<script type="text/javascript">
+	const products = [
+		{
+			name: 'laptop',
+			price: 1000
+		},
+		{
+			name: 'desktop',
+			price: 1500
+		},
+		{
+			name: 'phone',
+			price: 500
+		}
+	];
+	products.sort((a,b) => {
+		return a.price - b.price;
+	});
+	document.getElementById('ao').innerHTML = JSON.stringify(products);
+</script>
+<h5>Same products but selected by Name</h5>
+<p id="ao1"></p>
+<script type="text/javascript">
+	const products2 = [
+		{
+			name: 'laptop',
+			price: 1000
+		},
+		{
+			name: 'desktop',
+			price: 1500
+		},
+		{
+			name: 'phone',
+			price: 500
+		}
+	];
+	products.sort(function(a,b){
+		if (a.name < b.name){
+			return -1;
+		}else if(a.name > b.name){
+			return 1;
+		}else{
+			return 0;
+		}
+	}); 
+	document.getElementById('ao1').innerHTML = JSON.stringify(products2);	
+</script>
+
+<h3>reduce()</h3>
+<p>The <b>reduce() method</b> takes an array of values  - and REDUCE IT down to ONE SINGLE value.</p>
+<pre>
+We can USE <mark>forEach() method</mark>.
+< p id="fe2">< /p>
+< script type="text/javascript">
+	const itemsB = [
+		{name: 'Rice',price: 5},
+		{name: 'Book',price: 20},
+		{name: 'Chicken',price: 10},
+		{name: 'Monitor',price: 100},
+	]
+
+	 let totalPrice = 0;	
+	 itemsB.<mark>forEach(item => {totalPrice += item.price})</mark>;
+	 document.getElementById('fe2').innerHTML = totalPrice;
+< /script>
+</pre>
+<p id="fe2"></p>
+<script type="text/javascript">
+	const itemsB = [
+		{name: 'Rice',price: 5},
+		{name: 'Book',price: 20},
+		{name: 'Chicken',price: 10},
+		{name: 'Monitor',price: 100},
+	]
+
+	 let totalPrice = 0;	
+	 itemsB.forEach(item => {totalPrice += item.price});
+	 document.getElementById('fe2').innerHTML = totalPrice;
+</script>
+
+<p>The <b>reduce() method</b> takes two parameters. <br>
+1. <b>The Arrow Function</b>.<br>
+2. <b>The STARTING point, <mark>0</mark></b>.</p>
+
+<p>A. The Function takes another diffeerent parameters. <br>
+1.The "accumulator". (the "place" where we REDUCING our values). (In our case  - we try to reduce each item from the array - INTO a "price"). Our param. it's going to be <mark>"total"</mark>.<br>
+2. The second parameter - <mark>"item"</mark> - is each individual <b>item</b> we're <mark>CURENTLY LOOPING THROUGH</mark>.
+3. The way that "reduce()" works - it's this value <mark>"0"</mark>. Whenever we're return from (reduce()) - it's going to be <b> our TOTAL</b> from the next itteration.
+</p>
+<p id="rd1"></p>
+<script type="text/javascript">
+		let itemsC = [
+		{name: 'Rice', price: 5},
+		{name: 'Book', price: 20},
+		{name: 'Chicken', price: 10},
+		{name: 'Monitor', price: 100},
+	]
+	const totalPriceA = itemsC.reduce((total, item) => {
+		return total += item.price
+	},0)
+	document.getElementById('rd1').innerHTML = totalPriceA;
+</script>
+
+<h4>Another Example:</h4>
+<h5>1. Grout these people by "ages".</h5>
+<p>For that, we need an "object" that HAS/STORE values from the different ages. I want to HAVE each of the people's age - GROUPED under that "age".<br>
+//groupedPeople is our ACCUMULATOR - LIKE "total" (previous). person is - item. (each individual people).</p>
+<p id="exB"></p>
+
+<h5>By default we're gonna create an EMPTY Obj. <mark>{};</mark>  - like that "0" (from previous example).</h5>
+<p>We crate that "empty object" - 'cuase we wanna "STORE" key/value pairs like:<mark>(42: ['Sally', 'Jill'])</mark> or (26: ['Kyle']);</p>
+<h5>Start a new/empty array - and we gonna pop.() on that array - people BASED on AGES</h5>
+<p>const age = person.age - then CHECK to SEE if we (already) HAVE the VALUE of that age.<br>
+if(groupedPeople[age] == <mark>null</mark>) - because we don't HAVE (anybody at that current age yet).<br>
+ then = > <mark>(we gonna DEFAULT these people</mark> of that [age]) =  to <mark>[]</mark>; (an empty array).  
+</p>
+<pre>
+	< script type="text/javascript">
+	const people = [
+		{name: 'Kyle', age: 26},
+		{name: 'John', age: 31},
+		{name: 'Sally', age: 42},
+		{name: 'Jill', age: 42},
+	]
+
+	const resultB = people.reduce((groupedPeople, person) =>{
+		const age = person.age
+		<mark>if(groupedPeople[age] == null) groupedPeople[age] = []</mark>
+			groupedPeople[age].<mark>push(person)</mark>
+			return groupedPeople
+	}, {})
+	document.getElementById('exB').innerHTML = resultB;
+< /script>
+</pre>
+<script type="text/javascript">
+	const people = [
+		{name: 'Kyle', age: 26},
+		{name: 'John', age: 31},
+		{name: 'Sally', age: 42},
+		{name: 'Jill', age: 42},
+	]
+
+	const resultB = people.reduce((groupedPeople, person) =>{
+		const age = person.age
+		if(groupedPeople[age] == null) groupedPeople[age] = []
+			groupedPeople[age].push(person)
+			return groupedPeople
+	}, {})
+	document.getElementById('exB').innerHTML = resultB;
+</script>
+
+<h4>Another Example 2:</h4>
+<h5>Using <mark>for.of()</mark></h5>
+<pre>
+< p id="anex"></p>
+< script type="text/javascript">
+	const numbersD = [1, -1, 2, 3];
+	let sum  = 0;
+	// loop over this array and get each element -and- add It to "sum";
+	for (let n of numbersD){
+		sum += n;
+	}
+	document.getElementById('anex').innerHTML = sum;
+< /script>
+</pre>
+<div id="anex"></div>
+<script type="text/javascript">
+	const numbersD = [1, -1, 2, 3];
+	let sum  = 0;
+	// loop over this array and get each element -and- add It to "sum";
+	for (let n of numbersD){
+		sum += n;
+	}
+	document.getElementById('anex').innerHTML = sum;
+</script>
+
+<h5>Using reduce() mehtod</h5>
+<p>The reduce() method - reduce all the elem. from the array - INTO a SINGLE value. (NUMBER, STRING, OBJ... anything). <br>
+2. Takes a callBack Function - with 2 parameters (accumulator, currentValue/item).<br>
+<mark>accumulator</mark> is like  -> <mark>let sum = 0;</mark>. <br>
+3. accumulator - (will be initialized) and this callBack Function is executed (mutiple times/ EACH TIME) - this <mark>currentValue</mark> will be set/will loop through each element. (each value is added to <mark>accumulator</mark><br>
+4. reduce() - has 2 ARGUMENTS. (<mark>callBack Function</mark> and <mark>0</mark> - the INITIAL VALUE for teh <mark>accumulator</mark>.</p>
+<pre>
+< p id="rdc2"></p>
+< script type="text/javascript">
+	const sumA = numbersD.<mark>reduce((accumulator, currentValue)</mark> => {
+		return accumulator + currentValue;
+	}, <mark>0</mark>);
+document.getElementById('rdc2').innerHTML = sumA;
+< /script>
+</pre>
+<div id="rdc2"></div>
+<script type="text/javascript">
+	const sumA = numbersD.reduce((accumulator, currentValue) => {
+		return accumulator + currentValue;
+	}, 0);
+document.getElementById('rdc2').innerHTML = sumA;
+</script>
+
+<h3>reduce() on Array of Objects (10 examples):</h3>
+<pre>
+< p id='reduceA'></p>
+< script type="text/javascript">
+	const peopleA = [
+  { id: "1", name: "Leigh", age: 35 },
+  { id: "2", name: "Jenny", age: 30 },
+  { id: "3", name: "Heather", age: 28 },
+];
+
+let result;
+
+// count
+// Use "reduce()" to count a number of people (*people.length);
+// in reduce - you PASS a callBackFunction and an initial value, '0'.
+// the function RECEIVE an (ACCUMULATOR) and (each element as it ITERATING over the "people") - person.
+//ACCUMULATOR - is the value returned from the previous iteration. 
+
+result = peopleA.reduce((acc, person)=>acc + 1, 0);
+document.getElementById('reduceA').innerHTML = result;
+</pre>
+<div id='reduceA'></div>
+<script type="text/javascript">
+	const peopleA = [
+  { id: "1", name: "Leigh", age: 35 },
+  { id: "2", name: "Jenny", age: 30 },
+  { id: "3", name: "Heather", age: 28 },
+];
+
+let result;
+
+// count
+// Use "reduce()" to count a number of people (*people.length);
+// in reduce - you PASS a callBackFunction and an initial value, '0'.
+// the function RECEIVE an (ACCUMULATOR) and (each element as it ITERATING over the "people") - person.
+//ACCUMULATOR - is the value returned from the previous iteration. 
+result = peopleA.reduce((acc, person)=>acc + 1, 0);
+document.getElementById('reduceA').innerHTML = result;
+</script>
+<p>2. sum ages . Find the "sum" of all the ages.</p>
+<span id='rs'></span>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person) => acc + person.age, 0);
+	document.getElementById('rs').innerHTML = result;
+</script>
+
+<p>3. Array of names (map).<b>Convert from the array of <mark>objects</mark> to the array of <mark>names</mark>.</b><br>
+IN A new Array - We want to return (all of the <mark>previous names</mark> + the new name). [...acc, person.name].</p>
+<p><b>...acc (spread operator)</b> - if you want to RETURN every element as a (NEW OBJECT) <mark>(WITH key: id: and the VALUE itself)</mark>.</p>
+
+<pre>
+< p id="am"></p>
+< script type="text/javascript">
+	result = peopleA.reduce<mark>((acc, person)</mark>=>[<mark>...acc, person.name]</mark>, <mark>[]</mark>);
+	document.getElementById('am').innerHTML = result.join(', ');
+< /script>
+</pre>
+<div id="am"></div>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person)=>[...acc, person.name], []);
+	document.getElementById('am').innerHTML = result.join(', ');
+</script>
+
+<pre>
+	1. <mark>If ...acc</mark> - (is an object {id:, name:, age:...}) - <mark>it's going to SPREAD that OUT</mark>
+	So <b>these PROPERTIES AND VALUES (are in <mark>...acc</mark>)</b>.
+	2. Now we want the property of <mark>"1" / "Leihg" / 35</mark> - <b>with the value of the object.</b>
+	(REVERSE: "1" to be the key, AND "id" to be the PROPERTY).
+
+	3. The whole object is curently in the person VARIABLE (because - if we iterate through the array) - IT ASSIGNING each one of these (key and properties/ all objects) - in "person" VARIABLE.
+	So we can acces that <mark>name</mark> using <mark><b>person.name</b></mark>.
+
+	<mark>reduce()</mark> is similar to <mark>map()</mark>
+</pre>
+
+
+<p>4. convert the <b>id TO the KEY</b> - and the <b>OBJECT is the VALUE</b> (reverse).<br>
+It's USEFUL when you have an <b>array of 10.000 people</b>.<br>
+<b>So, anytime when you want to acces a "person" you can just acces them -USING- the <mark>"id"</mark></b> - without having to find them in an array.</p>
+
+<div id="reverse1"></div>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person) => {
+		return {...acc, [person.id]: person}
+	}, {});
+	document.getElementById('reverse1').innerHTML = result;	
+</script>
+<p>return {...acc, [person.id]: <mark>person</mark>} - person is the VALUE.</p>
+
+<p>5. Use <b>reduce()</b> to find the <i>max value</i>.</p>
+<pre>
+< div id="maxV"></div>
+< script type="text/javascript">
+	result = peopleA.reduce((acc, person)=> {
+		if (acc === null || person.age <mark> > </mark> acc)  return person.age;
+		return acc;
+	}, null);
+	document.getElementById('maxV').innerHTML = result;	
+< /script>
+</pre>
+<div id="maxV"></div>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person)=> {
+		if (acc === null || person.age > acc)  return person.age;
+		return acc;
+	}, null);
+	document.getElementById('maxV').innerHTML = result;	
+</script>
+<pre>
+	<b>null</b> instead of <b>0</b> - because IF THEY'RE all NEGATIVE VALUES - <b><mark>0 - would come out as the MAX VALUES</mark>.</b>
+</pre>
+
+<p>6. Use <b>reduce()</b> to find the <i>MIN value</i>.</p>
+<pre>
+< div id="maxV"></div>
+< script type="text/javascript">
+	result = peopleA.reduce((acc, person)=> {
+		if (acc === null || person.age <mark> < </mark> acc)  return person.age;
+		return acc;
+	}, null);
+	document.getElementById('maxV').innerHTML = result;	
+< /script>
+</pre>
+<div id="nimV"></div>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person)=> {
+		if (acc === null || person.age < acc)  return person.age;
+		return acc;
+	}, null);
+	document.getElementById('nimV').innerHTML = result;	
+</script>
+
+<p>7. Find a "person" by their Name</p>
+
+<pre>
+< div id="byN">< /div>
+< script type="text/javascript">
+	result = peopleA.reduce((acc, person) => {
+		if(acc !== null) return acc;
+		if(person.name === 'Leigh') return person;
+		return null;
+	}, null);
+	document.getElementById('byN').innerHTML = result;	
+< /script>
+</pre>
+<div id="byN"></div>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person) => {
+		if(acc !== null) return acc;
+		if(person.name === 'Leigh') return person;
+		return null;
+	}, null);
+	document.getElementById('byN').innerHTML = result;	
+</script>
+
+<pre>
+	if(acc !== null) - <mark>that means we ALREADY FOUND someone</mark> return acc; - RETURN that PERSON.
+	<b>return acc</b> - BASICALLY SKIP ITERATING (<b>over the rest of the people</b>) 'cause we've already found them.
+
+	If WE GET TO the second (if) STATEMENT means we haven't found THE RIGHT PERSON yet.
+	<b>return null</b> - (if we haven't found the "PERSON" yet) meaning that we will "keep looking"
+</pre>
+
+<p><mark>All</mark> over 18</p>
+<p id="oe"></p>
+<script type="text/javascript">
+	result = peopleA.reduce((acc, person) => {
+		if(!acc) return false;
+		return person.age > 18;
+	}, true);
+	document.getElementById('oe').innerHTML = result;	
+
+</script>
+<pre>
+	if(!acc) return false; [if it ALREADY flipped over to false (meaning already found someone)] - <mark>as soon as one person is not OVER 18</mark> - otherwise we sill return WHETHER the person.age > 18;
+
+	if we: return person.age > 30; //false - because it's ONE PERSON over 30;
+</pre>
+
+<p>Any over 18. (we don't care if they ale are (over18) - but is one person (over 18).</p>
+<div id="oe1"></div>
+<script type="text/javascript">
+	result = people.reduce((acc, person)=> {
+		if(acc) return true;
+		return person.age > 18;
+	}, false);
+	document.getElementById('oe1').innerHTML = result;	
+
+</script>
+<pre>
+	people.reduce(()=>{}, <mark>false</mark>); - this time we're goning start with false - but as soon as we find someone we're going to SWITCH and make it "true".
+</pre>
+
+<p>Count <mark>Occurences</mark> of some values. <br>
+I wann count HOW MANY TIMES each "status" shows Up - and I wanna end up with an object (when you've got a status of how many times it OCCURED.</p>
+<div id="occ"></div>
+<script type="text/javascript">
+	const orders = [
+  { id: "1", status: "pending" },
+  { id: "2", status: "pending" },
+  { id: "3", status: "cancelled" },
+  { id: "4", status: "shipped" },
+];
+ result = orders.reduce((acc, order) => {
+ 	return {...acc, [order.status]: (acc[order.status] || 0) + 1} }, {});
+
+
+</script>
+<pre>
+	return {...acc} - we gonna TAKE (all of the COUNTS we've FOUND so far - [spread operator]).
+	Then' we're going to <mark> <b>update</b> the current status - we're looking at</mark>.
+	and - it's value (it's going to be - whatever was BEFORE  + 1).
+	4. We're going to look if we have the "this STATUS".
+	|| 0 - we gonna start it off - at "0". (meaning: Initilized). + 1
+
+	1.Take all of our "counts" so far. [...acc].
+	2.Update the "current-status" [order.status];
+	3.take the "existing value OR(||) initialize to 0" + 1;
+</pre>
+
+<h3>forEach() method</h3>
+<p>...will execute <mark>the same code</mark> for <b>each element of an array</b>.</p>
+<p>.forEach() takes an argument of callback function.<br> Remember, a callback function is a function passed as an argument into another function.</p>
+<p><mark>.forEach() loops through the array and executes the callback function for each element. </mark></p>
+<pre>
+< div id="fe3">< /div>
+< script type="text/javascript">
+		let <mark>fruitsOutput</mark> = '';
+		const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+		fruits.<mark>forEach</mark>(fruitsItem => 
+			document.getElementById('fe3').innerHTML = fruitsOutput += `I want to eat a ${fruitsItem}.` + "<br>");
+< /script>
+</pre>
+<div id="fe3"></div>
+<script type="text/javascript">
+		let fruitsOutput = '';
+		const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+		fruits.forEach(fruitsItem => 
+			document.getElementById('fe3').innerHTML = fruitsOutput += `I want to eat a ${fruitsItem}.` + "<br>");
+</script>
+
+<p id="demo"></p>
+<script>
+let text1 = "";
+const fruitsA = ["apple", "orange", "cherry"];
+fruitsA.forEach(myFunction);
+
+document.getElementById("demo").innerHTML = text1;
+ 
+function myFunction(item, index) {
+  text1 += index + ": " + item + "<br>"; 
+}
+</script>
+
+<h3>The .map() Method</h3>
+<p><b>When .map() is called on an array, <mark>it takes an argument of a <i>callback function</i></mark> and <mark>returns a new array!</mark></b> <br>
+<mark>.map()</mark> works <u>in a similar manner to .forEach()</u> — the major difference is that <mark>.map() returns a new array.</mark></p>
+<p>In the example: <br>
+numbers is an array of numbers.<br>
+bigNumbers will store the return value of calling .map() on numbers.<br>
+<b>numbers.map will iterate through each element in the numbers array and pass the element into the callback function.</b></p>
+<div id="mm"></div>
+<script type="text/javascript">
+	let outNumbers = '';
+	const numbersE = [1, 2, 3, 4, 5]; 
+	const bigNumbers = numbersE.map(number => {return number * 10});
+document.getElementById("mm").innerHTML = outNumbers += bigNumbers;
+</script>
+
+<h3>Exercise</h3>
+<p>1.Add your code under the animals array and before the line <mark>console.log(secretMessage.join(''));</mark><br>
+Use <mark>.map()</mark> to <b>create a new array that contains the first character of each string</b> in the animals array.<br>
+Save the new array to a const variable named secretMessage.</p>
+<pre>
+< div id="mm1">< /div>
+< script type="text/javascript">
+	let outAnimals = '';
+	const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+	const secretMessage2 = <mark>animals.map</mark>(<mark>animal</mark> => return <mark>animal[0]</mark>);
+	document.getElementById("mm1").innerHTML = outAnimals += secretMessage2.join('') + "!";
+< /script>
+</pre>
+
+<div id="mm1"></div>
+<script type="text/javascript">
+	let outAnimals = '';
+	const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+	const secretMessage2 = animals.map(function(animal) {return animal[0]});
+	document.getElementById("mm1").innerHTML = outAnimals += secretMessage2.join('') + "!";
+</script>
+
+<p>2. <b>Use .map()</b> <mark>to divide all the numbers in bigNumbers by 100</mark>.<br>
+	Save the returned values to a variable declared with const called <u>smallNumbers.</u></p>
+<pre>
+< div id="sn">< /div>
+< script type="text/javascript">
+	const bigNumbers1 = [100, 200, 300, 400, 500];
+	const smallNumbers = <mark>bigNumbers1.map(number => number / 100)</mark>;
+	document.getElementById("sn").innerHTML =smallNumbers;
+< /script>
+</pre>
+<div id="sn"></div>
+<script type="text/javascript">
+	const bigNumbers1 = [100, 200, 300, 400, 500];
+	const smallNumbers = bigNumbers1.map(number => number / 100);
+	document.getElementById("sn").innerHTML =smallNumbers;
+</script>
+
+<h3>The .filter() Method</h3>
+<p>Like <mark>.map()</mark>, <mark>.filter()</mark> returns <b><u>a new array></u></b>.<br>
+However, <mark>.filter()</mark> returns <mark>an array of elements <b>after filtering out</b> certain elements from the original array.</mark><br>
+The callback function for the .filter() method should return true or false depending on the element that is passed to it.</p>
+<pre>
+< div id="fm1">< /div>
+< script type="text/javascript">
+	const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+	const shortWords = <mark>words.filter(word => {return word.length < 6})</mark>;
+	document.getElementById("fm1").innerHTML = shortWords.join(", ");
+< /script>
+</pre>
+<div id="fm1"></div>
+<script type="text/javascript">
+	const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+	const shortWords = words.filter(word => {return word.length < 6});
+	document.getElementById("fm1").innerHTML = shortWords.join(", ");
+</script>
+<pre>
+	
+</pre>
+	The callback function is an arrow function that has a single parameter, word. 
+	<mark>Each element in the words array will be passed to this function</mark> as an argument.
+
+	<mark>word.length < 6;</mark> is the condition in the callback function. Any word from the words array that has fewer than 6 characters will be added to the shortWords array.
+
+<h4>Exercise</h4>
+<p>1.
+Call the .filter() method on randomNumbers to return values that are less than 250.<br>
+Save them to a new array called smallNumbers, declared with const.</p>
+<pre>
+< div id="fm2">< /div>
+< script type="text/javascript">
+	const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+	const smallNumbers1 = <mark>randomNumbers.filter</mark>(number => {return number < 250});
+	document.getElementById("fm2").innerHTML = smallNumbers1.join(", ");
+< /script>
+</pre>
+<div id="fm2"></div>
+<script type="text/javascript">
+	const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+	const smallNumbers1 = randomNumbers.filter(number => {return number < 250});
+	document.getElementById("fm2").innerHTML = smallNumbers1.join(", ");
+</script>
+
+<p>2.Now let’s work with an array of strings.<br> Invoke .filter() on the favoriteWords array to return elements that have more than 7 characters.<br> Save the returned array to a const variable named longFavoriteWords.</p>
+<div id="fm3"></div>
+<script type="text/javascript">
+	const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+	const longFavoriteWords = favoriteWords.filter(word => word.length > 7);
+	document.getElementById("fm3").innerHTML = longFavoriteWords.join(", ");
+</script>
+
+<h3>The .findIndex() Method</h3>
+<p>We sometimes want to find the location of an element in an array.<br>
+That’s where the <mark>.findIndex() method</mark> comes in! <br>
+Calling .findIndex() on an array - <b>will return the index of the first element that evaluates to true</b> <mark>in the callback function.</mark></p>
+<pre>
+< div id="fi">< /div>
+< script type="text/javascript">
+	const jumbledNums = [123, 25, 78, 9, 5]; 
+	const lessThanTen = jumbledNums.<mark>findIndex(num => { return num < 10})</mark>;
+	document.getElementById("fi").innerHTML = lessThanTen;
+< /script>
+</pre>
+<div id="fi"></div>
+<script type="text/javascript">
+	const jumbledNums = [123, 25, 78, 9, 5]; 
+	const lessThanTen = jumbledNums.findIndex(num => { return num < 10});
+	document.getElementById("fi").innerHTML = lessThanTen;
+</script>
+<p><b>If there isn’t a single element in the array that satisfies the condition</b> in the callback, then <mark> .findIndex() will return -1</mark>.</p>
+<pre>
+	const greaterThan1000 = jumbledNums.findIndex(num => {
+  return num > 1000;
+}); 
+console.log(greaterThan1000); // Output: -1
+</pre>
+<h4>Exercise</h4>
+<p>1.Invoke .findIndex() on the animals array <mark>to find the index of the element that has the value 'elephant'</mark> and save the returned value to a const variable named foundAnimal.<br>
+<pre>
+< div id="fi1">< /div>
+< script type="text/javascript">
+	const animals1 = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+	const foundAnimal = <mark>animals1.findIndex(animal => {return animal === 'elephant'})</mark>;
+	document.getElementById("fi1").innerHTML = foundAnimal;
+< /script>
+</pre>
+<div id="fi1"></div>
+<script type="text/javascript">
+	const animals1 = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+	const foundAnimal = animals1.findIndex(animal => {return animal === 'elephant'});
+	document.getElementById("fi1").innerHTML = foundAnimal;
+</script>
+
+<p>2.Let’s see if we can find the index <b><mark>of the first animal</mark></b> that starts with the letter 's'. <mark>[0]</mark>
+Call .findIndex() on the animals array and return the index of the first element that starts with 's'. Assign the returned value to a const variable named startsWithS.</p>
+<pre>
+< div id="fi2">< /div>
+< script type="text/javascript">
+	const animals2 = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+	const startWithS = animals2.findIndex(animal => {return <mark>animal[0]</mark> === <mark>'s'</mark> <mark>?</mark> true : false});
+	document.getElementById("fi2").innerHTML = startWithS;
+< /script>
+</pre>
+
+<div id="fi2"></div>
+<script type="text/javascript">
+	const animals2 = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+	const startWithS = animals2.findIndex(animal => {return animal[0] === 's' ? true : false});
+	document.getElementById("fi2").innerHTML = startWithS;
+</script>
+
+<h3>The .reduce() Method</h3>
+<p>The .reduce() method returns a single value after iterating through the elements of an array, thereby reducing the array.</p>
+<pre>
+< div id="rm">< /div>
+< script type="text/javascript">
+	const numbersF = [1, 2, 4, 10];
+	const summedNums = <mark>numbersF.reduce((accumulator, currentValue)</mark> => {return <mark>accumulator</mark> + <mark>currentValue</mark>})
+	document.getElementById("rm").innerHTML = summedNums;
+< /script>
+</pre>
+<div id="rm"></div>
+<script type="text/javascript">
+	const numbersF = [1, 2, 4, 10];
+	const summedNums = numbersF.reduce((accumulator, currentValue) => {return accumulator + currentValue})
+	document.getElementById("rm").innerHTML = summedNums;
+</script>
+
+<p>The callback function has two parameters, <mark>accumulator</mark> and <mark>currentValue</mark>.<br>
+<b>The value of accumulator starts off as <mark>the value of the first element</mark></b> in the array and the <b>currentValue starts as the <mark>second element</mark></b>.</p>
+
+<h4>Exercise:</h4>
+<pre>
+< div id="rm1">< /div>
+< div id="rm2">< /div>
+< div id="rm3">< /div>
+< script type="text/javascript">
+	const newNumbers = [1, 3, 5, 7];
+	const newSum = <mark>newNumbers.reduce((accumulator, currentValue)</mark> => {
+	document.write(`The value of accumulator: ${accumulator}` + "< br>");
+	document.write(`The value of accumulator: ${currentValue}` + "< br>");
+	return accumulator + currentValue}, <mark>10</mark>)
+	document.getElementById("rm3").innerHTML = newSum;
+< /script>
+</pre>
+<div id="rm1"></div>
+<div id="rm2"></div>
+<div id="rm3"></div>
+<script type="text/javascript">
+	const newNumbers = [1, 3, 5, 7];
+	const newSum = newNumbers.reduce((accumulator, currentValue) => {
+	document.write(`The value of accumulator: ${accumulator}` + "<br>");
+	document.write(`The value of accumulator: ${currentValue}` + "<br>");
+	return accumulator + currentValue}, 10)
+	document.getElementById("rm3").innerHTML = newSum;
+</script>
+
+<h4>Array Methods Exercise: filter(), some(), every();</h4>
+<p>1.In the code editor, there is an array called words. We want to create a new array of interesting words.<br> The first thing we want to do is <mark>check if there are words that are fewer than 6 characters long</mark>
+.</p>
+<pre>
+< div id="ia">< /div>
+< div id="ia1">< /div>
+< script type="text/javascript">
+	const words1 = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+	document.getElementById('ia').innerHTML = words1.<mark>some</mark>(word => {return word.length < 6})
+
+	//2.The .some() method returned true, which means there are some words in the array that are shorter than six characters. 
+	//Use the .filter() method to save any words longer than 5 characters to a new variable called interestingWords, declared with const.
+
+	const interestingWords = words1.<mark>filter</mark>(word => {return word.length > 5});
+	document.getElementById('ia1').innerHTML = interestingWords.<mark>every</mark>(word => {return word.length > 5});
+< /script>
+</pre>
+<div id="ia"></div>
+<div id="ia1"></div>
+<script type="text/javascript">
+	const words1 = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+	document.getElementById('ia').innerHTML = words1.some(word => {return word.length < 6})
+
+	//2.The .some() method returned true, which means there are some words in the array that are shorter than six characters. 
+	//Use the .filter() method to save any words longer than 5 characters to a new variable called interestingWords, declared with const.
+
+	const interestingWords = words1.filter(word => {return word.length > 5});
+	document.getElementById('ia1').innerHTML = interestingWords.every(word => {return word.length > 5});
+</script>
+
+<h3>Choose the Right Iterator</h3>
+<p>There are many iteration methods you can choose.<br>
+In addition to learning the correct syntax for the use of iteration methods, it is also important to learn how to choose the correct method for different scenarios.</p>
+
+<h4>forEach()</h4>
+<p>1.Replace the word method in the first method call with <mark>a method that will do something to each of the values in the array</mark> and return undefined.</p>
+<pre>
+< div id="ri"></div>
+< script type="text/javascript">
+	const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+	const nums = [1, 50, 75, 200, 350, 525, 1000];	
+	
+	<mark>cities.forEach</mark>(city => document.write(`Have you visited ${city} ?` + "< br>"));	
+< /script>
+</pre>
+
+<div id="ri"></div>
+<script type="text/javascript">
+	const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+	const nums = [1, 50, 75, 200, 350, 525, 1000];	
+	
+	let citiesOutput = '';	
+	cities.forEach(city => document.getElementById('ri').innerHTML =  citiesOutput += `Have you visited ${city} ?` + "<br>");	
+</script>
+
+<h4>filter()</h4>
+<p>2.In the second method call, replace the word method with <mark>a method that will return a new array with only those elements</mark> longer than 7 characters.</p>
+<pre>
+< div id="ri1"></div>
+< script type="text/javascript">
+	const longCities = cities.<mark>filter</mark>(city => city.length > 7);
+	document.write(longCities.join(', '));
+< /script>
+</pre>
+
+<div id="ri1"></div>
+<script type="text/javascript">
+	const longCities = cities.filter(city => city.length > 7);
+		document.getElementById('ri1').innerHTML = longCities.join(', ');
+</script>
+
+<h4>reduce()</h4>
+<p>3.In the third method call, replace the word method with <mark>a method that take an array that contains multiple values and returns a single value</mark>.</p>
+<pre>
+< div id="ri2">< /div>
+< script type="text/javascript">
+	const word = cities.reduce((acc, currVal) => {return <mark>acc</mark> + <mark>currVal[0]</mark>}, <mark>'C'</mark>);
+	document.getElementById('ri2').innerHTML = word;
+</script>
+</pre>
+
+<div id="ri2"></div>
+<script type="text/javascript">
+	const word = cities.reduce((acc, currVal) => {return acc + currVal[0]}, 'C');
+	document.getElementById('ri2').innerHTML = word;
+</script>
+
+<h4>map()</h4>
+<p>4. In the fourth method call, replace the word method with <mark>a method that will return a new array of numbers returned from the function</mark>.</p>
+<pre>
+< div id="ri3">< /div>
+< script type="text/javascript">
+	const smallNums = nums<mark>.map(num => num - 5)</mark>;
+	document.getElementById('ri3').innerHTML = smallNums;
+< /script>
+</pre>
+<div id="ri3"></div>
+<script type="text/javascript">
+	const smallNums = nums.map(num => num - 5);
+	document.getElementById('ri3').innerHTML = smallNums;
+</script>
+
+<h4>every()/some()</h4>
+<p>5. In the fifth method call, replace the word method with <mark>a method that will return a boolean value</mark>.</p>
+<pre>
+< div id="ri4">< /div>
+< div id="ri5">< /div>
+< script type="text/javascript">
+	const newNums = <mark>nums.<b>every</b>(num => num < 0)</mark>;
+	document.getElementById('ri4').innerHTML = newNums;
+
+	const newNums1 = <mark>nums.<b>some</b>(num => num < 0)</mark>;
+	document.getElementById('ri5').innerHTML = newNums1;
+< /script>
+</pre>
+<div id="ri4"></div>
+<div id="ri5"></div>
+<script type="text/javascript">
+	const newNums = nums.every(num => num < 0);
+	document.getElementById('ri4').innerHTML = newNums;
+
+	const newNums1 = nums.some(num => num < 0);
+	document.getElementById('ri5').innerHTML = newNums1;
+</script>
+<h3>Review</h3>
+<p><b>.forEach()</b> - is used to EXECUTE <u>the same code on every element in an ARRAY</u> - but does not CHANGE the ARRAY.<br><br>
+<b>.map()</b> - EXECUTES <u>the same code on every ELEMENT in an ARRAY</u> - and returns a <mark>new array WITH the UPDATED elements</mark>.<br><br>
+<b>.filter()</b> - CHECKS <u>every element in an array</u> - to SEE if <mark>it meets a certain criteria</mark> - and retunrs a <mark>new array with the elements <b>that return truthy</b> for the criteria</mark>. <br><br>
+<b>.findIndex()</b> - RETURNS <mark>the index of the FIRTS ELEMENT of an array</mark> - that satisfies a condition in the <b>callBack Function</b>. It retunrs <mark>-1</mark> if none of the ELEMENTS (in the array satiffies the condition).<br><br>
+<b>.reduce()</b> - ITERATES throught an array and <mark>takes the values of the ELEMENTS</mark> and <b>returns <u>a SINGLE VALUE.</u></b></p>
 </body>
 </html>
