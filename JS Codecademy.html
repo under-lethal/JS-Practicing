@@ -4500,5 +4500,1490 @@ In addition to learning the correct syntax for the use of iteration methods, it 
 <b>.filter()</b> - CHECKS <u>every element in an array</u> - to SEE if <mark>it meets a certain criteria</mark> - and retunrs a <mark>new array with the elements <b>that return truthy</b> for the criteria</mark>. <br><br>
 <b>.findIndex()</b> - RETURNS <mark>the index of the FIRTS ELEMENT of an array</mark> - that satisfies a condition in the <b>callBack Function</b>. It retunrs <mark>-1</mark> if none of the ELEMENTS (in the array satiffies the condition).<br><br>
 <b>.reduce()</b> - ITERATES throught an array and <mark>takes the values of the ELEMENTS</mark> and <b>returns <u>a SINGLE VALUE.</u></b></p>
+
+<h2>Creating Object Literals</h2>
+<p>Objects can be assigned to variables just like any JavaScript type. We use curly braces, {}, to designate an object literal:</p>
+<p>This data is organized into key-value pairs.<br>
+A key is like a variable name that points to a location in memory that holds a value.<br>
+We make a key-value pair by writing the key’s name, or identifier, followed by a colon and then the value.<br>
+We separate each key-value pair in an object literal with a comma (,).
+</p>
+<pre>
+	// An object literal with <mark>two key-value pairs</mark>
+let spaceship = {
+  fuelType: 'diesel',
+  color: 'silver'
+};
+
+The spaceship object has two properties Fuel Type and color.
+</pre>
+
+<h3>Accesing Properties</h3>
+<p>There are <mark>two ways</mark> we can access an object’s property. Let’s explore the first way— <mark>dot notation</mark>.<br>
+With property dot notation, <mark>we write the object’s name</mark>, followed by <mark>the dot operator</mark> and then <mark>the property name</mark> (key):</p>
+
+<pre>
+	let <mark>spaceship</mark> = {
+  <mark>homePlanet</mark>: 'Earth',
+  color: 'silver'
+	};
+	spaceship.homePlanet; // Returns 'Earth',
+	spaceship.color; // Returns 'silver',
+</pre>
+<p>If we try to access a property that does not exist on that object, <mark>undefined</mark> will be returned.</p>
+
+<h3>Bracket Notation []</h3>
+<p>The second way to access a key’s value is by using bracket notation, <mark>[ ]</mark>.<br>
+You’ve used bracket notation when indexing an array:<br>
+<mark>['A', 'B', 'C'][0]; // Returns 'A'</mark><br>
+To use bracket notation to <mark>access an object’s property, we pass in the property name (key) as a string</mark>.
+</p>
+<pre>
+	We must use bracket notation when accessing keys that have numbers, spaces, or special characters in them. 
+
+	let spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  'Active Duty': true,
+  homePlanet: 'Earth',
+  numCrew: 5
+	};
+
+	spaceship['Active Duty'];   // Returns true
+	spaceship['Fuel Type'];   // Returns  'Turbo Fuel'
+	spaceship['numCrew'];   // Returns 5
+	spaceship['!!!!!!!!!!!!!!!'];   // Returns undefined
+</pre>
+<p>With bracket notation you can also use a variable inside the brackets to select the keys of an object.<br> This can be especially helpful when working with functions:</p>
+<pre>
+	let returnAnyProp = <mark>(objectName, propName) => objectName[propName]</mark>;
+ 	returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
+</pre>
+<p>If we tried to write our <mark>returnAnyProp() function with dot notation (objectName.propName)</mark> the computer would look for a <b>key of 'propName' on our object</b> and <b>not the value of the propName parameter</b>.</p>
+
+<h3>Exercise:</h3>
+<p>1. Let’s use bracket notation to access the value of 'Active Mission' from the spaceship object in the code editor.<br>
+Create a variable isActive and assign the spaceship‘s 'Active Mission' property to it.</p>
+<pre>
+< div id='bn'>< /div>
+< script type="text/javascript">
+	let spaceship = {
+		'Fuel Type' : 'Turbo Fuel',
+		'Active Mission' : true,
+		homePlanet: 'Earth',
+		numCrew: 5
+	};
+
+	let propName = 'Active Mission';
+	
+	1.<mark>let isActive = spaceship['Active Mission'];</mark>
+	2. <mark>document.getElementById('bn').innerHTML = spaceship[propName]</mark>;
+< /script>
+</pre>
+<div id='bn'></div>
+<script type="text/javascript">
+	let spaceship = {
+		'Fuel Type' : 'Turbo Fuel',
+		'Active Mission' : true,
+		homePlanet: 'Earth',
+		numCrew: 5
+	};
+
+	let propName = 'Active Mission';
+	
+	let isActive = spaceship['Active Mission'];
+	document.getElementById('bn').innerHTML = spaceship[propName];
+</script>
+
+<h3>Property Assignment</h3>
+<p>Once we’ve defined an object, we’re not stuck with all the properties we wrote.<br>
+Objects <b>are mutable</b> - meaning - <mark>we can update them</mark> after we <b>create them</b>!<br>
+We can use either dot notation, <mark>.</mark>, or bracket notation, <mark>[]</mark>, and the assignment operator, <mark>=</mark> to <b>add new key-value pairs to an object</b> or <b>change an existing property</b>.
+</p>
+<p>One of two things can happen with property assignment:</p>
+<ul>
+		<li><i>If the property already exists on the object</i>, whatever value it held before <mark>will be replaced with the newly assigned value</mark>.</li>
+		<li><i>If there was no property with that name</i>, a new property will be added to the object.</li>
+</ul>
+<p><b>It’s important to know that although</b> <mark>we can’t reassign an object declared with const</mark>, - <b>we can still mutate it</b> - <i>meaning we can add new properties and change the properties that are there.</i></p>
+
+<pre>
+	const spaceship = {type: 'shuttle'};
+	<mark>spaceship</mark> = {type: 'alien'}; <mark>// TypeError: Assignment to constant variable.</mark>
+	
+	spaceship.type = 'alien'; // <mark>Changes</mark> the value of the type property
+	spaceship.speed = 'Mach 5'; // <mark>Creates</mark> a new key of 'speed' with a value of 'Mach 5'
+</pre>
+
+<p>You can delete a property from an object with the <mark>delete</mark> <b>operator</b>.</p>
+<pre>
+	const spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  mission: 'Explore the universe' 
+};
+ 
+<mark>delete spaceship.mission;</mark>  // Removes the mission property
+</pre>
+
+<h3>Exercise</h3>
+<p>1.Reassign the color property of the spaceship object to have a value of 'glorious gold'<br>
+2.Without changing lines 1 - 6, <mark>add a numEngines property with a numeric value between 1 and 10 to the spaceship object</mark>.<br>
+3.Use the delete operator to remove the 'Secret Mission' property from the spaceship object.</p>
+<div id="pa"></div>
+<script type="text/javascript">
+	let spaceship2 = {
+		'Fuel Type' : 'Turbo Fuel',
+    homePlanet : 'Earth',
+  	color: 'silver',
+  	'Secret Mission' : 'Discover life outside of Earth.'
+	}
+
+	spaceship2.color = 'glorious gold';
+	spaceship2.numEngines = 6;
+	delete spaceship2.['Secret Mission'];
+	document.getElementById('pa').innerHTML = spaceship2;
+</script>
+
+<h3>Methods</h3>
+<p><i>When the data stored on an object is a Function</i> -  we call that a <i>method</i>.<br>
+<i>Actions - that can be PERFORMED on OBJECTS</i>.<br>
+A <i>property</i> is what an <mark>object has</mark>, while - a <i>method</i> is what a <mark>object does</mark>.
+</p>
+<p>For example <mark>console</mark> is a LGOBAL JavaScrip Object - and <mark>.log()</mark> is a <i>method on that OBJECT</i>. <br>
+<mark>Math</mark> <i>is also a GLOBAL JS Object</i> and <mark>.floor()</mark> is a <i>METHOD on it</i>.<br>
+We can include methods in our (object literals) - by creating ordinary, comma-separated key-value pairs.<br>
+<mark>The key serves as our method's name</mark> - while the value is an ANONYMOUS Function Expression.</p>
+<pre>
+	const alienShip = {
+  <mark>invade</mark>: <mark>function ()</mark> { 
+    console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
+  }
+};
+</pre>
+With the new method syntax introduced in ES6 we can omit the colon and the function keyword.
+<pre>
+const alienShip = {
+  <mark>invade ()</mark> { 
+    console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
+  }
+};
+
+<b>Object methods are invoked by appending the object’s name with the dot operator followed by the method name and parentheses:</b><br>
+
+<mark>alienShip.invade();</mark> // Prints 'Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.
+</pre>
+<h3>Exercise:</h3>
+<p>1. Create an alienShip object. It should contain a method .retreat() which will console.log() the retreatMessage.<br>
+2. Add another method to your object literal. This method, .takeOff(), should console.log() the string 'Spim... Borp... Glix... Blastoff!'.<br>
+3. Invoke your two methods: first .retreat() then .takeOff()</p>
+<pre>
+< div id="mo">< /div>
+< div id="mo1">< /div>
+< script type="text/javascript">
+	let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+	let alienShip = <mark>{</mark>
+		<mark>retreat()</mark> {
+			document.getElementById('mo').innerHTML = retreatMessage;
+		},
+		<mark>takeOff()</mark> {
+			document.getElementById('mo1').innerHTML = 'Spim... Borp... Glix... Blastoff!';
+		}		
+	<mark>};</mark>
+	alienShip.retreat();
+	alienShip.takeOff(); 
+< /script>
+</pre>
+
+<div id="mo"></div>
+<div id="mo1"></div>
+<script type="text/javascript">
+	let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+	let alienShip ={
+		retreat() {
+			document.getElementById('mo').innerHTML = retreatMessage;
+		},
+		takeOff() {
+			document.getElementById('mo1').innerHTML = 'Spim... Borp... Glix... Blastoff!';
+		}		
+	};
+	alienShip.retreat();
+	alienShip.takeOff(); 
+</script>
+
+<h3>Nested Objects</h3>
+<p>In application code, objects are often nested— an object might have another object as a property which in turn could have a property that’s an array of even more objects!</p>
+<pre>
+	In our <mark>spaceship object</mark>, we want a <mark>crew object</mark>.
+	This will contain all the crew members who do important work on the craft. 
+	Each of those <mark>crew</mark> members are <mark>objects themselves</mark>.
+	They have <mark>properties</mark> like <mark>name</mark>, and degree, and they each have <mark>unique methods</mark> based on their roles. 
+	<mark>We can also nest other objects</mark> in the spaceship such as a telescope or nest details about the spaceship’s computers inside a parent nanoelectronics object.
+</pre>
+
+<pre>
+	const spaceship = {
+     telescope: {
+        yearBuilt: 2018,
+        model: '91031-XLT',
+        focalLength: 2032 
+     },
+    crew: {
+        captain: { 
+            name: 'Sandra', 
+            degree: 'Computer Engineering', 
+            encourageTeam() { console.log('We got this!') } 
+         }
+    },
+    engine: {
+        model: 'Nimbus2000'
+     },
+     nanoelectronics: {
+         computer: {
+            terabytes: 100,
+            monitors: 'HD'
+         },
+        'back-up': {
+           battery: 'Lithium',
+           terabytes: 50
+         }
+    }
+}; 
+</pre>
+<span><b><i>We can CHAIN operators - to ACCESS nested PROPERTIES.</i></b></span><br>
+<span>spaceship.<mark>nanoelectronics['back-up'].battery</mark>;</span> // Returns 'Lithium' <span> or</span> <br>
+<span>spaceship.nanoelectronics.backUp.battery;</span>
+<pre>
+	First the computer evaluates spaceship.nanoelectronics, which results in an object containing the back-up and computer objects.
+	We accessed the back-up object by appending ['back-up'].
+	The back-up object has a battery property, accessed with .battery which returned the value stored there: 'Lithium'
+</pre>
+<h3>Exercise</h3>
+<p>1. Create a variable capFave and assign the captain‘s favorite food (the element in the 0th index of her 'favorite foods' array) to it. Make sure to use bracket and dot notation to get the value of the food through nested access (don’t just copy the value into the variable!)<br><br>
+2. Right now the passengers property has a value of null. Instead, assign as its value an array of objects. These objects should represent the spaceship‘s passengers as individual objects. Make at least one passenger object in the array that has at least one key-value pair on it.<br><br>
+3. Create a variable firstPassenger and assign the first passenger as its value (the element in the 0th index of the spaceship.passengers array you just made). Make sure to use bracket and dot notation to get the passenger object through nested access (don’t just copy the object into the variable!)</p>
+<pre>
+< div id="ss">< /div>
+< div id="ss1">< /div>
+< div id="ss2">< /div>
+< div id="ss3">< /div>
+< script type="text/javascript">
+	let spaceship3 = {
+	  passengers: null,
+	  telescope: {
+	    yearBuilt: 2018,
+	    model: "91031-XLT",
+	    focalLength: 2032 
+	  },
+	  crew: {
+	    captain: { 
+	      name: 'Sandra', 
+	      degree: 'Computer Engineering', 
+	      encourageTeam() { console.log('We got this!') },
+	     'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+	  },
+	  engine: {
+	    model: "Nimbus2000"
+	  },
+	  nanoelectronics: {
+	    computer: {
+	      terabytes: 100,
+	      monitors: "HD"
+	    },
+	    'back-up': {
+	      battery: "Lithium",
+	      terabytes: 50
+	    }
+	  }
+	}; 
+	let capFave = spaceship3.crew.captain['favorite foods']<mark>[0]</mark>;
+	<mark>spaceship3.passengers</mark> = [{name: 'Space Dog', id: 2398}];
+	let firstPassenger = <mark>spaceship3.passengers[0];</mark>
+
+	document.getElementById('ss1').innerHTML = capFave;
+	document.getElementById('ss2').innerHTML = spaceship3.passengers;
+	document.getElementById('ss3').innerHTML = firstPassenger;
+</pre>
+<div id="ss"></div>
+<div id="ss1"></div>
+<div id="ss2"></div>
+<div id="ss3"></div>
+<script type="text/javascript">
+	let spaceship3 = {
+	  passengers: null,
+	  telescope: {
+	    yearBuilt: 2018,
+	    model: "91031-XLT",
+	    focalLength: 2032 
+	  },
+	  crew: {
+	    captain: { 
+	      name: 'Sandra', 
+	      degree: 'Computer Engineering', 
+	      encourageTeam() { console.log('We got this!') },
+	     'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+	  },
+	  engine: {
+	    model: "Nimbus2000"
+	  },
+	  nanoelectronics: {
+	    computer: {
+	      terabytes: 100,
+	      monitors: "HD"
+	    },
+	    'back-up': {
+	      battery: "Lithium",
+	      terabytes: 50
+	    }
+	  }
+	}; 
+	let capFave = spaceship3.crew.captain['favorite foods'][0];
+	spaceship3.passengers = [{name: 'Space Dog', id: 2398}];
+	let firstPassenger = spaceship3.passengers[0];
+
+	document.getElementById('ss1').innerHTML = capFave;
+	document.getElementById('ss2').innerHTML = spaceship3.passengers;
+	document.getElementById('ss3').innerHTML = firstPassenger;
+</script>
+
+<h3>Pass By Reference</h3>
+<p>When we pass a variable (assigned to an object - into a function as an argument) - te computer INTERPRETS the (parameter name), as poiting to the space in memory hoding that object.</p>
+<pre>
+< div id='pbr'>< /div>
+< script type="text/javascript">
+	const spaceship4 = {
+		homePlanet: 'Earth',
+		color: 'sylver',
+	}
+	let paintIt = <mark>obj</mark> =>{
+		<mark>obj.color</mark> = <mark>'glorious gold'</mark>
+	};
+	<mark>paintIt(spaceship4);</mark>
+	document.getElementById('pbr').innerHTML = spaceship4.color;
+< /script>
+</pre>
+<div id='pbr'></div>
+<script type="text/javascript">
+	const spaceship4 = {
+		homePlanet: 'Earth',
+		color: 'sylver',
+	}
+	let paintIt = obj =>{
+		obj.color = 'glorious gold'
+	};
+	paintIt(spaceship4);
+	document.getElementById('pbr').innerHTML = spaceship4.color;
+</script>
+<p>Our function <mark>paintIt()</mark> permanently changed the color of our <mark>spaceship4 object</mark>.<br>
+However, <b>reassignment of the spaceship variable</b> <mark>wouldn’t work</mark> in the same way:</p>
+<pre>
+< div id='pbr1'>< /div>
+< script type="text/javascript">
+	let spaceship5 = {
+  	homePlanet : 'Earth',
+  	color : 'red'
+	};
+	let tryReassignment = obj => {
+		obj = {
+			<mark>identified: false,
+			'transport type' : 'flying'</mark>
+		}
+		console.log(obj); // Prints {'identified': false, 'transport type': 'flying'}
+	};
+
+	tryReassignment(spaceship5);// The attempt at reassignment does not work.
+	spaceship5; // Still returns {homePlanet : 'Earth', color : 'red'};
+
+	<mark>spaceship5 = {
+		identified: false,
+		'transport type': 'flying'
+	};</mark>
+	document.getElementById('pbr1').innerHTML = <mark>spaceship5;</mark>
+< /script>
+</pre>
+<div id='pbr1'></div>
+<script type="text/javascript">
+	let spaceship5 = {
+  	homePlanet : 'Earth',
+  	color : 'red'
+	};
+	let tryReassignment = obj => {
+		obj = {
+			identified: false,
+			'transport type' : 'flying'
+		}
+		console.log(obj); // Prints {'identified': false, 'transport type': 'flying'}
+	};
+
+	tryReassignment(spaceship5);// The attempt at reassignment does not work.
+	spaceship5; // Still returns {homePlanet : 'Earth', color : 'red'};
+
+	spaceship5 = {
+		identified: false,
+		'transport type': 'flying'
+	};
+	document.getElementById('pbr1').innerHTML = spaceship5;
+</script>
+
+<h3>Exercise</h3>
+<p>1. Write a function greenEnergy() that has an object as a parameter and sets that object’s 'Fuel Type' property to 'avocado oil'.<br>
+2. Write a function remotelyDisable() that has an object as a parameter and sets (or reassigns) that object’s disabled property to true.<br>
+3. Call your two functions with the spaceship object in the code editor, then console.log() the spaceship object to confirm those properties were changed/added.
+</p>
+<pre>
+< div id='pbr2'>< /div>
+< script type="text/javascript">
+	let spaceship6 = {
+		'Fule Type': 'Turbo Fuel',
+		homePlanet: 'Earth'
+	}
+
+	const greenEnergy = obj =>{
+		<mark>obj['Fuel Type']</mark> = 'Avocado Oil'
+	}
+
+	const remotelyDisable = (obj) => {
+		<mark>obj['disabled'] = true;</mark>
+		<mark>obj.disabled = true;</mark>
+	}
+
+	greenEnergy(spaceship6);
+	remotelyDisable(spaceship6);
+	document.getElementById('pbr2').innerHTML = spaceship6;
+	< /script>
+</pre>
+<div id='pbr2'></div>
+<script type="text/javascript">
+	let spaceship6 = {
+		'Fule Type': 'Turbo Fuel',
+		homePlanet: 'Earth'
+	}
+
+	const greenEnergy = obj =>{
+		obj['Fuel Type'] = 'Avocado Oil'
+	}
+
+	const remotelyDisable = (obj) => {
+		obj['disabled'] = true;
+	}
+
+	greenEnergy(spaceship6);
+	remotelyDisable(spaceship6);
+	document.getElementById('pbr2').innerHTML = spaceship6;
+	</script>
+
+<h3>Looping Through Objects</h3>
+<p>Loops are programming tools that repeat a block of code until a condition is met.<br>
+<i>...terate through arrays using their numerical indexing, but the key-value pairs in objects aren’t ordered!</i><br>
+<u>JavaScript has given us alternative solution for iterating through objects with the <mark>for...in</mark> syntax</u> .</p>
+<p><mark>for ...in</mark> will execute a given block of code - <b>FOR EACH PROPERTY IN AN object</b>.</p>
+<pre>
+< div id="lpt">< /div>
+< script type="text/javascript">
+	let spaceship7 = {
+  crew: {
+    captain: { 
+      name: 'Lily', 
+      degree: 'Computer Engineering', 
+      cheerTeam() { console.log('You got this!') } 
+    },
+    'chief officer': { 
+      name: 'Dan', 
+      degree: 'Aerospace Engineering', 
+      agree() { console.log('I agree, captain!') } 
+    },
+    medic: { 
+      name: 'Clementine', 
+      degree: 'Physics', 
+      announce() { console.log(`Jets on!`) } },
+    translator: {
+      name: 'Shauna', 
+      degree: 'Conservation Science', 
+      powerFuel() { console.log('The tank is full!') } 
+    }
+  }
+};
+
+//for...in
+<mark>let shipOutput = '';</mark> 
+for (let crewMember in spaceship7.crew) {
+  document.getElementById('lpt').innerHTML = shipOutput += `${crewMember}: ${spaceship7.crew[crewMember].name}` + "< br>";
+}
+< /script>
+</pre>
+<div id="lpt"></div>
+<script type="text/javascript">
+	let spaceship7 = {
+  crew: {
+    captain: { 
+      name: 'Lily', 
+      degree: 'Computer Engineering', 
+      cheerTeam() { console.log('You got this!') } 
+    },
+    'chief officer': { 
+      name: 'Dan', 
+      degree: 'Aerospace Engineering', 
+      agree() { console.log('I agree, captain!') } 
+    },
+    medic: { 
+      name: 'Clementine', 
+      degree: 'Physics', 
+      announce() { console.log(`Jets on!`) } },
+    translator: {
+      name: 'Shauna', 
+      degree: 'Conservation Science', 
+      powerFuel() { console.log('The tank is full!') } 
+    }
+  }
+};
+
+//for...in
+let shipOutput = ''; 
+for (let crewMember in spaceship7.crew) {
+  document.getElementById('lpt').innerHTML = shipOutput += `${crewMember}: ${spaceship7.crew[crewMember].name}` + "<br>";
+}
+</script>
+
+<p>Our <mark>for...in</mark> will iterate through each element of the <mark>spaceship.crew object</mark>.<br>
+In each iteration, the VARIABLE <mark>crewMember</mark> - <i>is set to one of the <mark>spaceship.crew's KEYS</mark></i> - enabling us to LOG a LIST of crew members <u>role</u> and <u>name</u>.</p>
+
+<h3>Exercise</h3>
+<p>1. Using for...in, iterate through the spaceship.crew object in the code editor and console.log() a list of crew roles and names in the following format: <span>'[crew member's role]: [crew member's name]'</span>, e.g.,<span>'chief officer: Dan'</span>. <br>
+2. Using for...in, iterate through the spaceship.crew object in the code editor and console.log() a list of crew names and degrees in the following format:<span>'[crew member's name]: [crew member's degree]'</span>, i.e.,<span>'Lily: Computer Engineering'</span>.</p>
+<div id="ex6"></div>
+<div id="ex7"></div>
+<script type="text/javascript">
+	let shipOutput1 = '';
+	let shipOutput2 = '';
+	let spaceship8 = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+for(let crewMember in spaceship8.crew){
+	document.getElementById('ex6').innerHTML = shipOutput1 += `${crewMember}: ${spaceship8.crew[crewMember].name}` + "<br>"
+}
+
+for(let crewMember in spaceship8.crew){
+	document.getElementById('ex7').innerHTML = shipOutput2 += `${spaceship8.crew[crewMember].name}: ${spaceship8.crew[crewMember].degree}`  + "<br>"
+}
+</script>
+
+<h3>Review</h3>
+<p>
+	<ul>
+		<li><mark>Objects</mark> store collections of <mark>key-value pairs</mark>.</li>
+		<li>Each key-value pair is a property—when a property is a function it is known as a method.</li>
+		<li><mark>An object literal</mark> is composed of <mark>comma-separated key-value pairs</mark> surrounded by curly braces.</li>
+		<li>You can <span>access, add</span> or <span>edit</span> <mark>a property</mark> within an object by using <span>dot notation</span> or <span>bracket notation</span>.</li>
+		<li>We <span>can add methods</span> to our object literals using <mark>key-value syntax with anonymous function expressions as values</mark> or by using the new ES6 method syntax.</li>
+		<li>We can navigate complex, nested objects by chaining operators.</li>
+		<li><span>Objects are mutable</span> — <mark>we can change their properties even when they’re declared with const</mark>.</li>
+		<li><mark>Objects are passed by reference</mark> — when we make changes to an object passed into a function, those changes are permanent</li>
+		<li>We can iterate through objects using the <mark>For...in</mark> syntax.</li>
+	</ul>
+</p>
+
+<h2>The "this" keyword</h2>
+<pre>
+	const goat = {
+		dietType: 'herbivore',
+		<mark>makesound()</mark>{
+			console.log('baaa');
+		}
+	};
+</pre>
+<p>In our goat object we have a <mark>.makeSound() method</mark>. <span>We can invoke</span> the <mark>.makeSound()</mark> method on goat.</p>
+<pre>
+	goat.makeSound(); // Prints baaa
+</pre>
+<p>Nice, we have a <mark>goat object</mark> that can print <mark>baa</mark> to the console.<br>
+What if we wanted to <i>add a new method</i> to our <mark>goat object</mark> called <mark>.diet()</mark> <span>that prints</span> the <mark>goat‘s dietType</mark>?</p>
+
+<pre>
+< script type="text/javascript">
+	const goat = {
+		dietType: 'herbivore',
+		makeSound() {
+			document.getElementById('dt').innerHTML = 'Baaa!'
+		},
+		diet(){
+			document.getElementById('dt1').innerHTML = dietType;
+		}
+	}
+
+	<mark>goat.diet();</mark> // Output will be "ReferenceError: dietType is not defined"
+< /script>
+</pre>
+<p>That’s strange, why is dietType not defined even though it’s a <mark>property of goat</mark>?<br>
+That’s because <span>inside the scope of the .diet() method</span>, <i>we don’t automatically have access to other properties</i> of the goat object.<br>
+Here’s where <mark>the this keyword comes</mark> to the rescue. If we change the .diet() method to use the this, the .diet() works! :
+</p>
+<pre>
+< div id="dt">< /div>
+< div id="dt1">< /div>
+< script type="text/javascript">
+	const goat = {
+		dietType: 'herbivore',
+		makeSound() {
+			document.getElementById('dt').innerHTML = 'Baaa!'
+		},
+		diet(){
+			document.getElementById('dt1').innerHTML = <mark>this.dietType</mark>;
+		}
+	}
+	<mark>goat.diet()</mark>;
+< /script>
+</pre>
+<div id="dt"></div>
+<div id="dt1"></div>
+<script type="text/javascript">
+	const goat = {
+		dietType: 'herbivore',
+		makeSound() {
+			document.getElementById('dt').innerHTML = 'Baaa!'
+		},
+		diet(){
+			document.getElementById('dt1').innerHTML = this.dietType;
+		}
+	}
+	goat.diet();
+</script>
+<p><i>The <mark>this keyword</mark> references <span>the calling object</span> which provides access to the <span>calling object’s properties</span>.</i></p>
+
+<h3>Exercise</h3>
+<p>1.Let’s create a new object to practice using this.<br>
+In main.js there is an object <mark>robot</mark>, add a property of <mark>model</mark> and assign to it a value of <mark>'1E78V2'</mark>.<br><br>
+<span>Add another property</span>, <mark>energyLevel</mark> and assign to it a value of <mark>100</mark>.<br>
+2. Inside the <mark>robot object</mark>, add a method named <mark>provideInfo</mark>. Inside the body of <mark>provideInfo()</mark>, return the following string by using interpolation:<br>
+"I am MODEL and my current energy level is ENERGYLEVEL."<br>  
+Replace ‘MODEL’ and ‘ENERGYLEVEL’ with the calling <mark>object’s model</mark> and <mark>energyLevel property</mark>.<br>
+Remember, <u>to get the access to the calling object’s properties</u> inside a method, you have to use the <span>this</span> keyword!
+</p>
+<pre>
+< div id="t">< /div>
+< script type="text/javascript">
+	const robot = {
+		model: '1E78V2',
+    energyLevel: 100,
+    <mark>provideInfo()</mark>{
+    	return `I am <mark>${this.model}</mark> and my current energy level is <mark>${this.energyLevel}</mark>.`
+    }
+	}
+	document.getElementById('t').innerHTML = <mark>robot.provideInfo()</mark>;
+< /script>
+</pre>
+<div id="t"></div>
+<script type="text/javascript">
+	const robot = {
+		model: '1E78V2',
+    energyLevel: 100,
+    provideInfo(){
+    	return `I am ${this.model} and my current energy level is ${this.energyLevel}.`
+    }
+	}
+	document.getElementById('t').innerHTML = robot.provideInfo();
+</script>
+
+<h3>Arrow Functions and "this"</h3>
+<h3>Arrow function expressions MDN Web Docs</h3>
+<p>An <b>arrow function expression</b> is a <u>compact alternative to a traditional function expression</u>, but <span>is limited</span> and can't be used in all situations.<br>
+There are differences between arrow functions and traditional functions, as well as some limitations:</p>
+
+<h4>Syntax</h4>
+<pre>
+	param => expression
+
+	<span>Multiple params require parentheses.</span>
+	(param1, param2) => expression
+
+	<span>Multiline statements require body braces and return:</span>
+	param => {
+		let a = 1;
+		return a + param;
+	}
+
+	<span>Multiple params require parentheses. Multiline statements require body braces and return:</span>
+	(param1, param2) => {
+		let a = 1;
+		return a + param1 + param2;
+	}
+</pre>
+
+<h4>Advanced syntax</h4>
+<pre>
+	<span>To return <u>an object literal expression</u> requires <b>parentheses around expression</b>:</span>
+	params => ({foo: "a"}) <i>// returning the object {foo: "a"}</i>
+
+	<span>Rest PARAMETERS</span> are SUPPORTED:
+	(a, b, ...r) => expression
+
+	<span>Defaul PARAMETERS</span> are supported:
+	(a=400, b=20, c) => expression
+
+	<span>Destructing within PARAMETERS</span> suported:
+	([a, b] = [10, 20]) => a + b; <i>//result is 30</i>
+	({a, b} = {a: 10, b: 20}) => a + b; <i>//result is 30</i>
+</pre>
+
+<h3>Description</h3>
+<h4>1.Arrow functions used as methods</h4>
+<p>As stated previously, arrow function expressions are best suited for <b><span>non-method functions</span></b>.</p>
+<pre>
+	<span>'use strict';</span>
+
+	var obj = { // does not create a new scope
+	  i: 10,
+	  b: <mark>() =></mark> console.log(this.i, this),
+	  c: function() {
+	    console.log(this.i, this);
+	  }
+	}
+
+	obj.b(); <i>// prints undefined, Window {...} (or the global object)</i>
+	obj.c(); <i>// prints 10, Object {...}</i>
+</pre>
+
+<h4>Arrow functions do not have their own <mark>this</mark></h4>
+<pre>
+	<span>'use strict';</span>
+	 
+	 var obj = {
+	  a: 10
+	};
+
+	Object.defineProperty(obj, 'b', {
+	  <mark>get: () =></mark> {
+	    console.log(this.a, typeof this.a, this); <i>// undefined 'undefined' Window {...} (or the global object)</i>
+	    return this.a + 10; <i>// represents global object 'Window', therefore 'this.a' returns 'undefined'</i>
+	  }
+	});
+</pre>
+
+<h4>call, apply and bind</h4>
+<p>The <span>call, apply</span> and <span>bind</span> methods are <b>NOT suitable as arrow functions</b> – as they were designed to allow methods to execute within different scopes. <br>
+<i>...because <u>arrow functions establish <mark>this</mark></u> based on the scope the arrow function is defined within.</i><br>
+For example <span>call, apply</span> and <span>bind</span> work as expected with traditional functions, <b>because we establish the scope for each of the methods</b>:</p>
+
+<h4>setTimeout(), EventTarget.addEventListener()</h4>
+<p>Perhaps <span>the greatest benefit of using Arrow functions is with methods like</span> <u>setTimeout()</u> and <u>EventTarget.addEventListener()</u> that usually require some kind of closure, call, apply or bind to ensure that the function is executed in the proper scope.</p>
+
+<p>Traditional function example</p>
+<pre>
+	var obj = {
+    count : 10,
+    doSomethingLater : function (){
+        setTimeout(function(){ <i>// the function executes on the window scope</i>
+            this.count++;
+            console.log(this.count);
+        }, 300);
+    }
+	}
+
+	obj.doSomethingLater(); <i><span>// console prints "NaN"</span>, because the property "count" is not in the window scope.</i>
+</pre>
+
+<p>Arrow function example</p>
+<pre>
+	var obj = {
+    count : 10,
+    doSomethingLater : function(){
+        // The traditional function binds "this" to the "obj" context.
+        setTimeout( () => {
+            <i>// Since the arrow function doesn't have its own binding and
+            // setTimeout (as a function call) doesn't create a binding
+            // itself, the "obj" context of the traditional function will
+            // be used within.</i>
+            this.count++;
+            console.log(this.count);
+        }, 300);
+    }
+	}
+
+	obj.doSomethingLater();
+</pre>
+
+<h3>No binding of <u>arguments</u></h3>
+<p>Arrow functions do not have their own <u>arguments object</u>.</p>
+
+<h3>Use of the <mark>new operator</mark></h3>
+<p>Arrow functions <span>cannot be used as constructors</span> and will throw an error <b>when used with new</b>.</p>
+<pre>
+	var Foo = () => {}
+	var Foo = new Foo(); <i>// TypeError: Foo is not a constructor</i>
+</pre>
+
+<h3>Returning object literals</h3>
+<p>Keep in mind that returning object literals using the concise body syntax <mark>params => {object:literal}</mark> <b>will not work as expected</b>.</p>
+<pre>
+	var func = () => { foo: 1 };
+	<i>// Calling func() returns undefined!</i>
+
+var func = () => { foo: function() {} };
+<i>// SyntaxError: function statement requires a name</i>
+</pre>
+
+<h3>Line breaks</h3>
+<p>An arrow function cannot contain a line break between its parameters and its arrow.</p>
+<pre>
+	var func = (a, b, c)
+  => 1;
+	<i>// SyntaxError: Unexpected token '=>'</i>
+</pre>
+
+<h3>Exercise</h3>
+<p>1. Currently the .checkEnergy() method is not producing the correct output because it is using arrow function syntax.<br>
+Refactor, or change, the method to use a function expression. You can write the function using either longhand or shorthand format.<br>
+After refactoring the method, notice that .checkEnergy() has access to the other internal properties of the robot object.</p>
+
+<div id="ex8"></div>
+<script type="text/javascript">
+	const robotB = {
+		energyLevel: 100,
+		checkEnergy: function () {
+			document.getElementById('ex8').innerHTML = `Energy is currently at ${this.energyLevel}%.`
+		}
+	}
+	robotB.checkEnergy();
+</script>
+
+<h2>Privacy "_"</h2>
+<pre>
+	Accessing and updating properties is fundamental in working with objects. 
+	However, <span>there are cases in which we don’t want other code simply accessing and updating an object’s properties</span>. 
+	When <span>discussing privacy in objects</span>, we define it as the idea that <span>only certain properties should be mutable or able to change in value</span>.
+
+	<span>Certain languages have privacy built-in for objects, but JavaScript does not have this feature.</span> 
+	Rather, JavaScript developers follow naming conventions that signal to other developers how to interact with a property. 
+	One common convention is to <span>place an underscore _ before the name of a property</span> - to mean that the property should not be altered.
+
+	const bankAccount = {
+  <mark>_amount: 1000</mark>
+}
+</pre>
+
+<p><b><span>In the example above, the <mark>_amount</mark> is not intended to be directly manipulated.</span></b></p>
+<p>Even so, it is still possible to reassign <mark>_amount</mark>:</p>
+
+<pre>
+	<mark>bankAccount._amount = 1000000;</mark>
+</pre>
+
+<h3>Exercise</h3>
+<pre>
+< div id="ex9">< v>
+< script type="text/javascript">
+	const robotC = {
+		<mark>_energyLevel: 100,</mark>
+		recharge(){
+			this.energyLevel += 30;
+			document.getElementById('ex9').innerHTML = `Recharged! Energy is currently at ${this._energyLevel}%.`
+		}
+	}
+
+	<span>robotC._energyLevel = high;</span>
+	robotC.recharge(); <i>// Energy is currently at 100%.</i>
+< /script>
+</pre>
+<div id="ex9"></div>
+<script type="text/javascript">
+	const robotC = {
+		_energyLevel: 100,
+		recharge(){
+			this.energyLevel += 30;
+			document.getElementById('ex9').innerHTML = `Recharged! Energy is currently at ${this._energyLevel}%.`
+		}
+	}
+
+	robotC._energyLevel = high;
+	robotC.recharge();
+</script>
+
+
+
+<h2>"this" keyword - from Thinkster</h2>
+<p>When talking about this in JavaScript, <span>we're talking about the context in which a JavaScript function is run</span>.<br>
+Context in general is <i>the circumstances that form the setting for an event, statement, or idea</i>.<br>
+<mark>this</mark> in JavaScript <span>is generally related to objects</span>, and <i>what object is invoking a function</i>.<br>
+<mark>this</mark> - will refer to an OBJECT (inside the Function) - that is being executed.
+</p>
+<p>Let's take the following example and look at how its context will change in two different scenarios:</p>
+<pre>
+	function sayHello() {
+  console.log(<mark>this</mark>);
+  console.log(<mark>`Hello, ${this.name}!`</mark>);
+	}
+
+	const person = {
+	  name: 'Preston',
+	  <mark>sayHello,</mark>
+	};
+
+	<span>sayHello(); // Window {}; Hello, !</span>
+	<span>person.sayHello(); // { name: "Preston", sayHello: function }; Hello, Preston!</span>
+
+	<span>The context of the sayHello function changes depending on how and where it's called. 
+	When <mark>it's invoked by itself</mark>, its context is the <mark>global Window object</mark>. 
+	When <mark>it's invoked from the person object</mark>, its context is the <mark>person object</mark> that invoked the function.</span>
+</pre>
+
+<h3>Global Context</h3>
+<p>If a function is called <span><b>and it's not called as a method on an object</b></span>, <i>the context of the function will default to the <b>global context</b></i>.<br>
+<i>The exception here is if you are using the</i> <mark>new keyword</mark>.</p>
+<p> In the following example the function is called, but not called on an object.<br> 
+So the context is the global Window, and if there's no name attribute on the Window, our message will print out as shown below:</p>
+<pre>
+	function sayHello() {
+  	console.log(this); <span>// Window</span>
+  	console.log(`Hello, ${this.name}!`); <span>// Hello, !</span>
+	}
+	sayHello();
+</pre>
+<p><i>If you're running in strict mode</i>, and the function isn't run in a situation where it has a specific context, then <mark>this will be undefined</mark> instead of <mark>defaulting to the Window</mark>.</p>
+<pre>
+	'use strict';
+
+	function sayHello() {
+	  console.log(this); <span>// undefined</span>
+	  console.log(`Hello, ${this.name}!`); <span>// Uncaught: TypeError: Cannot read property 'name' of undefined</span>
+	}
+	sayHello();
+</pre>
+
+<h3>Determining Context</h3>
+<h4>1. When the <span>function</span> is a <span>method on an object</span>.</h4>
+<pre>
+	const person = {
+	  name: 'Preston',
+	  <mark>sayHello: function ()</mark> {
+	    	console.log(<mark>this</mark>);
+	    	console.log(<mark>`Hello ${this.name}!`</mark>);
+	  },
+	};
+		person.sayHello(); <span>// { name: 'Preston', sayHello: function }; Hello Preston!</span>
+</pre>
+
+<p>In this example, <mark>the sayHello function</mark> is <span>a method on the person object</span>.<br>
+<i>When it's invoked</i>, <b>it's run in the context of the person object</b>.<br>
+<i><b>So, this refers to the object associated with calling the function</b></i>.</p>
+<h4>Example 2:</h4>
+<pre>
+	function sayHello() {
+  	console.log(<mark>this</mark>);
+  	console.log(<mark>`Hello ${this.name}!`</mark>);
+	}
+
+	const person = {
+	  name: 'Preston',
+	  <span>sayHello</span>,
+	  <mark>spouse:</mark> {
+	    name: 'Amanda',
+	    <span>sayHello</span>,
+	  },
+	};
+	person.sayHello(); // <i>{ name: 'Preston', sayHello: function, spouse: {} };</i> Hello Preston
+	person.spouse.sayHello(); // <i>{ name: 'Amanda', sayHello: function };</i> Hello Amanda
+</pre>
+<p>In this example, <span><b>one of the attributes on the person object</b> is an object itself</span>.<br> (spouse:)
+It also has <span>a sayHello function</span>.<br>
+When we call the <mark>person.spouse.sayHello() function</mark>, <u>this refers</u> to the <span>person.spouse object</span>, not the <span>person object</span>.</p>
+
+<h4><mark>this</mark> - in the <mark>for...Each</mark> method - on an Array:</h4>
+<pre>
+	const numbers = [1];
+	numbers.forEach(function () {
+  console.log(this); <i><span>// Window</span></i>
+	});
+
+<span>So make sure when you are trying to determine the context that you remember to look for objects to the left of the dot, and not arrays or strings or other variables.</span>
+</pre>
+
+<h4>2. Set the <span>context</span> for a function <span>that isn't</span> a method on an object:</h4>
+<pre>
+	function sayHello() {
+  	console.log(this);
+  	console.log(`Hello, ${this.name}!`);
+	}
+
+	const person = {
+	  name: 'Preston',
+	};
+</pre>
+<p>We still have our <span>sayHello function</span>, and <span>our person object</span>, <b>but</b> this time <b>the object doesn't have a sayHello method</b>.<br>
+<b>If we run the sayHello function <span>without it being on an object</span>, the context would default to the Window.</b><br>
+But all JavaScript functions have three methods that you can use to set the context.<br>
+Those three methods are <span>call, apply,</span> and <span>bind</span>.
+</p>
+
+<pre>
+	sayHello.<span>call(person)</span>; <i>// { name: 'Preston' }; Hello Preston!</i>
+	// or
+	sayHello.<span>apply(person)</span>; <i>// { name: 'Preston' }; Hello Preston!</i>
+	// or
+	<span>const newFn = sayHello.bind(person)</span>;
+	<span>newFn()</span>; <i>// { name: 'Preston' }; Hello Preston!</i>
+</pre>
+
+<h4>3. Context When Using <mark>new</mark></h4>
+<h4>There is <u>one situation</u> when a function is <mark>called outside the <u>context of an object</u></mark> and <mark>has its <u>own context</u></mark></h4>
+<p>And that context is  - <mark>when you use <span>new</span> keyword</mark>.</p>
+<pre>
+	function Person(){
+		<mark>this.name = 'Preston';</mark>
+	}
+
+	<span>calling this Person() function would result in this referring to the global Window object and <u><mark>in strict mode</mark> we'd get an error for trying to access an attribute of undefined</u>. 
+	But, <u>if we call it</u> <b>using the new keyword</b>, <u>this is not undefined</u> and <u>it doesn't refer to the global Window</u>:</span>
+
+	const me = <span>new</span> Person();
+	console.log(me); <i>// {name: 'Preston'}</i>
+</pre>
+
+
+<h3>Arrow Functions</h3>
+<p><span>...their context is different than a normal function's context</span>.</p>
+<pre>
+	const person = {
+		name: 'Preston',
+		<span>sayHello:</span> <mark>() =></mark> {
+			console.log(this); <i>// Window</i>
+			console.log(<mark>`Hello ${this.name}!`</mark>); <i>//Hello !</i>
+		},
+	};
+
+	person.sayHello(); <i>{0: Window, window: Window, self: Window, document: document, name: '', location: Location,...}</i>
+</pre>
+
+<p><span>The context in arrow functions <b>inherits</b> the context of the <b>enclosing context</b>.</span><br>
+If <span>there is no enclosing context</span>, <i>the context defaults to the global context</i> (again, unless we're in strict mode).<br>
+<b>In this example, the sayHello function being an arrow function means that it inherits the enclosing context.</b><br>
+<i><b>The object doesn't have context itself</b>, so the arrow function can't inherit from there (which means) it has to inherit from the <b>global context</b>.</i>
+</p>
+<pre>
+	const <span>spouse</span> = {
+	  name: 'Amanda',
+	  pets: ['Tiger', 'Midnight'],
+	  printPets: <span>function printPets()</span> {
+	    console.log(
+	      <mark>this.pets.reduce((dog) =></mark> {
+	        return `${this.name} has ${this.pets.length} ${
+	          this.pets.length === 1 ? 'pet' : 'pets'
+	        }: ${this.pets.join(', ')}.`;
+	      }, ''),
+	    );
+	  },
+	};
+	spouse.printPets(); <i>// Amanda has 2 pets: Tiger, Midnight.</i>
+
+	const <span>person</span> = {
+	  name: 'Preston',
+	  pets: ['Duke', 'Max'],
+	  printPets: <span>function printPets()</span> {
+	    console.log(
+	      <mark>this.pets.reduce(function (dog)</mark> {
+	        return `${
+	          this.name
+	        } has ${this.pets.length} ${this.pets.length === 1 ? 'pet' : 'pets'}: ${this.pets.join(', ')}.`;
+	      }, ''),
+	    );
+	  },
+	};
+	person.printPets(); <i>// cannot read property 'length' of undefined</i>
+</pre>
+<p>Each of these two objects has a printPets function. The purpose is to print out the <b>number of the pets</b> and <b>their names</b>. <br>
+The <span>printPets function</span> is a <mark>named function</mark>, so <i>its context is <b>set to the object that's calling the function</b>, <mark>spouse</mark> and <mark>person</mark> respectively.</i><br>
+Inside the <mark>printPets() function</mark> - we use the <mark>reduce method</mark> (on the "pets" array) - to create the string that we'll print out.<br>
+Inside (the <mark>reduce method</mark>) - we ACCES the <span>length property</span> pf the array - and use the <span>join method</span>.
+</p>
+
+<p>A.The <mark>spouse.printPets() method</mark> works perfectly!<br>
+The <mark>person.printPets() function call</mark> causes an error. <br><br>
+Now why is that? <b>The answer is in <u>how we are using the reduce method</u></b>.<br>
+On the spouse object <span><b>we're using an arrow function (=>) for the reduce method</b></span>.<br>
+<b>This means that <u>the reduce method</u> doesn't have its own context and <u>by default it inherits the enclosing context.</u></b>
+</p>
+
+<p>B.In contrast, the <mark>reduce method</mark> on the <mark>person object</mark> uses an <mark>anonymous function</mark> and <mark>not</mark> an <mark>arrow function</mark>.<br>
+That gives the <mark>reduce method</mark> its own context.<br>
+Because <span>it's not called invoked by an object</span>, <b>its context is the global context</b> which doesn't have a pets attribute on it, and thus we get the error.</p>
+
+<h2>Getters</h2>
+<p><i>Getters</i> - are <b>methods</b> (that <b>get and return</b> the INTERNAL PROPERTIES of an Object.<br>
+We use <i>getters</i> to <span><b>acces</b> properties in an object</span>.<br>
+We use <i>setters</i> to <span><b>mutate or change</b> them</span>.</p>
+</p>
+<pre>
+	const person = {
+  _firstName: 'John',
+  _lastName: 'Doe',
+  <mark>get fullName()</mark> {
+    if (this._firstName && this._lastName){
+      return `${this._firstName} ${this._lastName}`;
+    } else {
+      return 'Missing a first name or a last name.';
+    }
+  }
+}
+ 
+// To call the getter method: 
+person.fullName; <i>// 'John Doe'</i>
+
+<span>We use the get keyword <b>followed by a function</b>.
+In general, getter methods <b>do not need to be called with a set of parentheses</b>.
+</span>
+Syntactically, it looks like we’re accessing a property.
+</pre>
+
+<pre>
+	const robot = {
+  _model: '1E78V2',
+  _energyLevel: 100,
+  <mark>get</mark> energyLevel(){
+    if(typeof this._energyLevel === 'number'){
+      return 'My current energy level is'  + ' ' +this._energyLevel;         
+    }else{
+      return 'System malfunction: cannot retrieve energy level';
+    }
+  }
+};
+console.log(robot.energyLevel); <i>My current energy level is 100.</i>
+</pre>
+
+<h2>Setters</h2>
+<p><i>Setter methods()</i> - <b>reassign values of existing properties</b> - within an object.</p>
+<pre>
+< div id="se">< /div>
+< script type="text/javascript">
+	const personA = {
+		_age: 37,
+		<mark>set age(newAge)</mark>{
+			if(typeof newAge === 'number'){
+				this._age = newAge;
+			}else{
+				document.getElementBy.Id('se').innerHTML = 'You must assign a number to age';
+			}
+		}
+	}
+	<mark>person._age = 12;</mark>
+< /script>
+
+We can perform a check for what value is being assigned to this._age.
+When we use the setter method, only values that are numbers will reassign this._age
+There are different outputs depending on what values are used to reassign this._age.
+
+Then to use the setter method:
+
+<mark>person.age = 40;</mark>
+console.log(person._age); // Logs: 40
+person.age = '40'; // Logs: You must assign a number to age
+
+<span>Setter methods like age <b>do not need to be called with a set of parentheses</b>.</span>
+</pre>
+
+<div id="se"></div>
+<script type="text/javascript">
+	const personA = {
+		_age: 37,
+		set age(newAge){
+			if(typeof newAge === 'number'){
+				this._age = newAge;
+			}else{
+				document.getElementBy.Id('se').innerHTML = 'You must assign a number to age';
+			}
+		}
+	}
+
+	personA.age = 40;
+	document.write(personA._age);
+</script>
+
+<h3>Exercise</h3>
+<p>1. Currently, in robot there is a getter method for numOfSensors but no setter method! What if we need to add or remove some sensors? Let’s fix that problem.<br>
+1.1 Add a setter method named numOfSensors using the set keyword. Provide a parameter of num.
+</p>
+<div id="ex10"></div>
+<div id="ex11"></div>
+<script type="text/javascript">
+	const robotD = {
+		_model: '1E73',
+		_enegryLevel: 100,
+		_numOfSensors: 15,
+		get numOfSensors(){
+			if(typeof this._numOfSensors === 'number'){
+				return this._numOfSensors;
+			}else{
+				return 'Sensors are currently down.'
+			}
+		},
+		set numOfSensors(num){
+			if(typeof num === 'number'){
+				this._numOfSensors = num;
+			}else{
+				document.getElementById('ex10').innerHTML = 'Pass in a number that is greater than or equal to 0'
+			}
+		}
+
+	};
+	robotD.numOfSensors = 100;
+	document.getElementById('ex11').innerHTML = robotD.numOfSensors;
+</script>
+
+<h2>Factory Functions</h2>
+<p><b><span>Factory Functions - RETURN an OBJECT.<br>
+Constructor Functions - INITIALIZE an OBJECT. <i>(this.) /  =function() / =new Circle(1)</i>	
+</span></b></p>
+<pre>
+	function createCircle(radius) {
+		return {
+			radius,
+			draw() {
+				console.log('draw')
+			}
+		}
+	};
+	<mark>const myCIrcle = createCircle(1);</mark>
+</pre>
+
+<h4>Constructor Function</h4>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+		this.draw(){
+			console.log('draw');
+		}
+	}
+
+	<mark>const circle = new Circle(1)</mark>
+</pre>
+<p><span>When we use the "new operator" 3 THINGS HAPPEN:</span><br>
+	<ul>
+		<li>1. "new" creates an EMPTY Object</li>
+		<li>2. it wil set "this" TOP POINT to that new created object</li>
+		<li>3. it will return that OBJECT from (this function...(I'st Function))</li>
+	</ul>
+</p>
+
+<h3>The Differences between <span>Factory</span> and <span>Constructor Functions</span></h3>
+<pre>
+	const myCircle = createCircle(1) -> simply CALL a function - and in this Function <mark>will return a NEW Object</mark>.
+
+	Constructor Func() - <span>use the "new" operator</span> and INSTEAD OF returning an OBJECT we use the <span>"this" keyword</span>.
+	2. <span>CAPITALIZE first letter</span> function <mark>Circle</mark>. IN (Factory Function) we use - <span>camelNotation</span>.
+</pre>
+
+<h3>there are times where we want to create many instances of an object quickly. </h3>
+<h3>multiple copies of an item</h3>
+<h3>A factory function is a function that returns an object and can be reused to make multiple object instances</h3>
+<h4>Factory functions can also have parameters allowing us to customize the object that gets returned.</h4>
+<pre>
+< div id='ff'>< /div>
+< div id='ff1'>< /div>
+< script type="text/javascript">
+	const monsterFactory = <mark>(name, age, energySource, catchPhase) =></mark> {
+		return {
+			name: name,
+			age: age,
+			energySource: energySource,
+			scare(){
+				document.getElementById('ff'),innerHTML = <mark>catchPhase;</mark>
+			}
+		}
+	};
+
+	<mark>const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');</mark>
+	<mark>ghost.scare();</mark> <i>// BOO!</i>
+</script>
+</pre>
+<div id='ff'></div>
+
+<script type="text/javascript">
+	const monsterFactory = (name, age, energySource, catchPhase) => {
+		return {
+			name: name,
+			age: age,
+			energySource: energySource,
+			scare(){
+				document.getElementById('ff'),innerHTML = catchPhase
+			}
+		}
+	};
+
+	const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
+		ghost.scare();
+</script>
+<pre>
+	In the <makr>monsterFactory function<? above, it <span>has four parameters</span> and returns an object that has the properties: name, age, energySource, and scare().
+	<mark>To make an object that represents a specific monster like a ghost</mark>, we can call monsterFactory with the <mark>necessary arguments</mark> and assign the <mark>return value to a variable</mark>:
+
+	const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
+	ghost.scare(); // 'BOO!'
+
+	Now we have a ghost object as a result of calling monsterFactory() with the needed arguments. 
+	With monsterFactory in place, we don’t have to create an object literal every time we need a new monster. Instead, we can invoke the monsterFactory function with the necessary arguments to take over the world make a monster for us!
+</pre>
+
+<h3>Exercise:</h3>
+<p>1.Instead of making individual robots like we’ve been doing, let’s make a factory function to make robots as we please!<br>
+Create a factory function named robotFactory that has two parameters model and mobile.<br>
+Make the function return an object. In the object, add a key of model with the value of the model parameter.<br>Add another property that has a key of mobile with a value of the mobile parameter.<br>
+Then add a method named beep without a parameter that will log 'Beep Boop' to the console.<br> <br>
+
+2.Use your factory function by declaring a const variable named tinCan.<br>
+Assign to tinCan the value of calling robotFactory with the first argument of 'P-500' and the second argument of true.<br> <br>
+
+3.Let’s now check what tinCan can do! Call .beep() on tinCan.
+</p>
+
+<pre>
+< div id='ff1'>< /div>
+ < script type="text/javascript">
+	const robotFactory = (model, mobile) => {
+		return {
+			model:model,
+			mobile:mobile,
+			beep(){
+				document.getElementById('ff1').innerHTML = 'Beep Boop'
+			}
+		}
+	};
+	const tinCan = robotFactory('P-500', true);
+	<mark>tinCan.beep();</mark>
+< /script>
+</pre>
+
+<div id='ff1'></div>
+<script type="text/javascript">
+	const robotFactory = (model, mobile) => {
+		return {
+			model:model,
+			mobile:mobile,
+			beep(){
+				document.getElementById('ff1').innerHTML = 'Beep Boop'
+			}
+		}
+	};
+	const tinCan = robotFactory('P-500', true);
+	tinCan.beep();
+</script>
+
+<h2>Property Value Shorthand</h2>
+<pre>
+	const monsterFactory = (name, age) => {
+  return { 
+    <mark>name: name,</mark>
+    <mark>age: age</mark>
+  }
+};
+</pre>
+<h3>Vs.</h3>
+<pre>
+	const monsterFactory = (name, age) => {
+  return { 
+    <mark>name,</mark>
+    <mark>age</mark>
+  }
+};
+</pre>
+
+<h2>DestructURED Assignment     const { ceva }</h2>
+<p>We often want to extract key-value pairs from objects and save them as variables. Take for example the following object:</p>
+<pre>
+	const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania',
+  preferences: {
+    day: 'stay inside',
+    night: 'satisfy appetite'
+  }
+};
+</pre>
+
+<p>If we wanted to extract the <mark>residence property as a variable</mark>, we could use the following code:</p>
+<pre>
+	cont residence = vampire.residence;
+	console.log(residence); <i>// 'Transylvania'</i>
+</pre>
+<p>Let'a tkae the ADVANTAGE of a <mark>DESTRUCED ASSIGNMENT</mark> - <span>to save ourself some KEYSTROKES.</span><br>
+In destructed assignment - <mark>we create a variable WITH the NAME of THE OBJECT's KEY that is wrapped in '{}' (curly braces)<i>const { residence }</i></mark></p>
+
+<pre>
+	const { <mark>residence</mark> } = vampire;
+	console.log(<mark>residence</mark>) <i>// 'Transylvania'</i>
+</pre>
+
+<h4>We can even use <mark>destructed assignment</mark> - to  <span>grab NESTED properties</span> of an OBJECT:</h4>
+<pre>
+	const { <mark>day</mark> } = <mark>vampire.preferences;</mark>
+	console.log(<mark>day</mark>)
+</pre>
+
+<h3>Exercise:</h3>
+<p>1. Use destructured assignment to create a const variable named functionality that extracts the functionality property of robot.<br> <br>
+2. Since functionality is referencing robot.functionality we can call the methods available to robot.functionality simply through functionality.<br>
+Take advantage of this shortcut and call the .beep() method on functionality.
+</p>
+<pre>
+< div id='ds'></ div>
+< div id='ds1'>< /div>
+< script type="text/javascript">
+	const robotE = {
+		model: '1EqV2',
+		energyLevel: 100,
+		functionality: {
+			beep() {
+				document.getElementById('ds').innerHTML = 'Beep Boop'
+			},
+			fireLaser() {
+				document.getElementById('ds1').innerHTML = 'Pew Pew'
+
+			},
+		}
+	};
+
+	const <mark>{ functionality }</mark> = robotE;
+	functionality.beep();
+< /script>
+</pre>
+
+<div id='ds'></div>
+<div id='ds1'></div>
+<script type="text/javascript">
+	const robotE = {
+		model: '1EqV2',
+		energyLevel: 100,
+		functionality: {
+			beep() {
+				document.getElementById('ds').innerHTML = 'Beep Boop'
+			},
+			fireLaser() {
+				document.getElementById('ds1').innerHTML = 'Pew Pew'
+
+			},
+		}
+	};
+
+	const { functionality } = robotE;
+	functionality.beep();
+</script>
+
+
 </body>
-</html>
+</html>  

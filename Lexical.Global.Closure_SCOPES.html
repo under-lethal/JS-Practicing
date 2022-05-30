@@ -53,33 +53,6 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 	</pre>
 
 	<h5>Let's create a CHILD Function  inside of "parentFunction()"</h5>
-	<p id="gs2"></p>
-	<p id="gs3"></p>
-	<p id="gs4"></p>
-	<p id="gs5"></p>
-	<script type="text/javascript">
-		let x = 1;
-		let y = 5;
-		let output2 = '';
-		let output3 = '';
-		let output4 = '';
-		let output5 = '';
-
-		const parentFunction2 = () => {
-			//local scope
-			let myValue2 = 2;
-			document.getElementById('gs2').innerHTML  = output2 += x;
-			document.getElementById('gs3').innerHTML  = output3 += myValue2;
-
-			
-			const childFunction() {
-				document.getElementById('gs4').innerHTML = output4 += y;
-				document.getElementById('gs5').innerHTML = output5 += myValue2;
-			}
-			childFunction();
-		}
-		parentFunction2();
-	</script>
 <pre>
 	< p id="gs2">< /p>
 	< p id="gs3">< /p>
@@ -100,7 +73,7 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 			document.getElementById('gs3').innerHTML  = output3 += myValue2;
 
 			
-			<mark>const childFunction() {
+			<mark>const childFunction = () => {
 				document.getElementById('gs4').innerHTML = output4 += y;
 				document.getElementById('gs5').innerHTML = output5 += myValue2;
 			}</mark>
@@ -119,6 +92,34 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 	It DOES NOT DIRECTLY give an EXAMPLE of CLOSURE - it's just Lexical Scope.
 	Lexical Scope - is an important part of CLOSURE.
 </pre>
+
+	<p id="gs2"></p>
+	<p id="gs3"></p>
+	<p id="gs4"></p>
+	<p id="gs5"></p>
+	<script type="text/javascript">
+		let x = 1;
+		let y = 5;
+		let output2 = '';
+		let output3 = '';
+		let output4 = '';
+		let output5 = '';
+
+		const parentFunction2 = () => {
+			//local scope
+			let myValue2 = 2;
+			document.getElementById('gs2').innerHTML  = output2 += x;
+			document.getElementById('gs3').innerHTML  = output3 += myValue2;
+
+			
+			const childFunction = () => {
+				document.getElementById('gs4').innerHTML = output4 += y;
+				document.getElementById('gs5').innerHTML = output5 += myValue2;
+			}
+			childFunction();
+		}
+		parentFunction2();
+	</script>
 
 <h4>Let's display CLOSURE.</h4>
 <h5>A CLOSURE - is a Function having acces to the PARENT Scope - even after the PARENT Function() has closed.</h5>
