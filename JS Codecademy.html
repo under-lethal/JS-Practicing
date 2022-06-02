@@ -5719,6 +5719,34 @@ person.age = '40'; // Logs: You must assign a number to age
 <p>1. Currently, in robot there is a getter method for numOfSensors but no setter method! What if we need to add or remove some sensors? Let’s fix that problem.<br>
 1.1 Add a setter method named numOfSensors using the set keyword. Provide a parameter of num.
 </p>
+<pre>
+< div id="ex10">< /div>
+< div id="ex11">< /div>
+< script type="text/javascript">
+	const robotD = {
+		_model: '1E73',
+		_enegryLevel: 100,
+		_numOfSensors: 15,
+		get numOfSensors(){
+			if(typeof this._numOfSensors === 'number'){
+				return this._numOfSensors;
+			}else{
+				return 'Sensors are currently down.'
+			}
+		},
+		set numOfSensors(num){
+			if(typeof num === 'number'){
+				this._numOfSensors = num;
+			}else{
+				document.getElementById('ex10').innerHTML = 'Pass in a number that is greater than or equal to 0'
+			}
+		}
+
+	};
+	robotD.numOfSensors = 100;
+	document.getElementById('ex11').innerHTML = robotD.numOfSensors;
+< /script>
+</pre>
 <div id="ex10"></div>
 <div id="ex11"></div>
 <script type="text/javascript">
@@ -5830,7 +5858,7 @@ Constructor Functions - INITIALIZE an OBJECT. <i>(this.) /  =function() / =new C
 		ghost.scare();
 </script>
 <pre>
-	In the <makr>monsterFactory function<? above, it <span>has four parameters</span> and returns an object that has the properties: name, age, energySource, and scare().
+	In the <mark>monsterFactory function</mark> above, it <span>has four parameters</span> and returns an object that has the properties: name, age, energySource, and scare().
 	<mark>To make an object that represents a specific monster like a ghost</mark>, we can call monsterFactory with the <mark>necessary arguments</mark> and assign the <mark>return value to a variable</mark>:
 
 	const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
@@ -5903,7 +5931,7 @@ Assign to tinCan the value of calling robotFactory with the first argument of 'P
 };
 </pre>
 
-<h2>DestructURED Assignment     const { ceva }</h2>
+<h2>DestructURED Assignment  const { ceva }</h2>
 <p>We often want to extract key-value pairs from objects and save them as variables. Take for example the following object:</p>
 <pre>
 	const vampire = {
@@ -5984,6 +6012,81 @@ Take advantage of this shortcut and call the .beep() method on functionality.
 	functionality.beep();
 </script>
 
+<h2>Built-In Object Methods</h2>
+<h3>Object.keys(obj), Object.value(obj), Object.entries(obj) - Youtube</h3>
+<p>These 3 <u>methods()</u> - let you turn an object into <u>iterable object</u> (array).<br>
+Create an <u>iterable object</u> from the <u>Object</u>.</p>
+<p>For iterable Object - we can use a <span>for in</span> or a <span>for of</span> as well, or <span>for each()</span>.<br>
+So - these (3 methods - O.keys, O.value, O.entries) - <span>will create an object</span> - and the  we can use an (for of loop) - or other methods (for each(), filter(), map(), reduce(). <br>
+So, how we use them? -> let keys, let vals, let entries</p>
+<pre>
+< div id='k1'>< /div>
+< div id='v'>< /div>
+< div id='e'>< /div>
+< div id='e1'>< /div>
+< script type="text/javascript">
+	let westeros = {
+    cersei: 'Lannister',
+    arya: 'Stark',
+    jon: 'Snow',
+    brienne: 'Tarth',
+    daenerys: 'Targaryen',
+    theon: 'Greyjoy',
+    jorah: 'Mormont',
+    margaery: 'Tyrell',
+    sandor: 'Clegane',
+    samwell: 'Tarly',
+    ramsay: 'Bolton'
+}
+//for( let prop of arr)
+// for each() - calls a Function for "each one of the elements inside the array"
+
+let keys = Object.keys(westeros); // it gives me an iterable object/array - that CONTAINS Aall of the "keys"
+document.getElementById('k1').innerHTML = 'Keys', keys;
+
+let vals = Object.value(westeros);
+document.getElementById('v').innerHTML = 'Values', vals;
+
+let entries = Object.entries(westeros);
+document.getElementById('e').innerHTML = 'Entries', entries; 
+
+//If we want to GET "snow" from the array. [0,1,2 - array "row" index "2"] then I need part [1].
+document.getElementById('e1').innerHTML = entries[2][1]; 
+< /script>
+</pre>
+<div id='k1'></div>
+<div id='v'></div>
+<div id='e'></div>
+<div id='e1'></div>
+<script type="text/javascript">
+	let westeros = {
+    cersei: 'Lannister',
+    arya: 'Stark',
+    jon: 'Snow',
+    brienne: 'Tarth',
+    daenerys: 'Targaryen',
+    theon: 'Greyjoy',
+    jorah: 'Mormont',
+    margaery: 'Tyrell',
+    sandor: 'Clegane',
+    samwell: 'Tarly',
+    ramsay: 'Bolton'
+}
+//for( let prop of arr)
+// for each() - calls a Function for "each one of the elements inside the array"
+
+let keys = Object.keys(westeros); // it gives me an iterable object/array - that CONTAINS Aall of the "keys"
+document.getElementById('k1').innerHTML = 'Keys', keys;
+
+let vals = Object.value(westeros);
+document.getElementById('v').innerHTML = 'Values', vals;
+
+let entries = Object.entries(westeros);
+document.getElementById('e').innerHTML = 'Entries', entries; 
+
+//If we want to GET "snow" from the array. [0,1,2 - array "row" index "2"] then I need part [1].
+document.getElementById('e1').innerHTML = entries[2][1]; 
+</script>
 
 </body>
 </html>  

@@ -182,8 +182,8 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	[0]
 	]; 
 	 for(var i = 0; i < numberGrid2.length; i++){
-	 	for(var k = 0; k < numberGrid2[i].length; k++){
-	 		document.getElementById('2D2').innerHTML = dimensional2 += numberGrid2[i][k];
+	 	for(var k = 0; k < <mark>numberGrid2[i].length</mark>; k++){
+	 		document.getElementById('2D2').innerHTML = dimensional2 += <mark>numberGrid2[i][k]</mark>;
 	 	}
 	 	document.getElementById('2D3').innerHTML = dimensional2 += "< br>";
 	 }
@@ -206,7 +206,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 	 }
 </script>
 <pre>
-	<b>k < numberGrid2[i].length</b> - here we're reffering to a SPECIFIC ROW inside of a number grid, and we getting the length of that array.
+	<b>k < numberGrid2[i].length</b> - <mark>here we're reffering to a SPECIFIC ROW inside of a number grid, and we getting the length of that array.</mark>
 	<b>numberGrid2[i] [k]</b> - it gives us VEVERY SINGLE ELEMENT inside of this array.[[],[],[],[]]. Printing out every individual elements
 	<b>numberGrid2[i] [k]</b> - For each row (inside of this array[[],[],[]]) - we want to loop throught all the elements inside of it.
 	So each row is itself an array. With numberGrid[i] - I accessing THE SPECIFIC ROW [4,5,6]... in 2Dimensional array - and I get the length of it.
@@ -214,9 +214,31 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 
 
 <h3>Example 3</h3>
+<pre>
+< p id="ex">< /p>
+< p id="ex1">< /p>
+
+< script type="text/javascript">
+	let newFunction = '';
+	<mark>function printArray(arr)</mark>{
+		for(var i = 0; i < arr.length; i++){
+			for(var j = 0; j < arr<mark>[0].length</mark>; j++){
+				document.getElementById('ex').innerHTML = newFunction += <mark>arr[i][j]</mark>;
+			}
+				document.getElementById('ex1').innerHTML = newFunction += "<br>"
+		}
+	}
+	var arr = [
+		[1,2],
+		[3,4],
+		[5,6]
+	];
+	printArray(arr); 
+< /script>
+</pre>
 <p id="ex"></p>
 <p id="ex1"></p>
-<p id="ex2"></p>
+
 <script type="text/javascript">
 	let newFunction = '';
 	function printArray(arr){
@@ -832,5 +854,85 @@ myAgeInDogYears();
 	// 0!=0 - false;
 	document.getElementById('nd').innerHTML = 'Sum of digits is ' + sum;
 </script>
+
+<h2>9. Write a JS code to find the largest number in an array</h2>
+<pre>
+< div id='ln'>< /div>
+< script type="text/javascript">
+	var arr4 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	document.getElementById('ln').innerHTML = Math.max(...arr4);
+< /script>
+</pre>
+
+<div id='ln'></div>
+<script type="text/javascript">
+	var arr4 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	document.getElementById('ln').innerHTML = Math.max(...arr4);
+</script>
+
+<pre>
+< div id="ln2">< /div>
+< script type="text/javascript">
+	var arr7 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function maximum(){
+		let max = arr7[0];
+		for (let i = 0; i < arr7.length; i++){
+			if(arr7[i]>max){
+				max =arr7[i];
+			}
+		}
+	document.getElementById('ln2').innerHTML = `The largest number is ${max}.`
+	}
+	maximum();
+< /script>
+
+<mark>let max = arr7[0];</mark> - everytime the loop runs make "let max = to" <mark>the FIRST NUMBER of each element in the array</mark>.
+</pre>
+
+<div id="ln2"></div>
+<script type="text/javascript">
+	var arr7 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function maximum(){
+		let max = arr7[0];
+		for (let i = 0; i < arr7.length; i++){
+			if(arr7[i]>max){
+				max = arr7[i];
+			}
+		}
+	document.getElementById('ln2').innerHTML = `The largest number is ${max}.`
+	}
+	maximum();
+</script>
+
+
+
+<h2>9.1 Find the average number in a given array</h2>
+<pre>
+< div id='avg'>< /div>
+< script type="text/javascript">
+	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function avg(){
+		let sum = 0;
+		for (let i = 0; i< arr6.length; i++){
+			sum = sum + arr6[i];
+		}
+		document.write (`The average number is ${sum/arr6.length}`)
+	}
+	avg();
+< /pre>
+<div id='avg'></div>
+<script type="text/javascript">
+	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function avg(){
+		let sum = 0;
+		for (let i = 0; i< arr6.length; i++){
+			sum = sum + arr6[i];
+		}
+		document.getElementById('avg').innerHTML = `The average number is ${sum/arr6.length}.`
+	}
+	avg();
+</script>
+
+
 </body>
 </html>
