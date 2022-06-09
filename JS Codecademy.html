@@ -6088,5 +6088,176 @@ document.getElementById('e').innerHTML = 'Entries', entries;
 document.getElementById('e1').innerHTML = entries[2][1]; 
 </script>
 
+<h3>Meal Maker</h3>
+<p>1.Create an empty "menu" - object.<br>
+2.Add a <mark>_courses</mark> property to your <mark>menu</mark> object and set it's value to an empty object. This property will ultimately contain a <u>mapping</u> between - each course - and the dishes available to order in that "course".<br>
+3.Create 3 properties inside the <mark>_courses object</mark> callled (appetizers, main and deserts).<br>
+<u>Each one of these should initialize</u> to an EMPTY ARRAY.<br>
+4.Create "getter" and "setter" methods for the <mark>appetizers, mains</mark> and <mark>desserts</mark> properties.<br>
+5.Inside your object - create an empty <u>getter method</u> for the <mark>_courses</mark> property.<br>
+6.Inside the <mark>courses</mark> "getter method" return an object that contains key/value pairs for (appetized, mains and desserts).<br>
+7.Inside the <mark>menu object</mark> we're going to <u>create a method</u> called <mark>.addDishToCourse</mark> which will be used to add a new dish to the specified course on the menu.<br>
+The <u>method shoul take in three parameters</u> the <mark>courseName., the dishName</mark> and the <mark>dishPrice</mark>.<br>
+8.The <mark>.addDishToCourse</mark> should create an OBJECT called <mark>dish</mark> which has a <mark>name</mark> and <mark>price</mark> which it gets from the parameters.<br>
+The method should then push this <mark>dish object</mark> into the appropriate array into your <mark>menu's _courses</mark> OBJECT based on what <mark>courseName</mark> was passed in.<br>
+9.Now, we're going to need another function which will ALLOW us to get a random <mark>dish</mark> from a course on the menu, which will be neccessary for generating a random meal.<br>
+Create a method inside the <mark>menu object</mark> called <mark>.getRandomDishFromCourse{}</mark>. It will take in one parameter which is the <mark>courseName</mark>.<br>
+10.There are a few steps in getting the <mark>getRandomDishFromCourse{}</mark> to work:
+<ul>
+	<li>Retrieve the array of the given course's dishes from the <mark>menu's _courses</mark> object and store in a variable called <mark>dishes</mark>.</li>
+	<li>Generate a random index by multplying (Math.random()) by the length of the <mark>dishes</mark> array.<br>
+	(This will gurantee that the random number will be between 0 and the length of the array).
+	</li>
+	<li>Round that generated number to a whole number by using <mark>Math.floor()</mark> on the result.</li>
+	<li>Return the dish located at index in <mark>dishes</mark>.</li>
+</ul><br>
+
+11.Now that we have a way to get a random dish from a course, we can create a <mark>generateRandomMeal() function</mark> which will automatically generate a three-course meal for us. The function doesn't need to take any parameters.
+<ul>
+	<li>The function should create an <mark>appetizier</mark> variable which should be the result of calling the <mark>.getRandomDishFromCourse{} method</mark> when we pass in an <mark>appetizers</mark> string to it.</li>
+	<li>Create a <mark>main</mark> variable and <mark>desert</mark> variable the same way you created <mark>appetizer</mark> variable, but make sure you pass in the right <mark>course</mark> type.</li>
+	<li>Calculates the total price and returns a string that contains the names of each of the dishies and the total price of the meal, formatted as you like.</li>
+</ul>
+
+12.Now that we've finished our <mark>menu object</mark>, let's use it to CREATE a menu by adding some <mark>appetizors, mains and desserts</mark> with <mark>.addDishToCourse() function.</mark><br>
+13.Once your menu ha sites inside it, generate a meal by using the <mark>.generateRandomMeal() function</mark> on your <mark>menu</mark> and save it to a variable called "meal".<br>
+Print out your <mark>meal variable</mark> to see what meal was generated for you.
+</p>
+<div div="mm2"></div>
+<script type="text/javascript">
+	let menu = {
+		_courses: {
+			appetizers:[],
+			mains:[],
+			desserts:[],
+		},
+		get appetizers(){},
+		get mains(){},
+		get desserts(){},
+		
+		set appetizers(appetizersIn){},
+		set mains(mainsIn){},
+		set desserts(dessertsIn){},
+
+		get courses(){
+			return {
+				appetizers: this.appetizers,
+				mains: this.mains,
+				desserts: this.desserts
+			}
+		},
+		
+		addDishToCourse(courseName, dishName, dishPrice){
+			let dish = {
+			 	name: dishName,
+			 	price: dishPrice,
+			};
+		this._courses[courseName].push(dish); 
+		},
+
+		getRandomDishFromCourse(courseName){
+			let dishes = this._courses[courseName];
+			let randomIndex = Math.floor(Math.random() * dishes.length);
+			return randomIndex;
+		},
+
+		generateRandomMeal: function(){
+			const appetizer = this.getRandomDishFromCourse('appetizers');
+			const main = this.getRandomDishFromCourse('mains');
+			const dessert = this.getRandomDishFromCourse('desserts');
+			const totalPriceB = appetizer.price + main.price + dessert.price;
+			return `Your meal is ${appetizer.name}, ${main.name}, the price is ${totalPriceB}`
+		}
+	};
+
+		menu.addDishToCourse('appetizers', 'Caesar Salad', 4.25);
+		menu.addDishToCourse('appetizers', 'Strawberry', 1.25);
+		menu.addDishToCourse('appetizers', 'Greek Salad', 2.25);
+		menu.addDishToCourse('mains', 'Beacon Cheesburger', 4.50);
+		menu.addDishToCourse('mains', 'Crab Legs', 9.00);
+		menu.addDishToCourse('mains', 'RibEye', 12.10);
+		menu.addDishToCourse('deserts','Chocolate Cake', 6.15);
+		menu.addDishToCourse('deserts', 'MOlten Lava Cake', 8.25);
+		menu.addDishToCourse('deserts', 'Cheese cake', 7.25);
+
+		let meal = menu.generateRandomMeal();
+		document.write(meal);
+</script>
+
+<h2>Meal Maker (2)</h2>
+<h3>Create the Menu Object</h3>
+
+	<p>1.We'll hold the meal price and their respective <u>gettes</u> and <u>setters</u> in an object named <mark>menu</mark>.<br><br>
+
+		2.The <mark>menu object</mark> will hold the meal and the price of Today's Special as properties and they shouldn't be ALTERED DIRECTLY.<br>
+		Whithin the <mark>menu object</mark> create a <mark>_meal property</mark> with a value of an <u>empty string('')</u>.<br>
+		This will eventually hold the name of the meal.<br><br>
+
+		3.Next add a <mark>_price property</mark> whith a value of "0".<br>
+		This will eventually hold the price of the meal and should also not be ALTERED DIRECTLY.<br><br>
+
+		4.We know properties that begin with "_" should not directly manipulated. But just to validate this knowledge, let's test it out.<br>
+		Below the <mark>menu object</mark>directly manipulate the two properties by assigning <mark>_meal</mark> a <u>number value</u> and <mark>_price</mark> a string value.<br>
+		Then below the new assigments, "console.log" the <mark>menu</mark> obj. to see how not type checking these values could cause confusion for a website visitor.
+	</p>
+	
+	<h3>Add Setter Methods</h3>
+	<p>5.To safety reassign the two <mark>menu</mark> properties, we can add setters that type checks the values being assigned.<br>
+	Below thep roperties, use the <mark>set keyword</mark> to create a <mark>meal</mark> - setter method - with <mark>mealToCheck</mark> as a parameter.<br><br>
+
+	6.In the body of the "setter method", create an <mark>if</mark> statement that checks if <mark>mealToCheck</mark> is a "string".<br>If it is, return the objects <mark>_meal</mark> property with <mark>mealToCheck</mark> - assigned as the value.<br><br>
+
+	7.Using the same procedures as above, use the <mark>set keyword</mark> to create a <mark>price setter</mark> with <mark>price check</mark> as a parameter.<br>
+	This method should make sure the value associated with <mark>_price</mark> is always a <b>number</b>.<br><br>
+
+	8.Below the <mark>menu</mark> object, set the values of <mark>_meal</mark> and <mark>_price</mark> using the newly created setter methods.<br>
+	Then "console.log" the <mark>menu</mark> object to check their functionality.
+	</p>
+
+	<h3>Add a Getter Method</h3>
+	<p>9.Now it's time to safely return the values of the <mark>_meal</mark> and <mark>_price</mark> properties in a readable form.<br>
+	Instead of directly accessing the properties, we can use <u>getter method</u> that proactively checks if a meal and price have been properly set before returning the values.<br><br>
+
+	Below the setters, use the <mark>get</mark> keyword to create a <mark>todaysSpecial</mark> method.<br><br>
+
+	10. In the body of the getter, create an (if else statement) to check if the <mark>_meal</mark> and <mark>_price</mark> value exist or are truthy values. <br>
+	If so, return a string telling potential website visitors what "today's Special" is. For example: "Today's Special is Spaghetti for 5$!"<br>
+	If <mark>_meal</mark> and<mark>_price</mark> values do not exist (or are falsy) return the string :"Meal or price was not set corectly!"<br><br>
+
+	11.Finally use the getter method to (console.log()) Today's Special.
+	</p>
+
+	<div id="mm3"></div>
+	<script type="text/javascript">
+		const menuB = {
+			_meal: '',
+			_price: 0,
+
+			set meal(mealToCheck){
+				if(typeof mealToCheck === 'string'){
+					return this._meal = mealToCheck;
+				}
+			},
+
+			set price(priceToCheck){
+				if(typeof priceToCheck === 'number'){
+					return this._price = priceToCheck;
+				}
+			},
+
+			get todaysSpecial(){
+				if(this._meal && this._price){
+					return `Today's Special is 'Spaghetti' for $${this._price}!`
+				}else{
+					return "Meal or price was not set corectly!"
+				}
+			}			
+		}
+
+		menuB.meal = 'string';
+		menuB.price = 9;
+		document.getElementById('mm3').innerHTML = menuB.todaysSpecial;
+	</script>
+
 </body>
 </html>  
