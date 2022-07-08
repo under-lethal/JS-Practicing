@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Regular Expression</title>
+</head>
+<body>
+	<h3>Regular Expression - REGEX</h3>
+	<pre>
+	< script type="text/javascript">
+		//JS consider (this) not a reg. expression - because it's between 2 ''(quotes). => it is a STRING Object
+		var s = 'hello';
+		//If I wanna to be a Regex I can say:
+		var r = /hello/
+
+		//In the same way you can say:
+		new String('Hello2');
+
+		//You can also say RegExp:
+		new RegExp(/hello2/);
+		// If you built webApp (when you take STRING input from a USER - and make it into regExp you use: "new RegExp(/hello2/);" )
+
+		//Once you have a STRING Obj:
+		s.indexOf('l'); //<- Functions that YOU CALL on STRING or PROPERTIES.
+		s.length();
+		s.match();
+
+		//A REGEX has those thing as well;
+		r.test(); //<- this is a "Function" that you CALL on a regular Expression
+		s.match(); //<- HERE you can PASS A RegExp. This is used very COMMONLY. Also (splt and replace)
+		//All Functions that you CALL on a STRING that expect a RegExp as an ARGUMENT.
+	< /script>
+	</pre>
+
+	<h3>test(). Regex Testing</h3>
+	<p>Create a RegExp</p>
+	<pre>
+	< script type="text/javascript">
+		var r = /\d{3}/; // e digits in a row. because of this "/.../" - is a RegExp.
+
+		//If I say:
+		r.test('hello'); // false - 'cause "hello' DOES NOT MATCH that Regular Expression.
+		r.test('123'); // true - cause that is 3 digits in a ROW.
+		r.test('123ABC');// Also true - 'cause that REGEX is FOUND in the STRING.
+		//*Notice the "test" is just searching for that "REGEX" ANYWHERE in the STRING
+	< /script>
+	</pre>
+
+	<h3>Use a RegExp to validate a Full string</h3>
+	<pre>		
+	< script type="text/javascript">
+		var r = /^\d{3}/; // the beginning of the STRING/"^" followed by 3 digits {3}/ followed the END of the String "$".
+
+		//If I say: 
+		r.test('123'); // true - 
+		r.test('123ABC');// false - because that RegExp (with BEGINNING, followed by {3} digits, followed by END does NOT Match).
+	< /script>
+	</pre>
+
+	<h3>RegExp - and INPUTS</h3>
+	<pre>https://www.youtube.com/watch?v=W7S_Vmq0GSs</pre>
+
+	<p id="output"></p>
+	<textarea>Rainbow and unicorns</textarea>
+	<p><button id="submit">Submit</button></p>
+
+	<script type="text/javascript">
+		var textfield;
+		var output;
+		var submit;
+
+		function setup() {
+			noCanvas();
+			textfield = select('#input');
+			//textfield.changed(newText);
+			output = select('#output');
+			submit = select('#submit');
+			submit.mousePressed(newText);
+		}
+
+		function newText() {
+			var s = textfield.value(); //the STRING I get is the VALUE of that TEXT FIELD
+
+			var r = /\w+@\w+\.(net|com|org)/ //I have a RegEx which is "w+@" (any number of WORD CHARACTER FOLLOWED BY an "@")/ followed by (any number of WORD CHARACTER) "\w+\" followed by (a LITERAL DOT) "\." followed by (net|com|org)
+		}
+
+		document.getElementById('output').innerHTML = newText();
+	</script>
+
+	<h3>Flags</h3>
+	<p>Flags are a way of modifying the BEHAVIOUR of a RegExp</p>
+	<h4>/g</h4>
+	<p><mark>/g</mark> - <mark>standing for GLOBAL</mark>. That means - don't JUST MATCH The First Thing - MATCH All of Them<br>
+	<mark>/i</mark> - <mark>for Case In Sensitive</mark>.
+	</p>
+	<pre>
+		< script type="text/javascript">
+		var s = "unicorns and rainbows and cupcakes";
+		var r = /[a-z]+/g; // <- NOtice: the "FLAG" goes after the REGULAR Expression.
+		s.match(r); //["unicorns", "and", "rainbows", "and", "cupcakes"]; - we get an array WITH EVERY SINGLE MATCH of THAT RegExp.
+		</ script>
+	</pre>
+
+	<h4>Let's capitalize "And" and "Cupcakes"</h4>
+	<pre>
+		var s = "unicorns and rainbows And Cupcakes";
+		var r = /\b[a-z]+\b/g; 
+		s.match(r); 	// [unicorns and rainbows] not "And Cupcakes" - because I'M ONLY LOOK FOR LOWERCASE LETTERS.
+
+		2. Add another Flag "\i".
+		var r = /\b[a-z]+\b/gi;
+		s.match(r);		//["unicorns and rainbows not "And Cupcakes"];
+
+		This is how The Flags work:
+		a. I need Global Flag - to match the RITGH Expression MULTIPLE TIMES in the string
+		b. "i" Flag - is for CASE SENSITIVITY.
+	</pre>
+
+</body>
+</html>

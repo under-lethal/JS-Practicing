@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<pre>
+		1. I'st we have to find two different LOWEST integers.
+		2. Add them together.
+		A. Use the PROPER sort method(). (not simply "numbers.sort()").
+		B. Once we have numbers sorted  - we simply <b><u>wanna take the first two numbers</u>.</b>
+		<mark>numbers.sort((a, b) => a - b);</mark> - this returns an array. So we can use <mark>array DESTRUCTURING</mark>
+		<b>This is basically PULLING the TWO FIRST NUMBERS (or two lowest numbers) from the array.</b>
+		Then, return firstNumber + secondNumber;
+	</pre>
+
+	<pre>
+	< div id="hl">< /div>
+	< script type="text/javascript">
+	//[19, 5, 42, 2, 77] // 5 + 2 = 7;
+
+	let numbers = [19, 5, 42, 2, 77];
+	const sumTwoSmallestNumbers = (numbers) => {
+		<mark>const [firstNumber, secondNumber] = numbers.sort((a, b) => a - b);</mark>
+		<b>return firstNumber + secondNumber;</b>
+	}
+	document.write(sumTwoSmallestNumbers(numbers));
+	</pre>
+
+<div id="hl"></div>
+<script type="text/javascript">
+	//[19, 5, 42, 2, 77] // 5 + 2 = 7;
+
+	let numbers = [19, 5, 42, 2, 77];
+	const sumTwoSmallestNumbers = (numbers) => {
+		const [firstNumber, secondNumber] = numbers.sort((a, b) => a - b);
+		return firstNumber + secondNumber;
+	}
+	document.write(sumTwoSmallestNumbers(numbers));
+</script>
+
+<h3>Another Solution</h3>
+<pre>
+< div id="hl1">< /div>
+< script type="text/javascript">
+	//[19, 5, 42, 2, 77] // 5 + 2 = 7;
+
+	let numbers1 = [19, 5, 42, 2, 77];
+	function sumTwoSmallestNumbers1(numbers1) {
+		numbers1 = numbers1.sort(function (a, b){a - b});
+		return numbers1[0] + numbers1[1];
+	}
+	document.write(sumTwoSmallestNumbers1(numbers1));
+< /script>
+</pre>
+<div id="hl1"></div>
+<script type="text/javascript">
+	//[19, 5, 42, 2, 77] // 5 + 2 = 7;
+
+	let numbers1 = [19, 5, 42, 2, 77];
+	function sumTwoSmallestNumbers1(numbers1) {
+		numbers1 = numbers1.sort(function (a, b){a - b});
+		return numbers1[0] + numbers1[1];
+	}
+	document.write(sumTwoSmallestNumbers1(numbers1));
+</script>
+</body>
+</html>

@@ -225,7 +225,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 			for(var j = 0; j < arr<mark>[0].length</mark>; j++){
 				document.getElementById('ex').innerHTML = newFunction += <mark>arr[i][j]</mark>;
 			}
-				document.getElementById('ex1').innerHTML = newFunction += "<br>"
+				document.getElementById('ex1').innerHTML = newFunction += "< br>"
 		}
 	}
 	var arr = [
@@ -520,7 +520,7 @@ printArray2(arr2);
 	function pow1(n, e){
 		let num = n;
 		for(let i = <b>1</b>; i < e; i++){
-			num =* n;
+			num *= n;
 		}
 		return num;
 	}
@@ -563,12 +563,12 @@ printArray2(arr2);
 <script type="text/javascript">
 	let pattern = '';
 	function printPattern(range){
-		for(var i=1; i<=range; i++){
+		for(var i=0; i<=range; i++){
 			var str = '';
 			for(var j=1; j<=i; j++){
 				str += j+ " ";
 			}
-			document.getElementById('patt').innerHTML = str;
+			document.getElementById('patt').innerHTML = pattern += str + "<br>";
 		}
 	}
 	printPattern(8);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<pre>
+		Let's assume that a song consist of some number of words(that didn't contain WUB).
+		To make the dubstep remix of this song, Polycarpus inserts a certain number of words "WUB" before the first word of the song (the number may be zero), 
+		after the last word (the number may be zero), 
+		and between words(at least one between any pair of neighbouring words), 
+		and then the boy glues together all the words including "WUB", in one string and plays the song at the club.
+
+		1. We have to remove the "WUB'S" between the words. (string manipulation)
+		2. TO do "string manipulation" we can either use "REGULAR EXPRESSION" <mark>(A regular expression is a sequence of characters that forms a search pattern. The search pattern can be used for text search and text replace operations.)</mark>
+		or we can simply find "WOBs" an REMOVE them - and then <b>we need to put a space between for each WUB</b>. <mark>string.replace</mark>
+		3. replace every "WOB" with a "SPACE". <mark>string.replace('WUB', ' ')</mark>
+
+	</pre>
+	<pre>
+	< div id="sr">< /div>
+	< script type="text/javascript">
+		//songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB!") 
+		// => WE ARE THE CHAMPIONS MY FRIEND
+
+		const songDecoder = (song) => {
+			<mark>return song.replace(/WUB/g, ' ');</mark>
+		}
+
+		document.getElementById('sr').innerHTML = songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB");
+	< /script>
+	</pre>
+	<div id="sr"></div>
+	<script type="text/javascript">
+		//songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB!") 
+		// => WE ARE THE CHAMPIONS MY FRIEND
+
+		const songDecoder = (song) => {
+			return song.replace(/WUB/g, ' ').trim();
+		}
+
+		document.getElementById('sr').innerHTML = songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB");
+	</script>
+</body>
+</html>
