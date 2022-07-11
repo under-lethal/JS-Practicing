@@ -450,8 +450,8 @@ printArray2(arr2);
 < script type="text/javascript">
 	let x = '';
 	function numPower(num, pow){
-		var res=1;
-		for(var i=0;i < pow;i++){
+		var res=<mark>1</mark>;
+		for(var i=0;i < <mark>pow</mark>;i++){
 			res=res*num;
 		}
 		return res;
@@ -758,12 +758,14 @@ myAgeInDogYears();
 <p id="digi"></p>
 <p id="digi1"></p>
 <script type="text/javascript">
-	var count = 0; //return 1 for pow=0
-	while(num!=0){
-		num = Math.floor(num/10);
-		count++;
+	function digitCount(num){
+		var count = 0; //return 1 for pow=0
+		while(num!=0){
+			num = Math.floor(num/10);
+			count++;
+		}
+		return count;
 	}
-	return count;
 	document.getElementById('digi').innerHTML = digitCount(8367); //4
 	document.getElementById('digi1').innerHTML = digitCount(563349); //6
 </script>
@@ -795,6 +797,21 @@ myAgeInDogYears();
 		count++; //4
 	}
 </pre>
+
+<h3>9. Write a JS code to CALCULATE the SUM of digits in a number</h3>
+<pre>
+	
+</pre>
+<script type="text/javascript">
+	function digitSum(num){
+		var sum = 0;
+		while(num!=0){
+			sum += num % 10
+		}
+	}	
+</script>
+
+
 
 <h3>Youtube Example: Find SUM of DIGITS of a Number:</h3>
 <pre>
@@ -919,7 +936,7 @@ myAgeInDogYears();
 		document.write (`The average number is ${sum/arr6.length}`)
 	}
 	avg();
-< /pre>
+</pre>
 <div id='avg'></div>
 <script type="text/javascript">
 	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
@@ -933,6 +950,21 @@ myAgeInDogYears();
 	avg();
 </script>
 
+<h3>Another JS Exercise</h3>
+<p><u>Make a Function</u> that receives <u>a natural number</u>, and <b>prints all numbers from 0 to that number, every 2 in 2</b>.</p>
+<pre>
+	
+</pre>
+<div id="pn"></div>
+<script type="text/javascript">
+	function printNumb(){
+		for (let i = 0; i < 10; i+=2){
+			document.getElementById('pn').innerHTML = i;
+		}
+	}
+
+	printNumb(10);
+</script>
 
 </body>
 </html>
