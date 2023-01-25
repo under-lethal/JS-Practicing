@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Practicing_Summary_2</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+	<h1>What JavaScript is - Where can be Run?</h1>
+	<p>JavaScript is - a PROGRAMMING language - made for the WEB and for SERVER-SIDE applications.<br>
+	2.Makes WEB-Pages INTERACTIVE and Dynamic. <br>
+	3.It can: CALCULATE, MANIPULATE and VALIDATE Data.<br>
+	4.Can be used to BUILT Entire WEB-Appplications. (popular Examples for this: "Angluar, React, View" or "Ember").
+	</p>
+
+	<h2>JS on Server-Side Applications and Browsers</h2>
+	<p>When you running JS in a BROWSER - there are no "real versions". It complettly depends on the Browser that you use.<br> 
+	If you using a "Modern Browser" (Mozzila, Chrome, Safari, Edge) - you should have pretty close to the way U use the features.<br>
+	It's important to KNOW  - that some of the Users MAY NOT USE these browsers (so be carefull HOW TO use SOME features).</p>
+	
+	<p>When you use JS on the SERVER (using Node.js). <br>
+	New versions of "Node.js" - contain new features.<br>
+	To use those "features" you need to Update "Node.js".</p>
+
+	<h2>JavaScript Syntax rules</h2>
+	<p>JS is - Case Sensitive - with it's variables and keywords.<br>
+	Similary (if, new, return) are also caseSensitive.<br>
+	Var, and functions must start with an, "number", "_" or a "letter". Or $.<br>
+	Var names - can't be RESERVERD words. (like: if, new, return). <br>
+	White spaces are ignored.</p>
+
+	<h1>Running JS in a script tag</h1>
+	<p>Using a SCRIPT TAG in HTML File:</p>
+	<pre>
+		< script type="text/javascript">
+		alert ('Hello There!');
+		const h1 = document.querryselector('h1');
+		< /script>
+	</pre>
+	<script type="text/javascript">
+		alert ('Hello There!');
+		const h1 = document.querryselector('h1');
+	</script>
+	<p>So, I have a script tag - and inside of the "script tag" is JavaScript code.<br>
+	The first thing is an "alert"  - that would say: "Hello There!"<br>
+	The SECOND ONE - allows me to SELECT an (h1) - tag - it's on the page.<br>
+	The Third One - logs an (h1)-tag - to the JavaScript console.<br>
+	Refresh the Page - to see the "alert".<br>
+	As a general rule - we don't write too much JS code inside of "script tags" - on pages like this. The best practice is to put in a JS file.
+	</p>
+
+	<h3>The < script > tag</h3>
+	<p>The value of the SRC(source) attribute - is the PATH TO: "./script-import.js". That "file" will be LOADED and the JS will BE RUN when we open this PAGE - IN OUR browser... looking in the contents of the "./script-import.js"</p>
+	<p>The BEST PRACTICE FOR LOADING JS Files? - to LOADED the SRC attribute.</p>
+
+	<p>We've now covered the 3 ways that you can RUN JS  - on your computer - or in the browser:<br>
+		1. In the browser's script < tag><br>
+		2. In a JS file, imported THROUGH a SCRIPT < tag><br>
+		3. In a JS file run BY Node.js. (Linux Terminal..?)
+	</p>
+
+	<h1>Exercises</h1>
+	<p>Print "Hello World on the page - inside of "this" "< h1>" tag.<br>
+	This works - because is an HTML element  - on (index.html Page) - that has an "id" of "app".<br>
+	We select that ELEMENT (by it's ID: "app") - and then we set the 'innerHTML' - TO THIS STRING.<br>
+	After we do this - that string is PRINTED OUT, (on the PAGE) inside the "h1" tag.
+
+	</p>
+	<div id="app"></div>
+	<pre>
+		< div id="app">< /div>
+		< div id="app-2">< /div>
+		---------------------------
+		const appDiv = document.getElementById('app'); // We select that ELEMENT (by it's ID: "app") - and then we set the 'innerHTML' - TO THIS STRING.
+		appDiv.innerHTML = `< h3> Hello World! < /h3>`
+
+		console.log(Hello World); // we add "H. World" - string - to the Console/ inside the LOG Function.
+	</pre>
+	<p>
+	Let's add the our CONTENT (of this page) to the DIV with "app-2" --><br>
+	Just like before - we get ACCES to our "div" - BY selecting it  - BY IT'S "ID" (in this case "app-2").--><br>
+	We then - set the "innerHTML" - to the STRING "Hello World Twice!" - then it's printing on this PAGE.--><br>
+	You can add the JavaScript - to the PAGE - in multiple ways: "innerHMTL", "console.log" or USING "node index.js" (Terminal), on your COMPUTER or your SERVER.-->
+	</p>
+	<pre>
+		< script type="text/javascript">
+		const app2Div = document.getElementById('app-2').innerHTML = `< h3>Hello World Twice< /h3>`;
+		< /script>
+	</pre>
+	<div id="app-2"></div>
+	<script type="text/javascript">
+		const app2Div = document.getElementById('app-2').innerHTML = `<h3>Hello World Twice</h3>`;
+	</script>
+
+	<h2>Variables: (var, let, const)</h2>
+	<h3>DECLARATION vs INITIALIZATION</h3>
+	<p>Declaration is - when you using (var, let, const). By default (declared variables - have an initial value of: "defined").<br>
+	Initialization - is when a VARIABLE is given a VALUE (for the first time).<br>
+	A variable can be used before INITIALIZATION.</p>
+	<pre>
+		var name;
+		console.log(name); //undefined
+
+		name = "Preston Lamb";
+		console.log(name); // Preston Lamb
+	</pre>
+
+	<h2>Variable SCOPE</h2>
+	<p>SCOPE defines - where a VARIABLE in JS can be used.<br>
+	JS has TWO types of scope: GLOBAL and FUNCTION (Block).</p>
+
+	<h3>Global Scope</h3>
+	<p>Variables - usable anywhere in the FILE.<br>
+	Declared OUTSIDE of any Functions or any Blocks of code, (can cause problems).</p>
+	<pre>
+		const name = "Preston Lamb";
+		console.log(name);
+	</pre>
+	<p>Create a Function - where you LOG the value - OF THIS VARIABLE.</p>
+	<pre>
+		function sayHi(){
+			console.log(`Hello ${name}`);
+		}
+		 sayHi(); // Hello Preston Lamb
+	</pre>
+	<p>The value of the VARIABLE can be still printed in the CONSOLE  - even it's not declared in the "sayHi()" Function - because the VAR - has GLOBAL SCOPE.</p>
+
+	<pre>
+		Another Function:
+		function sayGoodbye(name){
+			console.log(`Goodbye ${name}`);
+		}
+		sayGoodbye('Joe Eames');	//Godbye Joe Eames 	
+	</pre>
+	<p>In this Function will print a message to the CONSOLE - that says "Goodbye" and "name". But for this Function, I want to PASS IN a "name". (I'm gonna ADD  a PARAMETER to the Function(name).</p>
+	<p>So we have 2 OPTIONS of what may happen:<br>
+	1. print the name: "preston lamb" - that's declared - and initialized on that "name variable".<br>
+	2. Print the name - that passed in the parameter(name) - to the Function.</p>
+	<p>	//Godbye Joe Eames - looks like - we printed out the name that was passed in - AS A PARAMETER - to the Function.</p>
+	<p>When you start building bigger applications - (and your files are bigger - and you have multiple developers  - working on that file) it's hard to remember what variables name. <br>
+	The best ideea is using variables in GLOBAL scope, as rarely as apossible.(unsing Variable in GLOBAL SCOPE - should be pretty rare).
+	</p>
+
+	<h2>Function Scope</h2>
+	<p>A variable in function scope is:</p>
+	<p>1.Usable in the Function where it's declared.<br>
+	   2.Accessible in NESTED Functions.<br>
+	   3.NOT Accesible outside the Function.
+	</p>
+
+	<pre>
+		Declare a function "sayHello()."
+		Inside of it  - 3 variable are DECLARED and INITIALIZED.
+		If we try to 'console.log()' - one of those variables - outside of the Function() we will get an //Reference Error
+
+		function sayHello() {
+			var name = 'Prest Lamb';
+			var course = 'JS Fundamentals'
+			var website = 'Thinker.io'
+		}
+	</pre>
+	<p>Some Examples of variables with "Function/Block Scope":</p>
+	<pre>
+		Declare/CREATE a function:...
+		Inside of this Function() - LET'S declare AND initialize a VAR, called "courseName"
+		When this Function() is called  - we want to LOG() this "courseName" - to the console.
+
+		function courseInfo(){
+			var courseName = 'JS Fundamentals';
+			console.log(courseName);			//Nothing happen in a console() - because we've not yet call teh Function();
+		}
+		courseInfo(); //JS Fundamentals
+
+		We see that the "courseName" is logged - to the CONSOLE().
+		Let's see what happen if we try to logged the "courseName" variable  - to the console - OUTSIDE of the Function().
+
+		console.log(courseName);
+		We have an "Error". (courseName is not defined).
+		That's because - the "courseName" VAR - is FUNCTION SCOPE - and can only be USED inside the "courseInfo() Function" - or a NESTED FUNCTION.
+		let's do a NESTED Function - inside of "courseInfo Function(). 
+	</pre>
+	<pre>
+		function courseInfo(){
+		var courseName = 'JS Fundamentals';
+		console.log(courseName);	
+
+		 function output(){
+			console.log(courseName)
+		 }		
+		}
+		courseInfo(); //JS Fundamentals
+		console.log(courseName);
+
+		Now - our courseInfo Function() - is not LOGGED (courseName) to the console.
+		We have to CALL the "output Function()" - to do that:
+
+		function courseInfo(){
+		var courseName = 'JS Fundamentals';
+		console.log(courseName);	
+
+		 function output(){
+			console.log(courseName)
+		 }	
+		 <b>output();</b> //JS Fundamentals	
+		}
+		courseInfo(); 
+		console.log(courseName);
+	</pre>
+	<p>Once again our "courseName" - is logged to the console.<br>
+	The "courseName variable" is AVAILABLE  - because the "output() Function" - is  A NESTED Function() inside "courseInfo".<br>
+	Anywhere inside the "courseInfo" - the we want to use the "courseName VARIABLE" - is allowed. But  - we can use it - outside of the Function().
+	</p>
+
+	<h3>Another Example:</h3>
+	<pre>
+	function run(){
+    	var name = "Preston";
+    
+	    	function sayHi() {
+	        	console.log(`Hi ${name}!`);
+	    	}
+	    	sayHi();
+	}
+
+	run();
+	Hi Preston!
+	</pre>
+
+	<h2>Hoisitng</h2>
+	<p>There we have a Funciton() called "run()".<br>
+		We declare and initialize  - a variable called "name".<br>
+		An then we have a NESTED Function() -"sayHi()" - where we log the name VARIABLE.
+	</p>
+	<pre>
+		function run(){
+			var name = 'Preston';
+			function sayHi(){
+				console.log(`Hi ${name});
+			}
+		}
+	</pre>
+
+	<h3>What Hoisting Does?</h3>
+	<p>Hoisting - takes all the variables (declared in a Function() - or in a GLOBAL scope) - and MOVES them - to the TOP OF their expecting SCOPE.</p>
+	<pre>
+		function run(){
+			var name;
+			name= "Preston";
+			function sayHi(){
+				console.log(`Hi ${name}`)
+			}
+		}		
+	</pre>
+	<p>In this CASE - our name VAR DECLARATION - is moved (to the very fisrt line - at the run() Function) - and after that - it's initialized.<br>
+	What this (initialization) does - it's allows VARIABLES - to be used before they're DECLARED and INITIALIZED.</p>
+
+	<h3>Block Scope</h3>
+	<p>1.A variable with BLOCK SCOPE is - DECLARED using "let" or "const".<br>
+	2. Only usable - in the block - where is declared. <br>
+	3. Produce an "Refference Error" - if its use before DECLARATION.</p>
+	<pre>
+		function sayHello() {
+			console.log(name); ReferenceError
+			let name = 'Preston Lamb';
+			const course = 'JS Fundamentals';
+		}
+	</pre>
+
+	<p>Examples:</p>
+	<pre>
+		function watchCourse(){
+			const courseName = "JS Fundamentals";  // this "courseName" variable - has a block Scope - and it's only useable in a BLOCK of CODE. 
+		}
+	</pre>
+	<p>Now - lte's DECLARE and INITIALIZE a VAR called "started" - then we use a CONDITIONAL STATEMENT.<br>
+	2. Create an "if/else{} statement" - using the "started" VAR - as a comparison</p>
+	<pre>
+		function watchCourse(){
+			const courseName = "JS Fundamentals";  // this "courseName" variable - has a block Scope - and it's only useable in a BLOCK of CODE. 
+			let started = true;
+			
+			if (started) {
+				let progress = 50;
+				console.log(`I am ${preogress} percebt done with ${courseName}`);
+			}else{
+				let progress = 0;
+				console.log(`I am ${preogress} percebt done with ${courseName}`);
+			}
+		}
+		watchCourse(); //I am 50 percent... - because the "started" VAR is "true". (false => "I am 0 percent...")
+	</pre>
+	<p>	//then declare and initialize a VAR called "started"  - that use an conditional statement.<br>
+		//then create - an "if/else" statement - using the "(started)" VAR - as a comparison.<br>
+		// if (started) is "true" - lets declare and initialize another VAR  - called "progress".<br>
+		Then log a message to the console - (with a "courseName" and the "progress").
+		Our "watchCourse" is done. Let's call the Function().
+	</p>
+	
+	<h3>Difference between Function SCOPE and Block SCOPE</h3>
+	<p><b>With Function SCOPE -  a VAR can be use anywhere inside of FUNCTION() - where it's declared.<br>
+	BLOCK Scope - every set of "{} - curly breackets" - is a NEW Block - and VAR are only accesible - inside those blocks.</b></p>
+
+	<p>Let's demonstrate this - trying to use the "progress" variable - outside of the "if/else" statement.</p>
+	<pre>
+		function watchCourse(){
+			const courseName = "JS Fundamentals";  // this "courseName" variable - has a block Scope - and it's only useable in a BLOCK of CODE. 
+			let started = true;
+			
+			if (started) {
+				let progress = 50;
+				console.log(`I am ${progress} percent done with ${courseName}`);
+			}else{
+				let progress = 0;
+				console.log(`I am ${preogress} percent done with ${courseName}`);
+			}
+			<b>console.log(progress);</b> //UncaughtReference Error ("progress" is not defined).
+		}
+		watchCourse(); //I am 50 percent... - because the "started" VAR is "true". (false => "I am 0 percent...")
+	</pre>
+
+	<p>//Console.log(progress) - try to log "progress" VAR - outside of the "IF/ELSE" statement - (where "progress"  - is not DEFINED).<br>
+	That "progress" VAR - Is (ONLY) available INSIDE of two blocks of code (whre's declared an initialized).</p>
+
+	<p>The same thing would will HAPPEN - if you try TO USE  a VAR  before was DECLARED and INITIALIZED - even it is INSIDE THE SAME block {}.</p>
+
+	<pre>
+		function watchCourse(){
+			const courseName = "JS Fundamentals";  
+			let started = true;
+			
+			console.log(started); //UncaughtReferenceError
+			
+			//let's create an if/else statement - using the "starter VARIABLE" - as a comparison
+
+			if (started) {
+				let progress = 50;
+				console.log(`I am ${preogress} percent done with ${courseName}`);
+			}else{
+				let progress = 0;
+				console.log(`I am ${preogress} percent done with ${courseName}`);
+			}
+			<b>console.log(progress);</b> //UncaughtReference Error ("progress" is not defined).
+		}
+		watchCourse(); //I am 50 percent... - because the "started" VAR is "true". (false => "I am 0 percent...")
+	</pre>
+	
+	<p>It says "UncaughtReferenceError - again. "cannot acces "started" BEFORE INITIALIZATION...<br>
+	That's the DIFFERENCE between "block scope" and "function scope".</p>
+
+	<h3>REMEMBER!</h3>
+	<p><b>In Function() SCOPE - the variables - (using the "var " keyword) - hoisting happens "behind the scenes" - and WE CAN USE VARIABLES before - they're DECLARED and INITIALIZED. <br>
+	Block Scope - (where variables declared in "let" and "const" - cannot be used before they're DECLARED).</b></p>
+
+	<h2>var, let, const</h2>
+	<p>..the scope of the variables - depending on HOW you DECLARE them.<br>
+	There are 3 different ways of declaring variables in JS: var, let & const.</p>
+
+	<h3>var</h3>
+	<p>When we declare VARIABLES with the "var" keyword  - that VAR is <u>EITHER</u>: Function() or GLOBAL scope.(depending on - where is DECLARED).<br>
+	This "var" - can be used BEFORE they're declared - in the're scope, due to hoisting.<br>
+	In modern JS Files - "var" is (generaly) - not recommendet. (because it can be HOISTED - and the SCOPE is MORE Free).</p>
+
+	<h3>let</h3>
+	<p>Variables declared with "let" - are BLOCKED scope.<br>
+	They cannot be used - before declared.<br>
+	You can reassign value - to a variable (declared with the "let" keyword).<br>
+	It is recommended use this - (more than "var") - especially if you need to RE-assign the value.
+	</p>
+
+	<h3>const</h3>
+	<p>Variables - declared with the "const" keyword  - are ALSO block-scope.<br>
+	(Just like variables declared with "let") - they cannot be used before the're declared.<br>
+	(They also - are not HOISTED)
+	The DIFFERENCE between "let" and "const" - (the variable DECLARED with "const" keyword) - cannot have the value RE-assigned.
+	</p>
+
+	<pre>
+		var dog  = 'Duke';
+		console.log(dog); // the VALUE of the variable "dog" - is printed to the console.
+	
+		//if we reasing the variable to another "string":
+
+		dog='Max'
+		console.log(dog);
+
+		//Duke, Max. I'st is "Duke", the second time - is OVERRIDINGa, and now is "Max".
+	</pre>
+	<p><b>When you declare a variable with the "var" keyword - you can override the VALUE of the VARIABLE at any time.<br>
+	It may be (dangerous) in the application - because you can accidentally change the VALUE of the Variable.</b></p>
+	
+	<pre>
+		let dog = "Max";
+		console.log(dog); //Max ..just like before you see the VALUE of the VAR - printed to the console.
+
+		* change the value of the variable (and log it to the console, and see what happnes);
+
+		let dog = "Max";
+		console.log(dog); //Max;
+		dog = 'Duke';
+		console.log(dog);//Duke; 
+
+		//just like before - the VALUE of the VARIABLE is OVERRIDEN.
+	</pre>
+	
+	<p>Variables declared with the "let" keyword -> have BLOCKScope.<br>
+	Variables declared with "var" keyword -> are in the FUNCTION Scope or GLOBALScope.<br>
+	<b>That more restricted scope(let) - makes a little bit easier - to NOT OVERRIDE the VALUE.</b></p>
+
+	<h3>const</h3>
+	<pre>
+		const dog = "Duke";
+		console.log(dog); //Duke
+
+		dog = "Max";
+		console.log(dog); //TypeError.. - because when we try to REASSIGN (the value of the variable "dog") - is INVALID. 
+	</pre>
+	
+	<p>When declaring a variable with the "const" keyword - vs "let" or "var" - YOU CANNOT CHANGE THE VALUE of that Variable (anymore).<br>
+	That's doesnt mean - that this VARIABLES(const) are "changeble/mutable".</p>
+	<p>Change the VALUE of an attribute - of an OBJECT (DECLARED with the "const" keyword):</p>
+	<pre>
+		const dog = {
+			name = "duke"
+		}
+		consle.log(dog.name); //duke
+	</pre>
+	
+	<p>Once again - we OUTPUT the "name", of our "dog".<br>
+	This time we outputing ATTRIBUTEName - from a "dog" OBJECT. (declared with the "const" keyword).</p>
+	<p>We can change "anything" on this Object: (let's change the "name" ATTRIBUTE - on this Object).</p>
+	<pre>
+		const dog = {
+			name: 'duke'
+		}
+		console.log(name);
+		dog.name = 'Max';
+		console.log(dog.name);
+	</pre>
+	<p><b>Even you change that ATTRIBUTE - you didn't change the LOCATION in MEMORY (where that VARIABLE is STORED)</b><br>
+	If we try to ASSIGN the ENTIRE Object - we will get an Error:</p>
+
+	<pre>
+		const dog = {
+			name: 'Duke'
+		}
+		c.log(dog.name);
+
+		dog = {
+			name: "Max";
+		}
+		c.log(dog.name); //TypeError...
+	</pre>
+	<p>If we REASSIGN the entire Object "dog" - we get the ERROR. If we just gonna change the VALUE (of THE ATTRIBUTE - on the OBJECT) - then we're good.</p>
+	<p>The same RULES - apply to arrays:</p>
+	<pre>
+		const dogs = ["Duke", "Max"];
+		console.log(dogs); //our arrays of "dogs" are output - to the console.
+
+		//Let's add a "dog" to the ARRAY:
+		dog.push('Bella');
+		c.log(dogs);
+	</pre>
+
+	<p>Because - we DIDN'T try to REasign the VALUE (of the "dogs" array) - to a NEW ARRAY - WE'RE ABLE TO ADD (another "dog" to the array).<br>
+	   That's BECAUSE - we'r not changeing the LOCATION in MEMORY - to the VARIABLE is pointing TO.<br>
+	   Just like the OBJECTS - when we trying to REasign the "dogs" array - to a new array - we we'll get a TypeError...</p>
+
+	   <pre>
+	   	const dogs = ['Duke', "Max'];
+	   	c.log(dogs);
+	   	dogs = ['Bella', 'Radar'];
+	   	c.log(dogs); //TypeError
+	   </pre>
+
+	  <p>Var declared with the "const" keyword - ..you can't change the LOCATION in MEMORY  - that the VARABLE points TO.<br>
+	  "use" const - on every variable that I can. I declare a var "const" and If I find later (I have to REASSIGN the VALUE - of that variable) - then I change it to "LET".</p>
+
+	  <h2>Value vs. Reference</h2>
+	  <p>An example "By Value": let's create TWO variables: (first will be number - and will give it a value)<br>
+	  We'll initilize the second variabe - (to the number variable).</p>
+
+	  <pre>
+	  	let numebr = 5;
+	  	let number2 = number;
+	  	console.log(number, number2); //5 5
+	  </pre>
+	  <p>In console - there are 2 variables - printed to the console.<br>
+	  Now. let's REassign the value  - of the VAR "number".</p>
+	  	<pre>
+	  	let numebr = 5;
+	  	let number2 = number;
+	  	console.log(number, number2); //5 5
+
+	  	number = 10; 
+	  	console.log(number, number2); //10 5 
+	  </pre>
+	  <p>The first VAR  - has its VALUE CHANGED. The second one - is unchanged.<br>
+	  	<mark>That's because NUMBERS(like: strings, booleans, undefined and null) - are STORED BY VALUE</mark>.<br>
+	  	When you change ONE variable - it HAS NO EFFECT - on any of the copy VARIABLES.</p>
+
+	<h3>An EXAMPLE OF a VARIABLE - whose data - is stored by REFERENCE:</h3>
+	<p>LET'S CREATE A "PERSON OBJECT" - that has an ATTRIBUTE - of "name".<br>
+	Then declare a second person - an INITIALIZED (to OUR FISRT "person"). Then log - these VAR to the console.</p>
+
+	<pre>
+		let person = {
+			name: 'Preston';
+		}
+		 let person2 = person;
+		 console.log(person, person2);
+	</pre>
+	<p>Both objects (are) logged to the console.<br>
+	Now, lets' change (the NAME ATTRIBUTE) - on person2 - and log both variables to the console.</p>
+		<pre>
+		let person = {
+			name: 'Preston';
+		}
+		 let person2 = person;
+		 console.log(person, person2);
+		 
+		 person2.name = 'Joe';
+		 console.log(person, person2); //{name:"Joe"} {name:"Joe"}
+	</pre>
+	<p>Both OBJECTS - HAD their name ATTRIBUTE CHANGED.<br>
+		That's because these TWO VAR (person, person2) - are poiting to the same LOCATION - IN MEMORY.<br>
+	If you change ONE - you automatically CHANGE - any othe variable it's poiting to the same location in MEMORY.</p>
+
+	<p>lET'S SEE WHAT HAPPEN IF WE pass any of these variables into a Function - and change data ATTRIBUTE (in the Function()).</p>
+	<pre>
+		function changeName(obj){
+			obj.name = 'Brooke';
+		}
+		changeName(person);
+		console.log(person, person2); //{name:"Brooke"} {name:"Brooke"}
+	</pre>
+	<p>We created a Function() - that TAKES an OBJECT (as a parameter). It CHANGES the "name" attribute (of the object).<br>
+	Then we call the Function() - and pass the (person) OBJECT.<br>
+	After that - we LOG (person, person2) - VARIABLES. Both of them - has their name changed. (becasue both of those VARIABLES  - point to the same location in MEMORY).<br>
+	In addition  - the Object (that was passed in the Function()) - also points to the same location in memory.</p>
+
+	<h3>Some Variables  - save their DATA by VALUE - and some by REFERENCE.</h3>
+	<p>If you pass those VARIABLES into Functions() (the saving DATA by REFERENCE)(or passing by Reference to Functions) - OCCURS with Objects and ARRAYS.<br>
+	So - WHICH TYPE OF VARIABLES  -save their DATA by VALUE? (Strings, Numbers, Booleans, UNdefined an Null).</p>
+
+	<h2>JavaScript Primitive Types</h2>
+	<p>A primitive type in JavaScript is data that is not an object and has no methods. JavaScript also has global objects, like String, that are different than related primitive types, like string. </p>
+
+	<p>There are 6 primitive types in JS:<br>
+	1.string: a sequence of characters<br>
+	2.number: a numerical value, including whole numbers as well as numbers with decimals<br>
+	3.boolean: true/false values<br>
+	4.undefined: the absence of a value<br>
+	5.null: the intentional absence of a value<br>
+	6.Symbol: provides unique identifiers for variables</p>
+
+	<p>Comparison operators can also be used with strings:</p>
+	<pre>
+		const firstString = 'Here is a string';
+		const secondString = 'Here is the second string';
+		
+		console.log(firstString === secondString); // false
+		console.log('a' === 'a'); //true
+		console.log('a' < 'b'); //true
+	</pre>
+
+	<h3>numbers</h3>
+	<p>All the normal mathematical operations can be used on two numbers, like +, -, x, ÷, and %. </p>
+	<pre>
+		console.log(2 + 2); // 4
+		console.log(4 - 2); // 2
+		console.log(2 * 2); // 4
+		console.log(2 / 2); // 1
+		console.log(2 % 2); // 0
+	</pre>
+
+	<p>You can also use math shorthand operations in JavaScript. The following are examples:</p>
+	<pre>
+		let val = 0;
+		val += 4; 
+		console.log(val); //4
+
+		val -= 2;
+		console.log(val);//2
+
+		val *= 3;
+		console.log(val);//6
+	</pre>
+
+	<h3>boolean</h3>
+	<p>A JS "boolean" - represents ONE of TWO values: "true" or "false".<br>
+	They can be DECLARED and INITIALIZED with a value of "true" or "false", or by providing an expression will evaluate "true" or "false".</p>
+	<pre>
+		let isGreaterThan100 = 50 > 100; //false
+		let isLessThan10 = 5 < 10; // true
+		let equals5 = 5 === 5; // true
+	</pre>
+
+	<h3>undefined</h3>
+	<p>"undefined" - is the VALUE assigned to VARIABLES - when they are DECLARED but not INITIALIZED.<br>
+	Or, for Functions() that aren't present.<br>
+	"undefined" is DIFFERENT from "null".</p>
+	<pre>
+		let myVar;
+		console.log(myVar); //undefined
+
+		function sayHi(name) {
+			console.log(`Hi ${name}!`)
+		}
+		sayHi(); //Hi undefined
+	</pre>
+
+	<h3>null</h3>
+	<p>Usually "null" - refers to the absence of a value.<br>
+	Some Functions, may have optional arguments - and in those situations it is a good idea to pass,"null" over "undefined"</p>
+
+	<h3>symbols</h3>
+	<p>Symbols values are created by using the "Symbol" function - and are guranteed to be unique.<br>
+	If you need a guaranteed unique value, "Symbol" is the perfect option.</p>
+	<pre>
+	let sym1 = Symbol('sym');
+	let sym2 = Symbol('sym');
+
+	console.log(sym1 === sym2); // false
+	</pre>
+
+<h2>Logical Operators</h2>	
+	<h3>Logical AND &&</h3>
+	<pre>
+	const dog = {
+	breed : 'Labradoodle'
+	};
+	document.write(dog && dog.breed + "< br>");
+	</pre>
+
+	<pre>
+		const name = dog && dog.name;
+		document.write(name + "< br>");
+	</pre>
+
+
+</body>
+<script type="text/javascript" src = "JS/Logical_Operators.js"></script>
+</html>

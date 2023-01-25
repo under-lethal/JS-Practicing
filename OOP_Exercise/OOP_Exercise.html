@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP - Exercise</title>
+</head>
+<body style="padding:40px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+  <h2>Design a - STOPWATCH Object</h2>
+  <p></p>
+  <pre>
+    Define a CONST:
+    <b>const sw = new Stopwatch();</b> <- This is OUR "STOPWATCH()" OBJECT.
+
+    Our "Stopwatch()" OBJECT - <b> has a few MEMBERS:</b>
+    sw.<b>duration</b> <- which is a <b>property</b> as well as THREE METHODS: 
+    sw.<b>reset()</b>
+    sw.<b>start()</b>
+    sw.<b>stop()</b>
+
+    (F-12)Other MEMBERS we "see" here: <mark>(constructor|hasOwnProperty|isPrototypeOf|toString|valueOf...)</mark> - <b>they're INHERITED from BASE OBJECT.</b>
+
+    <b>sw.duration</b> - <b>0</b> - duration is "0".
+
+    *We can <b>start</b> the Stopwatch - <b>but if we start TWICE - it's gonna "scream" at us.</b>
+    <b>sw.start()</b> - has already STARTED - we cannot <b>call - start twice.</b>
+
+		*We can call <b>sw.stop()</b> - but NOT TWICE in a ROW.
+    sw.stop();
+    sw.stop();
+
+    *We can <b>access - the DURATION PROPERTY:</b>
+		<b>sw.duration();</b> 
+		<b>Output:</b> 19.466....
+
+		const sw = new Stopwatch();
+		sw.start();
+		sw.stop();
+		sw.duartion();
+
+		sw.reset();
+		sw.start();
+		sw.stop();
+		sw.duartion();
+  </pre>
+
+	<h3>Exercise:</h3>
+
+	<pre>
+		In <b>this Func() - "Stopwatch"</b> - we define a few PRIVATE Var.
+		<b>Just</b> <mark>duration = 0;</mark> - <b>it's initialized/set to "0".</b>
+
+		Then we have 3 METHODS: start(), stop(), reset();
+		We also DEFINED - <b>a Read-ONLY Property - called "duration".</b> 
+		We have a <b>getter</b> - <b>which simply RETURNS</b> this "duration": <mark>{return duration;}</mark> - which is a LOCAL VARIABLE - in this Function();
+
+		function Stopwatch(){
+			let startTime, endTime, running, duration = 0;
+
+			this.start = function() {
+
+			};
+
+			this.stop = function() {
+
+			};
+			
+			this.reset = function() {
+			
+			};
+
+			Object.defineProperty(this, 'duration', {
+				<b>get: function() {return duration;}</b>
+			});
+
+		}
+	</pre>
+
+	<p>Let's have a look of the IMLPEMENTATION - <b>of each of THESE METHODS.</b></p>
+
+	<pre>
+		*First we have a VALIDATION CHECK: <mark><b>if (running)</b>...</mark> - <b>if this "Stiowatch()" is RUNNING - we simply throw a NEW error</b> - with "this message".
+		<b>running = true;</b> - Otherwise we SET - <b>running to "true;"</b>
+		<b>startTime = newDate();</b> - And - we SET <b>startTime = </b> - <b>to the current day time:</b> <mark>new Date();</mark>
+
+		<b>this.stop - METHOD</b> - is very simlar.
+		*If it NOT Running - <b>throw a NEW Error.</b>
+		*Otherwise - <b>we set:</b> <mark><b>running = false;</b></mark>
+		*We SET <b>endTime = </b> - to the <b>current date Tme: <mark>new Date();</mark></b>
+		<b>const seconds = </b> - *Then we calculate the <b>seconds</b> (between <b>end Time</b> and <b>start Time</b>)
+		*So - <b>we CALL</b> - <mark><b>entTime.getTIme</b></mark> and substract it (-) from <b><mark>startTime.getTIme()</mark></b>
+		<b>This expressions</b> - returns <b>the MILISECONDS  - between these TWODate() - OBJECTS.</b>
+		<b> /1000 </b> - we devided by <b>"1000"</b> - to GET the SECONDS.
+		*Then we <b>add that</b> to the <b><mark>duration += seconds</mark> (variable)</b> - which we DEFINED earlier.
+
+		<b>this.reset - METHOD</b>
+		*Here we simply <b>SET these VARIABLES - to their INITIAL VALUE: <mark>null/false/"0"</mark>.</b>
+
+		function Stopwatch(){
+			let startTime, endTime, running, duration = 0;
+
+			this.start = function() {
+				if (running)
+					throw new Error('Stopwatch has already started.');			  
+				running = true;
+				startTime = new Date();
+			};
+
+			this.stop = function() {
+				if(!running)
+					throw new Error('Stopwatch is not started.');
+					running = false;
+					endTime = newDate();
+			};
+			
+			this.reset = function() {
+				startTime = null;
+				endTime = null;
+				running = false;
+				duration = 0;
+			};
+
+			Object.defineProperty(this, 'duration', {
+				get: function() {return duration;}
+			});
+		}
+	</pre>
+
+	<div id="output"></div>
+
+	<script>
+		function Stopwatch(){
+			let startTime, endTime, running, duration = 0;
+
+			this.start = function() {
+				if (running)
+					throw new Error('Stopwatch has already started.');			  
+				running = true;
+				startTime = new Date();
+			};
+
+			this.stop = function() {
+				if(!running)
+					throw new Error('Stopwatch is not started.');
+					running = false;
+					endTime = newDate();
+			};
+			
+			this.reset = function() {
+				startTime = null;
+				endTime = null;
+				running = false;
+				duration = 0;
+			};
+
+			Object.defineProperty(this, 'duration', {
+				get: function() {return duration;}
+			});
+		}
+
+		const finalStopwatch = Stopwatch();
+		document.getElementById('output').innerHTML = finalStopwatch();
+	</script>
+</body>
+</html>

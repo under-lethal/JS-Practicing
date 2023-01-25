@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JS-Async W3Schools</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body style="padding: 25px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <h2>JavaScrip Callbacks</h2>
+    <p><i>A <u>callback</u> - is a function</i> - passed as an ARGUMENT  - <b>to another Function</b><br>
+    This <u>tehnique</u> allows a function <u>to call</u> another function.<br>
+    A callback function - <b>can run after another function - has finished</b>
+    </p>
+
+    <h3>Function Sequence</h3>
+    <p>JS Functions <u>are executed</u> in the sequence they are CALLED - <b>not in the sequence they are DEFINED.</b></p>
+    <pre>
+         p id="demo"> /p>
+         script>
+            function <mark>myDisplayer(some)</mark>{
+                document.getElementById('demo').innerHTML = some;
+            }
+    
+            function myFirst(){
+                myDisplayer('Hello');
+            }
+    
+            function mySecond(){
+                <mark>myDisplayer('Goodbye');</mark>
+            }
+    
+            myFirst();
+            <mark>mySecond();</mark>
+         /script>
+    </pre>
+    
+    <p id="demo"></p>
+    <script>
+        function myDisplayer(some){
+            document.getElementById('demo').innerHTML = some;
+        }
+
+        function myFirst(){
+            myDisplayer('Hello');
+        }
+
+        function mySecond(){
+            myDisplayer('Goodbye');
+        }
+
+        myFirst();
+        mySecond();
+    </script>
+
+    <pre>
+        mySecond();
+        myFirst();
+        //output: "Hello";
+    </pre>
+
+    <h2>Sequence Control</h2>
+    <p>Somethimes you would like to have <u>better control</u> when execute a function. <br>
+    Suppose you want to do a calculation, and then display the result.<br>
+    You could call a calculator function (myCalculator), - <b>save the result</b> - and then <i>call another function.</i>
+    </p>
+    <pre>
+         script>
+            function <mark>myDisplayer1(some1)</mark>{
+                document.getElementById('demo1').innerHTML = some1;
+            }
+    
+            function myCalculator(num1, num2){
+                let sum = num1 + num2;
+                return sum;
+            }
+    
+            <b>let result = myCalculator(5, 5);</b>
+            <mark>myDisplayer1(result);</mark>
+         /script>
+    </pre>
+    <p id="demo1"></p>
+    <script>
+        function myDisplayer1(some1){
+            document.getElementById('demo1').innerHTML = some1;
+        }
+
+        function myCalculator(num1, num2){
+            let sum = num1 + num2;
+            return sum;
+        }
+
+        let result = myCalculator(5, 5);
+        myDisplayer1(result);
+    </script>
+
+    <h3>JS Callbacks</h3>
+    <p><i>A callback is a function passed as an argument to another function.</i><br>
+    Using a callback, you could call the <u>calculator Function (myCalculator)</u> - with a callback - and let the calculator Function run the callback - after the CALCULATION is finished:</p>
+    <pre>
+         p id="cb">  /p>
+         script>
+            function <mark>myDisplayer2</mark>(something){
+                document.getElementById('cb').innerHTML = something;
+            }
+    
+            function myCalculator2(num1, num2, <mark>myCallback</mark>){
+                let sum = num1 + num2;
+                <mark>myCallback(sum);</mark>
+            }
+            myCalculator2(5, 5, <mark>myDisplayer2</mark>);
+         /script>
+    </pre>
+    <p id="cb"></p>
+    <script>
+        function myDisplayer2(something){
+            document.getElementById('cb').innerHTML = something;
+        }
+
+        function myCalculator2(num1, num2, myCallback){
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+        myCalculator2(5, 5, myDisplayer2);
+    </script>
+
+    <h2>Asynchronous JavaScript</h2>
+    <pre>
+        Functions <mark><i>running in parallel - with other functions</i></mark> are called asynchronous.
+    </pre>
+    <h3>Waiting for a Timeout - setTimeout()</h3>
+    <p>When using the JS function <i>setTimeout()</i>, you can SPECIFY a <b>callback function</b> - to be executed on time-out:</p>
+
+    <h4>Example:</h4>
+    <p>Wait 3 seconds (3000 miliseconds) for this page to CHANGE.</p>
+    <pre>
+         h1 id="as" style="color:darkcyan"> /h1>
+         script>
+            <mark>setTimeout(myFunction, 3000);</mark>
+            function myFunction(){
+                document.getElementById('as').innerHTML = 'Hello There!';
+            }
+         /script>
+    </pre>
+    
+    <h1 id="as" style="color:darkcyan"></h1>
+    <script>
+        setTimeout(myFunction, 3000);
+        function myFunction(){
+            document.getElementById('as').innerHTML = 'Hello There!';
+        }
+    </script>
+    <pre>
+        <i>myFunction</i> - is used as a <b>callback.</b>
+        <i>myFunction</i> - is passed to <i>setTimeout()</i> <b>as an argument.</b>
+        <i>3000</i> - is the no. of miliseconds before time-out, so <i>myFunction()</i> will be called <b>after 3 seconds.</b>
+    </pre>
+
+    <h2>Waiting for Intervals:</h2>
+    <p>When using the JS Function (setInterval()), you can specify a callback Function - to be exectuted - <b>for each interval</b></p>
+    <p>Using setInterval() to display the time every second (1000 milliseconds).</p>
+    <pre>
+         h1 id="st"> /h1>
+         script>
+            setInterval(timeFunction, 1000);
+            function timeFunction(){
+                let d = new Date();
+                document.getElementById('st').innerHTML = 
+                d.getHours() + ":" + 
+                d.getMinutes() + ":" + 
+                d.getSeconds();
+            };
+         /script>
+    </pre>
+
+    <h1 id="st"></h1>
+    <script>
+        setInterval(timeFunction, 1000);
+        function timeFunction(){
+            let d = new Date();
+            document.getElementById('st').innerHTML = 
+            d.getHours() + ":" + 
+            d.getMinutes() + ":" + 
+            d.getSeconds();
+        };
+    </script>
+    <pre>
+        <i>myFuncion</i> is used as a callback.
+        <i>myFunction</i> is passed to <mark>setInterval()</mark> <b>as an argument.</b>
+        1000 is the number of milliseconds between intervals, so myFunction() will be called every second.
+    </pre>
+
+    <h3>Waiting for files</h3>
+    <p>IF YOU CREATE a function to load an external resource (script/file), you cannot use the content before it is fully loaded.</p>
+    ---...---
+
+    <h2>III. JS Promises</h2>
+    <p><i>"PRODUCING code" - is code that <b>can take some time.</b></i><br>
+        <i>"CONSUMING code" - is code that <b>must wait for the result.</b></i>
+        <i>A Promise</i> -  is a <b>JavaScript object</b> <mark>that links</mark> PRODUCING code and CONSUMING code.
+    </p>
+
+    <h3>JS Promise OBJECT</h3>
+    <p>A JS Promise Object - <u>contains both</u> - the PRODUCING code - and calls to the CONSUMING code: </p>
+    <pre>
+        let my Promise = new Promise(function(myResolve, myReject){
+            //"Producing code" (MAY TAKE SOME TIME)
+
+            <mark>myResolve();</mark> //when successful
+            <mark>myReject();</mark> //when error
+        });
+
+        //"Consuming Code" (Must wait for a fulfilled Promise)
+        myPromise<mark>.then</mark>(
+            <mark>function(value) {/* code if successful */},</mark>
+            <mark>function(error) {/* code if some error */},</mark>
+        );
+    </pre>
+    <p><i>When the PRODUCING code - obtains the result - it SHOULD CALL - one of the two callbacks:</i></p>
+    <pre>
+        <b>Result</b>           <b>Call</b>
+        Succes                  myResolve(result value)
+        Error                   myReject(error object)
+    </pre>
+
+    <h2>Promise Object Properties</h2>
+    <pre>
+        A JS PROMISE Object - <b>can be</b> in 3 <b>states</b>:
+        <b>Pending</b> - While a PROMISE is <b>pending</b> - <i>the result is</i> <mark>undefined.</mark>
+        <b>Fulfilled</b> - When a PROMISE is <b>fulfilled</b> - <i>the result is</i> <mark>a value.</mark>
+        <b>Rejected</b> - When a PROMISE is <b>rejected</b> - <i>the result is</i> <mark>an ERROR object.</mark>
+    </pre>
+
+    <h3>PROMISE How to / then():</h3>
+    <p><mark>Promise.then()</mark> - <b>takes two arguments:</b> - a <b>callback</b> - for <b>success</b> and <b>another</b> for <b>failure.</b></p>
+    <pre>
+			< p id="JSP">< /p>
+			
+				function myDisplayer(some){
+					document.getElementById('JSP').innerHTML = some;
+				};
+	
+				let myPromise = new Promise((resolve, reject) =>{
+					let x = 0;
+	
+					if(x == 0){
+						resolve('OK');
+					}else{
+						reject('Error');
+					}
+				});
+	
+				myPromise.then(
+					(value) => {myDisplayer(value)},
+					(error) => {myDisplayer(error)}
+				);
+    </pre>
+		
+		<p id="JSP"></p>
+    
+		<script>
+			function myDisplayer(some){
+				document.getElementById('JSP').innerHTML = some;
+			};
+
+			let myPromise = new Promise((resolve, reject) =>{
+				let x = 0;
+
+				if(x == 0){
+					resolve('OK');
+				}else{
+					reject('Error');
+				}
+			});
+
+			myPromise.then(
+				(value) => {myDisplayer(value)},
+				(error) => {myDisplayer(error)}
+			);
+    </script>
+
+		<h2>Another JS - PROMISE Examples</h2>
+		<h3>Example - Using Callback</h3>
+		<pre>
+			< p id="ex2">< /p>
+			
+				setTimeout(() => {myAnotherFunction("Hello There!");}, 3000);
+	
+				function myAnotherFunction(value){
+					document.getElementById('ex2').innerHTML = value;
+				}
+		</pre>
+
+		<p id="ex2"></p>
+		<script>
+			setTimeout(() => {myAnotherFunction("Hello There!");}, 3000);
+
+			function myAnotherFunction(value){
+				document.getElementById('ex2').innerHTML = value;
+			}
+		</script>
+
+		<h3>Example - Using PROMISE</h3>
+		<pre>
+			< p id="ex3">< /p>
+			
+				const myPromise2 = new Promise((resolve, reject) => {
+					setTimeout(() => {resolve("I am here!");}, 2000);
+				});
+	
+				myPromise2.then((value2) =>{
+					document.getElementById('ex3').innerHTML = value2;
+				});
+		</pre>
+
+		<p id="ex3"></p>
+		<script>
+			const myPromise2 = new Promise((resolve, reject) => {
+				setTimeout(() => {resolve("I am here!");}, 2000);
+			});
+
+			myPromise2.then((value2) =>{
+				document.getElementById('ex3').innerHTML = value2;
+			});
+		</script>
+
+		<h2>Async Await</h2>
+		<p><b>async</b> - makes a function <b><mark>return</mark> a PROMISE.</b><br>
+		<b>await</b> - makes a Function <b><mark>wait</mark> for a PROMISE.</b><br>
+		The Function <b>has to be LABELED "async" -  if we want to be/use "await" inside.</b>
+		</p>
+		<pre>
+			< p id="aa">< /p>
+			
+				function myDisplayer2(some){
+					document.getElementById('aa').innerHTML = some;
+				}
+				<mark><b>async</b></mark> function myFunction3() {return "Hello - Async";}
+	
+				myFunction3()<mark>.then</mark>(
+					(value) => {myDisplayer2(value);},
+					(error) => {myDisplayer2(error);}
+				);			
+			
+		</pre>
+		<p id="aa"></p>
+		<script>
+			function myDisplayer2(some){
+				document.getElementById('aa').innerHTML = some;
+			}
+			async function myFunction3() {return "Hello - Async";}
+
+			myFunction3().then(
+				(value) => {myDisplayer2(value);},
+				(error) => {myDisplayer2(error);}
+			);			
+		</script>
+
+	<h2>Await</h2>
+	<p>The <mark>await</mark> keyword - can only be used <b>inside an <mark>async</mark> function.</b><br>
+	The <mark>await <b>keyword</b></mark> - makes the function - <b>pause the EXECUTION</b> - AND <B>wait - <mark>for a resolved PROMISE before it continues.</mark></B></p>
+	<pre>
+
+	</pre>
+	<p id="a"></p>
+	<script>
+		async function myDisplay() {
+			let myPromise3 = new Promise((resolve, reject) =>{
+				resolve ("I'm resolved!");
+			});
+			document.getElementById('a').innerHTML = await myPromise3;
+		}
+
+		myDisplay();
+	</script>
+
+
+
+
+
+
+
+    
+
+</body>
+</html>

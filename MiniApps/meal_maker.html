@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Meal Maker (2)</h2>
+	<h3>Create the Menu Object</h3>
+
+	<p>1.We'll hold the meal price and their respective <u>gettes</u> and <u>setters</u> in an object named <mark>menu</mark>.<br><br>
+
+		2.The <mark>menu object</mark> will hold the meal and the price of Today's Special as properties and they shouldn't be ALTERED DIRECTLY.<br>
+		Whithin the <mark>menu object</mark> create a <mark>_meal property</mark> with a value of an <u>empty string('')</u>.<br>
+		This will eventually hold the name of the meal.<br><br>
+
+		3.Next add a <mark>_price property</mark> whith a value of "0".<br>
+		This will eventually hold the price of the meal and should also not be ALTERED DIRECTLY.<br><br>
+
+		4.We know properties that begin with "_" should not directly manipulated. But just to validate this knowledge, let's test it out.<br>
+		Below the <mark>menu object</mark>directly manipulate the two properties by assigning <mark>_meal</mark> a <u>number value</u> and <mark>_price</mark> a string value.<br>
+		Then below the new assigments, "console.log" the <mark>menu</mark> obj. to see how not type checking these values could cause confusion for a website visitor.
+	</p>
+	
+	<h3>Add Setter Methods</h3>
+	<p>5.To safety reassign the two <mark>menu</mark> properties, we can add setters that type checks the values being assigned.<br>
+	Below thep roperties, use the <mark>set keyword</mark> to create a <mark>meal</mark> - setter method - with <mark>mealToCheck</mark> as a parameter.<br><br>
+
+	6.In the body of the "setter method", create an <mark>if</mark> statement that checks if <mark>mealToCheck</mark> is a "string".<br>If it is, return the objects <mark>_meal</mark> property with <mark>mealToCheck</mark> - assigned as the value.<br><br>
+
+	7.Using the same procedures as above, use the <mark>set keyword</mark> to create a <mark>price setter</mark> with <mark>price check</mark> as a parameter.<br>
+	This method should make sure the value associated with <mark>_price</mark> is always a <b>number</b>.<br><br>
+
+	8.Below the <mark>menu</mark> object, set the values of <mark>_meal</mark> and <mark>_price</mark> using the newly created setter methods.<br>
+	Then "console.log" the <mark>menu</mark> object to check their functionality.
+	</p>
+
+	<h3>Add a Getter Method</h3>
+	<p>9.Now it's time to safely return the values of the <mark>_meal</mark> and <mark>_price</mark> properties in a readable form.<br>
+	Instead of directly accessing the properties, we can use <u>getter method</u> that proactively checks if a meal and price have been properly set before returning the values.<br><br>
+
+	Below the setters, use the <mark>get</mark> keyword to create a <mark>todaysSpecial</mark> method.<br><br>
+
+	10. In the body of the getter, create an (if else statement) to check if the <mark>_meal</mark> and <mark>_price</mark> value exist or are truthy values. <br>
+	If so, return a string telling potential website visitors what "today's Special" is. For example: "Today's Special is Spachetti for 5$!"<br>
+	If <mark>_meal</mark> and<mark>_price</mark> values do not exist (or are falsy) return the string :"Meal or price was not set corectly!"<br><br>
+
+	11.Finally wse the getter method to (console.log()) Today's Special.
+	</p>
+
+
+	<div id = "mm3"></div>
+	<div id = "mm4"></div>
+	<script type="text/javascript">
+		const menu = {
+			_meal: '',
+			_price: 0,
+
+			set meal(mealToCheck){
+				if(typeof mealToCheck === 'string'){
+					return this._meal = mealToCheck;
+				}
+			},
+
+			set price(priceToCheck){
+				if(typeof priceToCheck === 'number'){
+					return this._price = priceToCheck;
+				}
+			},
+
+			get todaysSpecial(){
+				if(this._meal && this._price){
+					return `Today's Special is "Spaghetti" for $${this._price}!`  
+				}else{
+					return "Meal or price was not set corectly!"
+				}
+			}
+		};
+
+
+		menu.meal = 'string';
+		menu.price = 9;
+		document.getElementById('mm3').innerHTML = menu.todaysSpecial;
+
+		
+
+
+	</script>
+		
+</body>
+</html>

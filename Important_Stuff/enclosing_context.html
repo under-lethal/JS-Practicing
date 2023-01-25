@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ENCOLOSING CONTEXT</title>
+</head>
+<body>
+<h3>Youtube Example:</h3>
+
+<p>We have a function called <mark>"outerFunction()"</mark>.<br>
+That Function is <b>returning another Function()</b> - <b><i>inside of it called innerFunction()</i></b>;<br>
+Here: <i>we calling outerFunction(), with the variable 'outside'</i>.<br>
+Then <i>we calling that newFunction('inside') - with the variable inside</i>.</p>
+
+<p>When we calling "outerFunction() - we have this ' + outerVariable' - which we SET to outside ~ outerFunction(outerVariable). Then we have this "innerFunction()"</p>
+<h5>The reason we're able to acces this (outerVariable) inside of the outerFunction(outerVariable) - is because of CLOSURES.</h5>
+<h5>How is the innerFuncton() - able to ACCESS this (outerVariable) - even after is done being executed...?</h5>
+<h5>outerVariable is OUT of SCOPE. Q&A: Because of the closures</h5>
+<pre>
+< p id="yt">< /p>
+< p id="yt1">< /p>
+< script type="text/javascript">
+	let output = '';
+	function outerFunction(outerVariable){
+		return function innerFunction(innerVariable){
+		document.getElementById('yt').innerHTML = output += 'Outer Variable: ' + outerVariable;
+		document.getElementById('yt1').innerHTML = output += 'Inner Variable: ' + innerVariable;
+		}
+	}
+	const newFunction = outerFunction('outside');
+	newFunction('inside');
+< /script>
+</pre>
+<p id="yt"></p>
+<p id="yt1"></p>
+<script type="text/javascript">
+	let output = '';
+	let output2 = '';
+	function outerFunction(outerVariable){
+		return function innerFunction(innerVariable){
+		document.getElementById('yt').innerHTML = output += 'Outer Variable: ' + outerVariable;
+		document.getElementById('yt1').innerHTML = output2 += 'Inner Variable: ' + innerVariable;
+		}
+	}
+	const newFunction = outerFunction('outside');
+	newFunction('inside');
+</script>
+
+<h4>The most common use case - is to have variables that you pass into functions - that can be accessed inside of the functions.</h4>
+<pre>
+< p id="yt3">< /p>
+< script type="text/javascript">
+	let output3 = '';
+	
+	function outerFunction1(outerVariable1){
+		<mark>const outer2 = 'Hi';</mark>
+		return function innerFunction1(innerVariable1){
+		document.getElementById('yt3').innerHTML = output3 += outer2;		
+		}
+	}
+	const newFunction1 = outerFunction1('outside');
+	newFunction1('inside');
+< /script>
+</pre>
+
+<p id="yt3"></p>
+<script type="text/javascript">
+	let output3 = '';
+	
+	function outerFunction1(outerVariable1){
+		const outer2 = 'Hi';
+		return function innerFunction1(innerVariable1){
+		document.getElementById('yt3').innerHTML = output3 += outer2;		
+		}
+	}
+	const newFunction1 = outerFunction1('outside');
+	newFunction1('inside');
+</script>
+<p><mark>const outer2 = 'Hi';</mark> - this is inside the SCOPE - but - OUTSIDE the Function.</p>
+
+<p>When most people think of closures - they think of functions - inside other functions.</p>
+<h5>In JS anything on the inside - has acces to the things on the outside of its scope.<br>
+Essentially - it has acces to it's parent scope, its parent, parent scope and so on...</h5>
+</body>
+</html>

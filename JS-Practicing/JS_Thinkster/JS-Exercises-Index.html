@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Exercises 1</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+	<h3>Global Scope</h3>
+	<p>Create a variable with GLOBAL SCOPE - and then PRINT it to the (console) - by using it INSIDE a Function.</p>
+	<pre>
+	< div id="ex1">< /div>
+	< script type="text/javascript">
+		<mark>let name = "John";</mark>
+		function printName(){
+		document.getElementById('ex1').innerHTML = name;
+		};
+		printName();
+	< /script>
+	</pre>
+	<div id="ex1"></div>
+	<script type="text/javascript">
+		let name = "John";
+		function printName(){
+		document.getElementById('ex1').innerHTML = name;
+		};
+		printName();
+	</script>
+	
+
+	<h3>Function Scope</h3>
+	<p>Create a Function - and then create a variable inside that Funciton. Print the variable to the console:<br>
+	1. Inside the function (both before and after declaration).<br>
+	2. Outside the Function - to see the difference.</p>
+	<pre>
+	< div id="ex2">< /div>
+	< script type="text/javascript">
+		//Function Scope
+		function run(){
+			<mark>let animal = 'dog';</mark>
+			document.getElementById('ex2').innerHTML = animal;
+		}
+		run();
+	< /script>
+	</pre>
+	<div id="ex2"></div>
+	<script type="text/javascript">
+		//Function Scope
+		function run(){
+			let animal = 'dog';
+			document.getElementById('ex2').innerHTML = animal;
+		}
+		run();
+	</script>
+
+	<h4>Nested Function</h4>
+	<pre>
+	< div id="ex2a"></div>
+	< script type="text/javascript">
+		function two(){
+			return <mark>function()</mark>{
+				document.getElementById('ex2a').innerHTML = "Nested Function."
+			}
+		}
+		<mark>let myFunction = two();</mark>
+		myFunction();
+	< /script>
+	</pre>
+	<div id="ex2a"></div>
+	<script type="text/javascript">
+		//Nested Function
+		function two(){
+			return function(){
+				document.getElementById('ex2a').innerHTML = "Nested Function."
+			}
+		}
+		let myFunction = two();
+		myFunction();
+	</script>
+
+	<h4>Another Nested Function</h4>
+	<pre>
+	< div id="ex2b"></div>
+	< script type="text/javascript">
+		function sayHi(fname,lname){
+			<mark>function getFullName()</mark>{
+				return fname + ' ' + lname;
+			}
+			<mark>return getFullName()</mark>;
+		}
+		<mark>var message = sayHi("Andy", "Anderson");</mark>
+		document.getElementById('ex2b').innerHTML = <mark>message;</mark>
+	< /script>
+	</pre>
+	<div id="ex2b"></div>
+	<script type="text/javascript">
+		function sayHi(fname,lname){
+			function getFullName(){
+				return fname + ' ' + lname;
+			}
+			return getFullName();
+		}
+		var message = sayHi("Andy", "Anderson");
+		document.getElementById('ex2b').innerHTML = message;
+	</script>
+
+	<h4>Another Nested Function 2:</h4>
+	<pre>
+	< div id="nf">< /div>
+	< script type="text/javascript">
+		function myDog(name){
+			function outputMyDog(){
+				return name;
+			}
+			<mark>return outputMyDog()</mark>;
+		}
+	<mark>var output = myDog("Radar2")</mark>;
+	document.getElementById('nf').innerHTML = output;
+	 /script>
+	</pre>
+	<div id="nf"></div>
+	<script type="text/javascript">
+		function myDog(name){
+			function outputMyDog(){
+				return name;
+			}
+			return outputMyDog();
+		}
+	var output = myDog("Radar2");
+	document.getElementById('nf').innerHTML = output;
+	</script>
+
+	<h3>Block Scope</h3>
+	<p>// Create a function, and then - create a variable inside an if statement in that function.<br> 
+	// Print the variable to the console inside the block and outside the block to see the difference.
+	</p>
+	<pre>
+	< div id="ex3">< /div>
+	< script type="text/javascript">
+		function watchCourse(){
+			const courseName = 'JS Fundamentals';
+			let started = true;
+
+			if(started){
+				let progress = 50;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}.`;
+			}else{
+				let progress = 0;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}`;
+			}
+		}
+
+		watchCourse();
+	< /script>
+	</pre>
+	<div id="ex3"></div>
+	<script type="text/javascript">
+		function watchCourse(){
+			const courseName = 'JS Fundamentals';
+			let started = true;
+
+			if(started){
+				let progress = 50;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}.`;
+			}else{
+				let progress = 0;
+				document.getElementById('ex3').innerHTML = `I am ${progress} percent done with ${courseName}`;
+			}
+		}
+
+		watchCourse();
+	</script>
+	<h4>Ex: 2</h4>
+	<pre>
+	< div id="x3">< /div>
+	< div id="x4">< /div>
+	< script type="text/javascript">
+		function play(numberOfPlayers){
+		if (numberOfPlayers === 1){
+			var game = 'Super Mario Odyssey';
+		} else {
+			var game = 'Super Smash Brothers';
+		}
+		function format(){
+			return `You're playing ${game}.`;
+		}
+		return format();
+	}
+	var game0 = play(1);
+	document.getElementById('x3').innerHTML = game0;
+	var game0 = play(0);
+	document.getElementById('x4').innerHTML = game0;
+	< /script>
+	</pre>
+	<div id="x3"></div>
+	<div id="x4"></div>
+	<script type="text/javascript">
+		function play(numberOfPlayers){
+		if (numberOfPlayers === 1){
+			var game = 'Super Mario Odyssey';
+		} else {
+			var game = 'Super Smash Brothers';
+		}
+		function format(){
+			return `You're playing ${game}.`;
+		}
+		return format();
+	}
+	var game0 = play(1);
+	document.getElementById('x3').innerHTML = game0;
+	var game0 = play(0);
+	document.getElementById('x4').innerHTML = game0;
+	</script>
+
+
+	<div id="x4"></div>
+
+	<h3>var</h3>
+	<p>Because the game variable is function scoped, it is still accessible inside the function even though it was declared and initialized inside an if block. Block scoped variables would not work if we tried the above. The result would be the following:</p>
+
+	<pre>
+		// index.js
+
+		function play(numberOfPlayers) {
+		  if (numberOfPlayers === 1) {
+		    let game = 'Super Mario Odyssey';
+		  } else {
+		    let game = 'Super Smash Brothers';
+		  }
+
+		  function format() {
+		    return `You are playing ${game}`;
+		  }
+
+		  return format();
+		}
+
+		console.log(play(1)); // ReferenceError game is not defined
+		console.log(play(2));
+	</pre>
+	
+	<h3>let</h3>
+	<p>In this case, the format function can not use the game variable because it is not available in the play function or its nested functions as it is block scoped. To fix the issue, we would have to do something like:</p>
+	<pre>
+		// index.js
+
+		function play(numberOfPlayers) {
+		  <b>let game;</b>
+		  if (numberOfPlayers === 1) {
+		    game = 'Super Mario Odyssey';
+		  } else {
+		    game = 'Super Smash Brothers';
+		  }
+
+		  function format() {
+		    return `You are playing ${game}`;
+		  }
+
+		  return format();
+		}
+
+		console.log(play(1)); // You are playing Super Mario Odyssey
+		console.log(play(2)); // You are playing Super Smash Brothers
+	</pre>
+	<div id="x5"></div>
+	<p>This time, the let variable is block scoped to the play function and thus is available in all nested blocks. Variables defined with const work the same way, except they need to be initialized at the same time they are declared.</p>
+
+	<h3>var let & const</h3>
+	<p>Declare a variable with each of the above keywords, two for const (one that has a number, string, or boolean and one object or array)<br>
+	Try to alter the value of each variable and see what happens in each scenario.<br>
+ 	On the object or array, try adding to the array or altering an attribute on the object as well as reassigning the value.</p>
+ 	<div id="ex4"></div>
+ 	<div id="ex5"></div>
+ 
+ 	<div id="ex7"></div>
+ 	<div id="ex8"></div>
+
+ 	<h3><mark>Value vs Reference</mark></h3>
+ 	<p>Declare a variable with a value of a number, string, or boolean, then copy it to another Variable.<br>
+ 	Log both variables, then change the value of one and log them again.<br>
+ 	Declare a variable with a value of an object or an array, then copy it to another Variable.<br>
+ 	Log both variables, then change the value of an attribute on one object or add an item to one array and log them again</p>
+ 	<div id="ex9"></div>
+
+ 	<h4>Value</h4>
+ 	<p>When a variable is assigned a value of a string, number, boolean, null, or undefined, they are storing that information <b>by value</b>.<br>
+ 	In essence, they contain the value in the variable. If you change the value they are storing, they forget the old value and now contain the new value.</p>
+
+ 	<h3>JavaScript Data Types</h3>
+ 	<p>For each expression, predict what you think the output will be in a comment (//) without first running the command.<br>
+ 	Where this really matters is when you declare a second variable and initialize it to the first variable.
+ 	</p>
+ 	<pre>
+ 		let myRating = 5;
+ 		let yourRating = myRating;
+ 		console.log(myRating, yourRating); // <mark>5 5</mark>
+ 	</pre>
+ 	<p>In this example "myRating" is assigned the value of "5", and "yourRating" is assigned the value of "myRating".<br>
+ 		So what happen if you reasing the value of "myRating" or reasign the value of "yourRating".<br>
+ 		<b>Well, because these variables are STORED (by value), they CAN CHANGE INDEPENDENLTY of each other.</b></p>
+ 	<pre>
+ 		myRating = 9;
+ 		console.log(myRating, yourRating); // <mark>9 5</mark>
+ 	</pre>
+ 	<p>The same thing happens if you passed myRating into a function. If the function changed the value of that parameter, <mark>myRating</mark> would be unaffected.</p>
+ 	<pre>
+ 		myRating = 9;
+ 		console.log(myRating, yourRating); 
+
+ 		function multiplyRating(rating){
+ 			return rating * 10;
+ 		}
+ 		let newRating = multiplyRating(myRating);
+ 		console.log(myRating, newRating); //<mark>9 90</mark>
+ 	</pre>
+ 	<p id="va"></p>
+ 	<p id="va1"></p>
+ 	<script type="text/javascript">
+ 		let myRating = 9;
+ 		document.getElementById('va').innerHTML = myRating;
+
+ 		function multiplyRating(rating){
+ 			return rating * 10;
+ 		}
+ 		let newRating = multiplyRating(myRating);
+ 		document.getElementById('va1').innerHTML = myRating + " " + newRating;
+ 	</script>
+
+ 	<h4>Reference</h4>
+ 	<p>When a var STORES its data by 'Reference' - all it contains is the location in memory where the data is stored.<br>
+ 		When you copy that 'var', or pass it to a function, the location in memory is all that is copied.<br>
+ 		That means - that all variables are POINTING to the SAME PLACE in MEMORY.<br>
+ 	If one of them change the value - all of them will reflect the change.</p>
+ 	<pre> 		 	
+ 	< p id="ref">< /p>
+ 	< p id="ref1">< /p>
+ 	< p id="ref2">< /p>
+ 	< script type="text/javascript">
+ 		let dog = {name: 'Duke'};
+ 		let dog2 = dog;
+ 		document.getElementById('ref').innerHTML = dog.name +' '+dog2.name;
+
+ 		dog.name = 'Max';
+ 		document.getElementById('ref1').innerHTML = dog.name +' '+dog2.name;
+
+ 		function changeName(dogObj){
+ 			dogObj.name = 'Fido';
+ 		}
+ 		changeName(dog2);
+ 		document.getElementById('ref2').innerHTML = dog.name + " " +dog2.name;
+ 	< /script>
+ 	</pre>
+ 	<p id="ref"></p>
+ 	<p id="ref1"></p>
+ 	<p id="ref2"></p>
+ 	<script type="text/javascript">
+ 		let dog = {name: 'Duke'};
+ 		let dog2 = dog;
+ 		document.getElementById('ref').innerHTML = dog.name +' '+dog2.name;
+
+ 		dog.name = 'Max';
+ 		document.getElementById('ref1').innerHTML = dog.name +' '+dog2.name;
+
+ 		function changeName(dogObj){
+ 			dogObj.name = 'Fido';
+ 		}
+ 		changeName(dog2);
+ 		document.getElementById('ref2').innerHTML = dog.name + " " +dog2.name;
+ 	</script>
+<p>As we can see - CHANGEING the name ATTR - on one object - change the NAME attribute on ALL of the OBJECTS.<BR>
+That's because in reality - all of the variables are POINTING to the same object, at a location in MEMORY.</p>
+
+ 	<pre>
+ 		typeof("potato"); //string
+ 		typeof(5.5);	//number
+ 		typeof(NaN);	//undefined
+ 		typeof(true);	//boolean
+ 		typeof(1 != 2);	//boolean
+
+ 		"hamburger" + "s"; //hamburgers
+ 		"hamburger" - "s"; // NaN (?)
+
+ 		"1" + "3" // '13'
+ 		"1" - "3" // -2
+
+ 		"johnny" + 5 //johnny5
+ 		"johnny" - 5 //NaN - when you COMPARE strings and numbers (apples with pears)
+
+ 		99 * "luftbaloons" //NaN
+ 	</pre>
+
+ 	<h3>this</h3>
+ 	<p>When talking about this in JavaScript, we're talking about the context in which a JavaScript function is run. Context in general is the circumstances that form the setting for an event, statement, or idea.<br>In JS - it's the circumstances in which something is done (like a Function() being run).<br>
+ 	"this." in JS is generally, RELATED to OBJECTS - and what objects is invoking a Function().
+ 	</p>
+ 	<pre>
+ 		function sayHello() {
+ 			console.log(this);
+ 			console.log(`Hello, ${this.name}!`);
+ 		}
+
+ 		const person = {
+ 			name:'Preston',
+ 			sayHello,
+ 		};
+
+ 		sayHello(); // Window {}; Hello!
+ 		person.sayHello(); //{ name: "Preston", sayHello: function }; Hello, Preston!
+ 	</pre>
+ 	<div id="ex10"></div>
+ 	<div id="ex11"></div>
+ 	<p>The context of the "sayHello" Function() - changes. depending on HOW and WHERE it's called.<br>
+ 	When it's invoked by itself, (it's CONTEXT) - it's GLOBAL Window Object.<br>
+ 	When it's invoked from the "person Object{}" - it's context is the (perons Object) - that invoke the Function().</p>
+ 	<p>In our example with the sayHello function above, this prints out in two different ways, once as the Window object and once as myObj.<br>
+ 	If a function is called and it's not called as a method on an object, the context of the function will default to the global context.<br>
+ 	The CONTEXT of the global Window: If there no name attribute on the "Window" - the message will print out: "//Window"</p>
+
+ 	<h3>Determining Context</h3>
+ 	<pre>
+ 		const person = {
+  		name: 'Alen',
+  		sayHello: function () {
+    		console.log(this);
+    		console.log(`Hello ${this.name}!`);
+  			},
+		};
+		person.sayHello();
+ 	</pre>
+ 	<div id="ex12"></div>
+ 	<div id="ex13"></div>	
+ 	<p>In this Example the "sayHello" Function() is a method on the (person Object).<br>
+ 	When it's invoked, it's run the ONCTEXT of the (person Object).<br>
+ 	So "this." reffers to the OBJECT associated with calling the function.</p>
+
+ 	<h4>Another Example</h4>
+ 	<pre>
+ 		function sayHello() {
+		  console.log(this);
+		  console.log(`Hello ${this.name}!`);
+		}
+
+		const person = {
+		  name: 'Preston',
+		  sayHello,
+		  spouse: {
+		    name: 'Amanda',
+		    sayHello,
+		  },
+		};
+		person.sayHello(); // { name: 'Preston', sayHello: function, spouse: {} }; Hello Preston
+		person.spouse.sayHello();// { name: 'Amanda', sayHello: function }; Hello Amanda
+ 	</pre>
+ 	<div id="ex14"></div>
+ 	<div id="ex15"></div>
+
+ 	<p>In this example, one of the attributes on the person object is an object itself.<br>
+ It also has a "sayHello" function.<br>
+ When we call the "person.wife.sayHello() function" - this refers to the (person.supose.object) - not the person "object".</p>
+
+ <p>We still have our "sayHello" Function(), and our person Object{}, - but this time, the object doesn't have a "sayHello" Method. <br>
+ 	We know that if we run the "sayHello Function()" without being on an object - the context would default to window.<br>
+ 	But all JS Functions have 3 methods - that you can use to set the context. Those 3 methods are - "call, aplly, bind".<br>
+ They all allow you to set tge context of a function - although each in slightly different ways.</p>
+
+ <pre>
+ 		function sayHello() {
+	  console.log(this);
+	  console.log(`Hello, ${this.name}!`);
+		}
+
+		const person = {
+		  name: 'Preston',
+		};
+
+		sayHello.call(person); // { name: 'Preston' }; Hello Preston!
+		// or
+		sayHello.apply(person); // { name: 'Preston' }; Hello Preston!
+		// or
+		const newFn = sayHello.bind(person);
+		newFn(); // { name: 'Preston' }; Hello Preston!
+ </pre>
+ <div id ="ex16"></div>
+ <div id ="ex17"></div> 
+
+ <h3>Arrow Functions</h3>
+ <pre>
+ 		const person = {
+  	name: 'Preston',
+  	sayHello: () => {
+    	console.log(this); // Window
+    	console.log(`Hello ${this.name}!`); // Hello !
+  	},
+	};
+	person.sayHello();
+ </pre>
+<div id="ex18"></div>
+<div id="ex19"></div>
+
+<h2>Exercises</h2>
+<div id="ex20"></div>
+<div id="ex21"></div>
+<div id="ex22"></div>
+<div id="ex23"></div>
+<div id="ex24"></div>
+<div id="ex25"></div>
+<div id="ex26"></div>
+
+<h2>Exercises console.log()</h2>
+<p>console.log the following:<br>
+1. Your Name<br>
+2. The number of pizzas you'll have at your pizza party<br>
+3. An object that describes your favorite pizza<br>
+4. An array of friends that will come to your party<br>
+5. Multiple arguments: "My favorite pizza is " and the pizza object
+</p>
+<div id="ex27">1</div>
+<div id="ex28">2</div>
+<div id="ex29">x</div>
+<div id="ex30">4</div>
+<div id="ex31">x</div>
+
+<h2>Exercises console.log()</h2>
+<p>
+Print your favorite dessert<br>
+Print a message with your favorite flavor of ice cream coming from a variable<br>
+Print an object with two attributes: dessert ('ice cream sundae’) and an array of toppings
+
+</p>
+<div id="ex32">x</div>
+<div id="ex33">x</div>
+<div id="ex34">x</div>
+
+<p>Print out a pizza object<br>
+Print out an array of friends’ names<br>
+Print out an array of pizzas</p>
+<div id="ex35"></div>
+<div id="ex36"></div>
+<div id="ex37"></div>
+
+<h2>Logical Operators</h2>
+
+<h3>The || Operator</h3>
+<p>The logical operator "or" (||) is a way of saying you want to use one value OR another value. As long as one value is truthy, you're happy and will do something with that value.</p>
+<p>When evaluating an expression that uses the || operator, JavaScript starts at the left most part of the expression and works its way to the right. It stops at the first truthy value and returns that value to be used. If no truthy values are available, it returns the last falsy value in the list.</p>
+
+<p>true || false = true</p>
+<div id="oo"></div>
+<p>true || true = true</p>
+<div id="oo1"></div>
+<p>false || false = false</p>
+<div id="oo2"></div>
+<p>The end result doesn't have to be a boolean value. Let's look at an example of that.</p>
+<pre>
+	let person9 = firstPerson || lastPerson || null;
+	document.getElementById('oo3').innerHTML = person9;
+	//Uncaught ReferenceError: firstPerson is not defined
+</pre>
+<div id="oo3"></div>
+
+<h3>The && Operator</h3>
+<p>true && true = true;</p>
+<div id="ao"></div>
+<p>	true && false --> false; <br>
+false && true --> false;</p>
+<div id="ao1"></div>
+<p>The end result of the COMPARISONS though, works differently than the "||" operator.<br>
+If all parts of the "&&" operator statement are TRUE, the results will be THE LAST STATEMENT.<br>
+If any part of it - is FALSE - it returns THE FIRST STATEMENT in the list.</p>
+<pre>
+	let result = 5 && 3; // 3
+	result = 0 && 4; // 0
+</pre>
+
+<h3>The (!) NOT Operator</h3>
+<p>The (!) is an unary operator and it's placed before the single operant.<br>
+The USE of (!) is to INVERT the Boolean expression.<br>
+It means if: x = true //<br> 
+"!x'"inxert x Boolean Value.<br>
+x is equal to FALSE.</p>
+<pre>
+		x = true; 
+		!x; //false
+</pre>
+<div id="ao2"></div>
+
+<h3>Logical Operators Exercises 2</h3>
+<div id="lo"></div>
+<div id="lo1"></div>
+<div id="lo2"></div>
+<div id="lo3"></div>
+<div id="lo4"></div>
+<div id="lo5"></div>
+
+<h3>Comparison Operators</h3>
+<h4>Abstract Comparison == !=</h4>
+<p>When you use these two comparisons, JavaScript converts both variables to the same type and then compares them.</p>
+<pre>
+	console.log(1 == '1')/ // true
+</pre>
+<p>In our example above, it takes one of the two values and converts it to the same type as the opposite one (i.e. takes the number and converts it to a string) and then does the comparison.<br>
+That's why the statement 1 == '1' is true. Obviously a number is not the same as a string, but with abstract comparison they are compared to each other as if they were the same.
+</p>
+<p>The same is true for !=. If we take the inverse of the previous statement:</p>
+<pre>
+	console.log(1 != '1'); // false
+	 1 != '1' - means '1' != '1' / 1 != 1 //false.
+</pre>
+<p>Another situation to be aware of when using abstract comparison is when you are comparing null and undefined. These are two distinct primitive types in JavaScript, but if you use the abstract comparison on<br> these two values, you get a true.</p>
+<pre>
+	console.log(null == undefined); // true
+	console.log(null != undefined); // false
+</pre>
+
+<h4>Strict Comparison === !==</h4>
+<p>With strict comparisons, no type conversion happens, and the values are compared to each other exactly as you wrote them.<br>
+Likely when you make a comparison between two objects, you actually want to know if two values are strictly equal or strictly not equal to each other.
+</p>
+<pre>
+console.log(1 === '1'); // false
+console.log(1 !== '1'); // true
+console.log(1 === 1); // true
+console.log(null === undefined); // false
+</pre>
+
+<h4>Relational Operators</h4>
+<p>Relational operators are the following operators: >, >=, < and <=.</p>
+<pre>
+	console.log(4 > 1); // true
+	console.log(4 > 4); // false
+	console.log(4 > 8); // false
+
+	console.log(4 >= 4); // true
+	console.log(4 >= 8); // false
+
+	console.log(4 < 8); // true
+	console.log(4 < 4); // false
+	console.log(4 < 2); // false
+
+	console.log(4 <= 4); // true
+	console.log(4 <= 2); // false
+</pre>
+
+<h4>Comparison Exercises 3</h4>
+<pre>
+	console.log(null == undefined); // true
+	console.log(null === undefined);// false
+
+	console.log(1 === '1'); //false
+	console.log(1 !== '1'); //true
+
+	console.log(1 == 1); // true
+	console.log(1 === 1);// true
+	console.log(1 != 2); // true
+	console.log(1 !== 2);// true
+
+	console.log('hi' == 'hi');//true
+	console.log('Hi' !== 'hi'); //true
+	console.log('Hi' !== 'Hi'); //false
+
+	console.log({ attr: 'hi' } == { attr: 'hi' }); //false (??)
+	const myObj = { attr: 'hi' };
+	const myObj2 = myObj;
+	console.log(myObj == myObj2); //true (??)
+
+	console.log(true === true); //true
+	console.log(false !== true);//true
+
+</pre>
+
+<h3>The OR (||) operator Exercises</h3>
+<p>It stops at the first truthy value and returns that value to be used. If no truthy values are available, it returns the last falsy value in the list.</p>
+<pre>
+	'0' || null // '0'
+	If the first Operand is TRUTHY, it evaluates to the first operand. Otherwise - it evaluates to the second.
+</pre>
+<div id="or"></div>
+<pre>
+	2. What is the value of name?
+	const name = '' || null || 3 || 'Jason';
+</pre>
+<div id="or1"></div>
+
+<pre>
+3. Provide values for val1 and val2 so that you enter the if statement.
+const val1;
+const val2;
+if (val1 || val2) {
+  console.log('You made it into the if statement')
+</pre>
+<div id="or2"></div>
+
+<h3>The AND (&) operator Exercises</h3>
+<p>When evaluating an expression that uses the && operator, JavaScript starts at the left most part of the expression and works its way to the right.<br>
+It stops at the first falsy value and returns that value, if there is a falsy value. If no falsy values are present, it continues to the end of the statement and returns the value of the last truthy statement as the result of the comparison.</p>
+<pre>
+  1. dog && dog.breed
+	const dog = {
+  breed: 'Labradoodle'
+}
+</pre>
+<div id="ao3"></div>
+<pre>
+Provide values for val1 and val2 so that you enter the if statement.
+const val1;
+const val2;
+if (val1 && val2) {
+  console.log('You made it into the if statement')
+}
+</pre>
+<div id="ao4"></div>
+<pre>
+	const val1 = 'Hello';
+	const val2 = 'World';
+if (val1 && val2) {
+  console.log('You made it into the if statement')
+}
+</pre>
+<div id="ao5"></div>
+
+<h3>The (!) NOT Operator - Exercises</h3>
+<p>The logical operator "not" (!) lets you convert a truthy statement to a false result, and a falsy statement to a true result. Using two not operators together (!!) lets you convert a truthy value to the boolean result true and a falsy value to the boolean result false.</p>
+<pre>
+	!truthy → false
+	!falsy → true
+	!!truthy → true
+	!!falsy → false
+</pre>
+<pre>
+ 1. !dog.breed vs dog.name
+const dog = {
+  breed: 'Labradoodle'
+}
+
+!dog.breed - false; !dog.name - true
+</pre>
+<div id="no"></div>
+
+<pre>
+2. What is the value of name?
+let name = !!dog.name;
+name = !dog.name
+
+//true
+{} => true; !{} =>false
+{name: 'x'} => true; !{name: "X"} => false; (???)
+</pre>
+
+<pre>
+!{} - false;  ![] - false; 
+
+const person  = [{fname:"alen"},{lname:"Steve"}]
+person;
+(2)[{…}, {…}]
+!person;
+false
+
+const numbers = [1,2,3,4];
+numbers;
+(4)[1, 2, 3, 4]
+!numbers;
+false
+
+function sum (a, b){return a + b};
+sum(1,2);
+3
+!sum();
+true
+
+function aaa(){};
+undefined
+!aaa();
+true
+
+!!aaa();
+false
+
+</pre>
+<div id="no1"></div>
+<div id="no2"></div>
+<pre>
+3. Provide a value for the ifStatement variable using the not operator and the name attribute so that you enter the if statement.
+const ifStatement = !dog.name;
+if (ifStatement) {
+  dog.name = 'Max';
+}
+console.log(dog);
+</pre>
+<div id="no3"></div>
+
+<h3>The Nullish Coalescing</h3>
+<p>The Logical operator "nullish coalescing" (??) - is a way of saying you WANT  to use one value OR another value.<br>
+If the FIRST VALUE is "null" or "undefined", you'll use the RIGHT SIDE of the OPERATOR. Otherwise - you'll use the left side.<br>
+This is where it differs from th OR "operator", but it's very closely related.
+</p>
+<pre>
+	1. 5 ?? 100 //5
+
+	2. 0 ?? null	//0
+
+	3. null ?? 5  //5
+
+	4. null ?? undefined // undefined(?)
+</pre>
+
+
+
+<script type="text/javascript" src = "JS/JS_Exercises.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>How SYNCHRONOUS code looks in JavaScript.</h2>
+    <h3>Sync Code Example</h3>
+    <pre>
+         script>
+            function otherFunction(){
+                console.log('I am in another function');
+                console.log('Do some stuff');
+            }
+    
+            console.log('Start');
+            <mark>otherFunction();</mark>
+            console.log('End');
+         /script>
+
+    *JS is gonna read your code  - LINE by LINE.
+    *Read this Function. Add it to the Memory. Then it c.log("Start").
+    
+    *When we invoke a Function - we <mark>CREATE a NEW Execution CONTEXT</mark>. When we invoke a Func. we go inside the Func.
+    *We start <mark>reading</mark> THIS c.log('I am in another function') - and THIS c.log('Do some stuff').
+    *And finally (when we done with the Function) - it closes. It gets popped off of that CALL STACK/CONTEXT.
+    *<mark>CALL Stack</mark> - is a WAY for JS to <u>KEEP TRACK</u> - of all your <b>execution context.</b>
+    </pre>
+    <script>
+        function otherFunction(){
+            document.write('I am in another function' + '<br>');
+            document.write('Do some stuff' + '<br>');
+        }
+
+        document.write('Start' + '<br>');
+        otherFunction();
+        document.write('End' + '<br>');
+    </script>
+
+    <h3>How ASYNCHRONOUS wors</h3>
+    <h4>Usual "things" USED in ASYNC:</h4>
+    <pre>
+        1. <mark>setTimeout()</mark> - a SPECIFIC THING that's gonna do <b>ASYNC operations.</b>
+
+        So: setTimeout(), <mark>(which takes a callback function)</mark>, and a <b>DELAY of 2000 miliseconds</b>.
+        Every code ({...} - inside the Func()) - <b>it's gonna be ASYNCHRONOUS.</b>
+        What Func() does - <b>it's gonna delay this code:</b> <mark>console.log('We are in the timeout!');</mark> by 2 SECONDS.
+        
+        RUN:
+        We get START. | We WAIT 2 SECONDS. | Then - we get "End". ????
+        <mark>START. | 'End'. | 'We are in the timeout!'</mark>
+
+         script>
+            console.log('Start2');
+            
+            setTimeout(<mark>() => {
+                console.log('We are in the timeout!');
+            }</mark>, 2000);
+    
+            console.log('End2');
+         /script>
+
+    </pre>
+    <script>
+        console.log('Start2');
+        
+        setTimeout(() => {
+            console.log('We are in the timeout!');
+        }, 2000);
+
+        console.log('End2');
+    </script>
+
+    <pre>
+        What's happening:
+        a. JS is very bad at MULTITASKING. it can only DO ONE thing At the TIME. (only reads code - line BY line).
+        b. BUT - we have <b>the BROWSER</b>, we're running JS in <b>the BROWSER</b> - and there are <u>these things</u> called <b><mark>Web API's</mark></b> <i>that can HANDLE those things - separately for us.</i>
+        c. So' - When <b>we call</b> the <mark>setTimeout()</mark> - <b>JS - it's gonna PASS this "timeOut()" - <i>inside this -WEB API's</i> - and the BROWSER is basically gonna keep track of - "setTimeout()".</b>
+        c.1 We gonna "POP" this "setTimeOut()" off - the <b>call stack</b> and PASS IT into <mark>Web API's</mark> - and - then we continue RUNNING our CODE -> console.log('End2').
+        c.2 The code - (it's not blocked/blocat) - <b>(these asynchronous code)</b> it's JUST get passed to the <b>Web API's</b>.
+
+        d.In the <b>call Stack</b> (c.log('End2') - get ran). Once (this is done <mark>c.log('End2')</mark>) - it's get POPPED OUT/OFF...
+        and - at THE END  - <b>when the setTimeout() (when those 2 or 5 SECONDS passed) - <i>it GETS pushed back</i> - on the <mark>call Stack</mark> - and it runs.</b>
+        
+        <mark>START. | 'End'. | 'We are in the timeout!'</mark> 
+        
+        #2:
+        1.Our "main" SCRIPT tag - START RUNNING.
+        2.We add the <mark>console.log('Start')</mark> <b>first.</b> | After is running - <b>it gets remove.</b>
+        3.Then <b>we run the setTimeout() Function.</b> | This start RUNNING - but we CANNOT run <mark>c.log('End')</mark>. | We have to WAIT for <b><mark>setTimeout()</mark> - to FINISH.</b>
+
+        <b><mark>The setTimeout() method calls a function after a number of milliseconds.</mark></b>
+
+        #3: <b>addEventListener()</b>
+        a. Doesn't block the code. | Should we wait to USER click on SOMETHING?
+        b. It's simply/ALSO add/passed to wep Apis - <b>and this KEEP TRACK when the UESR clicks.</b>
+        b1. When the <b>user clicks</b> - then our callback Func() - gets executed - <b>and it's going to be PASSEED on the <mark>call Stack</mark> -so- IT GETS INVOKED.</b>
+
+        #4 <b>fetch (API)</b>
+
+        #5 <b>callbacks - are NOT necessarily - ALWAYS ASYNCHRONOUS</b>
+
+        c.log('Start');
+
+        const items = [1,2,3,4,5];
+        <b>items.forEach((item)=>{              - this callback - IT'S GONNA BE RAN before <mark>c.log('End');</mark>
+            c.log(item);                        <mark><b>- this IT'S NOT GONNA BE - <i>ASYNCHRONOUS</i></b></mark>
+        })</b>
+
+        c.log('End');
+        
+        <b>Ouput: Start | 1,2,3,4,5 | End </b>
+        <b><i>they're not NECESSARY to be ASYNCHRONOUS - they can be SYNCHRONOUS.</i></b>
+    </pre>
+
+    <pre>
+        <b>B. SIMULATE - How it would be for you to get - SOME DATA BACK from a - SERVER.</b>
+
+        a. If you try to write code synchronously
+        a.1 Create a Funciton that try to Login a USER. - (that takes an <b>email</b> and a <b> password</b>).
+
+        b. When we <b>login the user</b> - we want to <u>get back the</u> <b>email</b>.
+        c. Set the "setTimeout()" | PASS an arrow Function in here. | RETURN the E-mail. (CREATE an OBJECT in here): <mark>userEmail: email</mark>.
+        d. Let's say - we're trying to LOGIN the USER and | Let's say: it's take <mark>1500 miliseconds</mark>.
+
+        e. Then - <mark>const user = loginUser('deved@goomail.com', 12345);</mark> | WE're INVOKING the Function - and WE WANNA RETURN - <b>the Email.</b>
+        f. This <mark>setTimeout(()=> {..})</mark> COMEBACK - after some time. (1500 in this case).
+    </pre>
+    <pre>
+         script>
+            document.write('Begin' + ' br>');
+    
+            function loginUser(email, password){
+                setTimeout( () => {
+                    //document.write('We get the Data!');
+                    return({userEmali: email});
+                }, 1500);
+            }
+    
+            const user = loginUser('deved@goomail.com', 12345);
+            document.write(user + ' br>');
+    
+            document.write('Stop');
+         /script>
+    </pre>
+    <script>
+        document.write('Begin' + '<br>');
+
+        function loginUser(email, password){
+            setTimeout( () => {
+                //document.write('We get the Data!');
+                return({userEmali: email});
+            }, 1500);
+        }
+
+        const user = loginUser('deved@goomail.com', 12345);
+        document.write(user + '<br>');
+
+        document.write('Stop');
+    </script>
+
+    <pre>
+        g. document.write(user) -> <b><mark>undefined</mark></b>. Why? - The information/Function(setTimeout()) - dit not comeback YET.
+        <b>Output:</b> Begin | Undefined | Finish | <mark>(after 1500 miliseconds) We got the Data!</mark>
+        <b>We CANNOT run SYCHRONOUS style code here</b> - because We don't have the Data!
+        <b>What we can do - is WE <i>can pass IN A CallBack Function().</i></b> <mark>A callBack Function - is a function <b>that's PASSED in as a parameter</b> - that's gonna run LATER ON in a LATER time.</mark>
+        <b>A callback Func - is a Func() THAT'S PASSED as a PARAMETER - that's gonna RUN later ON.</b> 
+
+        A. Put a Callback Function here:
+        function loginUser(email, password, <mark>callback</mark>){..}
+        
+        B. Then INVOKE it here:
+        const user = loginUser('deved@goomail.com', 12345, <mark>() => {}</mark>);
+
+        C. Replace "return" with "callback": Rather then "return" <mark>WRAP "this thing and a CALLBACK</mark>.
+
+        D. <b>Passing this <i>{userEmail: user}</i> -  as a PARAMETER - and <b>this Function here</b> ("callback").</b>
+        E. Here <mark>,(user) => {..}</mark> we HAVE ACCES to that USER. And then <mark>c.log(user).</mark>
+    </pre>
+    <pre>
+        script>
+            document.write('Begin' + 'br>');
+    
+            function loginUser1(email, password, <mark>callback</mark>){
+                setTimeout( () => {
+                    document.write('We get the Data!');
+                    callback({userEmali: email});
+                }, 1500);
+            }
+    
+            const user1 = loginUser1('deved@goomail.com', 12345, <mark>user1 => {document.write(user1)});</mark>
+            document.write(user1 + 'br>');
+    
+            document.write('Stop');
+        script>
+
+        1. We passed a <mark>callback</mark> Function (here) - <b>which is:</b> <mark>user1 => {document.write(user1)});</mark>
+        2. When the <mark>setTimeout() runs</mark> - <b>we INVOKE the</b> <mark>callback Function</mark>... which TRIGGERS all
+        3. ...all of the functionality in here:  <mark>console.log(user).</mark>
+        4. Here <mark>console.log(user)</mark> - <b>we have acces to the USER.</b>
+        
+        <b>Output:</b> Begin | Stop | (wait 1.5 sec) "We have the Data!" <mark><b>{userEmali: deved@goomail.com}</b></mark>
+    </pre>
+    </pre>
+    <script>
+        console.log('Begin' + '<br>');
+
+        function loginUser1(email, password, callback){
+            setTimeout( () => {
+                console.log('We get the Data!');
+                callback({userEmali: email});
+            }, 1500);
+        }
+
+        const user1 = loginUser1('deved@goomail.com', 12345, user1 => {console.log(user1 + '<br>')});
+       
+        console.log('Stop');
+    </script>
+
+    <h3>Let's try something else: like... get back the USER's videos:</h3>
+    <pre>
+        1. Let's create another Function: <mark>getUserVideos()</mark> that/and takes an <mark>(email) parameter</mark>.
+        2. Let's fake a <b>timeOut</b> "setTimeOut()" - <b>and GETTING the videos... in 1000 ms.</b>
+        3. <mark>return</mark> and put the "videos" in a simple array: <mark>[video1, video2, video3];</mark>
+        4. If I want to <b>Run this <mark>getUserVideos</mark></b> - after the <b>loginUser</b> - (after i GET the USER information back) - <b>add a <mark>callback</mark></b> here: function getUserVideos(email,<mark>callback</mark>)
+        5. Replace <mark>return</mark> with <mark>callback</mark>
+        6.
+
+        script>
+            console.log('Begin' + ' br>');
+    
+            function getUserVideos(email, callback2){
+                setTimeout(() => {
+                    callback2 (['video1', 'video2', 'video3']);
+                },1000);
+            };
+    
+            const userA = loginUser2('deved@goomail.com', 12345, userA => {
+                console.log(userA + 'br>')});
+                getUserVideos(userA.userEmail, videos => {
+                console.log(videos);
+            });
+    
+            console.log('Stop');
+        script>
+
+        <b>Ouput:</b> Start | Finish | Now we have the Data | {userEmail: deved@gmail.com} | ['video1', 'video2', 'video3'])
+    </pre>
+    <script>
+        console.log('Begin' + '<br>');
+
+        function getUserVideos(email, callback2){
+            setTimeout(() => {
+                callback2 (['video1', 'video2', 'video3']);
+            },1000);
+        };
+
+        const userA = loginUser2('deved@goomail.com', 12345, userA => {
+            console.log(userA + '<br>')});
+            getUserVideos(userA.userEmail, videos => {
+            console.log(videos);
+        });
+
+        console.log('Stop');
+    </script>
+
+    <pre>
+        The Problem is - when you try to FECTH things MULTIPLE TIMES. (You can add a "thousand" of functions)...to get this wierd NESTED structure of CALLBACKS nad callbacks..and invoking functions... that have a callback.
+        (It's a callback Hell).
+        function videoDetails(video, callback){
+            setTimeout( () => {
+                callback('title of the Video');
+            },2000);
+        }
+
+        const userA = loginUser2('deved@goomail.com', 12345, userA => {
+            console.log(userA + 'br>')});
+            getUserVideos(userA.userEmail, videos => {
+            console.log(videos);
+            <mark>videoDetails(videos[0], (title) => { console.log(title)}</mark>
+        });
+    </pre>
+
+
+    <h2>Let's refactor - Using PROMISES</h2>
+    <p>A PROMISE it's just an OBJECT - that (basically) gives us back - <i>either a result OF A ASYNCHRONOUS OPERATION</i> or a <i>FAILURE of a ASYNCHRONOUS OPERATION.</i></p>
+    <pre>
+        1. Let's CREATE a PROMISE. | "new Promise ()" - is an OBJECT / a CONSTRUCTOR Function - Tthat takes <b>two parameters</b>, <mark> BASE on SUCCES and a FAILURE.</mark>
+        (iF WE <b>SUCCESSFULLY get the DATA back</b> - then - <b>do something with it</b> - iF WE DON'T... <b>display an ERROR MESSAGE</b>)
+        So' - the <b>two keywords here - that the PROMISE uses</b> is <mark>resolve and reject</mark>.
+
+        2. Simulate... add a <mark>setTimeout()</mark> - gettim some DATA BACK from API...
+        3. IN <mark>setTIimeOut()</mark> - if you successfully got DATA BACK - <b>you would RUN "resolve({user: "ed"})"</b>
+        
+        4. Now, we have to CONSUME IT. We have to EXECUTE the CODE - when -  <b>we try to GET back the INFORMATION.</b>
+        
+        
+        <b>const promise = new Promise((resolve, reject) => {
+            setTimeOut(() => {
+                console.log('got the user');
+                resolve({user: 'ed'});
+            }, 2000);
+           });</b>
+
+           <b>promis.then(user => {
+            console.log(user);
+            })</b>
+
+        4.1 We have the "CREATTION" of the PROMISE - Now - we CONSUME the PROMISE:
+        5. <mark>promise.then</mark> - when is <b>.then</b> - we have <mark>the INFORMATION</mark>. / <mark>the result (user)</mark>
+        6. I just gonna RUN an "=> ()" (arrow func), and c.log(user) .               
+    </pre>
+
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log('got the user');
+                resolve({user: 'ed'});
+            }, 2000);
+        });
+
+        promise.then(user => {
+            console.log(user);
+        });
+    </script>
+
+<pre>The SYNTAX is much cleaner - and easyer to READ.</pre>
+
+<h3>we can also GET an ERROR back from the API...</h3>
+<pre>
+    1. We have a <mark>reject</mark> here.
+    2. <b>A good practice to to an "error" IS to use:</b> reject<mark>(new Error)</mark> <b>object</b>.
+    (<mark>(new Error) - object</mark>) - <b>doesn't have to do anything with - the PROMISE</b> (because we can create this in JavaScript...??!?!)
+    ...and we can PASS here a NEW ERROR. <mark><b>reject (new Error('User not logged in'))</b></mark>.
+    
+    
+    const promise2 = new Promise((resolve, reject) => {
+        steTimeout(()=>{
+            console.log('got the user 2')
+            <mark>reject</mark>(new Error('User not logged In'));
+        }, 2000)
+    })
+
+    3. Now how can we HANDLE that? 
+    We can <mark>CHAIN here</mark> <mark><b>.catch()</b></mark> - and HERE we can HAVE ACCESS to the <b>ACTUAL ERROR.</b> <mark>(err => console.log(err)));</mark>
+    
+    promise2.then(user => {
+        console.log(user);
+    })<mark><b>.catch(err => console.log(err));</b></mark>
+
+    4. If we RUN this: <mark>(user => {console.log(user);}</mark> <b> we get the information back SUCCSESSFULLY</b>
+    If we RUN this: <mark>.catch(err => console.log(err.message))</mark> <b> we DON'T.</b>
+</pre>
+
+<script>
+    const promise2 = new Promise ((resolve, reject) =>{
+        setTimeout(()=>{
+            console.log('get the user 2');
+            reject(new Error('User not logged in!'))
+        }, 2000);
+    });
+
+    promise.then(user =>{
+        console.log(user);
+    }).catch(err => console.log(err.message));
+</script>
+
+<h3>II</h3>
+<pre>
+    const user = loginUser('deved@goomail.com', 12345, user => {
+        console.log(user);
+        getUserVideos(user.userEmail, videos => {
+            console.log(videos);
+            videosDetails(videos[0], title => {
+                console.log(title);
+            });
+        });
+    });
+
+    console.log("finish");
+
+    1. In this case - we kind of CHAINED together multiple things like:
+    a. LOGIN the USER - and after YOU login the USER - you GET his videos <mark>getUserVideos(...)</mark>
+    b. After we get the VIDEOS - we GET the VIDEO DETAILS.
+
+    <b>2. Let's REFACTOR this whole code using the <mark>PROMISE SYNTAX /PROMISES</mark></b>
+    <b>A PROMISE is just an OBJECT that (gives us back - either a RESULT of an ASYNCHRONOUS operation - or a FAILURE of a ASYNCHRONOUS operation).</b>
+    3. For that - let's RETURN a <mark>PROMISE</mark>. <b>return New Promise ((resolve, reject) => {...});</b>
+    4. If you get the DATA BACK - <mark>onsuccess({userEmail: email})</mark> - you'll just pass.
+
+    function loginUSer(email, password){
+            setTimeout(() => {
+            console.log('Now we get the Data');
+            <mark>onsuccess({userEmail: email});</mark>
+        }, 3000);
+    }
+     
+    function getUserVideos(email){
+        setTimeout(() => {
+            callback(['vid1', 'vid2, 'vid3']);
+        }, 2000);
+    }
+
+    function videoDetails(video){
+        setTimeout(() =>{
+            callback('title of the video');
+        }, 2000);
+    };
+
+    -----------------------------------------------------------------------------------------------------------------------
+
+    function loginUser(email, password){
+        <mark>return new Promise((resolve, reject) => {</mark>
+            setTimeout(() => {
+                console.log('Now we get the Data');
+                <mark>resolve({userEmail: email});</mark>
+            }, 3000);
+        })
+    }
+
+    *Remember: If you GET THE DATA BACK - you just pass - and <mark>resolve</mark>
+     
+    function getUserVideos(email){
+        <mark>return new Promise((resolve, reject) => {</mark>
+            setTimeout(() => {
+                <mark>resolve</mark>(['vid1', 'vid2', 'vid3']);
+            }, 2000);
+        }); 
+    }
+
+    function videoDetails(video){
+        <mark>return new Promise((resolve, reject) => {</mark>
+            setTimeout(() =>{
+                <mark>resolve</mark>('title of the video');
+            }, 2000);
+        });
+
+    };
+</pre>
+    -------------------------------------------------------------------------------------------------------------------------
+    <h3>III.</h3>
+<pre>
+    <b>Now, let's make it look nicer:</b>
+    (Again) - If it returns us a PROMISE (LIKE,when you request DATA - from an API) - you don't have to write this:
+
+    function loginUSer(email, password){
+        <mark>return new Promise((resolve, reject) => {</mark>
+            setTimeout(() => {
+                console.log('Now we get the Data');
+                <mark>resolve({userEmail: email});</mark>
+            }, 3000);
+        })
+    }
+
+    <b>... because your REQUEST is going to RETURN you a <u>PROMISE</u> automatically. Up there |^ - <mark>we're manually wrote it.</mark></b>
+    LET'S SIMPLYFY IT:
+    
+    loginUser('ed', 'asdf')
+
+    'ed' - is <b>email</b>
+    'asdf' - is <b>password</b>
+    {} - if it RETURNS a PROMISE - you gonna find out a lot of cases - <b>when you make REQUESTES to an API...</b> or something - <mark>you don't even have to write out the PROMISES like that above |^ .</mark>
+    <b>It's gonna RETURN a PROMISE AUTOMATICALLY</b>
+
+    So' - <b>since this returns a PROMISE - <MARK>we just have to add ".then(user)</MARK></b>
+    <b>.then<mark>(user)</mark></b> - HERE we have ACCESS to the (user).
+
+    <B>If we want to acces the <mark>userVideos details</mark></B> - <mark><i>getUserVideos()</i></mark>
+    I can pas: (user.email) - getUserVideos(user.email) - <b>and this RETURNS ME a PROMISE</b>
+    <b>So I can ADD another <mark>.then( videos => videoDetails(video[0]))</mark></b> - i get the videos - or the VIDEOS DETAILS. (if I want). I can pass <mark>video[0]</mark>...
+    <b>.then (detail => console.log(detail)</b> - I have access - to ALL the DETAILS.
+
+    loginUser('ed', 'asdf')
+        .then(user => getUserVideos(user.email))    - here we're getting make user information (and we're waiting for user information)
+        .then(videos => videoDetails(videos[0]))    - once we get that back - we're doing something with the Videos.
+        .then(detail => console.log(detail));       - then we're doing something with the detail.
+    
+    console.log('Finish');
+
+    <b>OR SIMPLIFY and make the CODE NICER: kinda like - SYNCHRONOUS style -OF WRITING CODE.</b>
+    <b>It's still uses promises bt it's just a nicer and easier way - to WRITE ASYNCHRONOUS code.</b>
+
+    <b>const user = loginUser('ed', 'asdf');</b>
+    <b>const video = videoDetails(user.email);</b>
+</pre>
+    <p>PROMISE(S)</p>
+    <pre>
+        What If I wann GET SOME DATA from <b>YouTube</b> or from <b>Facebook</b>. And <u>I wanna run them - to the same time.</u>
+        <b>... I don't want have to wait - (for one specfic thing) - to start executing  the other thing.</b>
+        I wanna get data drom "YT" and "Fb" - <b>at the same time.</b>
+
+        const yt = <mark>new Promise(resolve  => {</mark>
+            setTimeout(()=> {
+                console.log('getting stuff from yt');
+                resolve({videos: [1, 2, 3, 4, 5]});
+            }, 2000);
+        });
+
+        const fb = <mark>new Promise(resolve  => {</mark>
+            setTimeout(()=> {
+                console.log('stuff from fb');
+                resolve({user: "Name"});
+            }, 5000);
+        });
+
+        <b>I don't wanna run these at the same time - but I WANN get BACK BOTH INFORMATION. All we can do is to use:</b>
+        Then, pass in an array [] - and here we're pass in 'yt' and 'fb';
+        .then(result => console.log(result)); ... then an arrow Func and c.log'it out.
+        <b><mark>Promise.all([yt, fb]).then(result => console.log(result));</mark></b>
+
+        <b>So - both(functions) - starts running almost at the same time.</b>
+        Whe we RUN this - we get back the data - as fast as possible.
+        If we put <mark>5000 here</mark> - the RESULT it's not going come back until <b>both of these PROMISES are fulfilled (indeplinit)</b>
+        
+        <b>PROMISES</b> - it's meant to START EXECUTING <b>MORE ASYNCHRONOUS CODE at the same TIME</b> (or almost at the same time)
+    </pre>
+
+    <h3>Now - Async Await</h3>
+    <pre>
+       <b>Let's REFACTOR this whole thing to make it look like SYNCHRONOUS code.</b>
+       
+       1. Create a function  - then call it.
+       2. Write ASYNC STYLE code. - loginUSer('ed', 12345) - <b>pass a user and a password.</b>
+       2.1 - since (this not gonna work) - we have to use <mark>async await</mark>
+
+       <b>function displayUser(){
+            <mark>async</mark> const loggedUser = <mark>await</mark>loginUser('ed', 13485);  - since (this not gonna work) - we have to use <mark>async await</mark>
+            const videos = <mark>await</mark> getUserVideos(loggedUser.userEmail);
+            const detail = <mark>await</mark> videoDetails(videos[0]);
+            console.log(detail);
+        }   
+
+        displayUser();
+        </b>
+
+        3. Go to a new line - and USE this: <mark>loginUser('ed', 12345)</mark> (which it's gonna have the Data).
+        4. <b>const videos = <mark>await</mark> getUserVideo()</b> - and pass in the <b>(loginUser.userEmail)</b>
+        4.1 If I wanna get <b>the video DETAILS</b> - i can use: <b>const detail = <mark>await</mark> videoDetails(videos[0]);</b>
+        5. And if i want i can c.log(detail): <b>console.log(detail);</b>
+
+        6. We need to EXPLICITY TELL JavaScript - that this is gonna be ASYNCHRONOUS code (thatt's gonna be running here) - besides this <mark>await</mark>.
+        7. Put at the beginning at the function() <b><mark>async</mark></b>.
+        <b>7.1 This is ASYNCRONOUS FUnction() - that's gonna run SOME ASYNCHRONOUS CODE.</b> 
+        
+        <h3>The error HANDLING like: <mark>try / .catch</mark></h3>
+        <p>What happens if I have an error here.</p>
+        <pre>
+            1. What we can do is to wrap the CODE into <mark>try/.catch</mark>. (<mark>try{...}</mark> to RUN this CODE)
+             - if it doesn't work - <mark>catch(err){...}</mark> the ERROR. /<b>display the ERROR:</b> <mark>console.log('We could not get the videos');</mark>
+
+            
+            <b>async</b> function displayUser(){
+                <mark>try {</mark>
+                    const loggedUser = <b>await</b> loginUser('ed', 12345);
+                    const videos = <b>await</b> getUserVideos(loggedUser.userEmail);
+                    const detail = <b>await</b> videoDetails(video[0]);
+                    console.log(detail);
+                    <mark>} <b>catch(err)</b> {</mark>
+                    console.log('We could not get the videos');
+                    }
+            }
+        </pre>
+
+
+    
+    
+    
+    
+    
+
+    </pre>
+
+
+
+
+
+
+
+
+    
+</pre>
+
+
+
+
+
+
+
+    
+
+</body>
+</html>
+
+

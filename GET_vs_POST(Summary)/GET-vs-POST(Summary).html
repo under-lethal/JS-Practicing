@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET vs POST</title>
+	<link rel="stylesheet" href="styleGETPOST.css">
+
+</head>
+<body style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 14px;">
+  <h1 style="text-align: center; ">GET vs POST - Summary</h1>
+	<div class="row">
+		
+		<div class="column">
+			<h2>GET</h2>
+
+			<h3>BODY: No</h3>
+				<ul>
+					<li>When you try to SEND Data - <b>you're LIMITED</b> - <mark>to how much DATA you can SEND - to the SERVER.</mark></li>
+					<li>The ONLY way (that you can send DATA) - <b>is in the URL.</b></li>
+					<li>If you wanna <b>send a REQUEST</b> - you're <u>querrying</u>(interoghezi) -  the SERVER (ex: google.com) - and Google - start adding these <b>URL PARAMETERS.</b>("/html/default.asp")</li>
+				</ul>
+			<hr>
+			
+            <h3>DATA Request LIMIT:</h3>
+			<ul>
+				<li>The URL - is the only PLACE you can <b>send Data through.</b></li>
+				<li>If you wanna send an info - <b>it goes through the URL</b> (because - GET - don't have a <b>BODY.</b>)</li>
+				<li>Because <b>GET</b> - uses an URL - <b>there is a LIMIT in the URL length.</b> (2048 bytes).</li>
+                <br>
+			</ul>
+            <hr>
+
+			<h3>DATA TYPE:</h3>
+			<ul>
+			    <li>Because <b>GET</b> - uses an URL -> <b>(ASCII only).</b></li>
+				<li>In your URL - <b>you cannot put UTF-8 characters.</b></li>
+				<li>Because you can <b>ONLY send</b> ASCII characters - <b>they're LIMITED</b> to what kind of DATA you can SEND.</li>					
+			</ul>
+            <hr>
+
+            <h3>SAFE:</h3>
+            <h4>YES</h4>
+            <p>It's not <u>reffering</u> - to UNSECURE.<br>
+            <b>SAFE</b> - is DEFINITION of a <b>safe HTTP Method.</b></p>
+            <ul>
+                <li>Is a METHOD - that <b>does NOT change The Resource</b> that is Requested.</li>
+                <li>For example: If I do: <mark>www.google.com</mark> - <b>i'm not changing</b> that Resource.</li>
+                <li>If I am REQUESTING - my <b>user</b> FB/Instagram <b>Profile</b> - <mark>i'm NOT chaning ANYTHING</mark> / <mark>I didn't UPDATE my name.</mark></li>
+                <li>I'm just <b>asking</b>: "Hey give me <b>my Profile.</b></li>
+                <br>
+            </ul>
+            <ul>
+                <li><b>Only READS</b></li>
+            </ul>
+            <hr>
+
+            <h3>CACHING and PreFETCHING</h3>
+            <h4>YES</h4>
+            <ul>
+                <li><b>Caching</b> - is the ABILITY of the BROWSER - to <mark>KEEP Responses</mark> - <b>that COMMING back from the SERVER</b> - WITHOUT making <b>ANOTHER request.</b></li>
+                <li><b>GET</b> <mark>is perfect</mark> for <b>CACHING</b> and <b>PreFETCHING</b> - because - if you make a REQUEST - to see <b>my Profile</b> (Fb/Instagram) - I can CACHE <b>that.</b></li>
+                <br>              
+            </ul>
+            <hr>
+
+            <h3>BOOKMARKable / History</h3>
+            <h4>YES</h4>
+            <ul>
+                <li>All the <b>GET Request</b> - are SEND through the URL - (so - You have LONG URL - with <b>a LONG set of PARAMETERS.</b></li>
+                <li>If you <b>BOOKMARK</b> that URL - AND VISIT LATER - you <b>get the same PAGE.</b></li>
+                <li>Because: <b>GET</b> - <mark>has everything in the <b>URL</b></mark> - nothing in the <b>BODY.</b></li>
+                <li>Everyone - SEES that URL.</li>
+                <li>When you do this <mark>www.google.com</mark> - <b>is ALWAYS a GET Request.</b></li>
+                <li>In <b>Almost cases</b> USERS/CLIENTS - make (most of the time) - <b>GET Request.</b></li>
+                <li><b>Click on a Link</b> - it's a GET Request.</li>
+                <li><b>Visit a Page</b> - it's a GET Request.</li>                
+            </ul>
+            <hr>
+
+            <h3>SECURITY</h3>
+            <h4>NO</h4>
+            <p><b>Neither</b> - are (so) SECURE - <b>but GET is less SECURE than POST.</b></p>
+            <ul>
+                <li><b>Your password</b> will be <b>VISIBLE</b> in the URL.</li>
+                <li>If you're sending a REQUEST - <b>with your poassword in it</b> - <mark>it's gonna show up</mark> in the URL.</li>
+                <li>It's gonna be <b>Bookmarked.</b></li>
+                <li>It's gonna be added to <b>BROWSER History.</b></li>
+            </ul>
+            <hr>
+		</div>
+
+		<div class="column" style="background-color:lightgray">
+			<h2>POST</h2>
+
+			<h3>BODY: Yes</h3>
+			<p>
+				<br>
+				<br>
+				<br>
+                <br>
+			</p>
+			<hr>
+
+			<h3>DATA Request LIMIT:</h3>
+			<ul>
+				<li>You can <b>SEND</b> - as MUCH Data as you WANT.</li>
+				<li>You have <b>the entire URL + BODY.</b></li>
+				<li>You have <b>the all 2048 bytes</b> + entire BODY.</li>
+				<li>You can <b>SLAM data</b> - as much as you want.</li>
+			</ul>       
+            <hr>
+
+			<h3>DATA TYPE:</h3>
+			<ul>
+				<li>Uses <b>any Data types.</b></li>
+				<li>You can <b>make a REQUEST</b> - and SEND - <b>some LOCALIZED like:</b> (Arabic or Japanese).</li>
+                <br>
+			</ul>
+            <hr>
+
+            <h3>SAFE:</h3>
+            <h4>NO</h4>
+            <p>It's not <u>reffering</u> - to UNSECURE.<br>
+            <b>SAFE</b> - is DEFINITION of a <b>safe HTTP Method.</b></p>
+            <ul>
+                <li><b>POST</b> - (by the other hand) - <b>by DEFINITION</b> <mark><B>CHANGES the BACKEND</B></mark> - because - the defintion <b>of POST</b>: "Hey I'm gonna POST something NEW!"</li>
+                <li>I'm POSTING a new BLOG.</li>
+                <li>I'm CREATING a <b>new</b> "TO DO List".</li>
+                <li><mark>Everything that HAS to do - <b>CHANGING the Server.</b></mark></li>
+            </ul>
+            <ul>
+                <li><b>CHANGES</b></li>
+            </ul>
+            <hr>
+            
+            <h3>CACHING and PreFETCHING</h3>
+            <h4>NO</h4>
+            <ul>
+                <li><b>PreFETCHING</b> - the ABILITY of the BROWSER to <b>CHOOSE</b> <mark>from teh SERVER</mark> - <b>what USER absolutely NEED.</b> </li>
+                <li>You <b>cannot</b> do CACHE.</li>
+                <li>If you send a <b>POST REQUEST</b> - to <B>CHANGE</B> your <b>Profile</b> (Fb/Instagram) - and this GET REQUESTED - and <b>CACHED</b> - next time <b>you're update your Profile</b> - (because I'VE CACHED <b>your POST request</b>) - <b>you just MADE same Request again.</b></li>
+                <li>I'm not gonna <b>CHANGE that.</b></li>
+            </ul>
+            <hr>
+
+            <h3>BOOKMARKable / History</h3>
+            <h4>NO</h4>
+            <ul>
+                <li>You <b>cannot</b> BOOKMARK an URL.</li>
+                <li>Example: Transferring a BANK. (transferring Money).</li>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <li><b>clicking</b> a <mark>button</mark> - <b>that Executes JavaScript</b> - that MIGHT to be a <b>POST</b>.</li>
+            </ul>
+            <hr>
+
+            <h3>SECURITY</h3>
+            <h4>YES</h4>
+            <p><b>Neither</b> - are (so) SECURE - <b>but GET is less SECURE than POST.</b></p>
+            <ul>
+                <li>Kinda SNEAK it <b>into the BODY.</b> Not as OBVIOUS as in the URL.</li>
+                <li>With a "simple" SNIFF -<b>your password</b> - can be <b>showed.</b> That's why you have to USE <b><mark>HTTPS.</mark></b></li> 
+                <br> 
+                <br>                           
+            </ul>           
+		</div>
+        <hr>
+        <br>
+                
+        <h2 style="text-align:center">Recap:</h2>
+        <div class="column">
+            <ul>
+                <li>If your CALL is <b>READING Only</b> - <b>use GET.</b></li>
+                <li>Because you <b>wanna</b> <mark>CACHE</mark> - this <b>READ Request.</b></li>
+                <li><b>Dont use GET</b> - when your REQUEST - <b>have a LOT of PARAMETERS.</b></li>
+                <li>Youtube, for example - <b>need GET</b> - because <mark>you need to SHARE</mark> and <mark>you need to BOOKMARK.</mark></li>
+                <li>The URL - <b>has an ID.</b> | That <b>ID</b> is <b>GET Operation.</b></li>
+            </ul>
+        </div>
+        
+        <div class="column" style="background-color:lightgray">
+            <ul>
+                <li><b>CACHING</b> - everything in the SERVER - <b>use POST.</b></li>
+                <li><b>UPLOADING</b> - a file - <b>use POST.</b> (you don't really CACHE this information - you <b>just UPLOADING</b> a FILE).</li>
+                <li><b>Use JSON</b> - <b>use POST.</b></li>
+                <li>Making<b> Large REQUEST</b> - <b>use POST.</b></li>
+            </ul>
+        </div>
+
+	</div>
+</body>
+</html>

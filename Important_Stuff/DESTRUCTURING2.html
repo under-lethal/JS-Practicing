@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>DESTRUCTURING - Example 2</h2>
+	
+	<pre>
+		The idea of DESTRUCTURING - is to <b>take an object or an array</b> and convert it into <b>smaller objects, ELEMENTS or VARIABLES</b>.
+	</pre>
+		<pre>
+		//Take first TWO elements from the array.
+		Normaly you do something like this:
+
+		const a = aphabet[0];
+		const b = alphabet[1];
+		c.log(a); <i>//A</i>
+		c.log(b); <i>//B</i>
+	</pre>
+
+	<pre>
+	< div id='d'>< /div>
+	< div id='d1'>< /div>
+	< script type="text/javascript">
+
+		const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+		const numbers = ['1', '2', '3', '4', '5', '6'];
+
+		//Take first TWO elements from the array using DESTRUCTURING.
+		//<mark>'alphabet'</mark>  - is the ELEMET you wanna DESTRUCTURE. (you put in the right side of the equal sign).
+		// you say: "Destructure" this "alphabet aray". If we have an array we have these:"[]" - AROUND the ELEMENTS we want to supply.
+
+		//So' we have our varibles "a" and "b" that we want (out of this array). "a" is the First element in this array, "b" is the Second element.
+		//"c" is the third element - and so on..
+		
+		//If we want to skip "b" for example: const [a,, c]
+		//If we want to get the rest of the elements inside of the "alpahbet": ...rest (spread operator). const [a, , c, ...rest].
+		//c.log(rest); A,C, [D,E,F,G];
+		//
+		
+		<mark>const [a, b] = alphabet;</mark>
+		document.getElementById('d').innerHTML = a;
+		document.getElementById('d1').innerHTML = b;
+	< /script>
+	</pre>
+	
+	<div id='d'></div>
+	<div id='d1'></div>
+	<script type="text/javascript">
+
+		const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+		const numbers = ['1', '2', '3', '4', '5', '6'];
+
+		//Take first TWO elements from the array using DESTRUCTURING.
+		//'alphabet'  - is the ELEMET you wanna DESTRUCTURE. (you put in the right side of the equal sign).
+		// you say: "Destructure" this "alphabet aray". If we have an array we have these:"[]" - AROUND the ELEMENTS we want to supply.
+		//So' we have our varibles "a" and "b" that we want (out of this array). "a" is the First element in this array, "b" is the Second element.
+		//"c" is the third element - and so on..
+		//If we want to skip "b" for example: const [a,, c]
+		//If we want to get the rest of the elements inside of the "alpahbet": ...rest (spread operator). const [a, , c, ...rest].
+		//c.log(rest); A,C, [D,E,F,G];
+		
+		const [a, b] = alphabet;
+		document.getElementById('d').innerHTML = a;
+		document.getElementById('d1').innerHTML = b;
+	</script>
+
+	<h3>1. Let's COMBINE TWO Arrays together: (alphabet and numbers)</h3>
+	<pre>
+	< div id="d2">< /div>
+	< script type="text/javascript">
+		const newArray = [...alphabet, ...numbers];
+		document.getElementById('d2').innerHTML = newArray;
+
+		//OR: alpabet.concat(numbers);
+	< /script>
+	</pre>
+	<div id="d2"></div>
+	<script type="text/javascript">
+		const newArray = [...alphabet, ...numbers];
+		document.getElementById('d2').innerHTML = newArray;
+
+		//OR: alpabet.concat(numbers);
+	</script>
+
+	<h3>2. Dealing with Functions(), and returning more than one parameter.</h3>
+	<pre>
+		The Function takes twO numbers (a,b) - and SUM them Together, then MULTIPLY.
+		Then return both of THEM - in an ARRAY.
+
+	< div id="d3">< /div>
+	< script type="text/javascript">
+		function sumAndMultiply(a, b){
+			<mark>return[a+b, a*b];</mark>
+		}
+		<mark>const array = sumAndMultiply(2, 3);</mark>
+		document.getElementById('d3').innerHTML = <mark>array;</mark>
+	< /script>
+	</pre>
+	<div id="d3"></div>
+	<script type="text/javascript">
+		function sumAndMultiply(a, b){
+			return[a+b, a*b];
+		}
+		const array = sumAndMultiply(2, 3);
+		document.getElementById('d3').innerHTML = array;
+	</script>
+
+	<h4>Or using Array DESTRUCTURING</h4>
+	<pre>
+	< div id="d4">< /div>
+	< div id="d5">< /div>
+	< script type="text/javascript">
+		function sumAndMultiply(a, b){
+			<mark>return[a+b, a*b];</mark>
+		}
+		<mark>const [sum, multiply] = sumAndMultiply(2, 3);</mark>
+		document.getElementById('d4').innerHTML = <mark>sum;</mark>
+		document.getElementById('d5').innerHTML = <mark>multiply;</mark>
+	< /script>
+
+	<mark>const [sum, multiply] = sumAndMultiply(2, 3);</mark>
+	"sum" is the FIRST ELEMENT, "multiply" - the second elem.
+	[sum, multiply] - we want to <mark>DESTRUCTURE</mark> the return from this <mark>sumAndMultiply(2, 3);</mark> -as two different variables.(sum and multiply).
+
+	</pre>
+	<div id="d4"></div>
+	<div id="d5"></div>
+	<script type="text/javascript">
+		function sumAndMultiply(a, b){
+			return[a+b, a*b];
+		}
+		const [sum, multiply] = sumAndMultiply(2, 3);
+		document.getElementById('d4').innerHTML = sum;
+		document.getElementById('d5').innerHTML = multiply;
+	</script>
+
+	<h3>3.Set default values</h3>
+	<pre>
+		const [sum, multiply, <mark>division</mark> = 'No divison'] = sumAndMultiply(2, 3);
+
+		*by default we can SET the <mark>disivion</mark> = "No division"
+		c.log(division); <i>5, 6, No division</i>
+
+		But, if we do that:
+		return[a+b, a*b, <mark>a/b</mark>];
+		c.log(division); <i>5, 6, <mark>0.6666666</mark></i>
+
+		*If the THIRD param, it's not there => 'No division'. (it gets populated to the DEFAULT value). 
+	</pre>
+
+	<h2>Destructuring in OBJECTS</h2>
+	<pre>
+		To DESTRUCTURE a OBJ, is going to work very similary to an Array.
+
+	< div id='do'>< /div>
+	< div id='do1'>< /div>
+	< script type="text/javascript">
+		const personOne = {
+			name: 'Kyle',
+			age: 24,
+			adress: {
+				city: "Somewhere",
+				state: 'One of them'
+			}
+		};
+
+		const personTwo = {
+			name: 'Sally',
+			age: 32,
+			address: {
+				city: 'Somewhere else',
+				state: 'Another one of them'
+			}
+		};
+
+		//We want the NAME of the Person, and AGE.
+		//{name, age} - Since we Destructuring an OBJ. we use {}, and we wanna <mark>GET</mark> the "name" and "age" property.
+		//and we WANT to GET Them, from PersonTwo; 
+
+		//Instead of being based on posiion, It's based on the NAME of the KEY: {name, age};
+		<mark>const {name, age} = personTwo;</mark>
+		document.getElementById('do').innerHTML = name;
+		document.getElementById('do1').innerHTML = age;
+
+		//If we want to use a different name AND ADD another porperty: (this person doesn't already have:)
+
+		//const {name: <mark>firstName = 'John'</mark>, age, favoriteFood = 'Rice'} = personTwo;
+		//c.log(favoriteFood) <i>//Rice</i>
+
+		//If we SET Favorite food: {favoriteFood: 'Watermelon',} - 'Watermelon" is OUTPutted.
+
+		/*	const personTwo = {
+			name: 'Sally',
+			age: 32,
+			favoriteFood: 'Watermelon',
+			address: {
+				city: 'Somewhere else',
+				state: 'Another one of them'
+			}
+		};*/
+
+		//1.We can also USE the "...spread Operator".
+		//const {name: firstName, <mark>...rest</mark>} = personTwo;
+
+		//2.You can DESTRUCT your NESTED Obj:
+		//If we wana get the "city". Put the "address" KEY, and we want to Destructure this "new object" - <mark>city</mark>.
+		//<mark>const {name: firstName, address{city}} = personTwo;</mark>
+		//c.log(city);
+
+		//3.Combine TWO Different Obj. Combine (personOne with personTwo)
+		// Remove the "name" and the "address" from personTwo.
+		// Everything in personTwo - <mark>will OVERWRITE what's in personOne</mark>
+
+		//const personThree = {...personOne, ...personTwo};
+		//take everything in Person1 and PUT IT in the Object, take take everything in Person2 and also put in in the same Object but OVERWRITE anything that was already in PersonOne.
+		//c.log(personThree)
+
+		/*	const personOne = {
+			name: 'Kyle',
+			age: 24,
+			adress: {
+				city: "Somewhere",
+				state: 'One of them'
+			}
+		};
+
+		const personTwo = {
+			age: 32,
+			favoriteFood:'Watermelon'
+			}
+		};*/
+
+		//const personThree = {...personOne, ...personTwo};
+		//c.log(personThree)
+
+	< /script>	
+	</pre>
+	<div id='do'></div>
+	<div id='do1'></div>
+	<script type="text/javascript">
+		const personOne = {
+			name: 'Kyle',
+			age: 24,
+			adress: {
+				city: "Somewhere",
+				state: 'One of them'
+			}
+		};
+
+		const personTwo = {
+			name: 'Sally',
+			age: 32,
+			address: {
+				city: 'Somewhere else',
+				state: 'Another one of them'
+			}
+		};
+
+		//We want the NAME of the Person, and AGE.
+		//{name, age} - Since we Destructuring an OBJ. we use {}, and we wanna <mark>GET</mark> the "name" and "age" property.
+		//and we WANT to GET Them, from PersonTwo; 
+
+		//Instead of being based on posiion, It's based on the NAME of the KEY: {name, age};
+		const {name, age} = personTwo;
+		document.getElementById('do').innerHTML = name;
+		document.getElementById('do1').innerHTML = age;
+
+		//If we want to use a different name AND ADD another porperty: (this person doesn't already have:)
+
+		//const {name: <mark>firstName = 'John'</mark>, age, favoriteFood = 'Rice'} = personTwo;
+		//c.log(favoriteFood) <i>//Rice</i>
+
+		//If we SET Favorite food: {favoriteFood: 'Watermelon',} - 'Watermelon" is OUTPutted.
+
+		/*	const personTwo = {
+			name: 'Sally',
+			age: 32,
+			favoriteFood: 'Watermelon',
+			address: {
+				city: 'Somewhere else',
+				state: 'Another one of them'
+			}
+		};*/
+
+		//1.We can also USE the "...spread Operator".
+		//const {name: firstName, <mark>...rest</mark>} = personTwo;
+
+		//2.You can DESTRUCT your NESTED Obj:
+		//If we wana get the "city". Put the "address" KEY, and we want to Destructure this "new object" - <mark>city</mark>.
+		//const {name: firstName, address{city}} = personTwo;
+		//c.log(city);
+
+		//3.Combine TWO Different Obj. Combine (personOne with personTwo)
+		// Remove the "name" and the "address" from personTwo.
+		// Everything in personTwo - <mark>will OVERWRITE what's in personOne
+
+		//const personThree = {...personOne, ...personTwo};
+		//take everything in Person1 and PUT IT in the Object, take take everything in Person2 and also put in in the same Object but OVERWRITE anything that was already in PersonOne.
+		//c.log(personThree)
+
+		/*	const personOne = {
+			name: 'Kyle',
+			age: 24,
+			adress: {
+				city: "Somewhere",
+				state: 'One of them'
+			}
+		};
+
+		const personTwo = {
+			age: 32,
+			favoriteFood:'Watermelon'
+			}
+		};*/
+
+		//const personThree = {...personOne, ...personTwo};
+		//c.log(personThree)
+
+	</script>
+
+	<h3>Use Destructuring inside of a Function (inside of an arguments).</h3>
+	<pre>
+	< div id="fo">< /div>
+	< script type="text/javascript">
+		function printUser<mark>(user)</mark>{
+			document.getElementById('fo').innerHTML = <mark>user</mark>;
+		}
+		printUser(<mark>personOne</mark>);
+	< /script>
+	</pre>
+	<pre>
+	< div id="fo">< /div>
+	< div id="fo1">< /div>
+	< script type="text/javascript">
+		function printUser(user){
+			document.getElementById('fo').innerHTML = user;
+			document.getElementById('fo').innerHTML = <mark>`Name is ${user.name}. Age is ${user.age}`;</mark>
+		}
+		printUser(personOne);
+	< /script>
+	</pre>
+	<div id="fo"></div>
+	<div id="fo1"></div>
+	<script type="text/javascript">
+		function printUser(user){
+			document.getElementById('fo').innerHTML = user;
+			document.getElementById('fo').innerHTML = `Name is ${user.name}. Age is ${user.age}`;
+		}
+		printUser(personOne);
+	</script>
+
+	<h3>Destructing inside of a Function</h3>
+	<pre>
+		Function take an OBJECT:function printAnotherUser(<mark>{}</mark>){} - and all we want is the "name" and the "age" PROPERTY of the OBJ.
+
+		function printAnotherUser({<mark>name, age</mark>}){}
+
+	< div id='df'>< /div>
+	< script type="text/javascript">
+		function printAnotherUser(<mark>{age, name}</mark>){
+			document.getElementById('df').innerHTML = `Name is ${<mark>name</mark>}. Age is ${<mark>age</mark>}.`
+		}
+		printAnotherUser(personOne);
+	< /script>
+	</pre>
+	<div id='df'></div>
+	<script type="text/javascript">
+		function printAnotherUser({age, name}){
+			document.getElementById('df').innerHTML = `Name is ${name}. Age is ${age}.`
+		}
+		printAnotherUser(personOne);
+	</script>
+
+	<pre>
+			function printAnotherUser({age, name, favoriteFood = 'Watermelon'}){
+			document.getElementById('df').innerHTML = `Name is ${name}. Age is ${age}. Food is ${favoriteFood}`
+		}
+		printAnotherUser(personOne);
+	</pre>
+
+
+		
+</body>
+</html>

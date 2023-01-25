@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h2>map()</h2>
+	<p>Transform an array - get a NEW ARRAY - out of ANOTHER Array.</p>
+	<pre>
+< div id="m">< /div>
+< div id="m1">< /div>
+< script type="text/javascript">
+	const arr = [5, 1, 3, 2, 6];
+	// Double - [10, 2, 6, 4, 12];
+	// Triple - [15, 3, 9, 6, 18];
+
+	const output = arr.map( (x) <mark>=></mark> x * 2);
+	document.getElementById('m').innerHTML = output;
+
+	const output1 = arr.map( (x) <mark>=></mark> x * 3);
+	document.getElementById('m1').innerHTML = output1;
+< /script>	
+	</pre>
+<div id="m"></div>
+<div id="m1"></div>
+<script type="text/javascript">
+	const arr = [5, 1, 3, 2, 6];
+	// Double - [10, 2, 6, 4, 12];
+	// Triple - [15, 3, 9, 6, 18];
+
+	const output = arr.map( (x) => x * 2);
+	document.getElementById('m').innerHTML = output;
+
+	const output1 = arr.map( (x) => x * 3);
+	document.getElementById('m1').innerHTML = output1;
+</script>
+
+
+<h2>filter()</h2>
+<p>filter() - <b>filter</b> the values INSIDE an ARRAY.</p>
+<pre>
+< div id="f">< /div>
+< div id="f1">< /div>
+< script type="text/javascript">
+	<b>// filter odd values</b>
+	<mark>const output2 = arr.filter((x) => x % 2);</mark>
+	document.getElementById('f').innerHTML = output2;
+
+	<b>//filter even values</b>
+	<mark>const output3 = arr.filter((x) => x % 2 === 0);</mark>
+	document.getElementById('f1').innerHTML = output3;
+
+	<b>// Values greater (>) than 4</b>
+	const output4 = arr.filter((x) => x > 4);
+	document.getElementById('f2').innerHTML = output4;
+< /script>
+</pre>
+<div id="f"></div>
+<div id="f1"></div>
+<div id="f2"></div>
+<script type="text/javascript">
+	// filter odd values
+	const output2 = arr.filter((x) => x % 2);
+	document.getElementById('f').innerHTML = output2;
+
+	// filter even values
+	const output3 = arr.filter((x) => x % 2 === 0);
+	document.getElementById('f1').innerHTML = output3;
+
+	// Values greater (>) than 4
+	const output4 = arr.filter((x) => x > 4);
+	document.getElementById('f2').innerHTML = output4;
+</script>
+
+<h2>reduce()</h2>
+<p><b>reduce()</b> - you'll take all the elements from an array - <b>and returns A single VALUE</b>.</p>
+<pre>
+	"This Function()" TAKES two PARAMETERS and - iterate on every element from an "arr".
+	acc - accumulate the values from each item in the "arr".
+	curr - are every element/items/values from the "arr".
+</pre>
+<pre>
+< div id="r">< /div>
+< div id="r1">< /div>
+< script type="text/javascript">
+	// sum of all elements
+	
+	function findSum(arr){
+		let sum = 0;
+		for(let i = 0; i < arr.length; i++){
+			<mark>sum = sum + arr[i];</mark>
+		}
+		return sum;
+	}
+	document.getElementById('r').innerHTML = findSum(arr);	
+
+	<b><u><i>// do the same thing - using reduce();</i></u></b>
+	const output5 = arr.reduce((<mark>acc, curr</mark>) => {
+		<mark>acc += curr; 
+		return acc;</mark>
+	} ,0);
+	document.getElementById('r1').innerHTML = output5;	
+</script>
+</pre>
+<div id="r"></div>
+<div id="r1"></div>
+<script type="text/javascript">
+	// sum of all elements
+	
+	function findSum(arr){
+		let sum = 0;
+		for(let i = 0; i < arr.length; i++){
+			sum = sum + arr[i];
+		}
+		return sum;
+	}
+	document.getElementById('r').innerHTML = findSum(arr);	
+
+	// do the sam thing - using reduce();
+	const output5 = arr.reduce((acc, curr) => {
+		acc += curr; 
+		return acc;
+	}, 0);
+	document.getElementById('r1').innerHTML = output5;	
+</script>
+
+<h3>Find MAX - using reduce()</h3>
+
+<pre>
+	1. Itterate the array.
+	2. Find if the <b>arr[i]/CURRENT value/ any of thses array values[...]</b> is <b> > </b> than <b>maximum</b>.
+	3. Overwrite our <b>maximum</b> with <b>arr[i]</b>. max <b>BECOMES</b> arr[i].
+	4. return max.
+
+< div id="mx">< /div>
+< script type="text/javascript">
+	//find the MXIMUM in this array:
+	function findMax(arr){
+		let max = 0;
+		for(let i = 0; i < arr.length; i++){
+			if(arr[i] > max){
+				<mark>max = arr[i];</mark> --- overwrite
+			}			
+		}
+		return max;		
+	}
+	document.getElementById('mx').innerHTML = findMax(arr);		
+</script>
+</pre>
+<pre>
+	<b><i><u>Use the same LOGIC - using reduce();</u></i></b>
+	1. Use method, that takes a Function - <b>with two param: (acc, curr)</b>.
+	2. <mark><b>} ,0);</b></mark> - the <b>SECOND ARGUMENT</b> of this Function() - would be - <b>the intial value of accumulator.</b> // let max = 0;
+	3. <mark>acc</mark> - acting like "max". For each value/elem (from the arr) - we will CHECK - if (curr > acc)
+	<mark>acc</mark> - is maximum value.
+	4. ASSIGN the MAX VALUE(curr) to that "acc".
+
+	<u><b><i>//using reduce();</i></b></u>
+	const output6 = arr.reduce((acc, curr) => {
+		if(curr > acc){
+			acc = curr;
+		}
+		return acc;
+	} ,<mark>0</mark>);
+	document.getElementById('mx1').innerHTML = output6;
+</pre>
+
+<div id="mx"></div>
+<div id="mx1"></div>
+<script type="text/javascript">
+	//find the MXIMUM in this array:
+	function findMax(arr){
+		let max = 0;
+		for(let i = 0; i < arr.length; i++){
+			if(arr[i] > max){
+				max = arr[i];
+			}			
+		}
+		return max;		
+	}
+	document.getElementById('mx').innerHTML = findMax(arr);
+
+	//using reduce();
+	const output6 = arr.reduce((acc, curr) => {
+		if(curr > acc){
+			acc = curr;
+		}
+		return acc;
+	} ,0);
+	document.getElementById('mx1').innerHTML = output6;
+</script>
+
+<h3>Or using sort()</h3>
+<pre>
+< div id="srt">< /div>
+< script type="text/javascript">
+	<mark>arr.sort((a,b) => b - a);</mark>
+	document.getElementById('srt').innerHTML = <mark>arr[0];</mark>
+< /script>
+</pre>
+<div id="srt"></div>
+<script type="text/javascript">
+	arr.sort((a,b) => b - a);
+	document.getElementById('srt').innerHTML = arr[0];
+</script>
+
+<h3>Math.max.apply()</h3>
+<pre>
+< div id="mma">< /div>
+< script type="text/javascript">
+	function myArrayMax(arr) {
+		return Math.max.apply(null, arr);
+	}
+	document.getElementById('mma').innerHTML = myArrayMax(arr);
+</pre>
+<div id="mma"></div>
+<script type="text/javascript">
+	function myArrayMax(arr) {
+		return Math.max.apply(null, arr);
+	}
+	document.getElementById('mma').innerHTML = myArrayMax(arr);
+</script>
+
+
+<h1>map() - on Array of Objects</h1>
+<pre>
+	This is like a list comming from a API. (the LIST of USERS).
+	1.Use map() method.
+	2. "x" - is basically - this object: {firstName: 'akshay', lastName:'saini', age: 26},
+	3. this method/Function - will run against - each of these OBJECT from this ARRAY.
+</pre>
+<pre>
+< div id="mao">< /div>
+< script type="text/javascript">
+	const users = [
+		{firstName: 'akshay', lastName:'saini', age: 26},
+		{firstName: 'donald', lastName:'trump', age: 75},
+		{firstName: 'elon', lastName:'musk', age: 50},
+		{firstName: 'deepika', lastName:'padukone', age: 26},
+	];
+	
+	//list of full names - of all users
+	//['akshay saini', 'donlad trump'...]
+	const output7 = <mark>users.map((x)=> x.firstName + ' ' + x.lastName + "< br>");</mark>
+	document.getElementById('mao').innerHTML = output7.join('');
+< /script>
+</pre>
+<div id="mao"></div>
+<script type="text/javascript">
+	const users = [
+		{firstName: 'akshay', lastName:'saini', age: 26},
+		{firstName: 'donald', lastName:'trump', age: 75},
+		{firstName: 'elon', lastName:'musk', age: 50},
+		{firstName: 'deepika', lastName:'padukone', age: 26},
+	];
+	
+	//list of full names - of all users
+	//['akshay saini', 'donlad trump'...]
+	const output7 = users.map((x)=> x.firstName + ' ' + x.lastName + "<br>");
+	document.getElementById('mao').innerHTML = output7.join('');
+</script>
+
+<h1>reduce() - on Array of Objects</h1>
+<pre>
+	1. Use reduce() Func. - with two PARAMETERS.
+	1.1 We're using this array - and we need to FIND one VALUE - inside of it. We don't want a list.
+	1.2 We want an OBJECT, and object should have different unique VALUES (with the count of individual values).
+	<mark>{26: 2, 75 : 1, 50: 1}</mark>
+	We want to reduce our ARRAY - to a PARTICULAR VALUE - which is an OBJECT.
+	
+	2. The second <u><i><b>ARGUMENT</b></i></u> -(to this reduce Function)- will be - The initial value - of this "acc". 
+	<mark>acc = {26: 2, 75 : 1, 50: 1}</mark>
+	An <u>EMPY OBJECT</u>. <mark>{}</mark>
+	We will slowly be <b>APPENDING</b> (adauga/anexeaza) these values to IT. acc = {<mark>26: 2, 75 : 1, 50: 1</mark>} 
+	
+	3. When this Function RUNS/iterate against each of these elements of this array.
+	<mark>curr</mark> - will be - the ENTIRE/this particular object from the ARRAY:
+	<mark>{firstName: 'akshay', lastName:'saini', age: 26},</mark>
+
+	4. Check if(acc[curr.age]) - check if <b>acc of curr.age</b>.
+	4.1 Check if the <mark>acc</mark> of <mark>26</mark> it's there or not. (in that EMPTY OBJECT) <mark>{}</mark>.
+	4.2 Because is an empty OBJECT the <mark>acc[curr.age]</mark> is not there.
+	If it is there - we will do something - if not... we ASSING acc[curr.age] = with <mark>1;</mark>
+
+	5. This function will RUN for Each of Every Value (inside the array) - to check is the "acc of 26, 75 50" - is
+	it or it is not there <mark>{}</mark>. If IS NOT - <mark>acc[curr.age] = 1</mark>
+
+	6. If <mark>acc</mark> of <mark>[curr.age]</mark> - <b>it IS ALREADY present</b> it will simply <b> ++acc[curr.age]</b>
+</pre>
+<pre>
+< div id='rao'>< /div>
+< script type="text/javascript">
+	// how many USERS have a PARTICULAR AGE/the same age.
+	// output: acc = {26: 2, 75 : 1, 50: 1}
+	const output8 = users.reduce((acc, curr) => {
+		if(acc[curr.age] ){
+			acc[curr.age] = ++acc[curr.age];
+		}else{
+			acc[curr.age] = 1;
+		}
+		return acc; 
+	}, {});
+	document.getElementById('rao').innerHTML = output8;
+< /script>
+</pre>
+
+<div id='rao'></div>
+<script type="text/javascript">
+	// how many USERS have a PARTICULAR AGE/the same age.
+	// output: acc = {26: 2, 75 : 1, 50: 1}
+	const output8 = users.reduce((acc, curr) => {
+		if(acc[curr.age] ){
+			acc[curr.age] = ++acc[curr.age];
+		}else{
+			acc[curr.age] = 1;
+		}
+		return acc; 
+	}, {});
+	document.getElementById('rao').innerHTML = output8;
+</script>
+
+<p><b>Use reduce() - when you have an array - and you need to ITERATE an ARRAY - and come Up to <u>A SINGLE VALUE</u> out of it.</b></p>
+
+
+<p>Reducer is a function that takes <b>accumulator</b> <u>(which is a temporary result)</u> and current value from iteration. <br>
+When we achieve the end of the array, the accumulator is returned as the result of the reduce function.</p>
+
+<h1>filter()</h1>
+<p>Find <u>the first name</u> (of all the people) whose ages is less than 30.</p>
+<pre>
+	Find <u>the first name</u> (of all the people) whose ages is less than 30.
+	output: ['akshay', 'deepika'];
+
+	2. The POWER of this functions is <mark>CHAINING</mark>.
+	<b>You can CHAIN, <mark>map(), filter() and reduce()</mark>.</b>
+
+	First we take "users" - then we filter this OBJECT.
+	What we "filter()". We filter "x" and "x.age < 30".
+	Give a list of all (these objects) - which has x.age < 30.
+	Then, run the "map() method" over these (two objects). The function inside the "map()" gave us the "firstName".
+</pre>
+<pre>
+< div id='fl'>< /div>
+< script type="text/javascript">
+	const output9 = users.filter((x) => <mark>x.age < 30</mark>)
+	<mark>.map((x) => x.firstName)</mark>;
+	document.getElementById('fl').innerHTML = output9;
+< /script>
+</pre>
+<div id='fl'></div>
+<script type="text/javascript">
+	const output9 = users.filter((x) => x.age < 30)
+	.map((x) => x.firstName);
+	document.getElementById('fl').innerHTML = output9;
+</script>
+
+<h2>reduce()</h2>
+<pre>
+< div id='rd'>< /div>
+< script type="text/javascript">
+	const output10 = users.reduce((acc, curr)=>{
+		<mark>if(curr.age < 30)</mark>{
+			<mark>acc.push(curr.firstName);</mark>
+		}
+		return acc;
+	}, <mark>[]</mark>);
+	document.getElementById('rd').innerHTML = output10;
+< /script>
+</pre>
+<div id='rd'></div>
+<script type="text/javascript">
+	const output10 = users.reduce((acc, curr)=>{
+		if(curr.age < 30){
+			acc.push(curr.firstName);
+		}
+		return acc;
+	}, []);
+	document.getElementById('rd').innerHTML = output10;
+</script>
+
+</body>
+</html>
+

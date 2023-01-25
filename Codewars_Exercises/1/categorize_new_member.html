@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<pre>
+		If we have a <mark>list o things[[],[],[]]</mark> - we want to <mark>map()</mark> over it. (data.map) over it.
+
+		In the "(info)" - we're looking a two different things. [age, /handicap].
+		The "age" needs o be greater then 55. if(info[0] > 55 && info[1] > 7) - then we want to return something in this "map". (if this is TRUE - WE WANT TO RETURN A specific info)
+	</pre>
+	<pre>
+		< script type="text/javascript">
+		//[[18,20],[45,2],[61,12],[27,6][21,21],[78,9]]
+
+		//>55, >7
+		//['Open', 'Open', 'Senior', 'Open', 'Senior']
+
+		//function openOrSenior(data){}
+
+		const openOrSenior = (data) => {
+			data.map((info) => {
+				if(info[0] >= 55 && info[1] > 7 ){
+					return "Senior";
+				}else{
+					return "Open";
+				}
+			});
+		}
+	< /script>
+	</pre>
+	<script type="text/javascript">
+		//[[18,20],[45,2],[61,12],[27,6][21,21],[78,9]]
+
+		//>55, >7
+		//['Open', 'Open', 'Senior', 'Open', 'Senior']
+
+		//function openOrSenior(data){}
+
+		const openOrSenior = (data) => {
+			data.map((info) => {
+				if(info[0] >= 55 && info[1] > 7 ){
+					return "Senior";
+				}else{
+					return "Open";
+				}
+			});
+		}
+	</script>
+	<p>Or, even best possible way/optimise solution:</p>
+	<pre>
+		< script type="text/javascript">
+		const openOrSenior = (data) => {
+			return data.map(([age, handicap]) => (age >= 54 && handicap > 7) ? 'Senior' : 'Open');
+		}
+	< /script>
+	</pre>
+	<script type="text/javascript">
+		const openOrSenior = (data) => {
+			return data.map(([age, handicap]) => (age >= 54 && handicap > 7) ? 'Senior' : 'Open');
+		}
+	</script>
+	<pre>
+		Way of <mark>array destructing</mark> ([age, handicap]) instead simply have "info" you can TAKE OUT the things from the "info" - by using "array destructing".
+	</pre>
+</body>
+</html>

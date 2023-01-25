@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+
+    <title>CallbackFunction</title>
+</head>
+<body>
+    <h2>Callback Function ()</h2>
+    <p>1. A <u>Callback Function</u> - is a Function - that is PASSED into another Function - and then CALLED inside that Function. (to complete some sort of action/routine).</p>
+    <br>
+    <button>Press Me!</button>
+    
+    
+    <pre>
+        script>
+            const button = document.querySelector('button');
+    
+            function toggle() {
+                button.classList.toggle('altColor')
+            }
+        /script> 
+
+        1. A function that - GRAB "our button"  - using the <i>querrySelector (a JS method - we can use in order to GRAB the "element button").</i>
+        The <b><mark>querySelector() method</mark></b> returns <b>the first element that matches a CSS selector.</b>
+        2. The "button" is stored in <mark>const button</mark>.
+
+        3. The Function called <mark>toggle()</mark> - WHICH AGAIN - i'm grabbing the <mark>button</mark> and i'm USING classlist <b>toggle/comuta</b> - to <mark>toggle the (CSS) class of alt color.</mark>
+        <b><mark>The classList property returns the CSS classnames of an element.</mark></b>
+        4. The <mark>button</mark> is yellow on the page - because the <mark>toggle Func()</mark> - <b>it's not beeing called.</b>
+        4.1 If we call it <mark>toggle()</mark> INSTANTLY- the button becomes "red".
+
+        script>
+            const button = document.querySelector('button');
+    
+            function toggle() {
+                button.classList.toggle('altColor')
+            }
+            
+            <mark>toggle();</mark>
+        /script>
+
+        5. BUT - What if we WANT IT - <b>to be called INSTANTLY</b> - <b>we wanna to TOGGLE - if we click the button.</b>
+        5.1 To do this - we gonna use a <mark>CALLBACK Function().</mark> <b>to CALL</b> <mark>the toggle Func</mark> - <b>when CERTAIN things are MET.</b>
+
+        6. Let's look at a <mark>JS METHOD</mark> <b>that takes Functions</b> - <mark>as ONE of its PARAMETERS.</mark>
+        <mark>That is <b> addEventListener().</b></mark>
+        addEventListener - is a <b>JS - Method</b> and it's also considered a <b>Function().</b>
+        
+    script>
+        const button = document.querySelector('button');
+
+        function toggle() {                             --- here is a <b>Function</b>
+            button.classList.toggle('altColor')         --- here toggle() - is a <b>METHOD</b>. (toggle() anyway is a METHOD)
+        };
+        
+        button.addEventListener('click', toggle);       --- here is a <b>callbackFunction.</b>
+    /script>
+    </pre>
+      
+    <pre>
+        7. When you have <mark><b>button.addEventListener('click', toggle)</b></mark> - your saying that:
+        <b>If you click on a BUTTON - we want the Function() to be called / we want the toggle() - to happen.</b>
+        I am GRABBING the <mark>button</mark> (which is an HTML elem) - and then using the <b>addEventListener() JS METHOD on it</b> - and PASSING (throught the STRING of 'click') - 
+        - and if a CLICK of a BUTTON HAPPENS - then <u>THIS FUNCTION</u> <b><mark>toggle</mark></b> - will be CALLED.
+
+        When you pass a function as an argument, remember not to use parenthesis.
+        Right: myCalculator(5, 5, myDisplayer);         
+        Wrong: myCalculator(5, 5, myDisplayer());
+
+        toglee<mark>()</mark> - with PARANTHESES (it gets CALLED).
+        toglee - <mark>without PARANTHESES</mark> - <b>it's just a CALLBACK Function.</b>
+
+        8. The Function() is BEING CALLED - <mark>only by the outer Function</mark> / <b>or</b> <mark>METHOD of <b>addEventListener</b></mark> - <b>IF A CLICK has BEEN MADE.</b>
+        <b>Functions passed INTO addEventListener - are <mark>callback Functions</mark></b>
+
+        toggle in: <mark>addEventListener('click', toggle)</mark> is the same as: <mark>addEventListener('click' <b>()=>{}</b>)</mark>
+        toggle<mark>()</mark> - with parantheses - is /=  not the same as: <mark>()=>{}</mark>
+        <mark>addEventListener('click', toggle)</mark>  - <b>toggle with parantheses WILL BE CALLED IMMEDIATELY - <i>and CANNOT be USED </i></b>
+        <b>button.addEventListener('click', toggle())</b> - toggle with parantheses <mark>()</mark> <b>will be called immediately - and CANNOT BE USED or <mark>is not considered a callback</b>
+        
+    </pre> 
+    <p>2. Let's see what happens if we wanna PASS PARAMETERS - <b>to our callback Function.</b></p>
+    <pre>
+        const button = document.querySelector('button');
+        function toggle<mark>(color)</mark> {
+            button.classList.toggle<mark>(color)</mark>;
+        }       
+        <b>button.addEventListener('click', <mark>toggle('anotherAltColor')</mark></b>
+
+        <mark>...and this essentially - call the function immediately - this is NO LONGER a callback Function().</mark>
+
+    </pre>
+    <p>3. As we know - JS runs code sequentially - from top to bottom. Sometimes -we don't want this behavior.<br>
+    We want a Function to be called - <mark>after something else happens - <i>or a CERTAIN condition is MET.</i></mark><br>
+    <b>this is CALLED Asynchronous Programming.</b></p>
+
+    <pre>
+        function firstAction() {
+            console.log('I am the first action!')
+        }
+
+        function secondAction() {
+            console.log('I am the Second Action!');
+        }
+
+        firstAction();
+        secondAction();
+
+        1. If I run this code as is the two functions will be called from <b>the top to bottom.</b> I will get 'I am the First Action' (as a string) then - 'I'm the second Action'.
+        2. What if I pass the <mark>firstAction</mark> into a <b>setTimeout();</b>
+        <b>*setTimeout() - another JS METHOD that takes FUNCIOTNS as one of it's PARAMETERS.</b>
+        <b>*addeventListener - same.</b>
+        3. So - take the firstAction() Func - and put it/ pass it through (as it's I'st PARAMETER) into <b>setTimeout() - followed by miliseconds - I want to pass - until the Function GETS CAUGHT.</b>
+        4. If I put <b>5000</b> - I should get the string of <b>I'm the First Action!</b> BUT
+        5. BUT!!!! <b>5</b> seconds after the string: "I'm the second Action." - I am the First action.
+               
+        function firstAction() {
+            console.log('I am the first action!')
+        }
+
+        function secondAction() {
+            console.log('I am the Second Action!');
+        }
+
+        setTimeout(firstAction, 5000);
+        secondAction();
+
+        <mark>firstAction</mark> it's a <b>callback Function()</b> <i>in this scenario</i>
+        It's being passed into another function - <b>and then it's INVOKED INSIDE the OUTER Function</b> - to COMPLETE (routine or action).
+        <mark></mark>
+    </pre>
+
+    <p>4. If we wanted to - we can HAVE a bunch of different callbacks - <b>Happening Everywhere</b> - to TAKE control of when we want a certain Functions to CALL.</p>
+    <pre>
+        1.Put the <mark>secondAction() Function</mark> - inside the <b>setTimeout(secondAction)</b> - <b><i>inside of the firstAction().</i></b>
+        <b><mark>which is an ARGUMENT, of the OUTER "setTimeout()" Function.</mark></b>
+        2. <b>Output:</b> "I am the I'st Action" |(2 sec) | "I am the II'nd Action"
+
+        Even though "The II'nd Action" it's called after <mark>(2 sec)</mark> - because it's in the Func called "fistAction()" (and that it's inside the "setTimeout()").
+        As a <b>callback function</b> <i>(that won't get called - UNTIL 5 SEC. have passed)</i> - the STRING: <b>"I am a second action"</b> - will be called after <b>all of this RUNS - after 7 seconds.</b>
+    
+        function firstAction() {
+            console.log('I am the first action!')
+            <mark>setTimeout(secondAction, 2000)</mark>
+        }
+
+        function secondAction() {
+            console.log('I am the Second Action!');
+        }
+
+       <mark>setTimeout(firstAction, 5000);</mark>   
+    </pre>
+
+    <p>5. What If I wann put a PARAMETER into the "firstAction()"?</p>
+    <pre>
+        <mark>This would be a problem!</mark>
+        As SOON as I OPEN up the parantheses - <b>i'm calling the firstAction immediately.</b>
+        <mark>setTimeout(firstAction(secondAction), 5000);</mark>   
+
+        function fisrtAction<mark>(callback)</mark>{
+            console.log("I am the First Action!")
+            setTimeout(<mark>callback</mark>, 2000)
+        }
+
+        function secondAction(){
+            console.log('I am the second action');
+        }
+
+        <mark>setTimeout(firstAction(secondAction), 5000);</mark>   
+
+        <b>Output:</b> | We're not GETTING the correct BEHAVIOR! | If we refresh the page - the <mark>firstAction()</mark> - it's beeing CALLED - <b>straight away.</b>
+        <b>We don't want this - We need to USE  a callBack - for this! </b>
+
+        <b>setTimeout(firstAction, 5000)</b> <mark>I'st Argument is a Callback.</mark>
+        <b>setTimeout(firstAction(secondAction), 5000)</b> <mark>2. We opened up PARANTHESES so it's <b>no longer CALLBACK</b></mark>
+        <b>setTimeout(<mark>()=></mark> firstAction(secondAction), 5000)</b> <mark>3. We made it a Callback again.</mark>
+    </pre>
+    <p>6. If we do this: <mark>setTimeout(()=> firstAction, 5000)</mark> - we can safetly PASS the FUNCTION with PARAMETERS. (as a parameter of <i>setTimeout()</i></p>
+
+    <pre>
+        function fisrtAction<mark>(callback)</mark>{
+            console.log("I am the First Action!")
+            setTimeout(<mark>callback</mark>, 2000)
+        }
+
+        function secondAction(){
+            console.log('I am the second action');
+        }
+
+        <mark>setTimeout(<b>() =></b>firstAction(secondAction), 5000);</mark>  
+    </pre>
+
+    <p>7. We can take this a step further - and - MAKEING the "firstAction()" Func REUSABLE - to print out a message - then <b>call the "secondAction()" function - which is also REUSEABLE.</b>.</p>
+    <pre>
+        <b>setTimeout(() => fisrtAction( <mark>() =></mark> secondAction<mark>(message)</mark> ,5000)</b>
+
+        secondAction<mark>(message)</mark> - now the callback it's invoked - and we need to make this a callback Function again.
+        (() => fisrtAction( <mark><b>() =></b></mark> secondAction<mark>(message)</mark>
+
+        function fisrtAction<mark>(callback)</mark>{
+            console.log("I am the First Action!")
+            setTimeout(callback, 2000)
+        }
+
+        function secondAction<mark>(message)</mark>{
+            console.log<mark>(message);</mark>
+        }
+
+        <mark>setTimeout(<b>() =></b>firstAction<b>(<b>() => </b>('I am the second action'))</b>, 5000);</mark> 
+        <b>Output:</b> 1,2,3,4,5 - I am the first Action. 
+    </pre>
+    
+    <p>7.1 We have made the <b>"secondAction()"</b> REUSABLE - let's do the <b>firstAction().</b></p>
+    <pre>
+      
+        //Now we're already passing through a CALLACK (<mark>firstAction<b>(callback)</b></mark>) (AS the fisrt PARAMETER of the first action)
+        //Let's pass through a MESSAGE as the SECOND PARAMETER. | console.log<b>(message);</b>
+
+        function fisrtAction(callback, <b><mark>message</mark></b>){
+            console.log<b>(message);</b>
+            setTimeout(callback, 2000)
+        }
+
+        function secondAction<b>(message)</b>{
+            console.log<b>(message);</b>
+        }
+
+        <mark>setTimeout(<b>() =>firstAction(() => secondAction</b>('I am the second action'), <b>'I am the first Action!'</b>), 5000);</mark>  
+
+        <b>Output:</b> 1,2,3,4,5 - I am the first Action. | 1,2 - I am the second Action!
+    </pre>
+
+    <p>8.</p>
+
+    <pre>
+        function firstAction(callback, message, <mark><i>anotherCallback</i></mark>){
+            console.log(message);
+            setTimeout(callback, 2000);
+            <mark>anotherCallback();</mark>         <-- and simply call it Here.
+        };
+
+        function secondAction(message){
+            console.log(message);
+        };
+
+        function thirdAction(){
+            console.log<mark>('I am the third action!');</mark>
+        };
+
+        setTimeout(() => 
+            firstAction(() => 
+                secondAction('I'm the second action'), 'I'm the first action'), <mark>thirdAction)</mark> 5000)
+
+        1. Write a III'rd function - <b>then PASS INTO the <mark>firstAction</mark> - <i>as a callback</i></b>
+        2. Call it Here <mark><i>anotherCallback();</i></mark> - <b>calling the function - inside of the OUTER Function.</b>
+    </pre>
+
+    
+
+
+
+
+
+<script src="app.js"></script>
+</body>
+</html>

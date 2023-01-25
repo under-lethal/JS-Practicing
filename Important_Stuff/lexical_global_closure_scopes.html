@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lexical_Global_Closusre SCOPE</title>
+</head>
+<body>
+	<h4>Lexical Scope - defines how VARIABLES names are RESOLVED in NESTED Functions().</h4>
+	<p><b>If we have a CHILD Function() (within a PARENT Function() - the CHILD Function has ACCES to the SCOPE of the PARENT Function() - and HAS ACCES to the GLOBAL Scope.</b></p>
+	
+	<h4>Nested Child Functions - have acces to the SCOPE of THEIR Parent Functions().</h4>
+	<p>THIS IS CONFUSED WITH "Closure".</p>
+	
+	<h5>Global Scope</h5>
+	<!--<p id="gs"></p>
+	<p id="gs1"></p>
+	<script type="text/javascript">
+		let x = 1;
+		let output = '';
+		let output1 = '';
+
+		const parentFunction = () => {
+			//local scope
+			let myValue = 2;
+			document.getElementById('gs').innerHTML  = output += x;
+			document.getElementById('gs1').innerHTML  = output1 += myValue;
+		}
+		parentFunction();
+	</script>-->
+
+	<pre>
+	< p id="gs">< /p>
+	< p id="gs1">< /p>
+	< script type="text/javascript">
+		let x = 1;
+		let output = '';
+
+		const parentFunction = () => {
+			//local scope
+			let myValue = 2;
+			document.getElementById('gs').innerHTML  = output += x;
+			document.getElementById('gs1').innerHTML  = output += myValue;
+		}
+		parentFunction(); //1 2
+	< /script>
+	</pre>
+	<pre>
+The "parentFunction()" - is a CHILD of a Global Scope.
+It has ACCES - to the value of "x". It also has ACCES to the "myValue2" VARIABLE (we just defined).
+
+If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we would get an "Refference Error" - because it DOES NOT HAVE acces to the variables ddefined in the local scope (of this "parentFunction()").
+	</pre>
+
+	<h5>Let's create a CHILD Function  inside of "parentFunction()"</h5>
+<pre>
+	< p id="gs2">< /p>
+	< p id="gs3">< /p>
+	< p id="gs4">< /p>
+	< p id="gs5">< /p>
+	< script type="text/javascript">
+		let x = 1;
+		let y = 5;
+		let output2 = '';
+		let output3 = '';
+		let output4 = '';
+		let output5 = '';
+
+		const parentFunction2 = () => {
+			//local scope
+			let myValue2 = 2;
+			document.getElementById('gs2').innerHTML  = output2 += x;
+			document.getElementById('gs3').innerHTML  = output3 += myValue2;
+
+			
+			<mark>const childFunction = () => {
+				document.getElementById('gs4').innerHTML = output4 += y;
+				document.getElementById('gs5').innerHTML = output5 += myValue2;
+			}</mark>
+			<mark>childFunction();</mark>
+		}
+		parentFunction2();
+	< /script>
+
+	...let's take the Value2 - from the parentFunction().
+	This "childFunction()" - has acces to the values from it's parentFunction() - and The Global SCOPE.
+	<mark>This is LEXICAL SCOPE</mark>. this is how "nestedChild" have ACCES to the scope of their Parent Functions and Global Scope..
+
+	Now - we can call the "childFunction()" - inside of the parentFunction().
+	<mark>But this - does not display CLOSURE!</mark> (...We can say - the childFunction() - has CLOSURE over the SCOPE of the parentFuntion() - because has ACCESS to it).
+	(...we also can say - the childFunction() has CLOSURE - over the GLOBAL Scope).
+	It DOES NOT DIRECTLY give an EXAMPLE of CLOSURE - it's just Lexical Scope.
+	Lexical Scope - is an important part of CLOSURE.
+</pre>
+
+	<p id="gs2"></p>
+	<p id="gs3"></p>
+	<p id="gs4"></p>
+	<p id="gs5"></p>
+	<script type="text/javascript">
+		let x = 1;
+		let y = 5;
+		let output2 = '';
+		let output3 = '';
+		let output4 = '';
+		let output5 = '';
+
+		const parentFunction2 = () => {
+			//local scope
+			let myValue2 = 2;
+			document.getElementById('gs2').innerHTML  = output2 += x;
+			document.getElementById('gs3').innerHTML  = output3 += myValue2;
+
+			
+			const childFunction = () => {
+				document.getElementById('gs4').innerHTML = output4 += y;
+				document.getElementById('gs5').innerHTML = output5 += myValue2;
+			}
+			childFunction();
+		}
+		parentFunction2();
+	</script>
+
+<h4>Let's display CLOSURE.</h4>
+<h5>A CLOSURE - is a Function having acces to the PARENT Scope - even after the PARENT Function() has closed.</h5>
+<h5>A CLOSURE is created WHEN we define a Function - NOT WHEN A Function is EXECUTED.(...)</h5>
+<pre>
+	CLOSURE - IS...AFTER WE SET THE boundaries (like{...}) - we're TELLING the childFunction what is has CLOSUER OVER(at the time it is defined).
+	It is DEFINED within the parent Function() - and that GIVING (the childFunction) - acces to not only IT'S LOCAL SCOPE,
+	but also have ACCESS to the parentFunction() SCOPE - and it has access to the GLOBAL Scope.
+	<mark>It could be sait - IT HAS CLOSURE - over all 3.</mark>
+</pre>
+
+<h4>Now to have access to the parent SCOPE - even after the PARENT Function() has CLOSED.</h4>
+<p>Instead of CALLING the "chidlFunction()"(INSIDE the parentFunction()) - WE actually need to "return"  - the childFunction().<br>
+THEN -we can use "const result"  - to call the CHILD Function()</p>
+<pre>
+		< p id="gs2">< /p>
+	< p id="gs3">< /p>
+	< p id="gs4">< /p>
+	< p id="gs5">< /p>
+	< script type="text/javascript">
+		let x = 1;
+		let y = 5;
+		let output2 = '';
+		let output3 = '';
+		let output4 = '';
+		let output5 = '';
+
+		const parentFunction2 = () => {
+			//local scope
+			let myValue2 = 2;
+			document.getElementById('gs2').innerHTML  = output2 += x;
+			document.getElementById('gs3').innerHTML  = output3 += myValue2;
+
+			
+			  const childFunction() {
+				document.getElementById('gs4').innerHTML = output4 += y;
+				document.getElementById('gs5').innerHTML = output5 += myValue2;
+			}
+			<mark>return childFunction();</mark>
+		}
+		<mark>const result</mark> = parentFunction2();
+		<mark>result();</mark> //6 3
+	< /script>
+</pre>
+<pre>If we call result() again - it will continue to INCREMENT. // 11 4 </pre>
+
+</body>
+</html>

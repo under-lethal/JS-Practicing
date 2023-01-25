@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h3>17 JavaScript for/while loop exercises</h3>
+<h4>1. Write a JS code to print numbers from 1 to 10</h4>
+<pre>
+< p id="x1">< /p>
+< script type="text/javascript">
+	for (let i = 0; i<=10; i++){
+		document.getElementById('x1').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="x1"></p>
+<script type="text/javascript">
+	for (let i = 0; i<=10; i++){
+		document.getElementById('x1').innerHTML = i;
+	}
+</script>
+
+<h4>2. Write a JS code to print a 2D array</h4>
+
+<pre>
+< p id="x2">< /p>
+< p id="x3">< /p>
+< script type="text/javascript">
+	const rows = 10;
+	const columns = 8;
+
+	//const myArray = newArray(rows);
+	const myArray = [];
+
+	for(let i = 0; i < rows; i++){
+		myArray[i] = [];
+			for (let j = 0; j < columns; j++){
+				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what  we're putting in there.
+			}
+	}
+	document.getElementById('x2').innerHTML = myArray;
+	
+	EXAMPLE: 2 
+	const myArray2 = new Array(rows);
+	for (let i =0; i < myArray2.length; i++){
+		myArray2[i] = new Array(columns); // new Array with the length of columns
+	}
+	document.getElementById('x3').innerHTML = myArray2;
+< /script>
+
+*when you creating an "array" with "newArray() ANOTATION" - then it's gonna create an array with that NUMBER of ITEMS - (and all it's gonna be empty).
+const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
+</pre>
+
+<p id="x2"></p>
+<p id="x3"></p>
+<script type="text/javascript">
+	const rows = 10;
+	const columns = 8;
+
+	//const myArray = newArray(rows);
+	const myArray = [];
+
+	for(let i = 0; i < rows; i++){
+		myArray[i] = [];
+			for (let j = 0; j < columns; j++){
+				myArray[i][j] = 'a'; // we just want it a 2D Array - it doesn't really matter what we're putting in there.
+			}
+	}
+	document.getElementById('x2').innerHTML = myArray;
+	
+	const myArray2 = new Array(rows);
+	for (let i =0; i < myArray2.length; i++){
+		myArray2[i] = new Array(columns); // new Array with the length of columns
+	}
+	document.getElementById('x3').innerHTML = myArray2;
+</script>
+
+<h4>Example: 3</h4>	
+<pre>
+< p id='x4'>< /p>
+< script type="text/javascript">
+	const myArray4 = [['a'],['b'],['c'],['d'],['e'],['f']];
+	document.getElementById('x4').innerHTML = myArray4;
+< /script>
+
+</pre>
+<p id='x4'></p>
+<script type="text/javascript">
+	const myArray4 = [['a'],['b'],['c'],['d'],['e'],['f']];
+	document.getElementById('x4').innerHTML = myArray4;
+</script>
+
+<h3>Nested Loops & 2D Arrays | Javascript |</h3>
+
+<h4>Nested Loop</h4>
+<pre>
+< p id="nl">< /p>
+< script type="text/javascript">
+	let nested = '';
+	for(var i = 0; i < 4; i++){
+		for (var j = 0; j < 3; j++){
+			document.getElementById('nl').innerHTML = nested += <mark>'i= ' + i</mark>  + <mark>', j= ' + j + "</mark>< br>";
+		}
+		
+	}
+< /script>
+</pre>
+<p id="nl"></p>
+<script type="text/javascript">
+	let nested = '';
+	for(var i = 0; i < 4; i++){
+		for (var j = 0; j < 3; j++){
+			document.getElementById('nl').innerHTML = nested += 'i= ' + i  + ', j= ' + j + "<br>";
+		}
+		
+	}
+</script>
+<pre>
+	we use the variable "j" (instead of "i"), because we don't want to keep track the iteration of this ^| loop.
+	*On the first Iteration of the "i" loop - we actually loop throught the entirety of "j".
+	So - "j" is loop through all the way (for one interation) of the "i" loop.
+	0, 0, 0, - is all on the same loop number of "i".
+	"j" loop through 3 times. (j=0, j=1, j=2);
+
+	So - For Every iteration of "i" - "j" will fully run/ we gonna get through every iteration of 'j' loop. (the loop inside of "j" it's gonna get FULLY EXECUTED).
+</pre>
+
+<h3>2 Dimensional Arrays</h3>
+<pre>
+< p id="2D">< /p>
+< script type="text/javascript">
+	let dimensional = '';
+	var numberGrid = [
+	[1,2,3],
+	[4,5,6],
+	[7,8,9],
+	[0]
+	]; 
+	document.getElementById('2D').innerHTML = dimensional += numberGrid[0] [0];
+	document.getElementById('2D').innerHTML = dimensional += numberGrid[2] [2];
+< /script>
+</pre>
+<p id="2D"></p>
+<p id="2D1"></p>
+<script type="text/javascript">
+	let dimensional = '';
+	var numberGrid = [
+	[1,2,3],
+	[4,5,6],
+	[7,8,9],
+	[0]
+	]; 
+	document.getElementById('2D').innerHTML = dimensional += numberGrid[0] [0] + "<br>";
+	document.getElementById('2D').innerHTML = dimensional += numberGrid[2] [2];
+</script>
+
+<pre>
+	var numberGrid = [] - every element inside this array - it's gonna be an array in itself.
+	[[], [], []] - if I want to acces  - individual elements (inside the array/ inside of this number grid).
+	I can do That by specifying - (the ROW that THEY'RE IN) - and specifying (the COLUMN that they're in).
+	Horizontal - it's gonna be ROWS. Vertical - it's gonna be COLLUMNS.
+</pre>
+
+<h4>How we can use this in "nested loop"</h4>
+<p>We can use this in "nested loops"  - in order to write out the contents of the array.</p>
+<pre>
+	
+</pre>
+<pre>
+< p id="2D2">< /p>
+< p id="2D3">< /p>
+< script type="text/javascript">
+	let dimensional2 = '';
+	var numberGrid2 = [
+	[1,2,3],
+	[4,5,6],
+	[7,8,9],
+	[0]
+	]; 
+	 for(var i = 0; i < numberGrid2.length; i++){
+	 	for(var k = 0; k < <mark>numberGrid2[i].length</mark>; k++){
+	 		document.getElementById('2D2').innerHTML = dimensional2 += <mark>numberGrid2[i][k]</mark>;
+	 	}
+	 	document.getElementById('2D3').innerHTML = dimensional2 += "< br>";
+	 }
+</pre>
+<p id="2D2"></p>
+<p id="2D3"></p>
+<script type="text/javascript">
+	let dimensional2 = '';
+	var numberGrid2 = [
+	[1,2,3],
+	[4,5,6],
+	[7,8,9],
+	[0]
+	]; 
+	 for(var i = 0; i < numberGrid2.length; i++){
+	 	for(var k = 0; k < numberGrid2[i].length; k++){
+	 		document.getElementById('2D2').innerHTML = dimensional2 += numberGrid2[i][k];
+	 	}
+	 	document.getElementById('2D3').innerHTML = dimensional2 += "<br>";
+	 }
+</script>
+<pre>
+	<b>k < numberGrid2[i].length</b> - <mark>here we're reffering to a SPECIFIC ROW inside of a number grid, and we getting the length of that array.</mark>
+	<b>numberGrid2[i] [k]</b> - it gives us VEVERY SINGLE ELEMENT inside of this array.[[],[],[],[]]. Printing out every individual elements
+	<b>numberGrid2[i] [k]</b> - For each row (inside of this array[[],[],[]]) - we want to loop throught all the elements inside of it.
+	So each row is itself an array. With numberGrid[i] - I accessing THE SPECIFIC ROW [4,5,6]... in 2Dimensional array - and I get the length of it.
+</pre>
+
+
+<h3>Example 3</h3>
+<pre>
+< p id="ex">< /p>
+< p id="ex1">< /p>
+
+< script type="text/javascript">
+	let newFunction = '';
+	<mark>function printArray(arr)</mark>{
+		for(var i = 0; i < arr.length; i++){
+			for(var j = 0; j < arr<mark>[0].length</mark>; j++){
+				document.getElementById('ex').innerHTML = newFunction += <mark>arr[i][j]</mark>;
+			}
+				document.getElementById('ex1').innerHTML = newFunction += "< br>"
+		}
+	}
+	var arr = [
+		[1,2],
+		[3,4],
+		[5,6]
+	];
+	printArray(arr); 
+< /script>
+</pre>
+<p id="ex"></p>
+<p id="ex1"></p>
+
+<script type="text/javascript">
+	let newFunction = '';
+	function printArray(arr){
+		for(var i = 0; i < arr.length; i++){
+			for(var j = 0; j < arr[0].length; j++){
+				document.getElementById('ex').innerHTML = newFunction += arr[i][j];
+			}
+				document.getElementById('ex1').innerHTML = newFunction += "<br>"
+		}
+	}
+	var arr = [
+		[1,2],
+		[3,4],
+		[5,6]
+	];
+	printArray(arr); 
+</script>
+
+<h3>3. Write a JS code to print Even numbers in given array</h3>
+<pre>
+	< p id="ex3">< /p>
+
+< script type="text/javascript">
+	var arr2 = [13, 23, 12, 45, 22, 48, 66, 100];
+	let newFunction2 = ''
+	function printArray2(arr2){
+		for(var i = 0; i < arr2.length; i++){
+			if(<mark>arr2[i]%2 == 0</mark>){
+				document.getElementById('ex3').innerHTML = newFunction2 += arr2[i] + " ";
+			}			
+		}
+	}
+printArray2(arr2);
+</pre>
+<p id="ex3"></p>
+
+<script type="text/javascript">
+	var arr2 = [13, 23, 12, 45, 22, 48, 66, 100];
+	let newFunction2 = ''
+	function printArray2(arr2){
+		for(var i = 0; i < arr2.length; i++){
+			if(arr2[i]%2 == 0){
+				document.getElementById('ex3').innerHTML = newFunction2 += arr2[i] + " ";
+			}			
+		}
+	}
+printArray2(arr2);
+</script>
+
+<h3>Odd Numbers</h3>
+<pre>
+< p id="ex4">< /p>
+< script type="text/javascript">
+	let numb = [1,2,3,4,5,6,7,8,9];
+	let numb2 = '';
+
+	function printOdd(numb){	
+		for(var i = 0; i < numb.length; i++){
+				<mark>if (numb[i]%2 !== 0)</mark>{
+				document.getElementById('ex4').innerHTML = numb2 += numb[i] + " ";
+			}
+		}
+	}
+	printOdd(numb);
+< /script>
+</pre>
+<p id="ex4"></p>
+<script type="text/javascript">
+	let numb = [1,2,3,4,5,6,7,8,9];
+	let numb2 = '';
+
+	function printOdd(numb){	
+		for(var i = 0; i<numb.length; i++){
+				if (numb[i]%2 !== 0){
+				document.getElementById('ex4').innerHTML = numb2 += numb[i] + " ";
+			}
+		}
+	}
+	printOdd(numb);
+</script>
+
+<h3>4.Write a JS code to delete all occurrence of element in given array</h3>
+<pre>
+	< p id="del">< /p>
+< script type="text/javascript">
+	var newFunction3 = '';
+	function deleteElement(arr3, elem){
+		for(var i = 0; i < arr3.length; i++){
+			if<mark>(arr3[i]==elem)</mark>{
+				<mark>arr3.splice(i, 1);</mark> //Delete an element from array (At position i, remove 1 item:)
+			}
+		}
+		return arr3;
+	}
+	var arr3 = [23,56,4,78,5,63,45,210,56];
+	arr3 = deleteElement(arr3, 56);	
+	document.getElementById('del').innerHTML = newFunction3 += arr3;	
+</script>
+</pre>
+<p id="del"></p>
+<script type="text/javascript">
+	
+	function deleteElement(arr3, elem){
+		for(var i = 0; i < arr3.length; i++){
+			if(arr3[i]==elem){
+				arr3.splice(i, 1); //Delete an element from array (At position i, remove 1 item:)
+			}
+		}
+		return arr3;
+	}
+	var arr3 = [23,56,4,78,5,63,45,210];
+	arr3 = deleteElement(arr3, 56);	
+	document.getElementById('del').innerHTML = arr3;	
+</script>
+
+<pre>
+	It's pretty easy to remove an element from the "back" or "front" of an "array"  -usin POP or SHIFT. But what if you want to remove an element in the middle?
+	Maybe using "delete" COMMAND. 
+</pre>
+<pre>
+< p id="del1"></p>
+< script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	delete arry[2]; // to delete the 3're element - specify the array and then the POSITION [2].
+
+	this is what it looks like.
+	(5) [1,2, empty , 4, 5]
+
+	//it did remove the VALUE in a way and left it empty.
+	If I want the lenght. of the array - is still 5. (because that element is simply empty).
+	arry.length; //5
+
+	If I want to leave the length the same - but I wanna remove the value - I WILL REPLACE IT with a "null".
+	arry[2] = null;
+	//(5) [1,2, null , 4, 5] - null means NOTHING but somethig to ASSIGN.
+	I assigned nothing to it - where 'undefined' is something I like to keep as beeing assigned by JS (itself)  - not by me.
+< /script>
+</pre>
+<h5>Let's make a different way - of doing this: (the other/better way - is using "splice"</h5>
+<pre>
+	'Splice' are sounds very simmilar to "slice" - but they are very different when acting on arrays.
+	"Splice" allows you to ADD and to REMOVE elements to an Array. It does Both things.
+
+	Let's remove that 3'rd element - with 'splice()'
+
+	let arry =  [1,2,3,4,5];
+	arry.splice(2, 1); //2 - indicate the index, '1' - how many elements I want to remove.
+	What this will return - is the element/elements that we're remove.
+	As we can see "splice()" mutate/changes the array you're working on.
+</pre>
+
+<h5>If you want to remove an 'element' but not to CHANGE/mutate the original Array - <mark>you could CLONE the array</mark> and remove the elements.</h5>
+<p>In order to do that - we neet to SET UP  a Function()</p>
+<pre>
+< p id="rem">< /p>
+< p id="rem1">< /p>
+< script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	let output = '';
+	let output1 = '';
+
+	const removeElements = function(a, index){
+		let newArray1 = [...a];
+		newArray1.splice(index, 1);
+		return newArray1;
+	};
+	let newArray1 = removeElements(arry, 2);
+	document.getElementById('rem').innerHTML = output += arry;
+	document.getElementById('rem1').innerHTML = output1 += newArray1;
+< /script>
+</pre>
+
+<pre>
+	1. Call a function (removeElements) - pass an ARRAY and 'index of what we want to remove'. (function(a, index)).
+	2. In order to "mutate" this array - even it's passed into a NEW VARIABLE. function(<mark>a</mark>, index) - passed by refference in JS. [if we will change it (with'a') - it will mutate the array]. <mark>'a' is 'arry'</mark>.
+	3. IN ORDER TO PREVENT THAT FROM HAPPENING  - we first need to CLONE IT.
+	3.1 A really <mark>quick way</mark> to CLONE an Array is using a "SPREAD OPERATOR" - <mark>[...a]</mark>
+	3.2 The "spread OP" - will take this array 'a'/arry  - and it SPREADS OUT all the Elements.
+	...and it spreads them all out - inside of this square brackets '[...a]' - ASSIGNED TO "let newArray' VARIABLE.
+	4. Once we get that "newArray" - then we can do the splice. <mark>newArray.splice(index, 1)</mark>
+	5. Finally - <mark>return</mark> newArray.
+	that ALLOWS us to modify the array - without MUTATING  the original array.
+	6. It will give us a NEW Array in return.
+	<mark>let newArray = removeElement(arry, 2)</mark>
+	<mark>2</mark> - in this case  - indicates the INDEX THAT WE WANT TO REMOVE.
+</pre>
+<p id="rem"></p>
+<p id="rem1"></p>
+<script type="text/javascript">
+	let arry = [1,2,3,4,5];
+	let output = '';
+	let output1 = '';
+
+	const removeElements = function(a, index){
+		let newArray1 = [...a];
+		newArray1.splice(index, 1);
+		return newArray1;
+	};
+	let newArray1 = removeElements(arry, 2);
+	document.getElementById('rem').innerHTML = output += arry;
+	document.getElementById('rem1').innerHTML = output1 += newArray1;
+</script>
+
+<h3>5. Write a JS code to demonstrate Async loop:</h3>
+
+<h3>6. Write a JS code to find the power of a number using for loop:</h3>
+<pre>
+< p id="pow">< /p>
+< script type="text/javascript">
+	let x = '';
+	function numPower(num, pow){
+		var res=<mark>1</mark>;
+		for(var i=0;i < <mark>pow</mark>;i++){
+			res=res*num;
+		}
+		return res;
+	}
+	document.getElementById('pow').innerHTML = x += numPower(4,3);
+</ script>
+</pre>
+<p id="pow"></p>
+<script type="text/javascript">
+	let x = '';
+	function numPower(num, pow){
+		var res=1;
+		for(var i=0;i<pow;i++){
+			res=res*num;
+		}
+		return res;
+	}
+	document.getElementById('pow').innerHTML = x += numPower(4,3);
+</script>
+<pre>
+	How it works:
+	var i = 0; i < pow(3); i++;
+	1 = 1 * 4 //4
+	res = 4;
+
+	var i = 1; 1 < pow(3); i++;
+	res = 4 * 4 //16;
+	res = 16;
+
+	var i = 2; 2< pow(3); i++;
+	res = 16 * 4 //64
+	res = 64; (4x4x4 = 64)
+</pre>
+<h4>Did you mean alternative for Math.pow? Here is one way with simple loop.</h4>
+<pre>
+< p id="pow1">< /p>
+< script type="text/javascript">
+	let x1 = '';
+	var p = 1;
+	function pow(base, power){
+		for(var i=0; i < power; i++){
+			p *= base
+		}
+		return p;
+	}
+	document.getElementById('pow1').innerHTML = x1 += pow(4,3);
+< /script>
+</pre>
+<p id="pow1"></p>
+<script type="text/javascript">
+	let x1 = '';
+	var p = 1;
+	function pow(base, power){
+		for(var i=0; i<power; i++){
+			p *= base
+		}
+		return p;
+	}
+	document.getElementById('pow1').innerHTML = x1 += pow(4,3);
+</script>
+<pre>
+< p id="pow2">< /p>
+< script type="text/javascript">
+	let x2 = '';
+	
+	function pow1(n, e){
+		let num = n;
+		for(let i = <b>1</b>; i < e; i++){
+			num *= n;
+		}
+		return num;
+	}
+	document.getElementById('pow2').innerHTML = x2 += pow1(-3,3);
+< /script>
+</pre>
+
+<p id="pow2"></p>
+<script type="text/javascript">
+	let x2 = '';
+	
+	function pow1(n, e){
+		let num = n;
+		for(let i = 1; i < e; i++){
+			num *= n;
+		}
+		return num;
+	}
+	document.getElementById('pow2').innerHTML = x2 += pow1(-3,3);
+</script>
+
+<h4>7. Write a JS code to print a pattern using for loop:</h4>
+<pre>
+< p id="patt">< /p>
+< script type="text/javascript">
+	let pattern = '';
+	function printPattern(range){
+		for(var i=1; i<=range; i++){
+			var str = '';
+			for(var j=1; j<=i; j++){
+				str += j+ " ";
+			}
+			document.getElementById('patt').innerHTML = str;
+		}
+	}
+	printPattern(8);
+< /script>
+</pre>
+<p id="patt"></p>
+<script type="text/javascript">
+	let pattern = '';
+	function printPattern(range){
+		for(var i=0; i<=range; i++){
+			var str = '';
+			for(var j=1; j<=i; j++){
+				str += j+ " ";
+			}
+			document.getElementById('patt').innerHTML = pattern += str + "<br>";
+		}
+	}
+	printPattern(8);
+</script>
+
+<h4>Codeademy Exercise - Kelvin Weather</h4>
+<pre>
+< p id="kw">< /p>
+< script type="text/javascript">
+	//The forecast today is 293 Kelvin. To start, create a variable named kelvin, and set it equal to 293
+	<mark>const kelvin = 293;</mark>
+	
+	// convert Kelvin to Celsius by subtracting 273 from the kelvin variable. Store the result in another variable, named celsius.
+	<mark>let celsius = kelvin - 273;</mark>
+	
+	//Use this equation to calculate Fahrenheit, then store the answer in a variable named fahrenheit. Fahrenheit = Celsius * (9/5) + 32
+	<mark>let fahrenheit = celsius * (9/5) + 32;</mark>
+
+//When you convert from Celsius to Fahrenheit, you often get a decimal number.Use the .floor() method from the built-in Math object to round down the Fahrenheit temperature. Save the result to the fahrenheit variable.
+	<mark>fahrenheit = Math.floor(fahrenheit);
+	document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`</mark>
+< /script>
+</pre>
+<p id="kw"></p>
+<script type="text/javascript">
+	//The forecast today is 293 Kelvin. To start, create a variable named kelvin, and set it equal to 293
+	const kelvin = 293;
+	// convert Kelvin to Celsius by subtracting 273 from the kelvin variable. Store the result in another variable, named celsius.
+	let celsius = kelvin - 273;
+	//Use this equation to calculate Fahrenheit, then store the answer in a variable named fahrenheit. Fahrenheit = Celsius * (9/5) + 32
+	let fahrenheit = celsius * (9/5) + 32;
+
+//When you convert from Celsius to Fahrenheit, you often get a decimal number.Use the .floor() method from the built-in Math object to round down the Fahrenheit temperature. Save the result to the fahrenheit variable.
+	fahrenheit = Math.floor(fahrenheit);
+	document.getElementById('kw').innerHTML = `The temperature is ${fahrenheit} degrees Fahrenheit.`
+</script>
+
+<h4>W3School Exercise</h4>
+<h5>This example calls a function to convert from Fahrenheit to Celsius:</h5>
+<pre>
+< p id="fh"></p>
+< script type="text/javascript">
+	function toCelsius(f){
+		return (5/9) * (f-32);
+	}
+	document.getElementById('fh').innerHTML = toCelsius(25);
+< /script>
+</pre>
+<p id="fh"></p>
+<script type="text/javascript">
+	function toCelsius(f){
+		return (5/9) * (f-32);
+	}
+	document.getElementById('fh').innerHTML = toCelsius(25);
+</script>
+
+<h5>If you’d like extra practice, try this: <br>
+Convert celsius to the Newton scale using the equation below<br>
+Newton = Celsius * (33/100)<br>
+
+Round down the Newton temperature using the .floor() method<br>
+Use console.log and string interpolation to log the temperature in newton to the console</h5>
+
+<pre>
+< p id="N">< /p>
+< script type="text/javascript">
+	let celsius1 = 25;
+	let newton = celsius1 * (33/100);
+	newton = Math.floor(newton);
+	document.getElementById('N').innerHTML = `The outside temperature (in Newton) is ${newton}.`
+< /script>
+</pre>
+
+<p id="N"></p>
+<script type="text/javascript">
+	let celsius1 = 25;
+	let newton = celsius1 * (33/100);
+	newton = Math.floor(newton);
+	document.getElementById('N').innerHTML = `The outside temperature (in Newton) is ${newton}.`
+</script>
+
+<h4>Dog Years</h4>
+<pre>
+< p id="dy">< /p>
+< p id="dy1">< /p>
+< script type="text/javascript">
+	//Create a variable named myAge, and set it equal to your age as a number.
+	<mark>var myAge = 36;</mark>
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	<mark>var earlyYears = 2;</mark>
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	<mark>earlyYears = earlyYears * 10.5;</mark>
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. 
+	//Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	<mark>var laterYears = myAge - 2;</mark>
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. 
+	//Use the multiplication assignment operator to multiply and assign in one step.
+	<mark>laterYears * 4;</mark>
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	<mark>var myAgeInDogYears = earlyYears + laterYears;</mark>
+
+	//If you’d like to check your work at this point, print earlyYears and laterYears to the console. Are the values what you expected?
+	<mark>document.getElementById('dy').innerHTML = myAgeInDogYears;</mark>
+
+	//Let’s use a string method next.
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	<mark>var myName = 'Sergiu'.toLowerCase();</mark>
+
+	//Write a console.log statement that displays your name and age in dog years. 
+	//Use string interpolation to display the value in the following sentence:
+
+	document.getElementById('dy1').innerHTML = <mark>`My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`</mark>
+</pre>
+<p id="dy"></p>
+<p id="dy1"></p>
+<script type="text/javascript">
+	//Create a variable named myAge, and set it equal to your age as a number.
+	var myAge = 36;
+
+	// Create a variable named earlyYears and save the value 2 to it. Note, the value saved to this variable will change.
+	var earlyYears = 2;
+
+	//Use the multiplication assignment operator to multiply the value saved to earlyYears by 10.5 and reassign it to earlyYears.
+	earlyYears = earlyYears * 10.5;
+
+	//Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it. 
+	//Set the result equal to a variable called laterYears. We’ll be changing this value later.
+	var laterYears = myAge - 2;
+
+	//Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years. 
+	//Use the multiplication assignment operator to multiply and assign in one step.
+	laterYears * 4;
+
+	//Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears.
+	var myAgeInDogYears = earlyYears + laterYears;
+
+	//If you’d like to check your work at this point, print earlyYears and laterYears to the console. Are the values what you expected?
+	document.getElementById('dy').innerHTML = myAgeInDogYears;
+
+	//Let’s use a string method next.
+	//Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+	//The toLowerCase method returns a string with all lowercase letters.
+	var myName = 'Sergiu'.toLowerCase();
+
+	//Write a console.log statement that displays your name and age in dog years. 
+	//Use string interpolation to display the value in the following sentence:
+
+	document.getElementById('dy1').innerHTML = `My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`
+</script>
+<h3>Console:</h3>
+<pre>
+var userAge = 36;
+var laterYears = userAge - 2;
+var earlyYears = (laterYears * 4) + (2*10.5);
+
+function myAgeInDogYears(){
+    return `Your age ${userAge} in dog-years is ${earlyYears}!`;
+}
+
+undefined
+myAgeInDogYears();
+<mark>'Your age 36 in dog-years is 157!'</mark>
+</pre>
+
+<h3>8. Write a JS code to find the no of digits in a number</h3>
+<pre>
+< p id="digi">< /p>
+< p id="digi1">< /p>
+< script type="text/javascript">
+	var count = 0; //return 1 for pow=0
+	while(num!=0){
+		num = Math.floor(num/10);
+		count++;
+	}
+	return count;
+	document.getElementById('digi').innerHTML = digitCount(8367); //4
+	document.getElementById('digi1').innerHTML = digitCount(563349); //6
+< /script>
+</pre>
+
+<p id="digi"></p>
+<p id="digi1"></p>
+<script type="text/javascript">
+	function digitCount(num){
+		var count = 0; //return 1 for pow=0
+		while(num!=0){
+			num = Math.floor(num/10);
+			count++;
+		}
+		return count;
+	}
+	document.getElementById('digi').innerHTML = digitCount(8367); //4
+	document.getElementById('digi1').innerHTML = digitCount(563349); //6
+</script>
+
+<pre>
+	1. Use while loop.
+	var count = 0;
+	while (num(2236) != 0){
+		num = Math.floor(2236/10); //223.6 Math.floor(223)
+		count++ //1		
+	}
+	return count; //1
+
+	var count = 1;
+	while(223.6 != 0){
+		num = Math.floor(223.6/10); //22.36 Math.floor(22)
+		count++; //2
+	}
+
+	var count = 2;
+	while(22.36 != 0){
+		num = Math.floor(22.36/10); //2.236 Math.floor(2)
+		count++; //3
+	}
+
+	var count = 3
+	while(2.236 != 0){
+		num = Math.floor(2.236 != 0); // 0.2236 Math.floor(0)
+		count++; //4
+	}
+</pre>
+
+<h3>9. Write a JS code to CALCULATE the SUM of digits in a number</h3>
+<pre>
+	
+</pre>
+<script type="text/javascript">
+	function digitSum(num){
+		var sum = 0;
+		while(num!=0){
+			sum += num % 10
+		}
+	}	
+</script>
+
+
+
+<h3>Youtube Example: Find SUM of DIGITS of a Number:</h3>
+<pre>
+< p id="nd"></p>
+< script type="text/javascript">
+	
+	var n, rem, sum = 0; // declare a variable
+	// promt is used to accept a STRING.
+	// parseInt - The parseInt method parses a value as a string and returns the first integer.
+	//40.33 -> 40, 34 45 66 -> 34, 40 years -> 40;
+	
+	n = parseInt(prompt("Enter any number")); // you can ENTER a NUMBER INTO it(STRING) - BUT you have to convert into an INTEGER number .
+	// This number will be ASSIGN To "n" variable;
+
+	//This block of code - will be executed (again and again) - as long as "n!=0"
+	while(n!=0){
+		rem = n%10;
+		sum=sum+rem;
+		n=parseInt(n/10);
+	}
+
+	// "n" is supppose to be - any number you INSTERT.
+	// n%10 - this wil give us a REMINDER. 123%10->3 | reminder =3. (12345%10->5, 1234%10->4;)
+	//sum=sum+rem; - sum is initialized to "0". 0+3 = 3; 3 vill be assigned to "sum." sum=3.
+	//parseInt - parse any number into an INTEGER. 123 /10 = 12. 12 !=0
+	//n=parseINt(n/10); - n is now "12".
+	// 12 != 0 - true; | 12%10 - 2 | sum = 2 + rem(3) -> 5 |n = 12/10 = 1.2; parseInt(1.2) -> 1
+	// 1 !=0 - true; | 1%10 - 1 | sum = 1 + rem(5) -> 6| n = 1/10 = 0.1 parseInt(0.1) -> 0;
+	// 0!=0 - false;
+	
+	alert('Sum of digits is ' + sum);
+< /script>
+</pre>
+<p id="nd"></p>
+<script type="text/javascript">
+	var n, rem, sum = 0; // declare a variable
+	// promt is used to accept a STRING.
+	// parseInt - The parseInt method parses a value as a string and returns the first integer.
+	//40.33 -> 40, 34 45 66 -> 34, 40 years -> 40;
+	n = parseInt(prompt("Enter any number")); // you can ENTER a NUMBER INTO it(STRING) - BUT you have to convert into an INTEGER number .
+	// This number will be ASSIGN To "n" variable;
+
+	//This block of code - will be executed (again and again) - as long as "n!=0"
+	while(n!=0){
+		rem = n%10;
+		sum=sum+rem;
+		n=parseInt(n/10);
+	}
+
+	// "n" is supppose to be - any number you INSTERT.
+	// n%10 - this wil give us a REMINDER. 123%10->3 | reminder =3. (12345%10->5, 1234%10->4;)
+	//sum=sum+rem; - sum is initialized to "0". 0+3 = 3; 3 vill be assigned to "sum." sum=3.
+	//parseInt - parse any number into an INTEGER. 123 /10 = 12. 12 !=0
+	//n=parseINt(n/10); - n is now "12".
+	// 12 != 0 - true; | 12%10 - 2 | sum = 2 + rem(3) -> 5 |n = 12/10 = 1.2; parseInt(1.2) -> 1
+	// 1 !=0 - true; | 1%10 - 1 | sum = 1 + rem(5) -> 6| n = 1/10 = 0.1 parseInt(0.1) -> 0;
+	// 0!=0 - false;
+	document.getElementById('nd').innerHTML = 'Sum of digits is ' + sum;
+</script>
+
+<h2>9. Write a JS code to find the largest number in an array</h2>
+<pre>
+< div id='ln'>< /div>
+< script type="text/javascript">
+	var arr4 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	document.getElementById('ln').innerHTML = Math.max(...arr4);
+< /script>
+</pre>
+
+<div id='ln'></div>
+<script type="text/javascript">
+	var arr4 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	document.getElementById('ln').innerHTML = Math.max(...arr4);
+</script>
+
+<pre>
+< div id="ln2">< /div>
+< script type="text/javascript">
+	var arr7 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function maximum(){
+		let max = arr7[0];
+		for (let i = 0; i < arr7.length; i++){
+			if(arr7[i]>max){
+				max =arr7[i];
+			}
+		}
+	document.getElementById('ln2').innerHTML = `The largest number is ${max}.`
+	}
+	maximum();
+< /script>
+
+<mark>let max = arr7[0];</mark> - everytime the loop runs make "let max = to" <mark>the FIRST NUMBER of each element in the array</mark>.
+</pre>
+
+<div id="ln2"></div>
+<script type="text/javascript">
+	var arr7 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function maximum(){
+		let max = arr7[0];
+		for (let i = 0; i < arr7.length; i++){
+			if(arr7[i]>max){
+				max = arr7[i];
+			}
+		}
+	document.getElementById('ln2').innerHTML = `The largest number is ${max}.`
+	}
+	maximum();
+</script>
+
+
+
+<h2>9.1 Find the average number in a given array</h2>
+<pre>
+< div id='avg'>< /div>
+< script type="text/javascript">
+	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function avg(){
+		let sum = 0;
+		for (let i = 0; i< arr6.length; i++){
+			sum = sum + arr6[i];
+		}
+		document.write (`The average number is ${sum/arr6.length}`)
+	}
+	avg();
+</pre>
+<div id='avg'></div>
+<script type="text/javascript">
+	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	function avg(){
+		let sum = 0;
+		for (let i = 0; i< arr6.length; i++){
+			sum = sum + arr6[i];
+		}
+		document.getElementById('avg').innerHTML = `The average number is ${sum/arr6.length}.`
+	}
+	avg();
+</script>
+
+<h3>Another JS Exercise</h3>
+<p><u>Make a Function</u> that receives <u>a natural number</u>, and <b>prints all numbers from 0 to that number, every 2 in 2</b>.</p>
+<pre>
+	
+</pre>
+<div id="pn"></div>
+<script type="text/javascript">
+	function printNumb(){
+		for (let i = 0; i < 10; i+=2){
+			document.getElementById('pn').innerHTML = i;
+		}
+	}
+
+	printNumb(10);
+</script>
+
+</body>
+</html>

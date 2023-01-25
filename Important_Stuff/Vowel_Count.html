@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h2>Using <mark>string.match()</mark> method</h2>
+<pre>
+< div id="vc">< /div>
+< script type="text/javascript">
+	const getCount = (str) => 
+	<mark>str.match(/[aeiou]/gi)</mark><b>.length</b>;	
+	document.getElementById('vc').innerHTML = getCount('abracadabra');
+< /script>
+</pre>
+<div id="vc"></div>
+<script type="text/javascript">
+	const getCount = (str) => 
+	str.match(/[aeiou]/gi).length;	
+	document.getElementById('vc').innerHTML = getCount('abracadabra');
+</script>
+
+<h2>2.for of...</h2>
+<pre>
+< div id="vc1">< /div>
+< script type="text/javascript">
+	let vowelCount = 0;
+	const getCount1 = (str) => {
+		for (const letter of str){
+			<mark>if(letter.match(/[aeiou]/g))</mark>{
+				<mark>vowelCount ++;</mark>
+			}
+		}
+		return vowelCount;
+	}
+	document.getElementById('vc1').innerHTML = getCount1('abracadabra');
+</pre>
+<div id="vc1"></div>
+<script type="text/javascript">
+	let vowelCount = 0;
+	const getCount1 = (str) => {
+		for (const letter of str){
+			if(letter.match(/[aeiou]/g)){
+				vowelCount ++;
+			}
+		}
+		return vowelCount;
+	}
+	document.getElementById('vc1').innerHTML = getCount1('abracadabra');	
+</script>
+
+<h2>Or using <u>reduce()</u>;</h2>
+<pre>
+< div id="vc2">< /div>
+< script type="text/javascript">	
+	const getCount2 = (str) => {		
+		const vowelCount2 = <mark><b>str.split('')</b></mark>.reduce((acc, letter)=>{
+			if(letter.match(/[aeiou]/g)){
+				return acc + 1;
+			}
+			return acc;
+		} ,0);
+		return vowelCount2;
+	};
+	document.getElementById('vc2').innerHTML = getCount2('abracadabra');	
+< /script>
+</pre>
+<div id="vc2"></div>
+<script type="text/javascript">	
+	const getCount2 = (str) => {		
+		const vowelCount2 = str.split('').reduce((acc, letter)=>{
+			if(letter.match(/[aeiou]/g)){
+				return acc + 1;
+			}
+			return acc;
+		} ,0);
+		return vowelCount2;
+	};
+	document.getElementById('vc2').innerHTML = getCount2('abracadabra');	
+</script>
+</body>
+</html>

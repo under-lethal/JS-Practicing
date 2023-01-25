@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>ASYNCHRONOUS is: when something's going on - but you don't want to wait - until that thing is done to continue your program.</p>
+    <p>SYNCHRONOUS: where something happen - and you wait until it's completely finished - until you move on to the next.</p>
+    <p>ASYNCHRONOUS PROGR. is very relevant to JS - because - <b> we're often making requests to servers</b> - elsewhere it can take a couple seconds to get the DATA back (for instance) - <b>and you might not want your program TO STALL and wait to that DATA to COME BACK</b>.</p>
+    <p>For that -  before we used <b>CALLBACKS</b>- now we use <b>PROMISES</b> (an elegant way TO HANDLE ASYNCHRONOUS data).</p>
+
+    <h3>Callbacks</h3>
+    <pre>
+        <b>We mimick - hot to FETCH on a SERVER - and that could take  acouple of seconds:</b>
+        Get these <mark>posts</mark> ant put them on the PAGE.
+        3. Create another function <mark>createPost()</mark> - that takes a <marl>new post (post)</marl> - and make a setTimeout() ('cause hypothetically dealing with a server);
+        3.1 Inside here I want to take <<mark>posts</mark> and I want to <mark>push()</mark> <b> on to the array</b> - the NEW "post".
+        4. <b>We get the POST - and create a NEW one.</b> <mark>createPost({...})</mark> - and PASS an OBJECT in there.
+        < script>
+            const posts = [
+                {title: 'Post One', body: 'This is post One'},
+                {title: 'Post Two', body: 'This is post Two'}
+            ];
+            
+            function getPosts(){
+                setTimeout(() =>{
+                let output= '';
+                posts.forEach((post, index) => {
+                    output += `< li>${post.title} < li>`;
+                });
+                document.body.innerHTML = output;  // after this "forEach() - we want to insert it into the BODY"
+                }, 1000);
+            }
+    
+            function createPost(post, callback){
+                setTimeout(() =>{
+                posts.push(post);
+                callback();
+                }, 2000);
+            }
+            
+            //getPosts(); // after 1 sec. it's gonna LOAD the two "posts".
+    
+            createPost({title: 'Post Three', body: 'I am post Three!'}, <mark>getPosts</mark>);
+        < /script>
+    
+        *We didn't get the "Post Three" - because <mark>the createPost() - took longer "2000"</mark> - <b>than the getPosts</b>
+        The "getPosts" - happened in 1 sec. <b>Our server returned in "1 sec".</b> (the "creatPost()" - took two seconds) - 
+        <b>and by the TIME we RUN this "createPost" the DOM was already PAINTED.</b>
+    
+        6.tHIS IS wher ASYNCHRONOUS and CALLBACKS - come in.
+        6.1 Let's make this work - by using CALLBACK. 
+        7. PUT A <b>callback Func</b> - into <mark>create Post</mark> - and we want that Func to be called - <b>right after</b> <mark>post.push</mark>
+        8. Now this <mark>getPosts();</mark> MAKE <mark>callback(); runs</mark> <b>right after </b><mark>post.push()</mark> - NOT WAITING 2 seconds for the Entire Function.
+        8.1 Take it - and move it into <mark>createPost()</mark> - <b>as a SECOND parameter - and NO PARANTHESIES.</b>
+    
+        <B>Output:</B> We waiting 2 seconds and gat all the posts: Post One | Post Two | Post Three.
+    </pre>
+
+    <script>/*
+        const posts = [
+            {title: 'Post One', body: 'This is post One'},
+            {title: 'Post Two', body: 'This is post Two'}
+        ];
+        
+        function getPosts(){
+            setTimeout(() =>{
+            let output= '';
+            posts.forEach((post, index) => {
+                output += `<li>${post.title}</li>`;
+            });
+            document.body.innerHTML = output;  // after this "forEach() - we want to insert it into the BODY"
+            }, 1000);
+        }
+
+        function createPost(post, callback){
+            setTimeout(() =>{
+            posts.push(post);
+            callback();
+            }, 2000);
+        }
+        
+        //getPosts(); // after 1 sec. it's gonna LOAD the two "posts".
+
+        createPost({title: 'Post Three', body: 'I am post Three!'}, getPosts);
+    */</script> 
+
+    <h3>Promises</h3>
+    <pre>
+        const posts = [
+        {title: 'Post One', body: 'This is post One'},
+        {title: 'Post Two', body: 'This is post Two'}
+    ];
+    
+    function getPosts(){
+        setTimeout(() =>{
+        let output= '';
+        posts.forEach((post, index) => {
+            output += `< li>${post.title}</ li>`;
+        });
+        document.body.innerHTML = output;  // after this "forEach() - we want to insert it into the BODY"
+        }, 1000);
+    }
+
+    function createPost(post){
+        <B>return new Promise((resolve, reject) =>{
+            setTimeout(() =>{
+                posts.push(post);
+
+                <mark>const error = false;</mark>
+                if(!error){
+                    resolve();
+                } else {
+                    reject('Error: Something went worng!'');
+                }
+                }, 2000);   
+        });</B>       
+    }
+    
+    <b>createPost({title: 'Post Three', body: 'I am post Three!'})
+    <mark>.then(getPosts);</mark>;</b>
+
+    - without <mark>getPost</mark> - since this <b>returns</b> a PROMISE - WE use now <mark>.then(getPosts)</mark> and pass <b>getPosts there.</b>
+
+    1. Instead of PASSING A CALLBACK - (GET RID OF <B>callback FUNCTION/parameter</B>) - <b>we want to return PROMISE</b>
+    2. That two <b>parameters (resolve, reject)</b> - when you want TO RESOLVE  a PROMISE successfully ypu CALL <b>resolve</b>
+    2.1 When you <b>something goes worng / (kind of ERROR)</b> - you want to CALL <b>reject.</b>
+
+    3. To <b>resolve</b> - we call a VARAIBLE <b>called</b> <mark>const error = false;</mark> (and set It to FALSE).
+    4. When you make an <b>ERROR CHECKING</b> -
+    <mark>const error = false;</mark>
+        <b>if(!error){          -if NOT TRUE / if NOT ERROR - then <b>we want to "resolve". (or promise)</b> - then "reject" and <b>send a message</b>
+            resolve();
+        }else{
+            reject('Error: Something went wrong!');
+        }</b>
+    }, 2000); 
+
+    5.Basically - <b>it's waiting (the setTimeout()) - and as soon as it's DONE - <mark>it's gonna resolve();</mark></b>
+    5.1 <b>Once it resolves - then it will call <mark>(getPosts)</mark>.</b>
+
+    6. <b>If:</b>
+    <mark>const error = true;</mark>
+    <b>then:</b>
+    createPost({title: 'Post Three', body: 'I am post Three!'}).then(getPosts);
+    //The solution (for that RED text in the Console is <b>.cath()</b> - pass in "error" - c.log())
+    <b>.catch(err => console.log(err));</b>
+    </pre>
+
+    <h3>promise.all</h3>
+    <p>You don't want to keep having ...:(.then(), .then(), .then()....)</p>
+    <pre>
+        LEt's CREATE a bunch of <b>PROMISES</b>
+        < script>
+            const promise1 = Promise.resolve('Helllo World');   -- as long as we RESOLVE IT we just say ('Hello World!');
+            const promise2 = 10;
+            const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 2000, 'Goodbye!'));
+            
+            Promise.all([promise1, promise2, promise3])<b>.then</b>((values) => console.log(values));   -- Promise.all() - TAKES AN array of PROMISES, (in our case - we have 3).
+        < /script>
+
+        It gave us back an ARRAY with "Hello World"  - <b>the first promise</b>
+        <b>A second</b> it's just a numer. "10";
+        <b>Goodbye</b> - which actually - <b>set the time, 2000</b>
+    </pre>
+    <script>
+        //const promise1 = Promise.resolve('Helllo World'); // as long as we RESOLVE IT we just say ('Hello World!');
+        //const promise2 = 10;
+        //const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 2000, 'Goodbye!'));
+        
+        //Promise.all([promise1, promise2, promise3]).then((values) =>console.log(values)); //Promise.all() - TAKES AN array of PROMISES, (in our case - we have 3).
+    </script>
+
+    <h3>Async Await</h3>
+    <p>We need to have a Function <b>labeled : "async".</b> - if we wann use <b>"await" - inside of it.</b><br>
+    <b>Await</b> - just wait <b>for an asynchronous PROCESS ACTION - to complete</b></p>
+
+    <pre>
+        1. <b>Call - <mark>createPost()</mark> without <mark>.then()</mark></b>
+        2. After that: <b>call getPosts();</b>
+        3. We <b>waiting this: <mark>await createPost({title: 'Post Three', body: 'I am post Three!'});</mark> - to be done, until <u>we move on</u> and call this: <mark>getPosts();</mark></b>
+        4. <b>call:</b> <mark>init();</mark>
+
+
+        const posts = [
+        {title: 'Post One', body: 'This is post One'},
+        {title: 'Post Two', body: 'This is post Two'}
+    ];
+    
+    function getPosts(){
+        setTimeout(() =>{
+        let output= '';
+        posts.forEach((post, index) => {
+            output += `< li>${post.title}</ li>`;
+        });
+        document.body.innerHTML = output;  // after this "forEach() - we want to insert it into the BODY"
+        }, 1000);
+    }
+
+    function createPost(post, callback){
+        setTimeout(() =>{
+        posts.push(post);
+        callback();
+        }, 2000);
+    }
+    
+    createPost({title: 'Post Three', body: 'I am post Three!'}, getPosts);
+
+    ------------------------------------------------------------------------------
+    <mark>async</mark> function init() {
+        <mark>await</mark> createPost({title: 'Post Three', body: 'I am post Three!'});
+
+        getPosts();
+    };
+    init();
+
+    </pre>
+
+    <script>
+        async function init() {
+            await createPost({title: 'Post Three', body: 'I am post Three!'});
+
+            getPosts();
+        };
+        init();
+    </script>
+
+    <pre>
+        The Function <b>has to be labeled "async" - if you wann use "await" inside.</b>
+        <b>await</b> - just awaits for <b>asynchronous process/action</b> to COMPLETE.
+        After - simply <b>just call</b> - <mark>getPost();</mark>
+
+        We're WAITING fot this: <mark>await createPost({title: 'Post Three', body: 'I am post Three!'});</mark> - <b>to be done</b>
+        until - <b>we move ON - and call this:</b>
+        <mark>getPost().</mark>
+
+        Call: init();
+    </pre>
+
+    <p><b>Async/Await - just a more ELEGANT WAY - to <mark>handle PROMISES.</mark></b></p>
+
+
+
+</body>

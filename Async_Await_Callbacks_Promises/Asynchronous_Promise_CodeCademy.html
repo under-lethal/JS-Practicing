@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async-Promise</title>
+</head>
+<body style="padding:25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+	<h2>Asynchronous</h2>
+	<p>An <b>ASYNCHRONOUS operation</b> - is <b>one</b> that allows the computer to - <b>"move on"</b> - to the OTHER TASKS - while <b>waiting - for the Asynchronous operation</b> - to COMPLETE.</p>
+	
+	<h2>What is a PROMISE?</h2>
+	<p><b>Promises</b> - are OBJECTS that <b>represent</b> the eventual OUTCOME - of a ASYNCHRONOUS operation.<br>
+	A <b>Promise</b> - can be in ONE of THREE <b>states:</b></p>
+	<pre>
+		<b>Pending</b> - The INITIAL <b>state</b> - the OPERATION has NOT <b>completed yet.</b>
+		<b>Fulfilled</b> - The <b>operation</b> - has <b>completed</b> successfully | and the <b>PROMISE</b> now has a <b>resolved value.</b>
+		<b>Rejected</b> - The <b>operation</b> - has <b>FAILED</b> | and the PROMISE <b>has a reason for the FAILURE.</b> (ussualy an <b>Error</b>)
+	</pre>
+
+	<h2>Constructing a Promise Object</h2>
+	<p>To <b>create a new Promise object</b> - we use the <b><mark>new - keyword</mark></b> and the <b><mark>Promise constructor method:</mark></b></p>
+	<pre>
+		const executorFunction = (resolve, reject) => {};
+		<b>const myFirstPromise = <mark>new</mark> Promise(executorFunction);</b>
+
+		The <b>Promise constructor</b> - <mark>takes a function (executorFunctio) - as a parameter</mark> - which <b>runs automatically</b> - when the CONSTRUCTOR is called.
+		The <b>executorFunc()</b> - <mark>starts an <b>asynchronous operation</b></mark> - and <b>dictates</b> how the PROMISE should be settled.
+		The <b>executorFunc()</b> - has <b>two Function PARAMETERS</b> - <b>referred to as</b> <mark>the resolve()</mark> and <mark>the reject()</mark> <b>functions.</b>
+		When <mark>the Promise constructor <b>runs</b></mark> - JS - will <b>pass it's own </b> <mark>resolve()</mark> and <mark>reject()</mark> <b>functions</b> - into the "executorFunction()".
+
+			<b>resolve</b> - is a <b>function</b> (with one argument).
+			Under the hood - if <b>invoked</b> <mark>resolve()</mark> - will change the <b>promise's status</b> from <mark>pedding</mark> to <mark>fulfilled</mark>
+			And - <b>the promise's resolved value</b> - will be <b>set</b> to the <b>argument</b> passed into <mark>resolve().</mark>
+
+			<b>reject</b> - is a <b>function</b> that takes a "reason" or <b>error</b> as an ARGUMENT.
+			Under the hood - if <b>invoked</b> <mark>reject()</mark> - will <b>change</b> the <b>promise's status</b> from <mark>pedding</mark> to <mark>rejected</mark>. 
+			And - <b>the promise's rejection reason</b> - will be <b>set</b> to the <b>argument</b> passed into <mark>reject()</mark>. 
+
+			const executionFunction = (resolve, reject) => {
+				if <mark>(someCondition)</mark> {
+					<b>resolve</b>('I resolved!');
+				} else {
+					<b>reject</b>('I rejected!');
+				}
+			}
+			const myFirstPromise = new Promise(executorFunction);
+	</pre>
+	
+	<p>Example Explained:</p>
+	<pre>
+		const executorFunction = (resolve, reject) => {
+			if <mark>(someCondition)</mark> {
+				<b>resolve</b>('I resolved!');
+			} else {
+				<b>reject</b>('I rejected!');
+			}
+		}
+		const myFirstPromise = new Promise(executorFunction);
+
+		*We <b>declare a var.</b> <mark>myFirstPromise</mark>. 
+		*<mark>myFirstPromise</mark> - is <b>constructed</b> using <mark>new Promise()</mark> - which is the <mark>Promise <b>constructor METHOD.</b></mark>
+		*<mark>executorFunction()</mark> - is <b>passed</b> - to the <b>constructor</b> -and has TWO Functions as PARAMETERS: <mark>resolve() / reject()</mark>. 
+		*If <mark><b>someCondition</b></mark> - evaluates to <mark>true</mark> - <b>we invoke</b> <mark>resolve()</mark> (with the STRING : 'I resolved!')
+		*If not - <b>we invoke</b> <mark>reject()</mark> (with the STRING: 'I rejected!')
+	</pre>
+
+	<h3>Exercise:</h3>
+	<pre>
+		1.We're going to <b>create a promise</b> representing ordering sunglasses from an online store. 
+		First, create the function, myExecutor(). Later on, you'll pass this function into the Promise constructor.
+		myExecutor() should:
+
+		const inventory = {
+			sunglasses: 1900,
+			pants: 1088,
+			bags: 1344
+		};
+
+		const myExecutor = (resolve, reject) => {
+			if (inventory.sunglasses > 0) {
+				resolve('Sunglasses order processed.');
+			} else {
+				reject('That item is sold out.');
+			}
+		};
+
+		2.Create a function, <b>orderSunglasses().</b> 
+		This function should have <mark>no parameters.</mark>
+		It should <b>return a new promise</b> constructed by passing your <mark>myExecutor() function</mark> into the <b>Promise constructor.</b>
+			
+		<b>const orderSunglasses = () => {
+			return new Promise(myExecutor);
+		};</b>
+
+		3.Create a variable orderPromise assigned to the returned value of your orderSunglasses() function.
+
+		<b>const orderPromise = orderSunglasses();</b>
+
+		4.Log orderPromise to the console.
+		<b>console.log(orderPromise);</b>
+	</pre>
+
+	<h2>The Node <i>setTimeout() Function</i></h2>
+	<p>...It's important to know <b>how to consume/use/<mark>handle</mark> PROMISES</b> - rather than - <b>constructing PROMISES.</b><br>
+	...Functions - that <b>return</b> PROMISES - <b>which settle after some time.</b><br>
+	To accomplish this - we'll be using <mark>setTimeout();</mark><br>
+	<mark>setTimeout()</mark> - is a <b>NodeAPI</b> - <b>that uses <mark>callback Functions</mark> - to SCHEDULE the task</b> - to be PRFORMED <b>after a DELAY.</b><br>
+	<mark>setTimeout()</mark> - has <b>two parameters</b>:  - <b>a callback Function</b> and <b>a DELAY in miliseconds.</b>
+	</p>
+	<pre>
+		const delaydHello = () => {
+			console.log('Hi! This is <b>an asynchronous</b> greeting!');
+		};
+		setTimeout(<b>delayedHello</b>, <b>2000</b>);
+
+		^| Here - we <b>invoke</b> <mark>setTimeout()</mark> - <b>with a callback Function</b> <mark>delayedHello()</mark> and <mark>2000</mark>. 
+		In <b>at least</b> 2 SECONDS - <mark>delayedHello()</mark> - <b>will be invoked.</b>
+		
+		*This delay <b>is performed asynchronously</b> — <mark>the rest of our program won't stop executing during the delay</mark>. 
+		*After two seconds, <mark>delayedHello()</mark> is added to a <b>line of code</b> waiting to be <b>run</b>.
+		*Before it can run, <mark>any synchronous code from the program</mark> will run / <b>any code in front of it in the line will run.</b>
+	</pre>
+	
+	<p>Let's using <mark>setTimeout()</mark> to <b>construct asynchronous promises</b>:</p>
+	<pre>
+		const returnPromiseFunction = () => {
+			return new Promise(<b>(resolve, reject) => {
+				setTimeout(<mark>() => {resolve('I resolved')}, 1000);</mark>
+			}</b>);
+		};
+
+		<b>const prom = returnPromiseFunction();</b>
+
+		*In the example above - <b>we invoked <mark>returnPromiseFunction()</mark></b> - which <b>returned a promise.</b>
+		*We <b>assigned</b> (that Promise) - to the <b>variable</b> <mark>prom.</mark>
+	</pre>
+
+	<p>Exrecise:</p>
+	<pre>
+		1.Create a function, usingSTO(). Your <mark>usingSTO() function</mark> should have no parameters. 
+		Inside the function body, it should print a string to the console.
+
+		2.Now, let's <b>invoke</b> the <mark>setTimeout()</mark> function. 
+		Remember, <mark>setTimeout()</mark> has <b>two parameters.</b> 
+		<b>Invoke</b> setTimeout() with your <mark>usingSTO() function</mark> as the <b>first argument</b> and a number between <b>0</b> and <b>3000</b> as the <b>second argument.</b>
+
+		console.log("This is the first line of code in app.js.");
+		<b>const usingSTO = () => {
+			console.log("I've print some string!");
+			<mark>setTimeout(usingSTO, 4000);</mark>
+		};</b>
+
+		//usingSTO();
+
+		console.log("This is the last line of code in app.js.");
+	</pre>
+	
+	<hr>
+
+	<h2>Consuming Promises</h2>
+	<p>The <b>initial state of an asynchronous PROMISE</b> - is <b><mark>pending.</mark></b>.<br>
+	But - how DO WE TELL the COMPUTER - what should happen then? <br>
+	Promise objects come with an <b>aptly</b>(pe masura/ bine gandita) named <mark>.then()</mark> method.<br>
+	It allows us to say - "I have a PROMISE - when is SETTLES - <b>then</b> here's what I want to happen..." <br>
+	(„Am o promisiune, când se va rezolva, atunci iată ce vreau să se întâmple...”).<br>
+
+	In the case of our <b>dishwasher PROMISE</b>, the dishawsher will run <b>then</b>:
+	<ul>
+		<li>If our promise REJECTS - this means we have dirty dishes and we'll add soap and run the dishwasher again.</li>
+		<li>If our PROMIUSE FULFILLS (se implineste) - this means we have clean dishes - and we'll put the dishes away.</li>
+	</ul>
+
+	<mark>.then()</mark> - <b>is a HIGHER-ORDER Function</b> - <b>that takes TWO CALLBACK Functions - as ARGUMENTS.</b><br>
+	We <b>refer</b> to these CALLBACKS <b>as handlers.</b> <br>
+	When the PROMISE <b>settles</b> - <mark>the appropriate handler</mark> will be INVOKED - <b>with that SETTLED value.</b><br>
+	<br>
+
+	The <b>first handler/callBack</b> (sometimes called <mark>onFulfilled</mark>) - <b>is a <i>succcess handler</i></b> - and it should contain the LOGIC for the PROMISE <mark>resolving</mark>.<br>
+	The <b>second handler/callBack</b> (sometimes called <mark>onRejected</mark>) - <b>is a <i>failure handler</i></b> - and it should contain the LOGIC for the PROMISE <mark>rejecting</mark>.
+	<br><br>
+
+	We can <B>invoke</B> <mark>.then()</mark> with <b>one, both</b> or <b>neither handler.</b><br>
+	If the appropriate handler - is not provided, (instead of <b>throwing an error</b>) <mark>.then()</mark> - <b>will just return a PROMISE - with the same <u>settled value</u> - as the PROMISE it was called on.</b><br>
+	<b><mark>.then()</mark> - is that it always returns a PROMISE.</b>
+	</p>
+
+	<h2>Success and Failure - Callback Functions</h2>
+	<p>To <b>handle</b> a successful "promise" - (or a <b>promise that resolved</b> - we INVOKE <mark>.then()</mark> (on the PROMISE), <b>passing in a success handler Callback Function.</b><br>
+	</p>
+	<pre>
+		const prom = new Promise((resolve, reject) => {
+			resolve('Yay!');
+		});
+
+		const handleSuccess = (resolvedValue) => {
+			console.log(resolvedValue);
+		};
+
+		prom.then(handleSuccess); //Output:'Yay!';
+
+		<b>prom</b> - is a <mark>promise</mark> - which will RESOLVE to "Yay!"
+		We define a function <mark>handleSuccess()</mark> - which prints the argument passed to it. (???)
+		We INVOKE <mark>prom</mark>'s <mark>.then()</mark>' function passing in our <mark>handleSuccess()</mark> function.
+		Since <mark>prom</mark> resolves, <mark>handleSuccess()</mark> - is invoked with <mark>prom's</mark> resolved VALUE: ('Yay!') - so <mark>('Yay!')</mark> is logged to the console.
+	</pre>
+	<br>
+	<p>With - typical promise comsumption - we won't know whether a PROMISE will RESOLVE or REJECT - <b>so we'll need to provide the logic for either case.</b><br>
+	We can pass <b>both</b>: a SUCCESS calback and a FAILURE callback to <mark>.then()</mark>
+	</p>
+	<pre>
+		let prom = new Promise((resolve, reject) => {
+			let num = Math.random();
+			if(num < .5){
+				<b>resolve</b>('Yay!');
+			}else{
+				<b>reject</b>('Ohhh Noooo!');
+			}
+		});
+
+		const handleSuccess = (resolvedValue) => {
+			console.log(resolvedValue);
+		};
+
+		const handleFailure = (rejectionReason) => {
+			console.log(rejectionReason);
+		};
+
+		prom.then(handleSucces, handleFailure);
+
+		<b>prom</b> - is a <mark>promise</mark> - which RANDOMLY <b>either</b> resolve with "Yay!" - or reject with "Ohhh Nooo". 
+		We <b>pass</b> - <b>two handler functions</b> to <mark>.then()</mark>. 
+		The <b>first</b> - will be INVOKED with <mark>Yay!</mark> - <b>if the PROMISE resolves.</b>
+		The <b>second</b> - will be INVOKED  with <mark>Ohhh noooo!</mark> - <b>if the promise rejects.</b>
+	</pre>
+
+	<h3>Exercise</h3>
+	<pre>
+		<b>library.js</b>
+		1.We use <mark>require()</mark> - <b>to include the Function</b> <mark>checkInventory()</mark> from <b>library.js</b>
+		It builds on the logic of the <mark>orderSunglasses() Function</mark>
+		<b>checkInventory()</b> - takes an <b>array</b> - representing an order and returns a PROMISE.
+		If every item in the order is <mark>in stock</mark> - that PROMISE resolves with the value: "`Thank you. Your order was successful.`"
+		Otherwise, the promise REJECTS - with the value: "We're sorry. Your order..."
+
+		We used <mark>setTimeout()</mark> - to ensure that <mark>checkInventory()</mark> - promise settles asynchronously.
+
+		const inventory = {
+			sunglasses: 1900,
+			pants: 1088,
+			bags: 1344
+		};
+		
+		const <mark>checkInventory</mark> = (order) => {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					<mark>let inStock</mark> = order.every(item => inventory[item[0]] >= item[1]);
+					if (inStock) {
+						resolve(`Thank you. Your order was successful.`);
+					} else {
+						reject(`We're sorry. Your order could not be completed because some items are sold out.`);
+					}
+				}, 1000);
+			})
+		};
+		
+		module.exports = { checkInventory };
+
+		<b>app.js</b>
+		2. Write a Func <mark>handleSuccess().</mark> You'll use this function later on as your success handler.
+		<mark>handleSuccess()</mark> should have ONE PARAMETER - <b>representing a resolved value.</b>
+		Inside the body of <mark>handleSuccess()</mark>, log the parameter to the console.
+
+		const handleSuccess = (resolvedValue) => {
+			console.log(resolvedValue);
+		};
+
+		3.Write a function <mark>handleFailure()</mark>. 
+		<mark>handleFailure()</mark> - should have ONE PARAMETER - <b>representing a rejection REASON.</b>
+		Inside the body of <mark>handleFailure()</mark>, log the parameter to the console.
+
+		const handleFailure = (rejectReason) => {
+			console.log(rejectReason);
+		};
+
+		4.<b>Invoke</b> <mark>checkInventory()</mark> with <mark>order</mark>. 
+		This will RETURN a <b>PROMISE</b>. 
+		<b>Attach</b> a <mark>.then()</mark> - the <b>two handlers you wrote</b> - as callBack Functions.
+
+		<b>checkInventory(order)
+			.then(handleSucces, handleFailure);
+		</b>
+
+		---
+
+		const {checkInventory} = require('./library.js');
+
+		const order = [['sunglasses', 1], ['bags', 2]];
+
+		// Write your code below:
+		const handleSuccess = (resolvedValue) => {
+			console.log(resolvedValue);
+		};
+
+			const handleFailure = (rejectReason) => {
+				console.log(rejectReason);
+			};
+
+			checkInventory(order)
+				.then(handleSuccess, handleFailure);
+	</pre>
+
+	<h2>Using "catch()" - with Promises</h2>
+	<p>The <mark>.catch() <b>function</b></mark> - <i>takes only one argument,</i> <mark>onRejected.</mark><br>
+	In <b>the case of a REJECTED PROMISE</b> - this <mark><b>failure handler</b></mark> - will be INVOKED - WITH THE REASON FOR REJECTION. <br>
+	Using <mark>.catch()</mark> - accomplishes the <b>same thing</b> - as using a <mark>.then()</mark> - with only a failure handler.
+	</p>
+	<p>Example:</p>
+
+	<pre>
+		prom
+			.then((resolvedValue) => {
+				console.log(resolvedValue);
+			})
+			<mark>.catch((rejectionReason) => {
+				console.log(rejectionReason)
+			});</mark>
+
+			*<b>prom</b> - is a PROMISE  - <B>which randomly</B> - either <b>resolves</b> with <mark>'Yay!</mark> - or <b>rejects</b> with <mark>'Ohhh nooo!'</mark>. 
+	*We pass <b>a success handler</b> to <mark>.then()</mark> - and <b>a failure handler</b> to <mark>.catch()</mark>.
+
+	If the PROMISE <B>resolves</B>, <mark>.then()</mark>' (succces HANDLER) - will be invoked with <mark>"Yaay!</mark>. 
+	If the PROMISE <b>rejects</b> <mark>.then()</mark> - (will <b>retunr a PROMISE</b>) - WITH THE SAME rejection reason (as the ORIGINAL PROMISE).
+	</pre>
+
+	<h3>Exercice:</h3>
+	<p>Invoke the checkInventory() function with the order. Remember, this function will return a promise.</p>
+	<pre>
+		const {checkInventory} = require('./library.js');
+
+		const order = [['sunglasses', 1], ['bags', 2]];
+
+		const handleSuccess = (resolvedValue) => {
+			console.log(resolvedValue);
+		};
+
+		const handleFailure = (rejectReason) => {
+			console.log(rejectReason);
+		};
+
+		// Write your code below:
+		<b>const myPromise = new Promise((resolve, reject) => {
+			checkInventory(order);</b>
+		})
+	</pre>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript HTML DOM</title>
+</head>
+<body>
+	<p>With the HTML DOM - JS can <u>acces</u> and <u>change</u> all the elements of an HTML Document.</p>
+
+	<h2>The HTML DOM</h2>
+	<p>When a PAGE is LOADED - the BROWSER creates a DOCUMENT OBJECT MODEL - of the page.<br>
+	The HTML DOM is constructed as a <b>The TREE of OBJECTS</b><br>
+	The DOM - represents your WEBPAGE.</p>
+
+	<ul>
+		<li>JavaScript can <mark>change</mark> all the <b>HTML elements</b> in the page</li>
+		<li>JavaScript can <mark>change</mark> all the <b>HTML ATTRIBUTES</b> in the page</li>
+		<li>JavaScript can <mark>change</mark> all the <b>CSS Styles</b> in the page</li>
+		<li>JavaScript can <mark>REMOVE</mark> <u>existing</u> <b>HTML elements</b> and <b>attributes</b></li>
+		<li>JavaScript can <mark>ADD</mark> <u>new</u> <b>HTML elements</b> and <b>attributes</b></li>
+		<li>JavaScript can <mark>REACT</mark> to all existing <b>HTML EVENTS</b> in the page</li>
+		<li>JavaScrip can <mark>CREATE</mark> <u>new HTML events</u> in the page</li>
+	</ul>
+
+<h2>2. JavaScript - HTML DOM <u>Methods</u></h2>
+<p>HTML DOM <mark>Methods</mark> are <b>actions</b> you can PERFORM on HTML Elements.<br>
+HTML DOM <mark>Properties</mark> are <b>values</b> (of HTML Elem) that you <u>can</u> <b>set</b> or <b>change.</b></p>
+
+<p>A <mark>property</mark> is a <b>value</b> that you can <b>get</b> or <b>set</b> <u>(like changing the content of an HTML element)</u>.<br>
+A <mark>method</mark> is an <b>action</b> you can <b>do</b> <u>(like ADD or DELETING an HTML element)</u>.</p>
+
+<pre>
+< p id="demo"></p>
+
+< script>
+document.<mark>getElementById</mark>("demo").<b>innerHTML</b> = "Hello World!";
+< /script>
+
+<i><mark>getElementById</mark> - is a <b>method</b></i> - ACCES an HTML ELEMENT. (use an "id") - to <b>FIND</b> the ELEMENT.
+
+<i><mark>innerHTML</mark> - is a <b>property</b></i> - GETTING or REPLACING the content of HTML Elements.
+</pre>
+
+<h2>3. The HTML DOM Document Object</h2>
+<h3><u>Finding</u> HTML Elements</h3>
+<pre>	
+Method						Description
+document.getElementById(id)		Find an element by element id
+document.getElementsByTagName(name)	Find elements by tag name
+document.getElementsByClassName(name)	Find elements by class name
+</pre>
+
+<h3><u>Changing</u> HTML Elements</h3>
+<pre>
+	PROPERTY
+	element.innerHTML = <mark>new html content</mark> - Change the <u>innerHTML</u> of an element
+	element.attribute = <mark>new value</mark> - Change the <u>attribute value</u> of an HTML element
+	element.setAttribute(attr, value) - Change the <u>attribute value</u> of an HTML element
+	element.style.property = <mark>new STYLE</mark> - Change the <b>style</b> of an HTML element
+</pre>
+
+<h3><u>Adding</u> and <u>Deleting</u> Elements</h3>
+<pre>
+	METHOD 			DESCRIPTION
+document.createElement(element)	Create an HTML element
+document.removeChild(element)	Remove an HTML element
+document.appendChild(element)	Add an HTML element
+document.replaceChild(new, old)	Replace an HTML element
+document.write(text)		Write into the HTML output stream
+</pre>
+
+<h3><u>Adding Events Handlers</u></h3>
+<pre>
+	document.getElementByID('id').<mark>onclick</mark> = <b>function() {...}</b>
+</pre>
+
+<h2>4. <u>Finding</u> HTML Elements</h2>
+<p>If you want to <b>manipulate</b> HTML elements - first you need <u>to FIND</u>.</p>
+<pre>
+Finding HTML elements by <mark>id</mark>
+Finding HTML elements by <mark>tag name</mark>
+Finding HTML elements by <mark>class name</mark>
+Finding HTML elements by <mark>CSS selectors</mark>
+Finding HTML elements by <mark>HTML object collections</mark>
+</pre>
+
+<h3>Finding HTML Element by Id</h3>
+<p>The easiest way to find an HTML element in the DOM, is by using the element <b>id</b>.</p>
+
+<h4>This example demonstrates the <b>getElementsById</b> method.</h4>
+<pre>
+<mark>< p id="intro"></mark>Finding HTML Elements by Id< /p>
+< p>This example demonstrates the <b>getElementsById</b> method.< /p>
+
+<mark>< p id="demo"></mark>< /p>
+< script>
+	<mark>const element = document.getElementById("intro");</mark>
+	document.getElementById("demo").innerHTML = "The text from the intro paragraph is:" <mark>+ element.innerHTML;</mark>
+< /script>
+</pre>
+
+<p id="intro">Finding HTML Elements by Id</p>
+
+<p id="demo"></p>
+<script>
+	const element = document.getElementById("intro");
+	document.getElementById("demo").innerHTML = "The text from the intro paragraph is:" + element.innerHTML;
+</script>
+
+<h3>Finding HTML Elem <u>by Tag Name</u></h3>
+<p>Finds all the "p" elements:</p>
+<pre>
+	<mark>< div id="main"></mark>
+	< p>This is a paragraph.< /p>
+	< p>This is another paragraph.< /p>
+< /div>
+<mark>< p id="demo1"></mark>< /p>
+< script type="text/javascript">
+	const x = <mark>document.getElementById('main');</mark>
+	const y = <mark>x.getElementsByTagName('p');</mark>
+	document.getElementById('demo1').innerHTML = 'The first paragraph (index0) inside "main" is: ' <mark>+ y[0].innerHTML;</mark>
+< /script>
+</pre>
+<div id="main">
+	<p>This is a paragraph.</p>
+	<p>This is another paragraph.</p>
+</div>
+<p id="demo1"></p>
+<script type="text/javascript">
+	const x = document.getElementById('main');
+	const y = x.getElementsByTagName('p');
+	document.getElementById('demo1').innerHTML = 'The first paragraph (index0) inside "main" is: ' + y[0].innerHTML;
+</script>
+
+<h3>Finding HTML Elements by Class Name</h3>
+<p>...to find all <b>HTML elements</b> with the <u>same</u> class name use <span style="color:red">document.getElementsByClassName</span>.</p>
+<pre>
+< p class = "intro">Hello World!< /p>
+< p class = "intro">Hello World! (2)< /p>
+
+< p id="demo2">< /p>
+< script type="text/javascript">
+	const x1 = <mark>document.getElementsByClassName('intro');</mark>
+	document.getElementById('demo2').innerHTML = 'The first paragraph (index 0) with class = "intro" is: ' <mark>+ x1[0].innerHTML;</mark>
+< /script>
+</pre>
+
+<p class = "intro">Hello World!</p>
+<p class = "intro">Hello World! (2)</p>
+
+<p id="demo2"></p>
+<script type="text/javascript">
+	const x1 = document.getElementsByClassName('intro');
+	document.getElementById('demo2').innerHTML = 'The first paragraph (index 0) with class = "intro" is: ' + x1[0].innerHTML;
+</script>
+
+<h3>Finding HTML Elements by CSS Selectors</h3>
+<p>...to FIND all <b>HTML elements</b> that <i>match a specified CSS selector</i> (id, class names, types, ATTR, VALUE of attributes) use the 
+<span style="color:red">querrySelectorAll()</span> <b>method.</b></p>
+<pre>
+< p class="intro1">Hello World!< /p>
+< p class="intro1">Hello World! (2)< /p>
+< p id="demo3">< /p>
+
+< script type="text/javascript">
+	const x2 = <mark>document.querySelectorAll('p.intro');</mark>
+	document.getElementById('demo3').innerHTML =
+	'The first paragraph (index0) with class = "intro1" is: ' <mark>+ x2[0].innerHTML;</mark> 
+< /script>	
+</pre>
+<p class="intro1">Hello World!</p>
+<p class="intro1">Hello World! (2)</p>
+<p id="demo3"></p>
+
+<script type="text/javascript">
+	const x2 = document.querySelectorAll('p.intro');
+	document.getElementById('demo3').innerHTML =
+	'The first paragraph (index0) with class = "intro1" is: ' + x2[0].innerHTML; 
+</script>
+
+<h2>5. <u>CHANGING</u> Html</h2>
+<p>...using <span style="color:red;">innerHTML</span> PROPERTY.</p>
+<pre>
+< p id="p1">Hello World!</p>
+
+< script>
+document.getElementById("p1")<mark>.innerHTML</mark> = "New text!";
+< /script>
+</pre>
+<p>or:</p>
+<pre>
+<mark>< h1 id="id01"></mark>Old Heading< /h1>
+
+< script>
+const element = document.getElementById("id01");
+<mark>element.innerHTML = "New Heading";</mark>
+< /script>
+</pre>
+
+<h3>Chaging the VALUE of an <u>Attribute</u></h3>
+<p>Change the value of the <b>src</b> attribute to an <i>< img ></i> ELEMENT:</p>
+<pre>
+	< img id = "myImage" src="smiley.gif" width="160" height="120">
+	< script>
+		document.getElementById('myImage')<mark>.src</mark> = 'landscape.jpg'
+	< /script>
+
+	<mark>The original image was smiley.gif, but the script changed it to landscape.jpg</mark>
+</pre>
+
+<h3>Dynamic HTML content</h3>
+<pre>
+< p id="demo4"></p>
+< script>
+	document.getElementById('demo4')<mark>.innerHTML</mark> = <mark>'Date :' + Date();</mark>
+< /script>
+</pre>
+<p id="demo4"></p>
+<script>
+	document.getElementById('demo4').innerHTML = 'Date :' + Date();
+</script>
+
+<h3>Docment.write</h3>
+<p>In JavaScript, <span style="color:red">document.write()</span> can be used to write directly to the HTML output stream.<br>
+But - <b>Never use document.write() after the document is loaded. It will overwrite the document.</b></p>
+
+<h2>6. Changing CSS</h2>
+<p>The HTML DOM - allow JS to <u>change</u> the STYLE of HTML Elements.</p>
+<pre>
+< p id="p1">Hello World!< /p>
+< p id="p2">Hello World!< /p>
+
+< script>
+document.getElementById("p2")<mark>.style.color = "blue";</mark>
+document.getElementById("p2")<mark>.style.fontFamily = "Arial";</mark>
+document.getElementById("p2")<mark>.style.fontSize = "larger";</mark>
+< /script>
+</pre>
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+
+<script>
+document.getElementById("p2").style.color = "blue";
+document.getElementById("p2").style.fontFamily = "Arial";
+document.getElementById("p2").style.fontSize = "larger";
+</script>
+
+<h2>7. JS DOM Events</h2>
+<p>...A JS can be executed - when an EVENT OCCURS.</p>
+<p>EXAMPLE of EVENTS:</p>
+<ul>
+	<li>When a <u>user</u> - <b>clicks the MOUSE</b>.</li>
+	<li>When a <u>web page</u> - <b>has LOADED</b>.</li>
+	<li>When an <u>image</u> - <b>has been LOADED</b>.</li>
+	<li>When the <u>mouse</u> - <b>moves OVER an ELEMENT</b>.</li>
+	<li>When an <u>input field</u> - <b>is CHANGED</b>.</li>
+	<li>When an <u>html form</u> - <b>is SUBMITTED</b>.</li>
+	<li>When a <u>USER</u> - <b>STROKES a KEY</b>.</li>
+</ul>
+
+<p>Change the CONTENT of the < h1 > element - when you CLICK on IT.</p>
+<pre>
+	< h2 onclick=<mark>"this.innerHTML='Ooops!'"></mark>Click on this text!< /h2>
+</pre>
+<h2 onclick="this.innerHTML='Ooops!'">Click on this text!</h2>
+
+<p>IN this Example - Function is called from the EVENT HANDLER:</p>
+<pre>
+< h2 onclick="changeText<mark>(this)</mark>">Click on this text!< /h2>
+< script>
+	function <mark>changeText(id){id.innerHTML = "Ooops!";}</mark>
+< /script>
+</pre>
+
+<h3>JS html Events</h3>
+<h2 onclick="changeText(this)">Click on this text!</h2>
+<script>
+	function changeText(id){id.innerHTML = "Ooops!";}
+</script>
+
+<h3>2</h3>
+<p>Click the button to display the date.</p>
+<pre>
+< button <mark>onclick="displayDate()"></mark>The time is?< /button>
+< script>
+	function displayDate() {
+		<mark>document.getElementById('demo5').innerHTML = Date();</mark>
+	}
+< /script>
+< p id="demo5"></p>
+</pre>
+<button onclick="displayDate()">The time is?</button>
+<script>
+	function displayDate() {
+		document.getElementById('demo5').innerHTML = Date();
+	}
+</script>
+<p id="demo5"></p>
+
+<h3>Assign EVENTS using the HTML DOM</h3>
+<pre>
+< button <mark>id="myBtn"</mark> >Try it< /button>
+< p id="demo6">< /p>
+
+< script>
+	document.getElementById<mark>('myBtn')</mark>.innerHTML = <mark>displayDate2;</mark>
+
+	function displayDate2(){
+		document.getElementById('demo6')<mark>.onclick</mark> =Date();
+	}
+< /script>
+
+<b>In the example above, a function named displayDate is assigned to an HTML element with the id="myBtn".</b>
+</pre>
+<button id="myBtn">Try it</button>
+<p id="demo6"></p>
+
+<script>
+	document.getElementById('myBtn').onclick = displayDate_2;
+
+	function displayDate_2(){
+		document.getElementById('demo6').innerHTML =Date();
+	}
+</script>
+
+<h2>8. The onload and onunload Events</h2>
+<p>The <u>onload</u> and <u>onunload</u> EVENTS - are triggered when the USER <b>enters</b> or <b>leaves</b> the page.<br>
+<u>onload</u> - can be used to CHECK the visitor's BROWSER type and BROWSER version. (and load the proper vesion of the WEB based on the Information.<br>
+<u>unload and onunload</u> EVENTS - cand deal with <b>cookies</b>.</p>
+
+<p><b>The <u>navigator.cookieEnabled</u> PROPERTY returns TRUE - if cookies are ENABLED in the browser.</b></p>
+
+<pre>
+< p id="demo7">< /p>
+< script>
+	function checkCookies(){
+		var text = "";
+		if<mark>(navigator.cookieEnables == true)</mark>{
+			text = "Cockies are enabled.";
+		}else{
+			<mark>text = "Cokies are not enabled.";</mark>
+		}
+	document.getElementById('demo7').innerHTML = <mark>text;</mark>
+	}
+< /script>
+</pre>
+<p id="demo7"></p>
+<script>
+	function checkCookies(){
+		var text = "";
+		if(navigator.cookieEnables == true){
+			text = "Cockies are enabled.";
+		}else{
+			text = "Cokies are not enabled.";
+		}
+	document.getElementById('demo7').innerHTML = text;
+	}
+</script>
+
+<h2>9. The <u>onchange</u> Event</h2>
+<p>The <u>onchange</u> event - is often used in <b>combination with validation input fields</b>.
+</p>
+<pre>
+Enter your name: < input type="text" name="" <mark>id="fname"</mark> <mark>onchange="upperCase()"></mark>
+< script>
+	function upperCase(){
+		<mark>const x = document.getElementById('fname');</mark>
+		<mark>x.value = x.value.toUpperCase();</mark> ( x.value---???)
+	}
+< /script>
+</pre>
+Enter your name: <input type="text" name="" id="fname" onchange="upperCase()">
+<script>
+	function upperCase(){
+		const x = document.getElementById('fname');
+		x.value = x.value.toUpperCase();
+	}
+</script>
+<p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p>
+
+<h3>The <u>onmouseover</u> and <u>onmouseout</u> Events</h3>
+<p>The <u>mouseover</u> and <u>mouseout</u> EVENTS can be used to TRIGGER s Funt() - <b>when the user over</b> or <b>out of an HTML element:</b></p>
+<pre>
+< div <mark>onmouseover="mOver(this)" onmouseout="mOut(this)"</mark>
+style="background-color#D94A38; width:120px; height:20px;"> Mouse Over Me< /div>	
+< script>
+	function <mark>mOver(obj)</mark>{
+		<mark>obj</mark>.innerHTML = 'Thank You'
+	}
+	function <mark>mOut(obj)</mark>{
+		<mark>obj</mark>.innerHTML = 'Mouse Over Me'
+	}
+< /script>
+</pre>
+<div onmouseover="mOver(this)" onmouseout="mOut(this)"
+style="background-color: #D94A38; width:120px; height:20px;"> Mouse Over Me</div>	
+<script>
+	function mOver(obj){
+		obj.innerHTML = 'Thank You'
+	}
+	function mOut(obj){
+		obj.innerHTML = 'Mouse Over Me'
+	}
+</script>
+
+<h2>10. The <u>addEventListener()</u> method</h2>
+<p>Use <u>addEventListener() METHOD</u> - to ATTACH a click event - to a button.</p>
+<p>Add an EVENT LISTENER that fires - when a USER clicks a BUTTON:</p>
+<pre>
+< button <mark>id="myBtn"</mark>Try It< /button>
+< p id="demo8">< /p>
+
+< script>
+	document.getElementById<mark>("myBtn")</mark>.<mark>addEventListener("click", displayDate3)</mark>;
+	function <mark>displayDate3()</mark>{
+		document.getElementById("demo8").innerHTML = <mark>Date();</mark>
+	}
+< /script>
+</pre>
+<button id="myBtn3">Try It</button>
+<p id="demo8"></p>
+
+<script>
+	document.getElementById("myBtn3").addEventListener("click", displayDate3);
+	function displayDate3(){
+		document.getElementById("demo8").innerHTML = Date();
+	}
+</script>
+
+<p>	The <u>addEventListener() METHOD</u> - attaches an event handler - <b>to the specified element.</b> <br>
+...<b>(withour OVERWRITING existing event handlers).</b> <br>
+- you can <u>add</u> MANY <mark>Event Handlers</mark> - <b>to one element.</b><br>
+- You can <u>add</u> <mark>Event Listeners</mark> to <b>any DOM object</b><br>
+* When using <u><i>addEventListener() METHOD</i></u> - THE JavaScript <b>is separated from HTML markup - <i>for better readability</i></b>.<br>
+** You can easily REMOVE an <b>event Listener</b> by using the <span style="color:red">removeEventListener()</span></p>
+
+<p><i>The <u>fisrt PARAMETER</u></i> - <b>IS the type of the event</b><br>
+(like <span style="color:red">"click"</span> or <span style="color:red">"mousedown"</span>)<br>
+<i>The <u>second PARAMETER</u></i> IS <b>the function we want to call</b> - when the EVENT OCCURS.<br>
+The third parameter is a <b>boolean value</b> specifying whether to use event bubbling or event capturing. <mark>This parameter is optional.</mark>
+</p>
+
+<h3>Add an EVENT Handler to an Event</h3>
+<p>Alert "Hello World!" when a USER clicks on an element:</p>
+<pre>
+	< button <mark>id="myBtn4"</mark> >Try it< /button>
+	< script>
+		document.getElementById("myBtn4")<mark>.addEventListener("click" function() {alert("Hello World!");});</mark>	
+	< /script>
+</pre>
+<button id="myBtn4">Try It</button>
+<script>
+	document.getElementById('myBtn4').addEventListener("click", function(){alert("Hello World!");});
+</script>
+<h3>Or, you can refer to an EXTERNAL "named" Function()</h3>
+<pre>
+< button <mark>id="myBtn5"</mark> >Try it 2< /button>
+< script>
+	document.getElementById('myBtn5')<mark>.addEventListener('click', myFunction);<mark>
+		function myFunction()<mark>{alert("Hellou There!")};</mark>
+< /script>
+</pre>
+<button id="myBtn5">Try it 2</button>
+<script>
+	document.getElementById('myBtn5').addEventListener('click', myFunction);
+		function myFunction(){alert("Hellou There!")};
+</script>
+
+<h3>Add MANY Event HANDLERS to the Same Element</h3>
+<p>The <span style="color:red;">addEventListener() METHOD</span> allows you to <b>ADD MANY ELEMENTS</b> to the same ELEMENT, <b>without OVERWRITING existing events:</b></p>
+<pre>
+< button <mark>id="myBtn6"</mark>>Try it< /button>
+
+< script>
+var x1 = <mark>document.getElementById("myBtn6");</mark>
+<mark>x.addEventListener("click", myFunction2);</mark>
+<mark>x.addEventListener("click", someOtherFunction);</mark>
+
+function myFunction2() {
+  <mark>alert ("Hello World!");</mark>
+}
+
+function someOtherFunction() {
+  <mark>alert ("This function was also executed!");</mark>
+}
+< /script>	
+</pre>
+<button id="myBtn6">Try it_3</button>
+
+<script>
+var x1 = document.getElementById("myBtn6");
+x1.addEventListener("click", myFunction2);
+x1.addEventListener("click", someOtherFunction);
+
+function myFunction2() {
+  alert ("Hello World!");
+}
+
+function someOtherFunction() {
+  alert ("This function was also executed!");
+}
+</script>
+
+<h4>Or:</h4>
+<pre>
+< button <mark>id="myBtn7"</mark> >Try Me_4< /button>
+< p <mar>id="demo8"</mark>< /p>
+< script>
+	var x2 = document.getElementById('myBtn7');
+	x2.addEventListener(<mark>'mouseover'</mark>, myFunction3);
+	x2.addEventListener(<mark>'click'</mark>, mySecondFunc);
+	x2.addEventListener(<mark>'mouseout'</mark>,myThirdFunc);
+
+	function myFunction3(){
+		document.getElementById('demo8')<mark>.innerHTML += 'Mouse over! < br>';</mark>
+	}
+
+	function mySecondFunc(){
+		document.getElementById('demo8')<mark>.innerHTML += 'Clicked! < br>';</mark>
+	}
+
+	function myThirdFunc(){
+		document.getElementById('demo8')<mark>.innerHTML += 'Moused Out! < br>';</mark>
+	}
+< /script>
+</pre>
+<button id="myBtn7">Try Me_4</button>
+<p id="demo8"></p>
+<script>
+	var x2 = document.getElementById('myBtn7');
+	x2.addEventListener('mouseover', myFunction3);
+	x2.addEventListener('click', mySecondFunc);
+	x2.addEventListener('mouseout',myThirdFunc);
+
+	function myFunction3(){
+		document.getElementById('demo8').innerHTML += 'Mouse over! <br>';
+	}
+
+	function mySecondFunc(){
+		document.getElementById('demo8').innerHTML += 'Clicked! <br>';
+	}
+
+	function myThirdFunc(){
+		document.getElementById('demo8').innerHTML += 'Moused Out! <br>';
+	}
+</script>
+
+<h2>11. Event <u>Bubbling</u> OR Event <u>Capturing</u></h2>
+<p>There are <i>two ways</i> <u>of EVENT propagation</u>: <br>
+<b>bubbling</b> and <b>capturing</b></p>.
+
+<p><u>Event PROPAGATION</u> is a way of DEFINING <u>the element OREDER - when an EVENT occurs</u>.<br>
+If you have a "< p>" element <u>INSIDE</u> a "< div>" element (and the user CLICKS  on the <mark>"p" element</mark>) - <b>which element's "clicks" event should be handled first?</b>
+
+<p>In <u><i>bubbling</i></u> - <b>the inner most element's event</b> - is HANDLED <b>first</b> - and then <b>the outer</b>.<br>
+*the <mark>< p> element's CLICK EVENT</mark> <u>is HANDLED first</u>, then the < div> - element's CLICK EVENT.</p>
+
+<p>IN <u>capturing</u> <b>the outer most element's event</b> - is HANDLED <b>first</b> - and <b>the INNER</b>.<br>
+*the <mark>< div> element's CLICK EVENT</mark> will be HANDLED first, then the <mark>< p ></mark> element's click event.</p>
+
+<h2>12. JavaScript - DOM Navigation </h2>
+<h4>With the HTML DOM - you can NAVIGATE the <u>NODE TREE</u> using <i>node relationships</i>.<br>
+Everything in a <u>HTML document</u> is a <i>node</i>.</h4>
+
+<h3>DOM Nodes</h3>
+<ul>
+	<li>The <u>entire document</u> - <b>is a <mark>document node</mark></b>.</li>
+	<li>Every <u>HTML element</u> - <b>is a <mark>element node</mark></b>.</li>
+	<li>The TEXT <u>inside HTML elements</u> - <b>are <mark>text nodes</mark></b>.</li>
+	<li>Every <u>HTML attribute</u> - <b>is a attr <mark>node</mark></b>.</li>
+	<li>New nodes - <u>can be created</u> - and  <u>all nodes</u> can be <mark>mdified or deleted</mark>.</li>
+</ul>
+
+<h3>Node Relationships</h3>
+<p><u>The nodes</u> - (in a node Tree) - have a hierarchical relationship - to each other.<br>
+<u>The terms</u> <b>parent, child</b> and <b>sibling</b> are used to describe <u>the relationships</u>.</p>
+
+<p>In a node tree - <i>the TOP node</i> - is called <i>the ROOT</i>(or root node).<br>
+Every node - <i>has exaclty</i> - <b>one parent</b> - except the root <i>(which has no parent)</i>.<br>
+A node - <i>can have a number of children</i>.<br>
+Siblings (brothers or sisters) - are NODES - <i>with the SAME Parent.</i></p>
+
+<h3>Navigating Between Nodes</h3>
+<p>...using <i>the following</i> <b>node properties</b> - to navigate between nodes with JS:</p>
+<ul>
+	<li><i>parentNode</i></li>
+	<li><i>childNodes</i></li>
+	<li><i>firstChild</i></li>
+	<li><i>lastChild</i></li>
+	<li><i>nextSibling</i></li>
+	<li><i>previousSibling</i></li>
+</ul>
+
+<h3>Child Nodes and Node Values</h3>
+<p><span style="color: gray">A <u>common ERROR</u> in DOM processing - is <i><b>to expect an ELEMENT NODE</b></i> - to contain text.</span></p>
+<h4>Example:</h4>
+<pre>
+	< title id="demo">DOM Tutorial< /title>
+
+	*The <u>element node</u> <mark>title</mark> <b><i>does not <u>contain</u> TEXT</i></b>
+	**It <u>contains</u> a - <b>text node</b> - <i>with the value</i> "DOM Tutorial".
+	***The <u>value</u> <i>of a text node</i> - <b>can be accesed</b> by node's <u>innerHTML Property</u>.
+
+	<mark>myTytle = </mark>document.getElementById('demo')<mark>.innerHTML;</mark>
+</pre>
+<p>Accesing the <u>innerHTML property</u> is the same as ACCESSING the <i>nodeValue - <b>of the first child.</b></i></p>
+<pre>
+	<mark>myTytle =</mark> document.getElementById('demo').<mark>firstChild.nodeValue;</mark>
+</pre>
+<p>Accessing the <u>first child</u> can also be like this:</p>
+<pre>
+	<mark>myTitle =</mark> document.getElementById('demo')<mark>.childNodes[0].nodeValue;</mark>
+</pre>
+
+<p>All the (3) following examples <u>retrieves</u> (preiau) the text of an <u>< h1> element</u> - and copies it into a <u>< p> element:</u></p>
+<pre>
+< h1 <mark>id="id01"</mark>>My First Page< /h1>
+< p <mark>id="id02"</mark> >< /p>
+
+< script>
+document.getElementById("id02").innerHTML = document.getElementById("id01").innerHTML;
+< /script>
+
+< script>
+document.getElementById("id02").innerHTML = document.getElementById("id01").<mark>firstChild.nodeValue;</mark>
+< /script>
+
+< script>
+document.getElementById("id02").innerHTML = document.getElementById("id01").<mark>childNodes[0].nodeValue;</mark>
+< /script
+</pre>
+
+<h3>DOM Root Nodes</h3>
+<p><b><i>There are TWO properties</i> that <u>ALLOW ACCESS</u> - <i>to the full Document</i>.</b> </p>
+
+<pre>
+	<mark>document.body</mark> - <b> (Displaying) The body of the document</b>
+	<mark>document.documentElement</mark> - <b>(Displaying) The FULL document</b>
+</pre>
+<h4>Example:</h4>
+<pre>
+	< h2>JS DOM< /h2>
+	< p>Displaying document.body< /p>
+
+	< p <mark>id="demo9"</mark>>< /p>
+
+	< script>
+		document.getElementById('demo9').innerHTML = <mark>document.body.innerHTML;</mark>
+	< /script>
+
+	<b>Output:</b>
+	JS DOM
+	Displaying document.body
+</pre>
+	<h2>JS DOM</h2>
+	<p>Displaying document.body</p>
+
+	< p id="demo9">< /p>
+
+	< script>
+		//document.getElementById('demo9').innerHTML = document.body.innerHTML;
+	< /script>
+
+<h3>The <u>nodeName</u> Property</h3>
+<p>The <i>nodeName Property</i> - specifies - <i>the name of a NODE</i>.</p>
+<ul>
+	<li>nodeName is - <b><mark>read-only</mark></b></li>
+	<li>nodeName of an <mark>element node</mark> - <b><mark>is the same as the TAG Name</mark></b></li>
+	<li>nodeName of an <mark>attribute node</mark> - <b><mark>is the attribute name</mark></b></li>
+	<li>nodeName of a <mark>text node</mark> - is always <b><mark>#text</mark></b></li>
+	<li>nodeName of the <mark>document node</mark> - is always<b><mark>#document</mark></b></li>
+</ul>
+
+<pre>
+< h1 id="id01">My First Page< /h1>
+< p id="id02">< /p>
+
+< script>
+	document.getElementById<mark>('id02')</mark>.innerHTML <mark>=</mark> document.getElementById<mark>('id01').nodeName;</mark>
+< /script>
+
+<b>Output: <mark>H1</mark></b>
+	
+</pre>
+
+<h1 id="id01">My First Page</h1>
+<p id="id02"></p>
+
+<script>
+	document.getElementById('id02').innerHTML = document.getElementById('id01').nodeName;
+</script>
+
+<h3>The <u>nodeValue</u> Property</h3>
+<p>The <i>nodeValue Property</i> - specifies - <b><u>the value</u> - of a NODE.</b></p>
+
+<ul>
+	<li>nodeValue <u>for element nodes</u> is <i>null</i></li>
+	<li>nodeValue <u>for text nodes</u> is <i>text itself</i></li>
+	<li>nodeValue <u>for attributes nodes</u> is <i>the attribute value</i></li>
+</ul>
+
+<h3>The <u>nodeType</u> Propoerty</h3>
+<p>The <i>nodeType Property</i> is <b>read only</b>. It returns <u>the type of a node</u>.</p>
+<pre>
+< h1 <mark>id="id01"</mark>>My First Page< /h1>
+< p id="id02">< /p>
+
+< script>
+document.getElementById<mark>("id02")</mark>.innerHTML = document.getElementById("id01")<mark>.nodeType;</mark>
+< /script>
+<b>Output:</b> <mark>1</mark>
+</pre>
+
+<h2>13.DOM <u>Nodes</u></h2>
+<h3><u>Creating</u> New HTML Elements (Nodes)</h3>
+<p>To add a <u>new element</u> (to the HTML DOM) - <b>you must create <u>the element</u> (the element node)</b> - and - <i>then <mark>append IT</mark> to an existing element.</i></p>
+<pre>
+< div id=<mark>"div1"</mark>>
+< p id="p3">This is a paragraph.< /p>
+< p id="p4">This is another paragraph.< /p>
+< /div>
+
+< script>
+const para = <mark>document.createElement("p");</mark>
+const node = <mark>document.createTextNode("This is new.");<mark>
+<mark>para.appendChild(node);</mark>
+const element = <mark>document.getElementById("div1");</mark>
+<mark>element.appendChild(para);</mark>
+< /script>
+
+<b>Output:</b> 
+Add a new HTML Element.
+
+This is a paragraph.
+
+This is another paragraph.
+
+<mark>This is new.</mark>
+</pre>
+
+<div id="div1">
+<p id="p3">This is a paragraph.</p>
+<p id="p4">This is another paragraph.</p>
+</div>
+
+<script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+const element = document.getElementById("div1");
+element.appendChild(para);
+</script>
+
+<h3>Example Explained:</h3>
+<p>1. <u>This code</u> <mark>creates</mark> a new <i>< p> element.</i></p>
+<pre>
+const para = docuent.<mark>createElement('p');</mark>
+</pre>
+
+<p>2. To <mark><u>add text</u></mark> to <i>< p > element</i>, you must <mark>create</mark> - <u><b>a text node first.</b></u><br>
+This code creates a <u>text node:</u></p>
+<pre>
+const node = document.<mark>createTextNode('This is a new paragraph');</mark>
+</pre>
+
+<p>3. Then you <mark><u>must APPEND</u></mark> - <u>the NODE</u> to the <i>< p > element:</i></p>
+<pre>
+<mark>para</mark>.<mark>appendChild(node);</mark>
+</pre>
+
+<p>4. Finally <u><mark>you must append</mark></u> - <u>the NEW element</u> - <b>to an existing element.</b><br>
+4.1 This code <u>FINDS an existing element</u>.</p>
+<pre>
+const element = document.<mark>getElementById('div1');</mark>
+</pre>
+
+<p>4.2 This <mark>code <u>APPENDS</u></mark> - <u>the NEW element</u> - <b>to the existing element:</b></p>
+<pre>
+<mark>element.appendChild(para);</mark>
+</pre>
+
+<h3>Creating new HTML Elements - <u>insertBefore()</u></h3>
+<p>The <i>appendChild() METHOD</i> - append the new element - as the last child of parent.</p>
+<p><b>If you don't want that</b> - you can use <i>insertBefore() METHOD</i></p>
+<pre>
+< div id=<mark>"div1"></mark>
+< p id="p1">This is a paragraph.< /p>
+< p id="p2">This is another paragraph.< /p>
+< /div>
+
+< script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+const child = document.getElementById("p1");
+<mark>element.insertBefore(para,child);</mark>
+< /script>
+
+<b>Outputs:</b>
+<mark>This is new.</mark>
+
+This is a paragraph.
+
+This is another paragraph.
+</pre>
+
+<h3><u>Removing</u> Existing HTML Elements</h3>
+<p>To <u>remove</u> an HTML element - use the <i>remove() METHOD.</i></p>
+<pre>
+< div>
+	< p id="p5">This is a paragraph.< /p>
+	< p id="p6">This is another paragraph.< /p>
+< /div>
+
+< button onclick="myFunction4()">Remove Element</button>
+< script>
+	function myFunction4() {
+		<mark>document.getElementById('p5').remove();</mark>
+	}
+< /script>	
+</pre>
+<div>
+	<p id="p5">This is a paragraph.</p>
+	<p id="p6">This is another paragraph.</p>
+</div>
+
+<button onclick="myFunction4()">Remove Element</button>
+<script>
+	function myFunction4() {
+		document.getElementById('p5').remove();
+	}
+</script>
+
+<h3>Example Explained</h3>
+<p>This HTML doc - contains a  <i>< div ></i> - <b>with tw child nodes</b> (two "p" elements).</p>
+<pre>
+< div>
+	< p id="p5">This is a paragraph.< /p>
+	< p id="p6">This is another paragraph.< /p>
+< /div>	
+</pre>
+
+<p>2.<mark>Find</mark> <u>the elemenet</u> - you want to remove:</p>
+<pre>
+function myFunction() {
+<mark>document.getElementById("p1").remove();</mark>
+}
+</pre>
+<p>3.Then execute the remove() method on that element:</p>
+<pre>
+	<mark>.remove()</mark> | <mark>elem.remove</mark>
+</pre>
+
+<p><span style="color:gray">The <i>remove() method</i> does not work in older browsers, - <b>use <i>removeChild()</i> instead.</b></span></p>
+
+<h3><u>Removing</u> a Child Node</h3>
+<p>For browsers that <b>does not support</b> the <i>remove() method</i>, you have to find the parent node to remove an element:</p>
+<pre>
+< div id="div2">
+	< p id="p7">This is a paragraph.< /p>
+	< p id="p8">This is another paragraph.< /p>
+< /div>
+
+< script>
+	const parent = document.getElementById('div2');
+	const child = document.getElementById('p7');
+	<mark>parent.removeChild(child);</mark>
+< /script>
+
+<b>Output:</b>
+This is a paragraph. <- <mark>Removed</mark>
+This is another paragraph.
+
+</pre>
+
+<div id="div2">
+	<p id="p7">This is a paragraph.</p>
+	<p id="p8">This is another paragraph.</p>
+</div>
+
+<script>
+	const parent = document.getElementById('div2');
+	const child = document.getElementById('p7');
+	parent.removeChild(child);
+</script>
+
+<h4>Example Explained:</h4>
+<p>This HTML document contains a <i>< div ></i> element with <u>two child nodes</u> (two <i>< p ></i> elements):</p>
+<pre>
+< div id="div2">
+	< p id="p7">This is a paragraph.< /p>
+	< p id="p8">This is another paragraph.< /p>
+< /div>	
+</pre>
+
+<p>Find the element with <i>id="div1":</i></p>
+<pre>
+const parent = <mark>document.getElementById('div2');</mark>
+</pre>
+
+<p>Find the <i>< p ></i> element with <i>id="p7":</i></p>
+<pre>
+const child = <mark>document.getElementById('p7');</mark>
+</pre>
+
+<p>Remove <u>the child</u> - <b>from the parent:</b></p>
+<pre>
+	<mark>parent.removeChild(child);</mark>
+</pre>
+
+<p>Here is a common workaround: Find the child you want to remove, and use its <i>parentNode property</i> to find the parent:</p>
+<pre>
+	const child = document.getElementById('p99');
+	<makr>child.<b>parentNode</b>.removeChild(child);</makr>
+</pre>
+
+<h3><u>Replacing</u> HTML Elements</h3>
+<p>To <u>replace</u> an element to the HTML DOM) - use <i>replaceChild() METHOD:</i></p>
+<pre>
+< div id="div3">
+	< p id="p9"> This is a paragraph.< /p>
+	< p id="p10"> This is a paragraph.< /p>
+< /div>
+
+< script>
+	const <mark>parentB</mark> = document.getElementById<mark>('div3');</mark>
+	const <mark>childB</mark> = document.getElementById<mark>('p9');</mark>
+	const paraB = document.<mark>createElement('p');</mark>
+	const nodeB = document.<mark>createTextNode('This is the NEW paragraph.');</mark>
+	<mark>paraB.appendChild(nodeB);</mark>
+	<mark>parentB.replaceChild(paraB, childB);</mark>
+< /script>
+</pre>
+
+<div id="div3">
+	<p id="p9"> This is a paragraph.</p>
+	<p id="p10"> This is a paragraph.</p>
+</div>
+
+<script>
+	const parentB = document.getElementById('div3');
+	const childB = document.getElementById('p9');
+	const paraB = document.createElement('p');
+	const nodeB = document.createTextNode('This is the NEW paragraph.');
+	paraB.appendChild(nodeB);
+	parentB.replaceChild(paraB, childB);
+</script>
+
+<h2>14. HTML <u>Collection Object</u></h2>
+<p>The <i>getElementsByTagName() METHOD</i> returns an <i>HTMLCollection OBJECT.</i><br>
+An <i>HTMLCollection OBJECT</i> is an array-like - <b>list (collection)</b> - of HTML elements.</p>
+<p>Selects all "< p >" elements in a document:</p>
+<pre>
+const myCollection = document.getElementBy<mark>TagName('p');</mark>	
+</pre>
+<p>The elements in the collection  - <b>can be accessed by an index number.</b><br>
+To access the second "< p>" element - you can write:</p>
+<pre>
+myCollection<mark>[1];</mark>
+</pre>
+
+<pre>
+< p>Hello World!< /p>
+< p>Hello Norway!< /p>
+
+< p id="demo9">< /p>
+
+< script>
+const myCollection = document.getElementsByTagName("p");
+
+document.getElementById("demo9").innerHTML = "The innerHTML of the second paragraph is: " + myCollection[1].innerHTML;
+< /script>
+
+<b>Output:</b>
+Hello World!
+Hello Norway!
+<mark>The innerHTML of the second paragraph is: Hello Norway!</mark>
+</pre>
+
+<p>Hello World!</p>
+<p>Hello Norway!</p>
+
+<p id="demo9"></p>
+
+<script>
+const myCollection = document.getElementsByTagName("p");
+
+document.getElementById("demo9").innerHTML = "The innerHTML of the second paragraph is: " + myCollection[1].innerHTML;
+</script>
+
+<h3>HTML <u>COllection Length</u></h3>
+<p>The <i>length PROPERTY</i> defines <b>the number of elements</b> in an <u>HTMLCollections</u>.</p>
+<pre>
+< p>Hello World!< /p>
+< p>Hello World22!< /p>
+
+< p id="demo10">< /p>
+< script>
+	const myCollection2 = document.getElements<mark>ByTagName('p');</mark>
+	
+	document.getElement<mark>ById('demo10')</mark>.innerHTML = "This document contains " + myCollection.length + " paragraphs.";
+< /script>	
+</pre>
+
+<p>Hello World!</p>
+<p>Hello World22!</p>
+
+<p id="demo10"></p>
+<script>
+	const myCollection2 = document.getElementsByTagName('p');
+	
+	document.getElementById('demo10').innerHTML = "This document contains " + myCollection.length + " paragraphs.";
+</script>
+
+<p><b>The <span style="color:red">length</span>PROPERTY - is useful when you want to loop through the ELEMENTS</b> - in a COLLECTION:</p>
+<pre>
+< p>Hello World!< /p>
+
+< p>Hello Norway!< /p>
+
+< p>Click the button to change the color of all p elements.< /p>
+
+< button onclick="myFunction5()">Click Me< /button>
+< script>
+	function myFunction5(){
+		const myCollection3 = document.getElementsByTagName('p');
+		for(let i = 0; i < <mark>myCollection3.length;</mark> i++){
+			<mark>myCollection3[i]</mark>.style.color = 'green';
+		}
+	}
+< /script>	
+</pre>
+<p>Hello World!</p>
+
+<p>Hello Norway!</p>
+
+<p>Click the button to change the color of all p elements.</p>
+
+<button onclick="myFunction5()">Click Me</button>
+<script>
+	function myFunction5(){
+		const myCollection3 = document.getElementsByTagName('p');
+		for(let i = 0; i<myCollection3.length; i++){
+			myCollection3[i].style.color = 'green';
+		}
+	}
+</script>
+
+<h2>15. HTML - <u>NodeLIST Object</u></h2>
+<p>A <i>nodeList OBJECT</i> is a <b>LIST <mark>(collection)</mark> - of nodes</b> -extracted from a document.<br>
+A <i>nodeList</i> is almost the same as an <i>HTMLCollection OBJECT</i></p>
+
+<p>Some (older) BROWSERS - return a <b>NodeList OBJECT</b> instead of an <b>HTMLCollection</b> - for methods like like <i><u>getElementByClassName().</u></i><br>
+All BROWSERS - returna a <b>NOdeList OBJECT</b> for the METHOD <u><i>querrySelectorAll().</i></u></p>
+
+<p>...SELECTS all " < p > NODES" in a document:</p>
+<pre>
+< p>Hello World!< /p>
+< p>Hello World222!< /p>
+
+< p id="demo10">< /p>
+< script>
+	const myNodelist = <mark>document.querySelectorAll('P');</mark>
+	document.getElementById('demo10').innerHTML = 'The innerHTML of the second paragraph is: ' <mark>+ myNodelist[1].innerHTML;</mark>
+< /script>	
+</pre>
+<p>Hello World!</p>
+<p>Hello World222!</p>
+
+<p id="demo10"></p>
+<script>
+	const myNodelist = document.querySelectorAll('P');
+	document.getElementById('demo10').innerHTML = 'The innerHTML of the second paragraph is: ' + myNodelist[1].innerHTML;
+</script>
+
+<p>To <u>access</u> the second < p> node you can write:</p>
+<pre>
+	<mark>myNodeList[1]</mark>
+</pre>
+
+<h3>HTML DOM Node List <u>Length</u></h3>
+<p>The <i>length PROPERTY</i> DEFINES  - <b>the number of nodes in a node list:</b></p>
+<pre>
+< p>Hello World!< /p>
+< p>Hello World!333< /p>
+< p id="demo11">< /p>
+< script>
+	const myNodelist2 = <mark>document.querySelectorAll('p');</mark>
+	document.getElementById('demo11').innerHTML = "This document contains " <mark>+ myNodelist2.length</mark> + "paragraphs.";
+< /script>
+</pre>
+<p>Hello World!</p>
+<p>Hello World!333</p>
+<p id="demo11"></p>
+<script>
+	const myNodelist2 = document.querySelectorAll('p');
+	document.getElementById('demo11').innerHTML = "This document contains " + myNodelist2.length + "paragraphs.";
+</script>
+
+<h3><b>The Difference</b> Between an <u>HTMLCollection</u> and a <u>NodeList</u></h3>
+
+<p>A <b>NodeList</b> and an <b>HTMLcollection</b> is very much the same thing.<br>
+Both are <b>array-like collections/<i>(list)</i> of nodes/<i>(elements)</i></b> - extracted from a document.<br>
+The nodes <u>can be accessed</u> by INDEX NUMBERS.
+<b>Both</b> have a <b>length property</b> - that RETURNS a number of elements in the LIST/(collection).</p>
+
+<p>An <u><i>HTMLCollection</i></u> is a collection of - <b>documents ELEMENTS.</b><br>
+A <u><i>NodeList</i></u> is a collection of <b>documents nodes</b>.(ELEMENT nodes, ATTRIBUTES nodes and TEXT nodes).</p>
+
+<p><u><i>HTMLCollections <b>ITEMS</b></i></u> can be ACCESSED by their <b>name, id,</b> or <b>index number.</b><br>
+<u><i>NodeList <b>ITEMS</b></i></u> can ONLY be accessed by their <b>index number.</b></p>
+
+<p>An <i>HTMLCollection</i> <u>is always</u> a <b>live collection</b><br>
+Example: <i>If you ADD a < li > element - to a list in the DOM - <mark>the list in the HTMLCollection</mark></i> - <b>will also change.</b><br><br>
+A <i>NodeList</i> <u>is most often</u> a <b>static collection</b><br>
+Example: If you add a "< li >" element to a list in the DOM - <mark>
+	the list in NodeList</mark> <b>will not change.</b>
+</b></p>
+
+<p>The <span style="color:red">getElementByClassName()</span> and <span style="color:red">getElementByTagName()</span> METHODS - return a <b>live HTMLCollection.</b><br>
+The <span style="color:red">querrySelectorAll() METHOD</span> returns a 
+<b>static NodeList.</b><br>
+The <span style="color:red">childNodes PROPERTY</span> - returns a <b>live NodeList.</b></p>
+</body>
+</html>

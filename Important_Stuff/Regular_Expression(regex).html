@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Regular Expression</title>
+</head>
+<body>
+	<h3>I.Regular Expression</h3>
+	<p>A <u>Regular Expression</u> - is a <b>SEQUENCE of characters</b> - that <i>forms a SEARCH PATTERN</i>.<br>
+	A <u>Regular Expression</u> - can be a <b>single character</b> or <b>more complicated PATTERN.</b><br>
+	When you search for a DATA in a TEXT - you can use <b><u>SEARCH PATTERN</u></b> to describe - what are you SEARCHING for.<br>
+	A <u>Regular Expression</u> can be used <u>to PERFORM</u> all types of <b>text search</b> and <b>text replace</b>.
+	</p>
+
+	<pre>
+		<b>/w3Schools/i</b> - is a <mark>REGULAR EXPRESSION.</mark>
+		<b>/w3Schools/</b> - is a <mark>PATERN</mark>. (<b>to be USED in SEARCH</b>)
+		<b>i</b> - is a <mark>MODIFIER</mark>.(<b>MODIFIES the SEARCH to be <u>case-insensitive</u></b>).
+	</pre>
+
+	<h3>2.Using String Methods</h3>
+	<p>In JS - <b>Regula Expressions</b> - are used with the TWO <b>STRING METHODS</b>. <mark>search()</mark> and <mark>replace()</mark>.<br>
+	<b>search() - </b><mark>uses an EXPRESSION</mark> <b>to search - for a MATCH</b> - <i>and RETURN the POSITION of the MATCH</i>.<br>
+	<b>replace() - </b><mark>returns a MODIFIED STRING</mark> - where <i>the PATTERN is REPLACED</i>.
+	</p>
+
+	<h3>2.1 Using String <mark>search()</mark> with a <i>STRING</i></h3>
+	<p>The <mark>search() method</mark> <b>searches a string for a specified value</b> and <i><u>returns the position of the match:</u></i></p>
+	<pre>
+		<mark>Use a string to do a search for "W3schools" in a string:</mark>
+		< script type="text/javascript">
+			let text = "Visit W3Schools!"
+			<mark>let n = text.search('W3Schools');</mark>
+		document.getElementById('re').innerHTML = n; //6
+	< /script>
+	</pre>
+	<p id="re"></p>
+	<script type="text/javascript">
+		let text = "Visit W3Schools!"
+		let n = text.search('W3Schools');
+		document.getElementById('re').innerHTML = n;
+	</script>
+
+	<h3>2.2 Using String <mark>search()</mark> with a <i>Regular Expression</i></h3>
+	<pre>
+		< script type="text/javascript">
+			let text1 = "Visit W3Schools!"
+			<mark>let n1 = text.search(/W3Schools/i);</mark>
+		document.getElementById('re').innerHTML = n1; //6
+	< /script>
+	</pre>
+	<p id="re1"></p>
+	<script type="text/javascript">
+		let text1 = 'Visit W3Schools';
+		let n1= text1.search(/W3Schools/i);
+		document.getElementById('re1').innerHTML = n1;
+	</script>
+
+	<h3>2.3 Using String <mark>replace()</mark> with a <i>STRING</i></h3>
+	<pre>
+		Use a reg-expression to do a <b>case-INsensitive</b> SEARCH for "W3School" - in a string:
+		< script type="text/javascript">
+			let text2 = 'Visit Microsoft!';
+			let n2 = <mark>text2.replace('Micorsoft', 'W3Schools');</mark>
+		document.getElementById('rs').innerHTML = n2;
+		< /script>
+	</pre>
+	<p id="rs"></p>
+	<script type="text/javascript">
+		let text2 = 'Visit Microsoft!';
+		let n2 = text2.replace('Micorsoft', 'W3Schools');
+		document.getElementById('rs').innerHTML = n2;
+	</script>
+
+	<h3>2.4 Using String <mark>replace()</mark> with a <i>Regular Expression</i></h3>
+	<pre>
+		Use <b>case-sensitive Regular Exp</b> - to REPLACE "Microsoft" with a "W3Schools" in a STRING:
+
+		< script type="text/javascript">
+			let text3 = 'Visit Microsoft!'
+			let n3 = <mark>text3.replace(/microsoft/i, 'W3Schools');</mark>
+		document.getElementById('rs1').innerHTML = n;
+		< /script>
+	</pre>
+	<p id="rs1"></p>
+	<script type="text/javascript">
+		let text3 = 'Visit Microsoft!'
+		let n3 = text3.replace(/microsoft/i, 'W3Schools');
+		document.getElementById('rs1').innerHTML = n3;
+	</script>
+
+	<h3>3. <u>Regular Expression <i>MODIFIERS</i></u></h3>
+	<p><b>Modifiers - </b> can be used to perform <mark><i>case-INsensitive</i> <b>more GLOBAL SEARCHES</b></mark>.</p>
+	
+	<h4>i - Perform case-INsensitive matching.</h4>
+	<pre>
+		< script type="text/javascript">
+			let text4 = "Visit W3Schools!"
+			<mark>let result = text4.search(/W3Schools/i);</mark>
+		document.getElementById('re').innerHTML = result; //6
+	< /script>
+	</pre>
+	<p id="i"></p>
+	<script type="text/javascript">
+		let text4 = 'Visit W3Schools';
+		let result = text4.search(/W3Schools/i);
+		document.getElementById('i').innerHTML = result;
+	</script>
+
+
+	<h4>g - Perform a GLOBAL MATCH.</h4>
+	<h5>Find all <u>matches</u> rather <mark>than STOP after THE FIRST match</mark>.</h5>
+	<pre>
+		< script type="text/javascript">
+			let text5 = 'Is this all there is?';
+			<mark>let result5 = text5.match(/is/g);</mark>
+			document.getElementById('i').innerHTML = result5;
+	 	< /script>
+	</pre>
+	<p id="gm"></p>
+	<script type="text/javascript">
+		let text5 = 'Is this all there is?';
+		let result5 = text5.match(/is/g);
+		document.getElementById('gm').innerHTML = result5;
+	</script>
+
+	<h3>m - Perform MULTILINE Matching</h3>
+	<pre>
+		< p id="mm">< /p>
+		< script type="text/javascript">
+		let text6 = <mark>'\nIs th\nis it?';</mark>
+		let result6 = <mark>text6.match(/^is/m);</mark>
+		document.getElementById('mm').innerHTML = "Result is: " + result6;
+		< /script>
+	</pre>
+	<p id="mm"></p>
+	<script type="text/javascript">
+		let text6 = '\nIs th\nis it?';
+		let result6 = text6.match(/^is/m);
+		document.getElementById('mm').innerHTML = "Result is: " + result6;
+	</script>
+
+	<h3>4. <u>Regular Expression PATTERNS</u></h3>
+	<h4>A. Brackets - use to find a RANGE of CHARACTERS.</h4>
+	<h4>[abc] - Find any of the characters between the BRACKETS</h4>
+	<p>Do a <mark>global search</mark> for the character <mark>"h" in a string:</mark></p>
+	<pre>
+	< p id='rep'></p>
+	< script type="text/javascript">
+		let text7 = 'Is this all there is?';
+		let result7 = <mark>text7.match(/[h]/g);</mark>
+		document.getElementById('rep').innerHTML = "Result is: " + result6;
+	< /script>
+	</pre>
+	<p id='rep'></p>
+	<script type="text/javascript">
+		let text7 = 'Is this all there is?';
+		let result7 = text7.match(/[h]/g);
+		document.getElementById('rep').innerHTML = "Result is: " + result7;
+	</script>
+
+	<h4>[0-9] - Find any of the DIGITS between the BRAKETS.</h4>
+	<p>Do a <mark>global search</mark> for <b>the numbers</b> <mark>1 to 4</mark> in a string:</p>
+	<pre>
+	< p id="red">< /p>
+	< script type="text/javascript">
+		let text8 = '123456789';
+		let result8 = <mark>text.match(/[1-4]/g);</mark>
+		document.getElementById('red').innerHTML = result8;
+	< /script>
+	</pre>
+	<p id="red"></p>
+	<script type="text/javascript">
+		let text8 = '123456789';
+		let result8 = text8.match(/[1-4]/g);
+		document.getElementById('red').innerHTML = "Result is: " + result8;
+	</script>
+
+	<h4>(x|y) - Find any of the ALTERNATIVES separated with "|".</h4>
+	<p>Do a <mark>global search</mark> for any of the specified alternatives <mark>(red|green)</mark>:</p>
+	<pre>
+	< p id="rea">< /p>
+	< script type="text/javascript">
+		let text9 = "re, green, red, green, gren, gr, blue, yellow";
+		let result9 = <mark>text9.match(/red|green/g);</mark>
+		document.getElementById('rea').innerHTML = "Result is: " + result9;
+	< /script>
+	</pre>
+	
+	<p id="rea"></p>
+	<script type="text/javascript">
+		let text9 = "re, green, red, green, gren, gr, blue, yellow";
+		let result9 = text9.match(/red|green/g);
+		document.getElementById('rea').innerHTML = "Result is: " + result9;
+	</script>
+
+	<h4>B. Metacharacters - characters with special meaning</h4>
+	<h4>\d - Find a DIGIT.</h4>
+	<p>Do a <mark>global search</mark> for <b>digits in a string</b>:</p>
+	<pre>
+	< p id="rem">< /p>
+	< script type="text/javascript">
+		let text10 = 'Give 100%!';
+		let result10 = <mark>text10.match(/\d/g);</mark>
+		document.getElementById('rem').innerHTML = result10;
+	< /script>
+	</pre>
+	<p id="rem"></p>
+	<script type="text/javascript">
+		let text10 = 'Give 100%!';
+		let result10 = text10.match(/\d/g);
+		document.getElementById('rem').innerHTML = result10;
+	</script>
+
+	<h4>\s - find a <u>whitespace character</u>:</h4>
+	<p>Do a <mark>global search</mark> for <b>whitespace characters</b> in a string:</p>
+	<pre>
+	< p id="ws">< /p>
+	< script type="text/javascript">
+		let text11 = 'Is this all there is';
+		let result11 = <mark>text11.match(/\s/g);</mark>
+		document.getElementById('ws').innerHTML = result11;		
+	< /script>
+	</pre>
+
+	<p id="ws"></p>
+	<script type="text/javascript">
+		let text11 = 'Is this all there is';
+		let result11 = text11.match(/\s/g);
+		document.getElementById('ws').innerHTML = result11;		
+	</script>
+
+	<h4>\b - Find a match at the BEGINNING of a WORD like this: <mark>\bWORD</mark> or at the END of a WORD like this: 	<mark>WORD\b</mark></h4>
+	<p><mark>Search for the characters "LO"</mark> in the <b>beginning</b> of a word in the PHRASE:</p>
+	<p>"HELLO, LOOK AT YOU!"</p>
+
+	<pre>
+	< p>Found in position: < span id="demo">< /span>< /p>
+	< script type="text/javascript">
+		let text12 = "HELLO, LOOK AT YOU!";
+		let ersult12 = <mark>text12.search(/bLO/);</mark>
+		document.getElementById('fm').innerHTML = result12;				
+	< /script>
+	</pre>
+	<p>Found in position: <span id="fm"></span></p>
+	<script type="text/javascript">
+		let text12 = "HELLO, LOOK AT YOU!";
+		let result12 = text12.search(/\bLO/);
+		document.getElementById('fm').innerHTML = result12;				
+	</script>
+
+	<h4>\uxxxx - Find the UNICODE character <u>specified by the HEXADECIMAL NUMBER xxxx</u></h4>
+	<p>Do a <mark>global search</mark> for the <b>hexadecimal number 0057 (W)</b> in a string:</p>
+	<pre>
+	< p id="uc">< /p>
+	< script type="text/javascript">
+		let text13 = "Visit W3Schools. Hello World!";
+		let result13 = <mark>text13.match(/\u0057/g);</mark>
+		document.getElementById('uc').innerHTML = result13;
+	< /script>
+	</pre>
+	<p id="uc"></p>
+	<script type="text/javascript">
+		let text13 = "Visit W3Schools. Hello World!";
+		let result13 = text13.match(/\u0057/g);
+		document.getElementById('uc').innerHTML = result13;
+	</script>
+
+	<h4>C. Quantifiers - define QUANTITIES</h4>
+	<h4>n+ - Matches any string <u>that contains</u> AT LEAST one "n":</h4>
+	<pre>
+	< p id='q'>< /p>
+	< script type="text/javascript">
+		let text14 = "Hellooo World! Hello W3Schools!";
+		let resutlt14 = <mark>text.match(/o+/g);</mark>
+		document.getElementById('q').innerHTML = result14;
+	< /script>
+	</pre>
+	<p id='q'></p>
+	<script type="text/javascript">
+		let text14 = "Hellooo World! Hello W3Schools!";
+		let result14 = text14.match(/o+/g);
+		document.getElementById('q').innerHTML = result14;
+	</script>
+
+	<h4>n* - Matches any STRING that contains ZERO or MORE occurences of "n"</h4>
+	<p>Do a <mark>global search</mark> for an "l", followed by <b>zero or more</b> "o" characters:</p>
+	<pre>
+	< p id="qn">< /p>
+	< script type="text/javascript">
+		let text15 = "Hellooo World! Hello W3Schools!";
+		let resutl15 = <mark>text15.match(/lo*/g);</mark>
+		document.getElementById('qn').innerHTML = result15;
+	< /script>
+	</pre>
+	<p id="qn"></p>
+	<script type="text/javascript">
+		let text15 = "Hellooo World! Hello W3Schools!";
+		let resutl15 = text15.match(/lo*/g);
+		document.getElementById('qn').innerHTML = result15;
+	</script>
+
+	<h4>n? - Matches any STRING that CONTAINS ZERO or ONE occurences of n</h4>
+	<p>Do a <mark>global search</mark> for a "1", FOLLOWED by "zero" or MORE "0" CHARACTERS.</p>
+	<pre>
+	< p id="zero">< /p>
+	< script type="text/javascript">
+		let text16 = "1, 100 or 1000";
+		let result16 = <mark>text16.match(/10?/g);</mark>
+		document.getElementById('zero').innerHTML = result16;
+	< /script>
+	</pre>
+	<p id="zero"></p>
+	<script type="text/javascript">
+		let text16 = "1, 100 or 1000";
+		let result16 = text16.match(/10?/g);
+		document.getElementById('zero').innerHTML = result16;
+	</script>
+
+	<h2>II.Using the <u>RegExp</u> Object <u>PROPERTIES</u></h2>
+	<p>the RegExp OBJECT - can have <u>predefined</u> PROPERTIES and METHODS.</p>
+<hr>
+	<h3>1. constructor <u>property</u></h3>
+	<h4> - returns the Function - <b>that created</b> - the RexExp prototype.</h4>
+	<p>For a <u>regular expression</u> the <b>constructor property</b> returns:<br>
+	<b><i>function RegExp() {[native code]}</i></b></p>
+
+	<pre>
+	< p id="c">< /p>
+	< script type="text/javascript">
+		let pattern = /Hello World/g;
+		let textA  = <mark>pattern.constructor;</mark>
+		document.getElementById('c').innerHTML = textA;
+	< /script>
+	</pre>
+	<p id="c"></p>
+	<script type="text/javascript">
+		let pattern = /Hello World/g;
+		let textA  = pattern.constructor;
+		document.getElementById('c').innerHTML = textA;
+	</script>
+<hr>
+	<h3>2. global <u>property</u></h3>
+	<h4>global property - specifies WHETHER or NOT the <mark>"g" modifier</mark> IS SET</h4>
+	<p>The <u>property</u> returns TRUE, (if the <mark>"g" modifier</mark> IS SET, otherwise it returns FALSE.</p>
+
+	<pre>
+	< p id="g">< /p>
+	< script type="text/javascript">
+		let pattern1 = <mark>/W3S/g;</mark>
+		let resultA = <mark>pattern1.global;</mark>
+		document.getElementById('g').innerHTML = resultA;
+	< /script>
+	</pre>
+	<p id="g"></p>
+	<script type="text/javascript">
+		let pattern1 = /W3S/g;
+		let resultA = pattern1.global;
+		document.getElementById('g').innerHTML = resultA;
+	</script>
+<hr>
+
+	<h3>3. ingnoreCase <u>property</u></h3>
+	<h4>The ignoreCase property -  specifies WHETHER or NOT the <mark>"i" modifier</mark> is set.</h4>
+	<p>This property returns TRUE if the "i" modifier is set, otherwise it returns FALSE.</p>
+
+	<pre>
+	< script>
+	let text = "Visit W3Schools!";
+	let pattern = <mark>/W3S/i;</mark>
+	let result = <mark>pattern.ignoreCase;</mark>
+	document.getElementById("demo").innerHTML = result; <mark>//true</mark>
+	< /script>
+	</pre>
+
+	<h3>4. lastINdex <u>property</u></h3>
+	<h4>The lastIndex property - specifies the index at which to start the next match.</h4>
+
+	<pre>
+	Note: This property only works if the "g" modifier is set.
+
+	This property <mark>returns an integer</mark> that specifies <mark>the character position</mark> immediately after the last match found by exec( ) or test( ) methods.
+
+	<mark>Note: exec( ) and test( ) reset lastIndex to 0 if they do not get a match.</mark>
+	</pre>
+	<pre>
+	< script>
+	let text = "The rain in Spain stays mainly in the plain";
+	let pattern = <mark>/ain/g;</mark>
+
+	let result = "";
+	<mark>while (pattern.test(text)==true)</mark>  {
+	  result += "Found at position " + pattern.lastIndex + "< br>";
+	}
+
+	document.getElementById("demo").innerHTML = result;
+	< /script>
+
+	Found at position 8
+	Found at position 17
+	Found at position 28
+	Found at position 43
+	</pre>
+
+	<h2>III. RegExp Object <u>Methods</u></h2>
+	<h3>1. exec() <u>method</u></h3>
+	<h4>The <u>exec() method</u> - test for a MATCH in a STRING</h4>
+	<p style="color:darkgreen;">It it <u>finds a MATCH</u> -it- <b>returns a RESULT in an ARRAY</b> -otherwise it returns <i>null</i>.</p>
+	
+	<pre>
+	<mark>Search a string for the character "e":</mark>
+	< p id="ex">< /p>
+	< script type="text/javascript">
+		let textB = "The best things in life are free";
+		let resultB = <mark>/e/.exec(textB);</mark>
+		document.getElementById('ex').innerHTML = resultB;
+	< /script>	
+	</pre>
+	<p id="ex"></p>
+	<script type="text/javascript">
+		let textB = "The best things in life are free";
+		let resultB = /e/.exec(textB);
+		document.getElementById('ex').innerHTML = resultB;
+	</script>
+
+	<pre>
+	let text = "Hello world!";
+
+	// Look for "Hello"
+	let result1 = /Hello/.exec(text); //Hello
+	</pre>
+
+	<h3>2. test() <u>method</u></h3>
+	<h4>Tests for a match in a string. Returns true or false.</h4>
+	<pre>
+	< p id="tst">< /p>
+	< script type="text/javascript">
+		let textC = "The best things in life are free";
+		<mark>let patternC = /e/;</mark>
+		let resultC = <mark>patternC.test(textC);</mark>
+	< /script>
+
+	</pre>
+	<p id="tst"></p>
+	<script type="text/javascript">
+		let textC = "The best things in life are free";
+		let patternC = /e/;
+		let resultC = patternC.test(textC);
+		document.getElementById('tst').innerHTML = resultC;
+	</script>
+
+	<h3>to string() <u>method</u></h3>
+	<h4>The <u>toString() Method</u> returns <b>the STRING VALUE</b>  - of the REGULAR Expression</h4>
+	<pre>
+	< p id="ts">< /p>
+	< script type="text/javascript">
+		let patternD = <mark>/Hello World/g;</mark>
+		let textD = <mark>patternD.toString();</mark>
+		document.getElementById('ts').innerHTML = textD;		
+	< /script>
+
+	</pre>
+	<p id="ts"></p>
+	<script type="text/javascript">
+		let patternD = /Hello World/g;
+		let textD = patternD.toString();
+		document.getElementById('ts').innerHTML = textD;		
+	</script>
+
+	<h3>Regular Expression - REGEX - Youtube</h3>
+	<pre>
+	< script type="text/javascript">
+		//JS consider (this) not a reg. expression - because it's between 2 ''(quotes). => it is a STRING Object
+		var s = 'hello';
+		//If I wanna to be a Regex I can say:
+		var r = /hello/
+
+		//In the same way you can say:
+		new String('Hello2');
+
+		//You can also say RegExp:
+		new RegExp(/hello2/);
+		// If you built webApp (when you take STRING input from a USER - and make it into regExp you use: "new RegExp(/hello2/);" )
+
+		//Once you have a STRING Obj:
+		s.indexOf('l'); //<- Functions that YOU CALL on STRING or PROPERTIES.
+		s.length();
+		s.match();
+
+		//A REGEX has those thing as well;
+		r.test(); //<- this is a "Function" that you CALL on a regular Expression
+		s.match(); //<- HERE you can PASS A RegExp. This is used very COMMONLY. Also (splt and replace)
+		//All Functions that you CALL on a STRING that expect a RegExp as an ARGUMENT.
+	< /script>
+	</pre>
+
+	<h3>test(). Regex Testing</h3>
+	<p>Create a RegExp</p>
+	<pre>
+	< script type="text/javascript">
+		var r = /\d{3}/; // e digits in a row. because of this "/.../" - is a RegExp.
+
+		//If I say:
+		r.test('hello'); // false - 'cause "hello' DOES NOT MATCH that Regular Expression.
+		r.test('123'); // true - cause that is 3 digits in a ROW.
+		r.test('123ABC');// Also true - 'cause that REGEX is FOUND in the STRING.
+		//*Notice the "test" is just searching for that "REGEX" ANYWHERE in the STRING
+	< /script>
+	</pre>
+
+	<h3>Use a RegExp to validate a Full string</h3>
+	<pre>		
+	< script type="text/javascript">
+		var r = /^\d{3}/; // the beginning of the STRING/"^" followed by 3 digits {3}/ followed the END of the String "$".
+
+		//If I say: 
+		r.test('123'); // true - 
+		r.test('123ABC');// false - because that RegExp (with BEGINNING, followed by {3} digits, followed by END does NOT Match).
+	< /script>
+	</pre>
+
+	<h3>RegExp - and INPUTS</h3>
+	<pre>https://www.youtube.com/watch?v=W7S_Vmq0GSs</pre>
+
+	<p id="output"></p>
+	<textarea>Rainbow and unicorns</textarea>
+	<p><button id="submit">Submit</button></p>
+
+	<script type="text/javascript">
+		var textfield;
+		var output;
+		var submit;
+
+		function setup() {
+			noCanvas();
+			textfield = select('#input');
+			//textfield.changed(newText);
+			output = select('#output');
+			submit = select('#submit');
+			submit.mousePressed(newText);
+		}
+
+		function newText() {
+			var s = textfield.value(); //the STRING I get is the VALUE of that TEXT FIELD
+
+			var r = /\w+@\w+\.(net|com|org)/ //I have a RegEx which is "w+@" (any number of WORD CHARACTER FOLLOWED BY an "@")/ followed by (any number of WORD CHARACTER) "\w+\" followed by (a LITERAL DOT) "\." followed by (net|com|org)
+		}
+
+		document.getElementById('output').innerHTML = newText();
+	</script>
+
+	<h3>Flags</h3>
+	<p>Flags are a way of modifying the BEHAVIOUR of a RegExp</p>
+	<h4>/g</h4>
+	<p><mark>/g</mark> - <mark>standing for GLOBAL</mark>. That means - don't JUST MATCH The First Thing - MATCH All of Them<br>
+	<mark>/i</mark> - <mark>for Case In Sensitive</mark>.
+	</p>
+	<pre>
+		< script type="text/javascript">
+		var s = "unicorns and rainbows and cupcakes";
+		var r = /[a-z]+/g; // <- NOtice: the "FLAG" goes after the REGULAR Expression.
+		s.match(r); //["unicorns", "and", "rainbows", "and", "cupcakes"]; - we get an array WITH EVERY SINGLE MATCH of THAT RegExp.
+		</ script>
+	</pre>
+
+	<h4>Let's capitalize "And" and "Cupcakes"</h4>
+	<pre>
+		var s = "unicorns and rainbows And Cupcakes";
+		var r = /\b[a-z]+\b/g; 
+		s.match(r); 	// [unicorns and rainbows] not "And Cupcakes" - because I'M ONLY LOOK FOR LOWERCASE LETTERS.
+
+		2. Add another Flag "\i".
+		var r = /\b[a-z]+\b/gi;
+		s.match(r);		//["unicorns and rainbows not "And Cupcakes"];
+
+		This is how The Flags work:
+		a. I need Global Flag - to match the RITGH Expression MULTIPLE TIMES in the string
+		b. "i" Flag - is for CASE SENSITIVITY.
+	</pre>
+
+</body>
+</html>

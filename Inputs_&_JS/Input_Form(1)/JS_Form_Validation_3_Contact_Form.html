@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Js Form Validation 3</title>  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!--Checking if an E-mail or a phone is VALID (regex - stackoverflow)-->
+</head>
+<body>
+
+<!--1.Built a Form Contact.
+    2. If you try to <b>Submit this FORM</b> - without PROVIDING any INPUT <mark><b>it's going to show - some red-boxes</b> - around the input BOXES</mark> - <b>and also DISPLAY an ERROR HINT tag/text.</b>
+    3. If you FILL IN - all the < forms> - <b>an clikc the Submit button</b> - <mark>it shows you a "Thank You!" message</mark>.
+    3.1 <b>We have a PLACEHOLDER CODE</b> - that send that information OVER to a BACKEND.-->
+
+    <!--Building out that GRADIENT "Contact Us" banner -->
+    <div class = "contact-us">
+      <h1>Contact Us</h1>
+      <p>We'd love to here from you! Please send us a message.</p>
+    </div>
+
+    <!-- Let's WORKIN' on the Form Elem. (that keeps all the INPUTS Together) - so when you do a SUBMISSION to a BACKEND it can take all the NAMES of your INPUTS and push them over... to a server -->
+
+    <!--1. In the input Fields, add ERROR TEXT, ERROR Styling and some VALIDATION-->
+    <!-- The "class:form-group" WRAP all the  Elements that are RELATED (legate de) to the INPUT BOX-->
+    <form>
+      <div class='form-group'> 
+        <label>Full Name</label>
+        <input class="" type="" name="full-name" placeholder="Your first and last name"></input> 
+        
+        <div class='error-hint hidden'>Your name is required.</div>
+      </div>
+
+      <div class='form-group'> 
+        <label>Email</label>
+        <input class="" type="" name="email" placeholder="Your email address"></input> 
+        
+        <div class='error-hint hidden'>Your email address is invalid.</div> <!--this will PRINT OUT if someone types a "bad email"-->
+      </div>
+
+      <!--Style another".form-group- in CSS -->
+      <!--const emailInput =  -->
+
+      <div class='form-group'> 
+        <label>Phone</label>
+        <input name="phone" placeholder="Your phone number"></input>         
+        
+        <div class='error-hint hidden'>Your phone is invalid.</div>
+      </div>
+
+      <div class='form-group'> 
+        <label>Message</label>
+        <textarea name="message" placeholder="Your message"></textarea> 
+        
+        <div class='error-hint hidden'>Your message is required.</div> <!--this will PRINT OUT if someone types a "bad email"-->
+      </div>
+
+      <hr />
+
+      <button>Submit Message</button>
+    </form>
+
+    <div class='thank-you hidden'>
+      Thank you for your feedback!
+    </div>
+
+  <script src='index.js'></script>
+</body>
+</html>

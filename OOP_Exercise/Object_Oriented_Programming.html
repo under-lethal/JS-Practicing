@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="index.js"></script>
+    <title>OOP</title>
+	<style>
+		p {font-size: 14px;}
+	</style>
+</head>
+<body style="padding: 20px; font-family: Helvetica">
+    <h2>OOB - Object-Orientet Programming</h2>
+    <h3>There are 4 CORE Concepts in Object-Oriented Programming:</h3>
+    <ul style="color: darkgray ; font-weight: bold">
+        <li>ENCAPSULATION</li>
+        <li>ABSTRACTION</li>
+        <li>INHERITANCE</li>
+        <li>POLYMORPHISM</li>
+    </ul>
+
+<h3>1.ENCAPSULATION</h3>
+<p>Before OOP - we had <b>PROCEDURAL Programming</b> - that DIVIDED  a PROGRAM into a SET of Functions.<br>
+<span style="color:lightgrey;font-weight: bold">So' we have DATA stored - into VARIABLES and Functions that operate on the Data.</span></p>
+<pre>
+    f() (x)
+    f() (x)
+</pre>
+<p>As your programm GROW - it will END Up in a BUNCH of Functions that are all over the place.<br>
+You make a CHANGE  - to one Function - and <u>then several other Function BREAK</u>.<br>
+<span style="color:lightgrey;font-weight: bold">That's what we call - SPAGHETTI CODE.</span>
+</p>
+<p>In - <b>OBEJECT-ORIENTED Programming</b> we <b>COMBINE a group of related VARIABLES and FUNCTIONS - INTO  a UNIT.</b><br>
+We call <b>that UNIT</b> an <b>Object</b><br>
+<span style="color:lightgrey;font-weight: bold">We reffer to THOSE VAR - as PROPERTIES</span>
+<br>
+<span style="color:lightgrey;font-weight: bold">We reffer to THOSE FUNC - as METHODS</span>
+</p>
+<pre>
+    -------
+    f() (x)         CAR | Properties: make,model,color;
+    -------             | Methods: start(), stop(), move();
+    
+    -------    
+    f() (x)
+    -------
+</pre>
+<p><b>So - In Object-Oriebted Programming - we GROUP (related) VAR and FUNC (that operate on them) - into OBJECTS.</b><br>
+<span style="color:lightgrey;font-weight: bold">This is what we CALL - ENCAPSULATION.</span>
+</p>
+<h4>Example:</h4>
+<pre>
+<b>This kind of IMPLEMENTATION is PROCEDURAL.</b>
+<mark>We have <b>VARIABLES - on one side</b></mark>
+<mark>We have <b>Funtions - on the other side</b></mark>
+
+< p id="wage">< /p>
+
+  let baseSalary = 30_000;
+  let overtime = 10;
+  let rate = 20;
+
+  function getWage(baseSalary, overtime, rate){
+    return baseSalary + (overtime * rate);
+  }
+
+  document.getElementById('wage').innerHTML = getWage(30000,20,10);
+
+</pre>
+<p id="wage"></p>
+<script>
+  let baseSalary = 30_000;
+  let overtime = 10;
+  let rate = 20;
+
+  function getWage(baseSalary, overtime, rate){
+    return baseSalary + (overtime * rate);
+  }
+
+  document.getElementById('wage').innerHTML = getWage(30000,20,10);
+</script>
+
+<h5>Implement OBJECT-Oriented Way:</h5>
+<p>We have an <b>employee{...}</b>OBJ - with 3 PROPERTIES. (salary, overtime, rate) | and a <b>method</b> called <b>getWage()</b></p>
+<p>Why is this BETTER:</p>
+<pre>
+	*This <mark>function()</mark> - <b>has no parameters.</b> | In <b>contrast</b> <mark>the PROCEDURAL EXAMPLE</mark> - <b>has 3 parameters.</b>
+	*All these <b>parameters</b> - are actually modeled as properties of this OBJECT.
+	*All these <b>PROPERTIES</b> - and <b>getWage() func</b> - <mark><b>are the PART of ONE UNIT.</b></mark>
+	*<b>The PROCEDURAL code</b> - is function <mark><b>with so MANY parameters.</b></mark>
+	*When you <b>write code</b> in <b>Object-Orientet way</b> - your functions end up having FEWER and FEWER <b>parameters.</b>
+
+	< p id="empl">< /p>
+
+	let employee = {
+		baseSalary: 30_000,
+		overtime: 10,
+		rate: 20,
+		<b>getWage2: function(){
+			return this.baseSalary + (this.overtime * this.rate);
+		}
+	};</b>
+	document.getElementById('empl').innerHTML = <b>employee.getWage2();</b>
+
+
+</pre>
+<p id="empl"></p>
+<script>
+	let employee = {
+		baseSalary: 30_000,
+		overtime: 10,
+		rate: 20,
+		getWage2: function(){
+			return this.baseSalary + (this.overtime * this.rate);
+		}
+	};
+	document.getElementById('empl').innerHTML = employee.getWage2();
+</script>
+<code>Arrow function expressions <span style="color:red">should only be used for non-method functions</span> because they do not have their own <mark>this.</mark> </code>
+
+<h3>2.ABSRTACTION</h3>
+<p>Think of a DVD Player as an - OBJECT.<br>
+This DvD Player - has a COMPLEX logic board - at the inside - and a FEW BUTTONS outside - thet you interact with.<br>
+(you simply play the buttons - don't care what happen on the inside. All that complexity is hidden from you).<br>
+</p>
+
+<h4>We can use the same technique (ABSTRACTION) in our Objects:</h4>
+<p><b>1.</b> We can <b>HIDE</b> some of the <b>properties</b> and <b>methods</b> from the OUTSIDE.<br>
+In this case - we make the INTERFACE of <b>those OBJECTS</b> simpler - using an <b>OBJECT</b>  with a few <b>properties</b> and <b>methods.</b>
+</p>
+<p><b>2. Reduce the Impact of Change.</b><br>
+If you - change (these <b>inner</b> OR <b>private</b> METHODS). <br>
+none of these CHANGES will leak(scurgere) to the outside - because - <mark><b>we don't have any code - that "touches" these methods outside of THEIR CONTAINING OBJECT.</b></mark><br>
+We may DELETE a <b>method</b> or change it's parameters - <b>but - NONE of these changes will IMPACT the rest of the appplications code.</b>
+</p>
+
+<h3>3.INHERITANCE</h3>
+<p><b>Inheritance</b> - is a <b>mechanism</b> tha allows you to <mark>ELIMINATE redundant CODE.</mark></p>
+<h4>Example:</h4>
+<pre>
+	Think of <b>HTML Elements</b> - like <mark>TextBoxes, DropDown Lists, CheckBoxes</mark> and so On.
+	All these Elements - has <b>3 things</b> in common:
+		<b>properties: hidden / innerHTML</b>
+		<b>methods: click(), focus()</b>
+	<b>Instead of REDEFINING <mark>all these PROPERTIES</mark> and <mark>METHODS</mark> - for evey TYPE of HTML Element</b> - we can define them <b>ONCE - in a GENERIC Object</b> call it <b>HTMLElement.</b>
+	and <b>the OTHER OBEJCTS - <mark>INHERIT</mark> these PROPERTIES and METHODS.</b>
+</pre>
+
+<h3>4.POLYMORHISM</h3>
+<p><b>Poly</b> - means <b>more</b> | <b>morphism</b> - means <b>form</b>. -> 	<mark><b>POLYFORMS</b></mark><br>
+In <b>OOP</b> - polymorphism is a <b>TECHNIQUE</b> that <b>allows</b> you to GET RID of <mark><b>long - if()/else()/swithc() and case() statemens.</b></mark>
+</p>
+<p>All <b>HTML Elements</b> - <i>have the ABILITY - to be RENDERED - on a PAGE</i><br>
+but the way each element is rendered - <b>is different from the others.</b>
+<b>If you want to RENDER multiple HTML Elements - (in a PROCEDURAL way) our code will look like THIS:</b>
+</p>
+<pre>
+	switch(...){
+		case 'select' : renderSelect();
+		case 'text' : renderTextBox();
+		case 'select' : renderCheckBox();
+		case ...
+		case ...
+		case ...
+	}
+</pre>
+<p>But - With <b>OOP</b> - we can <b>implement a render() - method</b> in each OBJECTS (from HTML page) - and the <b>render method - will differently deppending on the type of the OBJ - you're refferencing.</b><br>
+using this LINE of CODE:</p>
+<pre>
+	element.render();
+</pre>
+
+<h4>The BENEFITS of Object-Oriented Programming:</h4>
+<ul>
+	<li>Using <b>ENCAPSULATION</b> - we GROUP <b>related VARIABLES</b> and <b>FUNCTIONS</b> together. | This way - we can <b>reduce complexity</b><br>
+	So - we can <b>reuse</b> OBJECTS - <b>in different parts of a Program / or in different Programs</b></li>
+	<li><b>ABSTRACTION</b> - We <b>hide</b> the DETAILS and the COMPLEXITY and <b>show <mark>only the essentials</mark></b><br>
+	So - we can <b>reduce complexity</b> and <b>isolates the IMPACT of CHANGES</b></li>
+	<li><b>INHERITANCE</b> - We can ELIMINATE <b>redudant CODE</b></li>
+	<li><b>POLYMORPHISM</b> - We can <b>REFACTOR ugly "switch()" - statements</b></li>
+</ul>
+<hr><br>
+
+<h2>OOP - Youtube Example</h2>
+<h3>Objects</h3>
+<ul>
+	<li>How to Create Objects</li>
+	<li>Factories adn Constructors</li>
+	<li>Primitives and Reference Types</li>
+	<li>Working with Properties (add/remove..)</li>
+	<li>How to Define - PRIVATE Properties</li>
+	<li>GETTERS and SETTERS</li>
+</ul>
+
+<h4>1.Creating an Object</h4>
+<pre>
+	const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function() {
+        console.log('draw'); //in this case THE VALUE is a function() - (that is for drawing the CIRCLE)
+    }
+};
+
+//Let's define a few TERMS:
+//This "circle" has 3 MEMBERS (radius, location, draw).
+//If a MEMBER is a Func - we refer to that - as a METHOD. (DRAW - is a method). These OTHER members (radius, location) - are that we call PROPERTIES.
+//In OOP - Properties are used - TO HOLD VALUES.
+
+//Access it's members (using the DOT Notation)
+<b>circle.draw();</b>
+<b>Output:</b> draw
+</pre>
+
+<h4>2.Factories and Constructors</h4>
+<h5>Factory Function</h5>
+<pre>
+	//Create another Circle - but the CURRENT IMPLEMENTATION - we have to duplicate the code.
+/*const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function() {
+        console.log('draw'); 
+};
+
+const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function() {
+        console.log('draw');  
+};*/
+
+//This can be a PROBLEM -if we have ONE or MORE Methods - in our Object.
+//! Object - USUAL Synthax | it's not a GOOD WAY to create an Object and DUPLICATED - if this OBj (has at least ONE METHOD).
+//Even if it has different Properties.
+//The solution is to use: "FACTORY" or "CONSTRUCTOR" Function.
+
+//Declare a Func() | and put all the CODE - inside of IT.
+//We don't need to DECLARE  a "const" - we can SIMPLY "return {...]" <- this Obj.
+
+function createCircle(radius){
+	return {
+		radius, // If the KEY: and the VALUE (are the same) - WE CAN REMOVE the VALUE. (!!! can only add "radius")
+		draw: function() {			//Here - ADD  a "draw" METHOD. (with KEY:VALUE pairs).
+			console.log('draw'); 
+		}
+	};
+};
+
+//CALL the Func();
+const circle2 = createCircle(1);
+circle2.draw();
+</pre>
+
+<h4>3.Constructor Function</h4>
+<pre>
+//The CONVENTION for a (Constructor Function) is Different. (the FIRST letter should be UPPERCASE).
+//In the "body of the Func()" - instead of RETURNING an OBJ - WE use the "this" keyword (to SET the PROPERTIES of this Obj).
+
+function Circle3(radius){
+	console.log(this); // this - <b>reffer to the circle{...} Obj.</b> (Because we use the <b>new OPERATOR</b> (here: const another = <b>new</b> Circle(1)))
+	this.radius = radius;
+	this.draw = function(){
+		console.log('draw');
+	}
+}
+
+//this refer/ is a reference to the object that is executing this piece of code.
+//this - is to reffer to that Obj. - and (.) dot notation - to set VARIOUS PROPERTIES - on that Obj.
+//this.radius = radius; - SET the "radius PROPERTY" to this "radius ARGUMENT"
+
+//Similary we can define ANOTHER property "this.draw = function()".
+//Now - CREATE  a new Circle: <b>const another</b> - and use the <b>new</b> OPERATOR - <b>to call the Function</b> and pass (1) - ans an argument.
+
+//this <b>new OPERATOR</b> - will create an <b>empty OBJ</b> - the IT WILL SET <b>this</b> - to <b>point to that (empty) OBJ</b>
+//<b>by default - this - point to the GLOBAL Obj</b>
+//We don't want to have /use "this" as a GLOBAL. (we don't want to DEFINE Global VAR).
+
+//WHEN WE USE the <b>new OPERATOR</b> TO CALL a Function() - 3 things HAPPEN:
+//1.This <b>new OP</b> - will create an EMPTY Obj.
+//2.Then - it will set <b>this</b> to POINT to that Obj.
+//3. It <b>will return the OBJ</b> from (that Function)...
+//We dont have <b>an explicit return</b> statement - we're not <b>retunr this</b> - <b>this will happen automatically - when you use "new" OPERATOR</b>
+
+//Basically - we have TWO ways to <b>create an Object</b> : Factory Func() | Constructor Func().
+
+//What is the Difference between these TWO Patterns - for creating an OBJ? | Which Approach should I use?
+//Both are OK.
+</pre>
+
+<h4>4.Constructor Property</h4>
+<p>Every object in JS - <b>has a PROPERTY called "constructor".</b><br>
+That references the function that was use to construct/create an OBJECT.</p>
+<pre>
+	//Factory Function
+function createCircle2(radius){
+    return{
+        radius,
+        draw:function(){
+            console.log('draw2')
+        }
+    };
+}
+const circle2 = createCircle(1);
+
+//Constructor Function
+function Circle4(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw4')
+    }
+}
+const another1 = new Circle3(1);
+</pre>
+<p>Let's look at the CONSTRUCTOR <b>property.</b></p>
+<pre>
+	Write in CONSOLE:
+	<mark>another.constructor</mark>
+	*It return our "Circle Func()" - that we use to <b>create this object.</b>
+
+	circle2.constructor
+	<b>f Object() {[native code]}</b>
+	This is a Function. The first letter (of this function) is UpperCase.
+	<b>^ This is a BUIT-IN constructor Function in JS.</b>
+</pre>
+<p>When we create an Object Literal - (internaly JS <b>using a constructor Function())</b>.</p>
+<pre>
+	When we do this:
+	let x = {...};
+	JS do this:
+	letx = new Object();
+	<b>The same RULE appplies on example above (Circle Func()).</b>
+</pre>
+
+<p>In JS we have <b>built-in constructors</b> like:</p>
+<pre>
+	new String();  - for creating Strings - or simply  - <b>use string Literals: </b> '', "", ``.
+	new Boolean(); - or simply use: <b>true, false</b>. 
+	new Number();  - or instead we use - <b>number literals:</b> 1,2,3,4,5...
+</pre>
+
+<h4>5.Functions ARE Objects</h4>
+<p>this "Circle Func() - it's actually an OBJECT.</p>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+	}
+
+	<b>const another = new Circle(1);</b>
+</pre>
+<p>Because - if we type (in V.StudioCode): <mark><b>Circle.</b></mark> - (a window opens with properties and methods).</p>
+<p>If we do this in teh CONSOLE (F12):</p>
+<pre>
+	Circle.name // "Circle" - <b>returns the NAME of this Func().</b>
+	Circle.length // "1" - <b>returns the NUMBER of the ARGUMENTS.</b>
+	
+	(Again - WHO CREATED this OBJECT? - Let's see:)
+	<mark>Circle.constructor</mark> // "f Function() {[native code]}" - <b>here we have ANOTHER BUILT-IN CONSTRUCTOR - called Function()</b>
+	INTERNALLY - JS ENGINE - will use this <mark>"f Function()" constructor</mark> - <b>to CREATE an OBJECT.</b>
+
+	*Define a "const" - <b>and SET IT to <mark>new Function('radius')</mark></b> - that takes a parameter (as a string).
+	<b>As the SECOND ARGUMENT (in this new Function) - we gonna pass the code INSIDE of this Function.</b>
+	<mark><b>to BREAK IT UP -in multiple lines - use the `` - CHARACTER.</b></mark>
+	const Circle1 = new Function('radius', <mark>`
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+		`</mark>);
+
+	<mark>This is how to REPRESENT  a Function INTERNALLY.</mark>
+	*Now call the Func Circle1();
+
+	<mark>const circle = new Circle1();</mark>
+	<b>We create the "Circle OBJECT" - by NEWing up:</b> <mark>new Circle1();</mark> - and <b>pass "1" - as the "radius".</b>
+
+	Save the CHANGES. F12: type <mark>circle</mark> // {radius: 1, draw: f}
+	<b>The Circle() OBJECT - create these TWO MEMBERS:</b> <mark>{radius: 1, draw: f}</mark>
+</pre>
+
+<p>Let's make a COUPLE of METHODS - that are available in this Funcions:</p>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+	}
+	<b>Circle.call({}, 1);</b> <- with this we can CALL a Function().
+	const another = new Circle(1);
+
+	<b>{}</b> - the FIRST Argument - <b>is an Empty OBJ "{}"</b>.<b> And <mark>this.</mark> will REFERENCE to this OBJECT: <mark>{}</mark>.</b>
+	<b>1</b> - we add an argument. (becasue - we had "one argument").
+	*if we had multiple arguments - we pass them (explicity like this (1,2,3,4...))
+
+	This expression <b>Circle call({}, 1)</b> - is exactly like this expression: <b>const another = new Circle(1);</b>
+	When we use the <mark>new OPERATOR</mark> - this <b><mark>new OPERATOR</mark> - will INTERNALLY CREATE AN empty Obj "{}"</b> - and pass it as the FIRST ARGUMENT  - <b>to the call() - method.</b>
+	<b>This object "{}" - will DETERMINE</b> - THE context FOR <mark>this.</mark>radius = ... / <mark>this.</mark>draw = ...
+	So <b>this.</b> - wil reference to <i>this object</i> <b>{}</b>.
+	This ARGUMENT (<b>{},</b> 1) - is  SPECIFIES the TARGET of <b><mark>this.</mark></b>radius = ...
+
+	If we don't use the <b>new OPERATOR</b> <mark>const another = <b>Circle(1)</b></mark> - <b>this.</b> (by default) - WILL POINT to the GLOBAL object (which is WINDOW).
+</pre>
+<p>We have another METHOD <b>called apply()</b>.</p>
+<pre>
+	Circle.call({}, 1);
+	<b>Circle.apply({}, [1,2,3])</b> - which is EXACLTY the/like SAME <b>call method.</b> - but <b>we pass the ARGUMENTS ina an ARRAY.</b> "[1,2,3]". 
+	This is <b>useful</b> - if you HAVE an ARRAY - <b>somewhere in your APPLICATION.</b> - and  you wan to pass an array (as the SECOND ARG) - to the <b>appply() - method.</b>
+	<b>So - in JS - Functions are OBJECTS.</b>
+</pre>
+
+<h4>6.Value VS Reference Types</h4>
+<p>In JS - we have <b>TWO Cat. of TYPES:</b><br>
+<b>1. Value TYPES</b> - or PRIMITIVES: <mark>(numbers, string, booleans, symbol, undefined, null</mark><br> 
+<b>2. Reference TYPES</b> <mark>(Objects{}, Functions(), Arrays[].)</mark><br>
+
+<b>So - in a nutsheel - we have PRIMITIVES and OBJECTS.</b> | And <b>they BEHAVE differently.</b>
+</p>
+<p>A. Define - TWO Primitives</p>
+<pre>
+	let x  = 10;
+	let y  = x;
+
+	x = 20; 
+	<b>x,y</b> - are TWO Independent VARIABLES. // c.log(x) - 20 | c.log(y) - 10.
+	When we work with <b>primitives - (the VALUES are STORED in VARIABLES).</b>
+	When we copy that VAR - and <b>put in another VAR</b> - is COPIED into this <b>new VAR.</b> (They are completely - <b>independend of each other</b>).
+</pre>
+
+<p>Let's see whats happen  - if we USE an <b>REFERENCE TYPE</b> or <b>an OBJECT</b>.</p>
+<pre>
+	<b>let x = {value: 10};</b> - Change <- this to an OBJ - that has a PROPERTY called "value".
+	let y = x;
+
+	<b>x.value</b> = 20;
+
+	Save: F12 - type: "x" // {value: 20}; | AND VALUE PROPERTY OF "y" - <b>is also "20"</b> | type: "y" // <mark>{value: 20};</mark>
+</pre>
+
+<p>If we USE AN OBJECT - <b>that's not STORED int a VAR</b>. <br>
+It's stored <b>somewhere else in the MEMORY</b> - an the ADDRESS (of that MEMORY Location) - <b>is STORED in a VAR.</b><br>
+So - when we copy "x" into 'y' - it's the address - that is <b>copied</b>. <br>
+Both - <b>x</b> and <b>y</b> - are POINTING to the same OBJ (IN MEMORY). <br>
+When we <b>modify that OBJECT</b> - using  either: "x" and "y" - <b>the changes are IMMEDIATELY visible</b> - to the other Variable.
+</p>
+<h4>Conclusion</h4>
+<p><b>PRIMITIVES</b> - ARE COPIED <b>by their VALUE.</b><br>
+<b>OBJECTS</b> - are COPIED <b>by their REFERENCES.</b>
+</p>
+
+<h4>Another Example:</h4>
+<pre>
+	let number = 10;
+
+	function increase(number){
+		number++;
+	}
+
+	increase(number);
+	console.log(number); // 10 <b>not 11 ?</b>
+
+	*When we call <mark>increase(number)</mark> - <b>its value it's copied into <mark>this parameter</mark> function<mark>(number)</mark></b>.
+	This <b>number++ (variable)</b> - <b>is completely INDEPENDENT of this</b> <mark>let numaber = 10; - (variable).</mark>
+	Here - <b>(in this function)</b> - <b>we increment number by "1"</b> <mark>number++;</mark> - but after this function{} - <b>this number++ - <mark>it's gonna go OUT of the SCOPE.</mark></b>
+	When we - <mark>console.log(number)</mark> - <b>we essentially dealing with:</b> <mark>let number = 10;</mark>
+	<b><mark>The PRIMITIVES - are COPIED  - by their VALUE.</mark></b> (Here we're dealing - with <b>two independent copies.</b>).	
+</pre>
+
+<p>Change this Function type - to an <b>object</b> / or a REFERENCE type.</p>
+<pre>
+	let obj = {value:10};	<- Change this to an OBJECT.
+
+	function increase(obj){
+		obj.value++;
+	}
+
+	increase(obj);
+	console.log(obj);
+
+	<b>Output:</b> {value: 11}
+
+	When we call <b>increase(obj)</b> - (and pass this "obj") - this <b>obj</b> is passed by REFERENCE.
+	This <b>(obj)</b> - will point - TO THE SAME OBJECT - as we defined here: <mark>let obj = {value: 10};</mark>
+	<b>In this case - we're NOT dealing - WITH TWO INDEPENDENT COPIES.</b> (We have 2 VAR - pointing to the SAME OBJECT)
+</pre>
+
+<h3>7.Adding/Removing Properties</h3>
+<p>Adding:</p>
+<pre>
+	We have a "Circle" <mark>CONSTRUCTOR FUNCTION:</mark>
+
+	function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+	}
+
+	And using this: <mark>const circle = new Circle(10)</mark> - we CREATE <b>a "Circle" OBJECT.</b>
+	<b>const circle = new Circle(10);</b>
+
+	These <b>object</b> in JS - are DYNAMIC. <b>that means - after you CREATE them - you can ADD or DELETE some PROPERTIES.</b>
+	
+	*we can LAWAYS ADD  - something extra - to an EXISTING Object.
+	<b>circle.location = {x: 1};</b>
+	or'
+	<b>circle['location'] = {x: 1};</b>
+</pre>
+
+<p>When to use <b>this notation:</b> <mark>circle['location']</mark>:</p>
+<pre>
+	*When you want <b>access</b> - <u>a property name:</u>
+
+	We have:
+	const propertyName = 'location'; <- If you want to <b>access</b> <mark>'location'</mark> <b>property</b> (from propertyName)...:
+	<b>circle[propertyName]</b>
+</pre>
+
+<p>Removing:</p>
+<pre>
+	We can also - DELETE an PROPOERTY: (from an existing Object).
+	When you get a "user Object" - <b>from a database</b> - and you want to <b>return it to the client</b> (but that "user object" have certain properties (like password/creditCard Info..) - you don't wanna sent to the client).
+
+	function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+	}
+
+	const circle = new Circle(10);
+	circle.location = {x: 1};
+	circle['location'] = {x; 1};
+
+	<b>delete circle.location;</b> or <b>delete circle['location'];</b>
+</pre>
+
+<h3>8.Enumerating/ITERATE Properties</h3>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log("draw");
+		}
+	}
+
+	const <mark>circle</mark> = new Circle(10);
+
+	#ITERATE - through an OBJECT. (over the Properties): / <b>for in - loop</b>
+	<b>for (let key in <mark>circle</mark>)</b>{
+		console.log(key);
+	}
+	<b>Output:</b> radius draw (property and method)
+
+	#If you wanna GET the VALUE - of these properties - <b>use the [] - bracket notation.</b>
+	 function Circle(radius){
+		this.radius = radius;
+		this.draw = function(){
+			console.log('draw');
+		}
+	 }
+
+	 const circle = new Circle(10);
+	 for (let key in circle){
+		console.log(key);
+		<b>console.log(key, <mark>circle[key]</mark>);</b>
+	 }
+
+	 <b>Output:</b> radius: 10; | draw f () {c.log('draw');}
+
+	 #Only the <b>PROPERTIES</b> and not the <b>METHODS:</b>
+	 1. Use the <b>typeof operator</b> - to check the type of this value <mark>circle[key]</mark>.
+
+	 for (let key in circle){
+		<b>if(typeof circle[key] !== 'function')</b>
+			console.log(key, circle[key]);
+	 }
+
+	 <b>Output:</b> radius: 10; 
+
+	 #Another Approach <b>to get all the KEYS and an OBJECT</b>
+	 
+	 <b>const keys = Object.keys(circle)</b> - returns all the KEYS (in the "circle") - as an <b>array.</b>
+	 <b>console.log(keys);</b>
+
+	 <b>Output:</b> (2) ['radius', 'draw'];
+
+	 #With this <b>approach</b> - we cannot SEPARATE <b>properties</b> from <b>methods.</b>
+</pre>
+
+<p>Find OUT - if an OBJECT <b>has a GIVEN Property:</b> | The <b>in</b> Operator:</p>
+<pre>
+	if(<mark>'radius'</mark> <b>in</b> circle){
+		console.log('Circle has a radius');
+	}
+</pre>
+<p>To <b><mark>enumerate</mark> all the MEMBERS/properties and an OBJECT</b> - use a <mark><b>for in - loop</b></mark>.<br>
+To <b><mark>get</mark> - all the KEYS and an OBJECT</b> - use <b><mark>Object.keys()</mark></b>.<br>
+To <b><mark>check</mark> - for the existence of a PROPERTY or a METHOD (in an Obj)</b> - use <mark>the <b>in - operator</b></mark>.</p>
+<hr><br>
+
+<h3>9.ABSTRACTION</h3>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+
+		this.defaultLocation = {x: 0, y: 0}; <- define a PROPERTY - <b>set it</b> to an OBJECT.
+
+		this.computeOptimumLocation = function() {	<- define another METHOD
+			//...
+		}
+
+		this.draw = function() {
+			console.log('draw');
+		}
+	}
+
+	const circle = new Circle(10);
+</pre>
+
+<p>Call this method: <mark>this.computeOptimumLocation = function() {...}</mark> inside of <b><mark>draw method</mark></b></p>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+
+		this.defaultLocation = {x: 0, y: 0}; 
+
+		this.computeOptimumLocation = function() {	
+			//...
+		}
+
+		this.draw = function() {
+			<b>this.computeOptimumLocation();</b>
+			console.log('draw');
+		}
+	}
+
+	const circle = new Circle(10);
+
+	...But if we do this:
+	circle.computeOptimumLocation();
+	circle.draw();
+	...we've got wierd Errors...
+
+	In OOP - we have this core concept called - ABSTRACTION.
+	ABSTRACTION <b>means</b>: <b>Hide the details(complexity) - Show (only) the Essentials.</b>
+	In our example we should <b>hide</b> this PROPERTY and METHOD: 
+	<mark>this.defaultLocation = {x: 0, y: 0};</mark>
+	and
+	<mark>this.computeOptimumLocation = function() {...}</mark>
+	^<b>These are implementation DETAILS - these are part of the COMPLEXITY of this Object.</b>
+	^<b>We want to hide this - from the consumer - of this Object. | Expose only the essentials.</b> 	this.radius = radius; | this.draw = function() {...}
+	^<b>Everything in these objects are - PUBLIC and ACCESSIBLE from the Outside.</b> (This will bring a number of issues).
+	a.Everytime you CHANGE the IMPLEMENTATION (of an OBJ) - <b>you have to go and modify - many different places in your code.</b>
+	Example:
+	If this: <b>this.computeOptimumLocation = function(<mark>factor</mark>){...}</b> <b>requires an argument.</b>
+	Because we can't <b>access</b> this Func from the OUTSIDE - <b>everywhere, where we use this method - we have to comeBack - <mark>and pass an argument.</mark></b>
+
+	const cicrle = new Circle(10);
+	circle.computeOptimumLocation(<mark>0.1</mark>);
+
+	One simple CHANGE here: <b>this.computeOptimumLocation = function(<mark>factor</mark>){...}</b> =>
+	results in a <b>number of changes - in your source Code.</b>
+
+	Example2:
+	If this <b>method</b>: <b>this.computeOptimumLocation = function(<mark>factor</mark>){...}</b> - it's not ACCESSIBLE from the OUTSIDE.
+	*We wouldn't have o modify this LINE: <b>circle.computeOptimumLocation(<mark>0.1</mark>);</b> (DELETE it).
+	*The only <b>modify</b> is on this LINE: <b>circle.computeOptimumLocation(<mark>0.1</mark>);</b> - where we have to call this Func().
+</pre>
+
+<h3>10.Private PROPERTIES and METHODS</h3>
+<p>How do we IMPLEMENT - ABSTRACTION here:<br>
+You wanna HIDE certain MEMBERS from the OUTSIDE.</p>
+<pre>
+	<b>1. What happens if we declare - a new VAR in our Func()?</b>
+
+	function Circle(radius){
+		<b>let color = 'red';</b>
+		<b>this.color = color;</b>
+
+		this.radius = radius;
+
+		this.defaultLocation = {x: 0, y: 0}; 
+
+		this.computeOptimumLocation = function(factor) {	
+			//...
+		}
+
+		this.draw = function() {
+			this.computeOptimumLocation();
+			console.log('draw');
+		}
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+
+	This <b>var</b> <mark>it's not part of the OBJECT</mark> - <b>because: we're not SET that - as a PROPERTY on that OBJECT.</b>
+	We didn't say: <b>this.color = color;</b> 
+	Without <b>this.</b> - <b>inside of this Func().</b> <mark>let color =...</mark> it's just a LOCAL VAR.
+	When we GET OUT of this Func() - this <b>var</b> - goes OUT of SCOPE - and "dies";
+
+	With <b>ABSTRACTION technique</b> - <b><i>we can easily HIDE - "certain MEMBERS".</i> - from the outside.</b>
+	<mark>this.defaultLocation = {x: 0, y: 0}; </mark> <- <b>we don't want this - to be ACCESSIBLE from the OUTSIDE.</b>
+	<b>Instead of SETTING <u>like a PROPOERTY</u> - on our Object - <mark>we define it as LOCAL VARIABLE</mark></b>
+	<b><mark>let defaultLocation = {...};</mark></b>
+
+	function Circle(radius){
+			
+		this.radius = radius;
+
+		<b><mark>let defaultLocation = {x: 0, y: 0};</mark></b> 
+
+		*Apply the same "token" <b>to convert <mark>this. METHOD</mark> to a <mark>private METHOD</mark>.</b>
+		let computeOptimumLocation = function(factor) {	
+			//...
+		}
+
+		*Here in this <b>draw method</b> - RECALing <mark>this.computeOptimumLocation();</mark> 
+		<b>This Function()</b> <mark>this.computeOptimumLocation();</mark> - it's NO LONGER a METHOD - <b>so WE CAN'T ACCESS it using: <mark>this.</mark></b>
+		We have to ACCESS IT <b>directly here...(inside).</b>
+		It will work - <b>because the CONCEPT of <mark>"CLOSURE"</mark>.</b>
+
+		<b>CLOSURE Exaplained:</b>
+		*When we have a Func() - <b>inside of a Func()</b> - (IF in INNER Func - we can declare a <b>certain VARIABLES</b>) <mark>let x, y;</mark>
+		These are <b>local variables</b> - that are <b>only available in this Func()</b> | <mark>let x, y;</mark>
+		Their scope - is LIMITED to this Func();
+		When we finish EXECUTING this Func() - <b>x and y</b> - will go out of SCOPE.
+
+		In <b>contrast</b> with "SCOPE" - we have <b>"CLOSURE"</b>.
+		<b>CLOSURE determines - what VAR are beeing accessed - to an INNERFunction().</b>
+		So - <mark>this.draw = function()</mark> - can ACCESS these variables: <mark><b>let x, y</b></mark> - AND also these var: <mark>let defaultLocation = </mark> / <mark>let computeOptimumLocation = </mark> <b>(from/defined in PARENT Function()</b>
+		
+		THESE VAR: <mark>let defaultLocation = </mark> / <mark>let computeOptimumLocation = </mark> <b>(from/defined in PARENT Function()</b>
+		<b>- are WITHIN the "SCOPE" of this Function:</b> <mark>function Circle(radius){...}</mark>
+		<b>- but - WITHIN the "CLOSURE" of this INNER Function:</b> <mark>this.draw = function() {...}</mark>. 
+
+		<b>CLOSURE</b> vs. <b>SCOPE</b>
+		<b>SCOPE:</b> - is TEMPORARY - "and IT dies."
+		Everytime we call <mark>this.draw = function() {} - method</mark> these VAR <b>let x, y</b> - <b>will be RECREATED and REINITIALIZED.</b>
+		...and after this Function() - "they will DIE".
+		So <b>SCOPE</b> - is temporary.
+
+		<b>CLOSURE:</b> - stay there... 
+		When we call the <mark>this.draw - function(){..}</mark> - (after we FINISHED EXECUTING it) - these variables: <mark>let defaultLocation = </mark> / <mark>let computeOptimumLocation = </mark>
+		<b>WILL CONTINUE to STAY in MEMORY.</b> - <b>because the're PART of the CLOSURE - of this: <mark>this.draw = function(){}</mark></b>
+
+		this.draw = function() {
+			<mark>let x, y;</mark>
+			computeOptimumLocation();
+			console.log('draw');
+		}
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+</pre>
+<p>So - if you wanna <b>access - these private "members".</b> - simply use them here:</p>
+<pre>
+	this.draw = function(){
+		<mark>computeOptimumLocation(0.1);</mark>
+		<mark>//defaultLocation();</mark>
+
+		*IF you want to ACCESS "members" - of this <mark>new Circle - <b>object</b></mark> - USE <mark><b>.this</b></mark>
+		<mark><b>//this.radius</b></mark> (?!???!?)
+
+		*If we ACCESS <b>the members</b> - of the <b>circle object</b> (we only see: "draw" and" radius").
+
+		const circle = new Circle(10);
+		<mark><b>circle.draw/radius</b></mark>
+		circle.draw();
+	}
+</pre>
+
+<h3>Getters & Setters</h3>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+
+		let defaultLocation = {x: 0, y: 0};
+
+		this.draw = function(){
+			computeOptimumLocation(0.1);
+
+			console.log('draw');
+		};
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+
+	<b>let defaultLocation = {}</b> - cannot be ACCESSED - <b>from the outside.</b> 
+	We just want to READ IT.
+	Define a <b>method</b> here:
+
+	function Circle(radius){
+		this.radius = radius;
+
+		let defaultLocation = {x: 0, y: 0};
+
+		<b>this.getDefaultLocation = function() {
+			return defaultLocation}</b>
+
+		this.draw = function(){
+			computeOptimumLocation(0.1);
+
+			console.log('draw');
+		};
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+
+	*The <b>CLOSURE</b> of this Function() - includes all the <b>variables defined here (in the PARENT Func()):</b> <mark>let defaultLocation = {x:0, y:0};</mark>
+	*here we have <b>ACCESS to</b> <mark>defaultLocation = ...</mark>
+	*And - with <b>this:</b> <mark>circle.<b>get</b>defautlLocation();</mark>
+</pre>
+
+<p><b>Example above:</b> - its calling as a <b>METHOD.</b><br>
+IT would be NICER - If we could <b>access</b> this <b>PROPOERTY</b> - like this:<br>
+<b><mark>circle.defaultLocation;</mark></b></p>
+<pre>
+	function Circle(radius){
+		this.radius = radius;
+
+		let defaultLocation = {x: 0, y: 0};
+
+		<b>this.getDefaultLocation = function() {
+			return defaultLocation}</b>
+
+		this.draw = function(){
+			computeOptimumLocation(0.1);
+
+			console.log('draw');
+		};
+		<b><mark>Object.defineProperty(this, 'defaultLocation', {
+				get: function() {
+					return defaultLocation;
+				}	
+			});</mark></b>
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+
+	*This <b><mark>Object</mark></b> - has a <b>method</b> call: <b><mark>defineProperty</mark></b>
+	<b><mark>defineProperties</mark></b> - if you want to <b>define MULTIPLE PROPERTIES - IN ONE</b>
+
+	<b>The first argument</b> - of this method is - <b>the OBJECT that we want to ADD a NEW Property To.</b>
+	The <b>object</b> is the ONE that is referenced by <b>this</b>: (the new Circle OBJECT): Object.defaultLoation<mark>(<b>this</b>,)</mark>
+	The <b>second ARGUMENT</b> is <b>the NAME of OUR PROPERTY:</b> Object.defaultLoation<mark>(this, <b>'defaultLocation'</b>)</mark>
+	The <b>third ARGUMENT</b> is <b>an OBJECT</b> (WITH key:value pair).
+	The <b>key is <mark>get:</mark></b> and <b>the value is a <mark>function(){}</mark></b>
+
+	So - when we <b>access>:</b> <mark>circle.defaultLocation</mark> - this function: <mark> get: function() {...}</mark> - <b>will be CALLED.</b>
+
+	This <b>var:</b> return <mark>defaultLocation;</mark> - (of this INNERFunction) - is part of a <b>CLOSURE</b>. | So <mark>here</mark> we can <b>access it.</b>
+
+	F12: type: circle.
+	
+	<mark>get defaultLocation: f()...</mark> - a <b>GETTER/getter</b> - is a FUNCTION - <b>that is USED to read a PROPERTY.</b>
+	In our case: <b><mark>'defaultLocation'</mark></b> - os our READ ONLY Porperty.
+</pre>
+
+<p>SET - the VALUE of this property - <b>from the outside:</b> - defining a <b>SETTER.</b></p>
+<pre>
+	In <b>this Obj</b> <MARK>Object.defineProperty(...)</MARK> - we <b>add a KEY:VALUE pair:</b>
+
+	function Circle(radius){
+		this.radius = radius;
+
+		let defaultLocation = {x: 0, y: 0};
+
+		<b>this.getDefaultLocation = function() {
+			return defaultLocation}</b>
+
+		this.draw = function(){
+			computeOptimumLocation(0.1);
+
+			console.log('draw');
+		};
+		<b>Object.defineProperty(this, 'defaultLocation', {
+				get: function() {
+					return defaultLocation;
+				}<mark>,</mark>
+			<mark>set: function(value){
+				defaultLocation = value;
+				}</mark>
+			});</b>
+	}
+
+	const circle = new Circle(10);
+	circle.draw();
+
+	*<b>We can set this: <mark>defaultLocation = </mark></b> that is <b>= value;</b> (????)
+	In this function: <mark>set: function() {...}</mark> - <b>we can perform SOME VALIDATION</b> (for this <mark>value</mark>) - before <b>setting to the:</b> <mark>defaultlocation = </mark>
+
+	function Circle(radius){
+		this.radius = radius;
+
+		let defaultLocation = {x: 0, y: 0};
+
+		<b>this.getDefaultLocation = function() {
+			return defaultLocation}</b>
+
+		this.draw = function(){
+			computeOptimumLocation(0.1);
+
+			console.log('draw');
+		};
+		Object.defineProperty(this, 'defaultLocation', {
+			get: function() {
+				return defaultLocation;
+			},
+			set: function(value){
+				<b><mark>if(!value.x || !value.y)
+					throw new Error('Invalid location.');
+				</mark></b>
+				defaultLocation = value;
+			}
+			});
+	}
+
+	const circle = new Circle(10);
+	<mark><b>circle.defaultLocation = 1;</b></mark>
+	circle.draw();
+</pre>
+<p>Use <mark>Object.defineProperty(., ., {})</mark> - <b>to define GETTERS or/and SETTERS.</b></p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

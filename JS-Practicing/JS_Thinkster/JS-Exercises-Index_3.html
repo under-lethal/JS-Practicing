@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Exercises 3</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<body>
+<h2>JavaScript Fundamentals - Strings, Numbers, & Dates</h2>
+
+<h3>Working with Strings</h3>
+<h4>Slice and Split</h4>
+<pre>
+< p id="s1">< /p>
+< script type="text/javascript">
+	const name = "Preston";
+	document.getElementById('s1').innerHTML  = <mark>name.slice(0, 4);</mark>
+< /script>
+
+</pre>
+<p id="s1"></p>
+<script type="text/javascript">
+	const name = "Preston";
+	document.getElementById('s1').innerHTML  = name.slice(0, 4);
+</script>
+<p>This method takes a <b>startIndex</b> and an <b>endIndex</b>, and it returns the characters between those two indexes, <i>stopping at the character before the endIndex</i>.</p>
+
+<pre>
+	const phone = 888-111-2222;
+	console.log(phone.split('-')); // ['888', '111', '2222']
+</pre>
+<p id="s2"></p>
+<script type="text/javascript">
+	const phone = '888-111-2222';
+	document.getElementById('s2').innerHTML = phone.split('-');
+</script>
+<p>In this example we told JavaScript to break the phone string into pieces every time it sees the dash character. The result is an array with three pieces.</p>
+
+<h3>Template Strings</h3>
+<p>Template strings are another great part of JavaScript. They're functionally the exact same as normal strings in JavaScript, but they're defined with backticks instead of single or double quotes.</p>
+<pre>
+< p id="ts">< /p>
+< p id="ts1">< /p>
+< script type="text/javascript">
+	const templateString = <mark>`Hello there ${name}!`;</mark>
+	const concatenated = 'Hello there, ' + name + '!';
+	document.getElementById('ts').innerHTML = <mark>templateString;</mark>
+	document.getElementById('ts1').innerHTML = concatenated;
+< /script>
+</pre>
+<p id="ts"></p>
+<p id="ts1"></p>
+<script type="text/javascript">
+	const templateString = `Hello there ${name}!`;
+	const concatenated = 'Hello there, ' + name + '!';
+	document.getElementById('ts').innerHTML = templateString;
+	document.getElementById('ts1').innerHTML = concatenated;
+</script>
+
+<h3>Numbers</h3>
+<pre>
+< p id='n'>< /p>	
+< script type="text/javascript">
+	const circumference = 2 * 3.14 * 4;
+	const realCircumference = 2* Math.PI * 4;
+	document.getElementById('n').innerHTML = circumference + '< br>' + realCircumference;
+< /script>
+</pre>
+<p id='n'></p>	
+<script type="text/javascript">
+	const circumference = 2 * 3.14 * 4;
+	const realCircumference = 2* Math.PI * 4;
+	document.getElementById('n').innerHTML = circumference + '<br>' + realCircumference;
+</script>
+
+<h3>Dates</h3>
+<pre>
+< p id="nd">< /p>
+< script type="text/javascript">
+	const date = new Date();
+	document.getElementById('nd').innerHTML = date + '< br>' + date.toISOString() + '< br>' + date.getDay();
+< /script>
+</pre>
+<p id="nd"></p>
+<script type="text/javascript">
+	const date = new Date();
+	document.getElementById('nd').innerHTML = date + '<br>' + date.toISOString() + '<br>' + date.getDay();
+</script>
+<pre>
+The <b>toISOString() method</b> returns a date object as a string, using the <mark>ISO standard.</mark>
+The standard is called ISO-8601 and the format is: <mark>YYYY-MM-DDTHH:mm:ss.sssZ</mark>
+
+<b>Date.now()</b> returns the number of milliseconds since January 1, 1970.
+const mar12020 = new Date('2020-03-01');
+console.log(mar12020);
+console.log(Date.now());
+Sun Mar 01 2020 02:00:00 GMT+0200 (Eastern European Standard Time)
+//1649346251430
+</pre>
+
+<h4>The basics of working with dates. You can create a (new Date OBJECT) like this:</h4>
+<pre>
+< p id='nd'>< /p>
+< script type="text/javascript">
+	const today = new Date();
+	<mark>const mar1_2020 = new Date('2020-03-01');</mark>
+	document.getElementById('nd').innerHTML = today + '< br>' + mar1_2020;
+
+	You can pass a string in that represents a particular day. The format can be seen above, YYYY-MM-DD.
+	You can also get a reference to a current point in time by calling the Date.now() method.
+	This method returns the number of milliseconds that have elapsed since Jan 1, 1970. 
+	Many applications will save this number in a database to timestamp when something occurred. 
+	You can pass that number into the Date constructor as well to create a date reference at a particular moment.
+</pre>
+
+<h4>Thinkster Exercises</h4>
+<h5>1. Print out a message with the following variable in a template string</h5>
+<pre>
+< p id="ts2">< /p>
+< script type="text/javascript">
+	const dogName = 'Duke';
+	document.getElementById('ts2').innerHTML = `This dog name is ${dogName}.`
+< /script>
+</pre>
+<p id="ts2"></p>
+<script type="text/javascript">
+	const dogName = 'Duke';
+	document.getElementById('ts2').innerHTML = `This dog name is ${dogName}.`
+</script>
+
+<h5>2. Split the following string on the periods and output the resulting array.</h5>
+<pre>
+< p id="spl">< /p>
+< script type="text/javascript">
+	const statement2 = 'This is a long string. Split it on the periods. The result is an array.'
+	function splitThat(){
+		return statement2.split('.');
+	}
+	document.getElementById('spl').innerHTML = splitThat();
+< /script>
+</pre>
+<p id="spl"></p>
+<script type="text/javascript">
+	const statement2 = 'This is a long string. Split it on the periods. The result is an array.'
+	function splitThat(){
+		return statement2.split('.');
+	}
+	document.getElementById('spl').innerHTML = splitThat();
+</script>
+
+<h5>3. Log the circumference of a circle using the Math object and the following information.
+  // 2 * radius * PI</h5>
+  <pre>
+  < p id="pi">< /p>
+< script type="text/javascript">
+	const radius = 2;
+	const circumference2 = 2 * radius * Math.PI;
+	document.getElementById('pi').innerHTML = circumference2;
+< /script>
+  </pre>
+<p id="pi"></p>
+<script type="text/javascript">
+	const radius = 2;
+	const circumference2 = 2 * radius * Math.PI;
+	document.getElementById('pi').innerHTML = circumference2;
+</script>
+
+<h5>4. Print out the current time in milliseconds</h5>
+<pre>
+< p id="ms">< /p>
+< script type="text/javascript">
+	const myDate = Date.now();
+	document.getElementById('ms').innerHTML = myDate;
+< /script>
+</pre>
+<p id="ms"></p>
+<script type="text/javascript">
+	const myDate = Date.now();
+	document.getElementById('ms').innerHTML = myDate;
+</script>
+
+<h5>5. Print out a date object referencing Jan 1, 2020</h5>
+<pre>
+< p id="do">< /p>
+< script type="text/javascript">
+	const oldDate = new Date('Jan 1, 2020');
+	document.getElementById('do').innerHTML = oldDate;
+< /script>
+</pre>
+<p id="do"></p>
+<script type="text/javascript">
+	const oldDate = new Date('Jan 1, 2020');
+	document.getElementById('do').innerHTML = oldDate;
+</script>
+
+<h2>Objects in JavaScript</h2>
+<h4>Objects in JavaScript are very important. We use them to store data and information about the application.</h4>
+<h4>Creating objects in JavaScript is straightforward: you just need a set of opening and closing curly brackets. Inside the brackets you put key value pairs that store data.</h4>
+<pre>
+	const dog = {
+    name: 'Duke'
+}
+</pre>
+<h4>The <mark>key</mark> is on the LEFT	side (name), and the <mark>value</mark> on the RIGHT (:Duke)<br>
+The <mark>value</mark> can be ANY DATA TYPE YOU WANT: (number, boolean, string, array or another Object).</h4>
+<h4>When you DECLARING <mark>key names</mark>, you can use (numbers, letters and _underscores).<br>
+(dashes and spaces) are not allowed - unles you <mark>WRAP</mark> the <mark>key name</mark> in ("") quotation marks.</h4>
+
+<p>You add data to objects in key-value pairs. That means <mark>that on the left is the key</mark> (or <b>attribute</b>) name and on the right is the value.<br>The keys and values are separated by colons. Here's an example:</p>
+<pre>
+	const dog = {
+		name: 'Duke''
+		breed: 'Labrador',
+	}
+</pre>
+
+<h5>In the example above - I have TWO KEYS: (mane & breed). The <mark>values</mark> for those keys are ('Duke' and 'Labrador').</h5>
+
+<h5>the other thing (about OBJECTS) - they can store (the value of a key - that can be another OBJECT)<br> an Array <br> a string, <br> a number. <br>
+Objects can literally hold anything you want inside of them.</h5>
+<pre>
+	const person = {
+		<mark>name:</mark> {
+			first: 'Preston',
+			last: 'Lamb',
+		},
+		<mark>hobbies:</mark> ['coding', 'reading', 'basketball'],
+	};
+</pre>
+
+<h5>One other thing about object keys is that THEY CAN'T HAVE (- dashes or spaces) - in the name of the key unless the key is delared and WRAPED in (single or double quotes).</h5>
+<pre>
+	const person = {
+		<mark>'first-name'</mark>: 'Preston',
+		<mark>'last-name'</mark>: 'Lamb',
+	}
+	console.log(person<mark>[</mark>'first-name'<mark>]</mark>);
+	console.log(person['last-name']);
+</pre>
+
+<h3>Accessing Key Values</h3>
+<h4>After we create an object, we'll eventually need to acces the data stored inside the keys on the object. We can do that in TWO ways.<br>
+1.The . dot notation. <br>
+2.The [] bracket notation.</h4>
+
+<pre>
+	const dog = {
+		name: 'Duke'
+	}
+	c.log(dog<mark>.</mark>name) //Duke	
+</pre>
+<p>1.Take the NAME of the OBJECT - and add a period.<br>
+	2. Then <mark>the name of the KEY</mark> - we want to acces.<br>
+	3. DOT Notation works for every type of key - you can declare - UNLESS there's a <mark>DASH</mark> or <mark>SPACE</mark> - in the Key Name. That's were "bracket notation" comes in handly.</p>
+
+<pre>
+	const person = {
+		<mark>'first-name'</mark>: 'Preston',
+		'last-name':'Lamb'
+	}
+	console.log(person<mark>['</mark>first-name<mark>']</mark>); // Preston
+	const last = 'last-name';
+	console.log(person[last]); // Lamb
+</pre>
+
+<h3>Freezing Objects (???)</h3>
+<p>Tehre are times when <b>you don't want the data in your object to change</b> - but (unfortunately) JS will let you change the VALUE of a KEY - on an Object - even if you use the const keyword.<br>
+Luckily, There is a built-in (object) class (similar to Math) - that PROVIDES a METHOD called "freeze" - <b>that will make it  - so the OBJECT and it's DATA - is <u>read-only</u>. <br>
+But, fotr it to work, you first need yo put the file in STRICT MODE ('use strict').</b></p>
+<pre>
+	'use strict'
+
+	//After that - you call the "freeze Method" - and pass in an object:
+
+	const dog = {
+		name: "Max",
+	}
+	<mark>Object.freeze(dog)</mark>;
+
+	// Now that the object is frozen - <b>WE CAN CHANGE the VALUE of any KEY - or ADD A KEY TO AN OBJECT</b>
+	<mark>dog.name = 'Duke';</mark> // Error Cannot assign to read only property 'name' of object
+	<mark>dog.age = 3;</mark> // Error Cannot add property age, object is not extensible.
+</pre>
+<p>This will work in most situation, except if you try and reassign THE ENTIRE VALUE of the variable - to a new Object.</p>
+<pre>
+< p id="fr">< /p>
+< script type="text/javascript">
+	const dog = {name: 'Stella'}
+	<mark>Object.freeze(dog);</mark>
+	<mark>dog.name = 'Radar';</mark>
+	document.getElementById('fr').innerHTML = dog.name;
+< /script>
+</pre>
+<p id="fr"></p>
+<script type="text/javascript">
+	const dog = {name: 'Stella'}
+	Object.freeze(dog);
+	dog.name = 'Radar';
+	document.getElementById('fr').innerHTML = dog.name;
+</script>
+
+<h5>Youtube Example</h5>
+<pre>
+< p id="yt">< /p>
+< p id="yt1">< /p>
+< script type="text/javascript">
+	const profile = {
+		name:"Sergiu",
+		address: {
+			city: 'NewYork'
+		}	
+	}
+	Object.freeze(profile);
+	document.getElementById('yt').innerHTML = Object.isFrozen();
+	profile.name = 'Adam';
+	document.getElementById('yt1').innerHTML = profile.name;
+
+	<mark>//<b>Once you FROZEN the Object - you're not able to add/change the new properties to it.</b></mark>
+</pre>
+<p id="yt"></p>
+<p id="yt1"></p>
+<script type="text/javascript">
+	const profile = {
+		name:"Sergiu",
+		address: {
+			city: 'NewYork'
+		}	
+	}
+	Object.freeze(profile);
+	document.getElementById('yt').innerHTML = Object.isFrozen();
+	profile.name = 'Adam';
+	document.getElementById('yt1').innerHTML = profile.name;
+</script>
+<h4>Freezing Objects</h4>
+<p>After you've created an object, there's nothing that can stop you from adding keys to the object, deleting keys from it, or editing the value of existing keys.<br>
+	If you use the const keyword, you can prevent the location in memory where the object is stored from changing, but the object can still be changed.<br>
+Luckily, there is a built in function for us to help, and it's called the freeze method.<br> 
+For it to work as expected, though, you need to remember to put your file in <mark>strict mode</mark>.<br>
+Here's an example of using the freeze method:</p>
+<pre>
+<mark>'use strict';</mark>
+
+const pizza = {
+  name: 'Pepperoni',
+  price: 7,
+  ingredients: ['cheese', 'pepperoni'],
+};
+
+Object.freeze(pizza);
+
+pizza.name = 'Pepperoni Pizza'; // Cannot assign to read only property 'name' of object
+delete pizza.price; // Cannot delete property 'price' of object
+
+pizza = {
+  name: 'Pepperoni',
+  price: 7,
+  ingredients: ['cheese', 'pepperoni', 'marinara'],
+}; // Assignment to constant variable
+</pre>
+
+<h4>Exercises</h4>
+<p>1. Create a new object called person, with a firstName key and a lastName key. <br>
+Put your first and last name as values to those keys.<br>
+2. Log the firstName key using dot notation. <br>
+3. Log the lastName key using bracket notation.<br>
+4. Freeze the object you created above.<br>
+5. Try and change an attribute on the object. If you don't see the expected behavior, make the necessary fix so that the freeze method works.</p>
+<pre>
+< p id="ex1">< /p>
+< p id="ex2">< /p>
+< script type="text/javascript">
+	let person = {
+		firstName: 'John',
+		'lastName': 'Doe',
+	}
+	document.getElementById('ex1').innerHTML = person.firstName;
+	document.getElementById('ex2').innerHTML = person['lastName'];
+< /script>
+</pre>
+<p id="ex1"></p>
+<p id="ex2"></p>
+<script type="text/javascript">
+	let person = {
+		firstName: 'John',
+		'lastName': 'Doe',
+	}
+	document.getElementById('ex1').innerHTML = person.firstName;
+	document.getElementById('ex2').innerHTML = person['lastName'];
+</script>
+
+<p id="ex3"></p>
+<p id="ex4"></p>
+<script type="text/javascript">
+	'use strict'
+	let person1 = {
+		firstName: 'Alen',
+		'lastName': 'Delone',
+	}
+	Object.freeze(person1);
+	person1.firstName = 'Adam';
+	document.getElementById('ex3').innerHTML = person1.firstName;
+	person1.lastName = 'Steward';
+	document.getElementById('ex4').innerHTML = person1['lastName'];	
+</script>
+
+<h4>Stringify-ing Objects and Parsing Objects</h4>
+
+<p>When you're debuggin your application that you need to print an object to the console so you can see what information was in the object at a given time.<br>
+The JSON class's <mark>stringify</mark> method is perfect for doing this.<br>
+It prints the object out as a STRING instead of as a REAL OBJECT.</p>
+<pre>
+< p id="so">< /p>
+< script type="text/javascript">
+	const pizza = {
+		name: 'Peperoni',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so').innerHTML = <mark>JSON.stringify(pizza);</mark>
+< /script>
+</pre>
+<p id="so"></p>
+<script type="text/javascript">
+	const pizza = {
+		name: 'Peperoni',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so').innerHTML = JSON.stringify(pizza);
+</script>
+<h5>If you want the object to print out with indentation instead of on one line, you call the function like this:</h5>
+<pre>
+	console.log(JSON.stringify(pizza, null, 2)); 
+
+/* Console:
+{
+    "name":"Pepperoni",
+    "price":8,
+    "toppings":[
+        "marinara",
+        "cheese",
+        "pepperoni"
+    ]
+}
+*/
+</pre>
+<p id="so1"></p>
+<script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		price: 8,
+		toppings: ['mariana', 'cheese', 'peperoni']
+	}
+	document.getElementById('so1').innerHTML = JSON.stringify(pizza1, null, 2);
+</script>
+
+<h5>Finally, if you want to remove any information from the printed string (for example, sensitive information), you can pass in an array of strings.<br> The array that's passed in should include the strings you want to keep in the printed object:</h5>
+<pre>
+	console.log(JSON.stringify(pizza, <mark>['name', 'price']</mark>, 2)); 
+
+/* Console:
+{
+    "name":"Pepperoni",
+    "price":8
+}
+*/
+</pre>
+
+<h5>To convert a string to an object, you can do the following:</h5>
+<pre>
+	<mark>const pizzaString = JSON.stringify(pizza);
+	const newPizzaObject = JSON.parse(pizzaString);</mark>
+</pre>
+
+
+<h3>Object's Keys</h3>
+<p>Somethimes you will need to do something with the keys on an object.<br>
+Maybe you want to <mark>OUTPUT</mark> what information is available on the OBJECT.<br>
+or, you want to <mark>CREATE</mark> a <b>new object</b> (with the same data) but changing the KEY NAMES.<BR>
+Having acces to what those keys are - would be really.</p>
+<pre>
+< p id="ok">< /p>
+< script type="text/javascript">
+	const dog = {
+		name: 'Duke',
+		age: 3
+	}
+	document.getElementById('ok').innerHTML = <mark>Object.keys(dog)</mark>; // <mark>['name', 'age']</mark>
+</script>
+</pre>
+<p id="ok"></p>
+<script type="text/javascript">
+	const dog = {
+		name: 'Duke',
+		age: 3
+	}
+	document.getElementById('ok').innerHTML = Object.keys(dog);
+</script>
+
+<h4>Thinkster Exercises</h4>
+<p>1. Log the keys of the following object as an array.<br>
+2. Loop over the above keys and print the keys to the console in all caps.<br>
+3. Convert the above object to a string, stored in a variable, and print it to the console with all the keys and spacing set to 3.<br>
+4. Convert the above object to a string but remove the price of the pizza and spacing set to 2.<br>
+5. Take the string representation of the pizza object from 3 or 4 and convert it back to an object.<br> Print the object to the console.</p>
+
+<pre>
+	< p id="ex5">< /p>
+	< p id="ex6">< /p>
+	< p id="ex7">< /p>
+	< p id="ex8">< /p>
+	< p id="ex9">< /p>
+	< script type="text/javascript">
+		const pizza2 = {
+	  name: 'pepperoni',
+	  price: 8,
+	  toppings: ['marinara', 'cheese', 'pepperoni']
+	}
+	const keys = Object.keys(pizza2);
+	document.getElementById('ex5').innerHTML = keys;
+	
+	//2
+	let newPizza = '';
+	for(let x in pizza2){
+		newPizza += x  + " ";
+	}
+	document.getElementById('ex6').innerHTML = newPizza.toUpperCase();
+	
+	//3
+	const pizzaString = JSON.stringify(pizza2, null, 3);
+	document.getElementById('ex7').innerHTML = pizzaString;
+	
+	//4
+	const pizzaString1 = JSON.stringify(pizza2,['name', 'toppings']);
+	document.getElementById('ex8').innerHTML = pizzaString1;
+	
+	//5
+	const newPizzaObject = JSON.parse(pizzaString);
+	document.getElementById('ex9').innerHTML = newPizzaObject;
+	
+	< /script>
+</pre>
+
+<p id="ex5"></p>
+<p id="ex6"></p>
+<p id="ex7"></p>
+<p id="ex8"></p>
+<p id="ex9"></p>
+<script type="text/javascript">
+	const pizza2 = {
+  name: 'pepperoni',
+  price: 8,
+  toppings: ['marinara', 'cheese', 'pepperoni']
+}
+const keys = Object.keys(pizza2);
+document.getElementById('ex5').innerHTML = keys;
+
+//2
+let newPizza = '';
+for(let x in pizza2){
+	newPizza += x  + " ";
+}
+document.getElementById('ex6').innerHTML = newPizza.toUpperCase();
+
+//3
+const pizzaString = JSON.stringify(pizza2, null, 3);
+document.getElementById('ex7').innerHTML = pizzaString;
+
+//4
+const pizzaString1 = JSON.stringify(pizza2,['name', 'toppings']);
+document.getElementById('ex8').innerHTML = pizzaString1;
+
+//5
+const newPizzaObject = JSON.parse(pizzaString);
+document.getElementById('ex9').innerHTML = newPizzaObject;
+
+</script>
+
+</body>
+</html>

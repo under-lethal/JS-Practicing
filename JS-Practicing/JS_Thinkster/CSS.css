@@ -1,0 +1,49 @@
+		body {
+			font-family: Verdana, Arial, Helvetica;
+			counter-reset: section;
+			font-size: 15px;
+			padding: 25px;
+		}
+		
+		h1 {counter-reset: subsection;
+			text-decoration: underline;
+		}
+
+		h1::before{
+			counter-increment: section;
+			content: counter(section)". ";
+		}
+		
+		h2::before{
+			counter-increment: section;
+			content: counter(section) "." counter(subsection)" ";
+		}
+
+		hr{
+			height: 0.1px;
+			color: lightgray;
+		}
+
+		p{
+			padding-left: 15px;
+			color: grey;
+		}
+		
+		span{
+			color: red;
+		}
+
+		button {
+			background-color: darkgrey;
+			border:none;
+			color: white;
+			padding: 10px;
+			margin-left: 15px;
+			display:inline-block;
+			cursor:pointer;
+			border-radius: 4px;
+		}
+		pre {
+			color: white;
+			background-color: lightgrey;
+		}

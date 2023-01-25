@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Exercises 2</title>
+	<link rel="stylesheet" href="CSS.css">	
+</head>
+<h2>JavaScript Loops</h2>
+
+<h3>Basic Loop</h3>
+
+<pre>
+	< p id="lp">< /p>
+	
+	const points = [1,2,3,4];
+	document.getElementById('lp').innerHTML = points;
+
+</pre>
+<p id="lp"></p>
+<script type="text/javascript">
+	const points = [1,2,3,4];
+document.getElementById('lp').innerHTML = points;
+</script>
+
+<pre>
+	< p id="lp1">< /p>
+	const arr = [1,2,3,4];
+	for (let i  = 0; i < arr.length; i++){
+  document.getElementById('lp1').innerHTML = arr;
+	}
+</pre>
+<p id="lp1"></p>
+<script type="text/javascript">
+	const arr = [1,2,3,4];
+	for (let i  = 0; i<arr.length; i++){
+document.getElementById('lp1').innerHTML = arr;
+}
+</script>
+
+<pre>
+< p id="lp2">< /p>
+< script>
+var ourArray = [];
+for (var i = 0; i <= 5; i++){
+	ourArray.push(i);
+}
+document.getElementById('lp2').innerHTML = ourArray;
+</script>
+</pre>
+
+<p id="lp2"></p>
+<script>
+var ourArray = [];
+for (var i = 0; i <= 5; i++){
+	ourArray.push(i);
+}
+document.getElementById('lp2').innerHTML = ourArray;
+</script>
+<h3>JS For Loop</h3>
+<pre>
+	< p id="lp3">< /p>
+	< script>
+		let cars = ['Audi','BMW','Citroen','Fiat','Ford'];
+		let text = "";
+		for (let i = 0; i < cars.length; i++){
+			text += cars[i] + ", ";
+		}
+		document.getElementById('lp3').innerHTML = text;
+	< /script>
+</pre>
+<p id="lp3"></p>
+<script>
+	let cars = ['Audi','BMW','Citroen','Fiat','Ford'];
+	let text = "";
+	for (let i = 0; i < cars.length; i++){
+		text += cars[i] + ", ";
+	}
+	document.getElementById('lp3').innerHTML = text;
+</script>
+
+<pre>
+	< p id="lp4">< /p>
+	< script>
+		let text = "";
+		for (let i = 0; i < 5; i++){
+			text += "The number is: "  + i + " ";
+		}
+		document.getElementById('lp4').innerHTML = text;
+	< /script>
+</pre>
+<h3>Display numbers between 1 and 5</h3>
+<p id="lp4"></p>
+<script>
+	let text1 = "";
+	for (let i = 0; i < 5; i++){
+		text1 += "The number is: "  + i + "<br>";
+	}
+	document.getElementById('lp4').innerHTML = text1;
+</script>
+
+<h3>Display ODD numbers between 0 - 10</h3>
+<pre>
+< p id="lp5">< /p>
+< script>
+	for(let j = 0; j <= 10; j++){
+		if(j % 2 !== 0){
+			document.getElementById('lp5').innerHTML = j;
+		}
+	}
+< /script>
+</pre>
+<p id="lp5"></p>
+<script>
+	let oddNumbers = '';
+	for(let j = 0; j <= 10; j++){
+		if(j % 2 !== 0){
+			oddNumbers += j + " ";
+		}		
+	}
+	document.getElementById('lp5').innerHTML = oddNumbers;
+</script>
+
+<h3>Reverse an Array</h3>
+<pre>
+< p id="lp6">< /p>
+< script>
+	let names = ['Alen', 'Byonic', 'Cassandra', 'Doe'];
+	let numNames = '';
+	for (let i = names.length - 1 ; i >=0; i--){
+		numNames += names[i] + " ";
+	}
+	document.getElementById('lp6').innerHTML = numNames;
+< /script>
+
+1. declare a variable (because we want to assing in multiple times) - and we've got a new STRING - '' blank at the moment.
+2. set our "for() loop". 
+2.1 "let i = names.length - 1" -we just take "1" away (from that) simply because - the length will be greater than the array THAT WE WANT TO USE.
+3. we'll keep that "forloop" going - until/or while "i" is >= 0; 
+4. we're going to substract "--1" - from each time the "forloop" - runs.
+5. each time the "forloop" ITERATES (and goes round) - numNames += names[i] + " ";
+5.1 names[i] - each time we're going to add on, the character that's in the original string, at position "i".
+... we can start at the end of the string (work our way backwords) - adding EACH CHARACTER to the "numNames" - each time.
+
+6. names.length is 4, name.length-1 = 3. As long as i >= 0, each time I come through i = i - 1/ i--;
+</pre>
+<p id="lp6"></p>
+<script>
+	let names = ['Alen', 'Byonic', 'Cassandra', 'Doe'];
+	let numNames = '';
+	for (let i = names.length - 1 ; i >=0; i--){
+		numNames += names[i] + " ";
+	}
+	document.getElementById('lp6').innerHTML = numNames;
+</script>
+
+<h4>Print another array of STRING Names</h4>
+<pre>
+	< p id="fl">< /p>
+< script>
+	var names1 = ['Jeff', 'Donnie', 'Walter', 'Bunny', 'Karl', 'Brandt', 'Jackie', 'Maude'];
+	var namesLength = names1.length;
+
+	//initialize; test; increment;
+	var newNames = '';
+	for(let i = 0; i < namesLength; i++){
+		 newNames += names1[i] + " ";
+	}
+	document.getElementById('fl').innerHTML = newNames;
+< /script>
+</pre>
+<p id="fl"></p>
+<script>
+	var names1 = ['Jeff', 'Donnie', 'Walter', 'Bunny', 'Karl', 'Brandt', 'Jackie', 'Maude'];
+	var namesLength = names1.length;
+
+	//initialize; test; increment;
+	var newNames = '';
+	for(let i = 0; i < namesLength; i++){
+		 newNames += names1[i] + " ";
+	}
+	document.getElementById('fl').innerHTML = newNames;
+</script>
+<pre>
+	names[i]; because i dont' want to print (the same name over and over again) - I want to print all names from the array!
+	i'm actually running, this line of code(c.log(names[i])) - 8 times (or how many items I have in the array).
+</pre>
+
+<h3>The for...of loop</h3>
+<p>The "for...of loop" - is similar to the "for loop", but it will loop over each item in the array...</p>
+<p id="fo"></p>
+<script>
+	 let arr1 = [1,2,3];
+	 let newArr = '';
+	 for (let item of arr1){
+	 	newArr += item + ' ';
+	 }
+	 document.getElementById('fo').innerHTML = newArr;
+</script>
+
+<p>The 'for...of' LOOP throught property VALUES.<br>
+"for of" - loops through ITERABLE(REPREZENTARE a unei serii de elemente care pot fi REPETATE) OBJECTS. (array, maps, set...).<br>
+"for..in" - loops through INUMERABLE (care <mark>NU</mark> se pot NUMARA) OBJECTS.<br>
+for of - will not work on a "person object" - because person is not ITERABLE.</p>
+
+<h4>The "for...of" in Object</h4>
+<h5>It's complicated.</h5>
+<!--<p id="fo1"></p>
+<p id="fo2"></p>
+<script>
+	let person = {fname: "Asaf", lname:"Avidan", eyes:2};
+	let text2 = "";
+	for(let key of Object.keys(person)){
+		text2 += key + " ";
+	document.getElementById('fo1').innerHTML = `${key} => ${person[key]}`;	
+	}
+	document.getElementById('fo2').innerHTML = text2;	
+</script>
+-->
+<h4>The "for...in" in Object</h4>
+<pre>
+< p id="fo3">< /p>
+< script>
+	let person = {fname: "Beau", lname:"Carnes", arms:2};
+	let text2 = "";
+	for(let y in person1){
+		text2 += y + ": " + person1[y] + " ";	
+	}
+	document.getElementById('fo3').innerHTML = text2;	
+< /script>
+
+person[x] - if you put the "property name" in the [x] - you'll gonna get the value of the property.
+</pre>
+<p id="fo3"></p>
+<script>
+	let person1 = {fname:"Beau", lname:"Carnes", arms:2};
+	let text3 = "";
+	for(let y in person1){
+		text3 += y + ": " + person1[y] + " ";
+	};
+	document.getElementById('fo3').innerHTML = text3;	
+</script>
+
+<h4>Another Example: "for...in" in Object</h4>
+<pre>
+< p id="fio">< /p>
+< p id="fio1"></p>
+< script>
+	let data = { name:'John', age:28, martialStatus: true};
+	let newData = '';
+	for (let elem in data){
+		newData += elem + " ";
+	document.getElementById('fio').innerHTML = elem;
+	}
+	document.getElementById('fio1').innerHTML = newData;
+< /script>
+</pre>
+<p id="fio"></p>
+<p id="fio1"></p>
+<script>
+	let data = { name:'John', age:28, martialStatus: true};
+	let newData = '';
+	for (let elem in data){
+		newData += elem + " ";
+	document.getElementById('fio').innerHTML = elem;
+	}
+	document.getElementById('fio1').innerHTML = newData;
+</script>
+
+<h4>Example 3 "for... in" in Object</h4>
+<pre>
+< p id="fio2">< /p>
+< script type="text/javascript">
+	let output = '';
+	let obj = {
+		name: 'Preston',
+		age: 31
+	};
+	for (let key in obj){
+		output += key + ": " + obj[key] + " ";
+	}
+	document.getElementById('fio3').innerHTML = output;
+< /script>
+</pre>
+<p id="fio2"></p>
+<script type="text/javascript">
+	let output = '';
+	let obj = {
+		name: 'Preston',
+		age: 31
+	};
+	for (const key in obj){
+		output += key + ": " + obj[key] + " ";
+	}
+	document.getElementById('fio2').innerHTML = output;
+</script>
+
+<h4>"for...in" in object Exercise 4</h4>
+<pre>
+< p id="fio4">< /p>
+< script type="text/javascript">
+	let object = {a: "John", b: "Doe", c: 30};
+	let newObj = '';
+	for(const property in object){
+		newObj += property +": "+ object[property] + " ";
+	}
+	document.getElementById('fio5').innerHTML = newObj;
+< /script>
+</pre>
+<p id="fio3"></p>
+<script type="text/javascript">
+	let object = {a: "John", b: "Doe", c: 30};
+	let newObj = '';
+	for(const property in object){
+		newObj += property +": "+ object[property] + " ";
+	}
+	document.getElementById('fio3').innerHTML = newObj;
+</script>
+
+<h4>"for...in" in an Array</h4>
+<p>for of - will not work on a "person object" - because person is not ITERABLE.<br>
+The "for...in" - loops through INNUMERABE (care nu se pot numara) PROPERTIES  - while "for...of" loops through ITERABLE (*reprezentare a unor serii de elemente care pot fi repetate) OBJECTS such as (arrays, sets, map).</p>
+
+<h5>The for ... in loop is very similar to the for ... of loop. The only difference is that instead of giving you the item in the array, it gives you the index each time through the loop.</h5>
+<h5>As you can see, we don't need to use index notation to get the item in the array; it's just given to us each time through the array.</h5>
+
+<h5>When you use a for ... of loop, you get access to each element in the array, one each time through the loop. When you use a for ... in loop on an array, however, you get access to the index of each item in the array.</h5>
+<pre>
+	< p id="fi">< /p>
+< script>
+	let numbers1 = [3,5,6];
+	numbers1.foo = 'hello';
+	let otherNum = '';
+	for(let i in numbers1){
+		otherNum += i + " ";
+	}
+	document.getElementById('fi').innerHTML = otherNum;
+< /script>
+
+1. If you Use "for...in" on arrays - it will return (the name of your user defined properties - in addition to the NUMERIC INDEXES). tHIS IS NOT WHAT YOU WANT.
+2. WHEN ITERATING OVER ARRAYS YOU USUALLY WANT - to use a traditional for loop.
+</pre>
+<p id="fi"></p>
+<script>
+	let numbers1 = [3,5,6];
+	numbers1.foo = 'hello';
+	let otherNum = '';
+	for(let i in numbers1){
+		otherNum += i + " ";
+	}	
+	document.getElementById('fi').innerHTML = otherNum;
+</script>
+
+<h4>"for...of" in an Array</h4>
+<pre>
+	< p id="fo5">< /p>
+< script>
+	let numbers2 = [4,5,6];
+	numbers2.foo = 'hello';
+	let newNumbers = '';
+	for(let j of numbers2){
+		newNumbers += j + " ";
+	}
+document.getElementById('fo5').innerHTML = newNumbers;
+< /script>
+</pre>
+<p id="fo5"></p>
+<script>
+	let numbers2 = [4,5,6];
+	numbers2.foo = 'hello';
+	let newNumbers = '';
+	for(let j of numbers2){
+		newNumbers += j + " ";
+	}
+document.getElementById('fo5').innerHTML = newNumbers;
+</script>
+
+<h4>"for...in"/"for...of" in Arrays of Strings.</h4>
+<pre>
+	< p id="fof">< /p>
+< script>
+	let vehicles = ["Audi", "Citroen", "Dodge", "Ferrari"];
+	let newVehicles = '';
+	for (let a in vehicles){
+		newVehicles += [a] + " ";
+	};
+	document.getElementById('fof').innerHTML = newVehicles;
+< /script>
+</pre>
+<p id="fof"></p>
+<script>
+	let vehicles = ["Audi", "Citroen", "Dodge", "Ferrari"];
+	let newVehicles = '';
+	for (let a in vehicles){
+		newVehicles += [a] + " ";
+	};
+	document.getElementById('fof').innerHTML = newVehicles;
+</script>
+
+<pre>
+	< script>
+	let vehicles1 = ["Audi", "Citroen", "Dodge", "Ferrari"];
+	let newVehicles1 = '';
+	for (let b of vehicles1){
+		newVehicles1 += [b] + " ";
+	};
+	document.getElementById('fof1').innerHTML = newVehicles1;
+< /script>
+</pre>
+<p id="fof1"></p>
+<script>
+	let vehicles1 = ["Audi", "Citroen", "Dodge", "Ferrari"];
+	let newVehicles1 = '';
+	for (let b of vehicles1){
+		newVehicles1 += [b] + " ";
+	};
+	document.getElementById('fof1').innerHTML = newVehicles1;
+</script>
+
+<h3>Thinkster Exercises</h3>
+<h4>1. Use a loop to add 2 to the num variable 5 times</h4>
+<pre>
+	< p id="ex1">< /p>
+< script>
+	let num = 0;
+	let num2='';
+	for(let i = 0; i < 5; i++){
+		num2 += i + " ";
+		document.getElementById('ex1').innerHTML = num += 2;
+	}	
+< /script>
+</pre>
+
+<p id="ex1"></p>
+<script>
+	let num = 0;
+	let num2='';
+	for(let i = 0; i < 5; i++){
+		num2 += i;
+		document.getElementById('ex1').innerHTML = num += 2;
+	}	
+</script>
+
+<h4>2. Loop over the pets array and log each of the names to the console</h4>
+<pre>
+	< p id="ex2">< /p>
+< script>
+	let pets = ['Duke', 'Max', 'Apollo', 'Cincy'];
+	let pets1 = '';
+
+	for(const index of pets){
+		pets1 += index + " ";
+	}
+	document.getElementById('ex2').innerHTML = pets1;
+< /script>
+</pre>
+<p id="ex2"></p>
+<script>
+	let pets = ['Duke', 'Max', 'Apollo', 'Cincy'];
+	let pets1 = '';
+
+	for(const index of pets){
+		pets1 += index + " ";
+	}
+	document.getElementById('ex2').innerHTML = pets1;
+</script>
+
+<h4>3. Loop over the pets array and only print out every other one</h4>
+<pre>
+	< p id="ex3">< /p>
+< script>
+	let animals = ['Duke', 'Max', 'Apollo', 'Cincy'];
+	let animals1 = '';
+
+	for(let i = 0; i < animals.length; i+=2){
+		animals1 += animals[i] + " ";
+	}
+	document.getElementById('ex3').innerHTML = animals1;
+< /script>
+</pre>
+<p id="ex3"></p>
+<script>
+	let animals = ['Duke', 'Max', 'Apollo', 'Cincy'];
+	let animals1 = '';
+
+	for(let i = 0; i < animals.length; i+=2){
+		animals1 += animals[i] + " ";
+	}
+	document.getElementById('ex3').innerHTML = animals1;
+</script>
+
+<h4>1. Log each key in the object to the console</h4>
+<pre>
+	< p id="ex4">< /p>
+< script type="text/javascript">
+	let movie = {
+  title: 'Glory Road',
+  releaseYear: '2006',
+  description: 'In 1966, Texas Western coach Don Haskins led the first all-black starting line-up for a college basketball team to the NCAA national championship.',
+  rating: 'PG'
+}
+let movieOutput = '';
+for (let key in movie){
+	movieOutput += key + " ";
+}
+document.getElementById('ex4').innerHTML = movieOutput;
+< /script>
+</pre>
+<p id="ex4"></p>
+<script type="text/javascript">
+	let movie = {
+  title: 'Glory Road',
+  releaseYear: '2006',
+  description: 'In 1966, Texas Western coach Don Haskins led the first all-black starting line-up for a college basketball team to the NCAA national championship.',
+  rating: 'PG'
+}
+let movieOutput = '';
+for (let key in movie){
+	movieOutput += key + " ";
+}
+document.getElementById('ex4').innerHTML = movieOutput;
+</script>
+
+<h4>2. Log the value of each attribute on the object using the for in loop</h4>
+<pre>
+< p id="ex5">< /p>
+< script type="text/javascript">
+	let movie2Output = ''
+	let movie2= {
+  title: 'Glory Road',
+  releaseYear: '2006',
+  description: 'In 1966, Texas Western coach Don Haskins led the first all-black starting line-up for a college basketball team to the NCAA national championship.',
+  rating: 'PG'
+}
+
+for (let key in movie2){
+	movie2Output += movie2[key].toUpperCase() + "< br>";
+}
+document.getElementById('ex5').innerHTML = movie2Output;
+< /script>
+
+</pre>
+<p id="ex5"></p>
+<script type="text/javascript">
+	let movie2Output = ''
+	let movie2= {
+  title: 'Glory Road',
+  releaseYear: '2006',
+  description: 'In 1966, Texas Western coach Don Haskins led the first all-black starting line-up for a college basketball team to the NCAA national championship.',
+  rating: 'PG'
+}
+
+for (let key in movie2){
+	movie2Output += movie2[key].toUpperCase() + "<br>";
+}
+document.getElementById('ex5').innerHTML = movie2Output;
+</script>
+
+<h3>for...each</h3>
+<h4>The method takes a function (as the argument), and loops over each item in the array:</h4>
+<h4>For every Element from (an array) - we're gonna call a Function() (one time for each element from the array) that i put inside of forEach().</h4>
+<pre>
+	< p id="fe">< /p>
+< script type="text/javascript">
+	let numb = [2,4,5];
+	let newNumb = '';
+	numb.forEach(function(item){return item});
+	document.getElementById('fe').innerHTML = newNumb += numb;
+< /script>
+</pre>
+
+<p id="fe"></p>
+<script type="text/javascript">
+	let numb = [2,4,5];
+	let newNumb = '';
+	numb.forEach(function(item){return item});
+	document.getElementById('fe').innerHTML = newNumb += numb;
+</script>
+
+<h4>Another Example:</h4>
+<pre>
+< p id="fe1">< /p>
+< script type="text/javascript">
+	let friends = ['Oscar', 'Angela', 'Kevin'];
+	let friendsOut = '';
+	friends.forEach(function(friend){return friend});
+	document.getElementById('fe1').innerHTML = friendsOut += friends + " ";
+</ script>
+</pre>
+<p id="fe1"></p>
+<script type="text/javascript">
+	let friends = ['Oscar', 'Angela', 'Kevin'];
+	let friendsOut = '';
+	friends.forEach(function(friend){return friend});
+	document.getElementById('fe1').innerHTML = friendsOut += friends + " ";
+</script>
+
+<h4>Example 3:</h4>
+<pre>
+< p id="fe2">< /p>
+< script type="text/javascript">
+	let dwarves = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
+	let dwarvesOut = '';
+	dwarves.forEach(function(item, index){return item, index});
+	document.getElementById('fe2').innerHTML = dwarvesOut += dwarves;
+< /script>
+</pre>
+<p id="fe2"></p>
+<script type="text/javascript">
+	let dwarves = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
+	let dwarvesOut = '';
+	dwarves.forEach(function(item, index){return item});
+	document.getElementById('fe2').innerHTML = dwarvesOut += dwarves + ', ';
+</script>
+
+<h4>Convert all names to lowercase, execpt "Billy"</h4>
+<pre>
+< p id="fe3">< /p>
+< script type="text/javascript">
+	let dwarves2 = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
+	let dwarvesOut2 = '';
+	dwarves2.forEach(function(item){
+		if (item === 'Billy'){
+			item = item.toUpperCase();
+		}else{
+			item = item.toLowerCase();
+		}
+	});
+	document.getElementById('fe3').innerHTML = dwarvesOut2 += dwarves2;
+< /script>
+</pre>
+<p id="fe3"></p>
+<script type="text/javascript">
+	let dwarves2 = ['Bifur', 'Bofur', 'Bombur', 'Billy', 'Kili', 'Oin', 'Golin'];
+	let dwarvesOut2 = '';
+	dwarves2.forEach(function(item){
+		if (item === 'Billy'){
+			item = item.toUpperCase();
+		}else{
+			item = item.toLowerCase();
+		}
+	});
+	document.getElementById('fe3').innerHTML = dwarvesOut2 += dwarves2;
+</script>
+
+
+<h3>"for...each" in Objects</h3>
+<p id="feo"></p>
+<script type="text/javascript">
+	var books = [
+	{
+		title: "Harry Potter",
+		author: "JK Rowling",
+		pages: 300
+	},
+	{
+		title: "Green Eggs & Ham",
+		author: "Dr.Seuss",
+		pages: 25
+	}
+	]
+	var books2 = '';
+	books.forEach(function(book){return book.pages});
+		document.getElementById('feo').innerHTML = books2 += books.pages;	
+</script>
+
+<h3>while, do...while</h3>
+<p>The while and do ... while loops are very similar. They both allow you to run a certain piece of code over and over again until some condition is met.<br> 
+That condition goes inside parentheses after the while keyword.</p>
+<p>The condition, can be anything that you want, as long as it evaluates truthy (if you want to go in to the loop) and will eventually evaulate to falsy.<br> 
+If it never evaluates to falsy, you'll be stuck in an infinite loop, or a you'll be stuck in the loop with no way to exit.<br> 
+So make sure that you provide some sort of expression that can evaluate to both truthy and falsy at least once.</p>
+<p> In this loop, you provide a condition that, until it evaluates as false, will continue running. In this case, you don't need an iterable to loop over. </p>
+<pre>
+	while(expressionIsTrue){// Do whatever you want}
+
+	The do ... while loop is almost the exact same. The only difference is the syntax of how it's started.
+
+	do {//Do whatever you want} while(expression is TRUE)
+</pre>
+<pre>
+< p id="do">< /p>
+< script type="text/javascript">
+	let n = 0;
+	let nPLus = ''
+	while (n < 5){
+		n++;
+	}
+	document.getElementById('do').innerHTML = 'n= ' + n;
+< /script>
+</pre>
+<p id="do"></p>
+<script type="text/javascript">
+	let n = 0;
+	let nPLus = ''
+	while (n < 5){
+		n++;
+	}
+	document.getElementById('do').innerHTML = 'n = ' + n;
+</script>
+<pre>
+< p id="dw">< /p>
+< script type="text/javascript">
+	var i = 0;
+	do {
+		i++;
+		document.getElementById('dw').innerHTML = 'i = ' + i;
+	}
+	while(i < 5);
+< /script>
+</pre>
+<p id="dw"></p>
+<script type="text/javascript">
+	var i = 0;
+	do {
+		i++;
+		document.getElementById('dw').innerHTML = 'i = ' + i;
+	}
+	while(i < 5);
+</script>
+<p>The "do...while loop" is similar. You can create a loop - that EXECUTE UNTIL, that (this condition (i<5) evaluates to FALSE).<br>
+So, the condition is EVALUATED , after EXECUTING THE STATEMENT.(do ...this stuff - while (i < 5).</p>
+<p>Also you can use "break" and "continue"</p>
+<pre>
+	< p id="do1">< /p>
+< script type="text/javascript">
+	let n1 = 0;
+	while (n1 < 10){
+		n1++;
+		if (n1 == 3) continue;
+	}
+	document.getElementById('do1').innerHTML = n1;
+< /script>
+</pre>
+<p id="do1"></p>
+<script type="text/javascript">
+	let n1 = 0;
+	while (n1 < 10){
+		n1++;
+		if (n1 == 3) continue;
+	}
+	document.getElementById('do1').innerHTML = n1;
+</script>
+<p>The "continue COMMAND - means: Not run any code, after that command.<br>
+It skip anything below the "continue", and just gonna go back to the top - and DO another CHECK. (n< 5){n++}</p>
+<p>The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.</p>
+<pre>
+	n = 1, n = 2,   n = 4, n = 5 
+</pre>
+
+<h4>If we "break". "break" -is going to jump out of the loop COMPLETELY.</h4>
+<p>It's not gonna run any more iterations of the loop</p>
+<pre>
+< p id="do2">< /p>
+< script type="text/javascript">
+	let n2 = 0;
+	while (n2 < 10){
+		n2++;
+		if (n2 == 3) break;
+	}
+	document.getElementById('do2').innerHTML = n2;
+< /script>
+</pre>
+<p id="do2"></p>
+<script type="text/javascript">
+	let n2 = 0;
+	while (n2 < 10){
+		n2++;
+		if (n2 == 3) break;
+	}
+	document.getElementById('do2').innerHTML = n2;
+</script>
+
+<h3>break & continue</h3>
+<p>there are many times when you want to stop going through a loop early. You can use "break" keyword:</p>
+<pre>
+< p id="br">< /p>
+< script type="text/javascript">
+	for (var i = 0; i < 5; i++){
+		if ( i === 3) {
+			break;
+		}
+		document.getElementById('br').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="br"></p>
+<script type="text/javascript">
+	for (var i = 0; i < 5; i++){
+		if ( i === 3) {
+			break;
+		}
+		document.getElementById('br').innerHTML = i;
+	}
+</script>
+
+<h4>Stopping Loops</h4>
+<pre>
+< p id="st">< /p>
+< script type="text/javascript">
+	let arr2 = [1,2,3,4,5];
+	for(let i = 0; i < 5; i++){
+		if(i === 3){
+			break;
+		}
+		document.getElementById('st').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="st"></p>
+<script type="text/javascript">
+	let arr2 = [1,2,3,4,5];
+	for(let i = 0; i < 5; i++){
+		if(i === 3){
+			break;
+		}
+		document.getElementById('st').innerHTML = i;
+	}
+</script>
+
+<h4>continue</h4>
+<pre>
+< p id="c">< /p>
+< script type="text/javascript">
+	for(let i = 0; i < 10; i+=1){
+		if (i === 3){
+			continue;
+		}
+		document.getElementById('c').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="c"></p>
+<script type="text/javascript">
+	for(let i = 0; i < 10; i+=1){
+		if (i === 3){
+			continue;
+		}
+		document.getElementById('c').innerHTML = i;
+	}
+</script>
+
+<h3>Thinkster Looping Execises</h3>
+<p>1. "do" a console.log "while" num is less than 10</p>
+<pre>
+< p id="dowh">< /p>
+< script type="text/javascript">
+	let num3 = 0;
+	do{
+		document.getElementById('dowh').innerHTML = 'The Output number is: ' + num3;
+		num3++;
+	}
+	while(num3 < 10);	
+< /script>
+</pre>
+<p id="dowh"></p>
+<script type="text/javascript">
+	let num3 = 0;
+	do{
+		document.getElementById('dowh').innerHTML = 'The Output number is: ' + num3;
+		num3++;
+	}
+	while(num3 < 10);	
+</script>
+
+<h4>2. while num2 < 5, log your favorite movie title to the console</h4>
+<pre>
+< p id='wh1'>< /p>
+< script type="text/javascript">
+	num5 = 0;
+	while (num5 < 5) {
+		document.getElementById('wh1').innerHTML = "Home Front";
+		num5++;	
+	}
+< /script>
+</pre>
+<p id='wh1'></p>
+<script type="text/javascript">
+	num5 = 0;
+	while (num5 < 5) {
+		document.getElementById('wh1').innerHTML = "Home Front";
+		num5++;	
+	}
+</script>
+
+<h4>3. Use a for loop to loop over some code up to 6 times, but break out on the 4th time through the loop.</h4>
+<pre>
+< p id="fl1">< /p>
+< script type="text/javascript">
+	for(let y = 0; y < 6; y++){
+		if (y == 4){
+			break;
+		}
+		document.getElementById('fl1').innerHTML = y;
+	}
+< /script>
+</pre>
+<p id="fl1"></p>
+<script type="text/javascript">
+	for(let y = 0; y < 6; y++){
+		if (y == 4){
+			break;
+		}
+		document.getElementById('fl1').innerHTML = y;
+	}
+</script>
+
+<h4>4. Use a for loop to loop over some code up to 6 times, but skip the 4th time through the loop.</h4>
+<pre>
+< p id="cont">< /p>
+< script type="text/javascript">
+	for(let i =0; i < 6; i++){
+		if (i == 4){
+			continue;
+		}
+		document.getElementById('cont').innerHTML = i;
+	}
+< /script>
+</pre>
+<p id="cont"></p>
+<script type="text/javascript">
+	for(let i =0; i < 6; i++){
+		if (i == 4){
+			continue;
+		}
+		document.getElementById('cont').innerHTML = i;
+	}
+</script>
+
+<h2>Functions in JavaScript</h2>
+<ul>
+	<li>Named/NORMAL Function</li>
+	<li>Anonymous Function (unnamed)</li>
+	<li>Arrow Function(=>)</li>
+	<li>SELF-Invoking Function</li>
+	<li>Function CONSTRUCTOR (Function as a Method)</li>
+	<li>Built-In Function()</li>	
+</ul>
+
+<p>It's also important to know the difference between an argument and a parameter.<br> 
+An argument is the value you pass into a function. <br>
+A parameter is the name you assign that value inside the function.</p>
+<pre>
+function sayHello(name) {
+console.log('Hello ',  name);
+}
+sayHello('Preston');
+</pre>
+<p>In this example, the name variable in the sayHello function is the parameter. When the function is called at the end of the example, 'Preston' is the argument.</p>
+
+<h3>Named Functions()</h3>
+<p>Named functions in JavaScript is just a fancy way to refer to a function that uses the function keyword and then a name you can use as a reference to that function. Here's an example:</p>
+<pre>
+	function myFunction(someParameter) {
+    // Do something
+	}
+</pre>
+<p>A named function has 4 basic parts: the function keyword, the name you give it and use to refer to it, the parameter list, and the body of the function.</p>
+<h5>NAMED Functions can also <u>be assigned</u> to ATTRIBUTES on objects - and then you CALL the Function - on the OBJECT</h5>
+<pre>
+	function sayHi(){
+		console.log(`Hi my name is ${this.name}.`);
+	}
+
+	const person = {
+		name: "Preston Lamb",
+		<b>sayHi</b>
+	}
+	person.sayHi();
+</pre>
+<p id="named"></p>
+<script type="text/javascript">
+	let name0 = '';
+	function sayHi(){
+		document.getElementById('named').innerHTML = name0 += `Hi my name is ${this.name}.`;
+	}
+	const person2 = {
+		name: "Preston Lamb",
+		sayHi
+	}
+	person2.sayHi();
+</script>
+
+<p>NAMED Functions are - one of the most common ways that functions are called in JS.</p>
+<p>One other thing that is important to mention - is HOW TO Return a VALUE from a FUNCTION - using the [return] KEYWORD.</p>
+<pre>
+	function substract(sum1,sum2){
+		return sum1 - sum2;
+	}
+
+	Function takes two parameters [mu1,num2] - and RETURNS the value of "num1"- "num2".
+	That RETURNED VALUE - can be assigned to a VARIABLE, 
+	or LOGGED to the console,
+	or PASSED as the PARAMETER to another Function.
+	</pre>
+	<p id="min"></p>
+	<script type="text/javascript">
+		let minus = '';
+		function substract(sum1, sum2){
+			return sum1 - sum2;
+		}
+		document.getElementById('min').innerHTML = minus += substract(20,10);
+	</script>
+
+<h2>Anonymous Function()</h2>
+<p>Another way you you can create a function - is by assigning a NORMAL Function but it doesn't HAVE A NAME.<br>
+You would only use (these CALLBACKS or by assigning them to a variable).</p>
+	<pre>
+		const myFunction = function (arg1){
+			//Do something
+		};
+		myFunction();
+	</pre>
+
+<p>Anonymus functions in JS are very similar to named functions , (but they don't have an indentifier).</p>
+<p>You can also have functions as <mark>ATTRIBUTES - on OBJECTS.</mark><br>
+These functions have a special name: <mark>METHODS".</mark></p>
+<h4>You can call it a METHOD or a Function</h4>
+<pre>
+< p id="hi">< /p>
+< script type="text/javascript">
+	let hello = '';
+	function sayHi1(){
+		document.getElementById('hi').innerHTML = hello += `Hi my name is ${this.name1}.`;
+	}
+	const person = {
+		name1: 'Preston Lamb',
+		<mark>sayHi1</mark>
+	};
+	<mark>person.sayHi1();</mark>
+< /script>
+</pre>
+<p id="hi"></p>
+<script type="text/javascript">
+	let hello = '';
+	function sayHi1(){
+		document.getElementById('hi').innerHTML = hello += `Hi my name is ${this.name1}.`;
+	}
+	const person = {
+		name1: 'Preston Lamb',
+		sayHi1
+	};
+	person.sayHi1();
+</script>
+
+<h5>or:</h5>
+<pre>
+< p id="hi2">< /p>
+< script type="text/javascript">
+	const person3 = {
+		name2: 'John Doe',
+		<mark>sayHi2()</mark>{
+			document.getElementById('hi2').innerHTML = `My name is ${this.name2}.`
+		}
+	};
+	<mark>person3.sayHi2();</mark>
+</pre>
+<p id="hi2"></p>
+<script type="text/javascript">
+	const person3 = {
+		name2: 'John Doe',
+		sayHi2(){
+			document.getElementById('hi2').innerHTML = `My name is ${this.name2}.`
+		}
+	};
+	person3.sayHi2();
+</script>
+
+<h5>or:(3)</h5>
+<pre>
+< p id="hello">< /p>
+< script type="text/javascript">
+	let aloha = '';
+	const pirate = {
+		name3:'Jack Sparrow',
+		<mark>sayHello: function()</mark>{
+			document.getElementById('hello').innerHTML = aloha += `My name is ${this.name3}.`
+		}
+	};
+	pirate.sayHello();
+< /script>
+</pre>
+<p id="hello"></p>
+<script type="text/javascript">
+	let aloha = '';
+	const pirate = {
+		name3:'Jack Sparrow',
+		sayHello: function(){
+			document.getElementById('hello').innerHTML = aloha += `My name is ${this.name3}.`
+		}
+	};
+	pirate.sayHello();
+</script>
+
+<p>For the most part, you'll use ANONYMOUS Functions as a CALLBACK Functions.</p>
+<pre>
+< p id="food">< /p>
+< script type="text/javascript">
+	let food = '';
+	const pizzas = ['Chesse', 'Pepperoni'];
+	pizzas.forEach(function(pizza){
+		document.getElementById('food').innerHTML = food += pizza;
+	});
+< /script>
+</pre>
+<p id="food"></p>
+<script type="text/javascript">
+	let food = '';
+	const pizzas = ['Chesse', 'Pepperoni'];
+	pizzas.forEach(function(pizza){
+		document.getElementById('food').innerHTML = food += pizza + " ";
+	});
+</script>
+
+<h3>Arow Function</h3>
+<h4>Arrow Function - are great when being used as a CALLBACK, but you don't only have to use them as callbacks.</h4>
+<pre>
+< p id="arrow">< /p>
+< script type="text/javascript">
+	const sayAloha = () => document.getElementById('arrow').innerHTML = 'Hi!';
+	sayAloha();
+< /script>
+</pre>
+<p id="arrow"></p>
+<script type="text/javascript">
+	const sayAloha = () => document.getElementById('arrow').innerHTML = 'Hi!';
+	sayAloha();
+</script>
+
+<h4>2 =></h4>
+<pre>
+< p id="itm">< /p>
+< script type="text/javascript">
+	let items = '';
+	const arrItems = ['Item 1', 'Item 2'];
+	arr.forEach((item0) => document.getElementById('itm').innerHTML = items += item0);	
+< /script>
+
+</pre>
+<p id="itm"></p>
+<script type="text/javascript">
+	let empty = '';
+	const arrItems = ['Item 1', 'Item 2'];
+	arrItems.forEach((item0) => document.getElementById('itm').innerHTML = empty += item0 + " ");	
+</script>
+
+<h4>3 => ???</h4>
+<pre>
+< p id="id">< /p>
+< script type="text/javascript">
+	let human1 = '';
+	const human = {
+		name: 'Josh Groban',
+		doSomething: () => document.getElementById('id').innerHTML = human1 += 'Does Something' //<mark>;</mark> - fara ";"
+	}
+	human.doSomething();
+< /script>
+</pre>
+<p id="id0"></p>
+<script type="text/javascript">
+	let human1 = '';
+	const human = {
+		name: 'Josh Groban',
+		doSomething: () => document.getElementById('id0').innerHTML = human1 += 'Does Something' + ({name: 'Josh Groban'})
+	}
+	human.doSomething();
+</script>
+
+<h5>The first two examples are "one line" arrow functions.<br>
+It's also referred to as implicit return. (there is no "return" keyword used).<br>
+There is no "body" sourounded by curly brackets {}.</h5>
+
+<h5>Some callback Functions (like sort function on an array) - require you to return something from the callback function.</h5>
+
+<h4>Arrow Functions Youtube</h4>
+<h5>1. Has a shoter syntax  than a standard Function<br>
+2. Does not bind it's own "this".<br>
+3. Are best suited for NON Method Functions.<br>
+4. Arrow Function work really well with "higher-order Functions" such as: MAP, FILTER, REDUCE.<br>
+5. Take OTHER Functions as arguments - for processing COLLECTIONS of DATA.</h5>
+
+<h4># ways to write an Arrow Function</h4>
+<pre>
+	(p1,p2) => {statements}
+	(p1,p2) => EXPRESSION // you can put an XPRESSION without curly braces {};
+	(p1,p2) => {return expression} // this one is Equivalent to |^ this one.
+	<mark>If you put the "return" - (it's gonna return the value of this "expression").</mark>
+	<mark>If you don't put the "return" (it's still gonna return the value of this expression) - (as long as THERE is NO CURLY braces).</mark>
+</pre>
+
+<pre>
+	<mark>Parantheses are optional when you use only single parameter.</mark>
+	singleParam => {statements};
+	(singleParam) => {statements}; // these TWo are Equivalnet.
+</pre>
+
+<pre>
+	<mark>If you have NO Parameter - it requires Parameters.</mark>
+	() => {stametemnts}
+	() => {expression}
+	() => {return expression}
+</pre>
+
+<p>NORMAL FUNCTION</p>
+<pre>
+< p id="nf">< /p>
+< script type="text/javascript">
+	var multiply = function(x,y){
+		return x * y;
+	};
+< /script>
+</pre>
+
+<p id="nf"></p>
+<script type="text/javascript">
+	var multiply = function(x,y){
+		return x * y;
+	};
+	document.getElementById('nf').innerHTML = multiply(3,2);
+</script>
+
+<p>ARROW FUNCTION</p>
+<pre>
+< p id="af">< /p>
+< script type="text/javascript">
+	<mark>var multiply1 = (x, y) => {return x * y};</mark>
+	document.getElementById('af').innerHTML = multiply1(2,3);
+< /script>
+
+or
+<mark>var multiply = (x,y) => x*y;</mark>
+</pre>
+<p id="af"></p>
+<script type="text/javascript">
+	var multiply1 = (x, y) => {return x * y};
+	document.getElementById('af').innerHTML = multiply1(2,3);
+</script>
+<h5>Until arrow Functions() - every new functions defines it's OWN "this." VALUE.<br>
+Arrow Function() - does NOT create it's OWN "this." CONTEXT/VALUE. <BR>
+"this." has it's ORIGINAL meaning - for the ENCLOSING Context.</h5>
+
+<p id="af1"></p>
+<script type="text/javascript">
+	function personAge(){
+		this.age = 0;
+
+		setInterval(() => {
+			this.age++;
+		},1000);
+	}
+
+	var p = newPersonAge();
+</script>
+
+<h5>Whenever you're going to return an OBJECT - you always have to put the object in PARANTHESIS.</h5>
+<pre>
+< p id="af2">< /p>
+< script type="text/javascript">
+	let str = '';
+	var func = () => ({name: 'J. Doe'})
+	document.getElementById('af2').innerHTML = func();
+< /script>
+</pre>
+<p id="af2"></p>
+<script type="text/javascript">
+	let str = '';
+	var func = () => ({name: 'J. Doe'})
+	document.getElementById('af2').innerHTML = func();
+</script>
+
+<p>Some callbacks Functions(), (like the sort function on an array)<br>
+for example - require you to RETURN something from callbackFunction().<br>
+If you don't use the implicit <b>return syntax</b> AND INSTEAD use curly brackets {} - make sure the function you provide - uses <b>return</b> keyword.</p>
+
+<h5>If Arrow function() - is returning an OBJECT - you should (either) use {} - (and have a BODY to the Function()) - with the <b>return keyword</b> (that returns an object).</h5>
+<h5>OR - wrap your returned object in the paratheses () - in a ONE LINE arrow Function.</h5>
+<pre>
+< p id="afo">< /p>
+< script type="text/javascript">
+	const dogs = ['Max', 'Duke'];
+	const dogsObjects1 = dogs.map((dog) =>({name: dog}));
+	document.getElementById('afo').innerHTML = dogsObjects1;
+< /script>
+</pre>
+<p id="afo"></p>
+<script type="text/javascript">
+	const dogs = ['Max', 'Duke'];
+	const dogsObjects1 = dogs.map((dog) =>({name: dog}));
+	document.getElementById('afo').innerHTML = dogsObjects1;
+</script>
+
+<h5>Or</h5>
+<pre>
+< p id="afo1">< /p>
+< script type="text/javascript">
+	const dogsObjects2 = dogs.map((dog1) => {
+		return {name: dog1};
+	});
+	document.getElementById('afo1').innerHTML = dogsObjects2;
+< /script>
+</pre>
+<p id="afo1"></p>
+<script type="text/javascript">
+	const dogsObjects2 = dogs.map((dog1) => {
+		return {name: dog1};
+	});
+	document.getElementById('afo1').innerHTML = dogsObjects2;
+</script>
+
+<h3>Arrow Function - Exercises</h3>
+<p>1. Write a named function that logs the "name" parameter to the console.</p>
+<pre>
+< p id="nf1">< /p>
+< script type="text/javascript">
+	function myName(xName){
+		return xName;
+	}
+	document.getElementById('nf1').innerHTML = myName('Hi, my name is Sergiu.');
+< /script>
+</pre>
+<p id="nf1"></p>
+<script type="text/javascript">
+	
+	function myName(xName){
+		return xName;
+	}
+	document.getElementById('nf1').innerHTML =  myName('Hi, my name is Sergiu.');
+</script>
+
+<p>2. Write an arrow function that adds two numbers together using implicit return. Print the result to the console.</p>
+<pre>
+< p id="af3">< /p>
+< script type="text/javascript">
+	var sum3 = (a,b) => {
+		return a + b
+	}
+	document.getElementById('af3').innerHTML = sum3(2,3);
+< /script>
+</pre>
+<p id="af3"></p>
+<script type="text/javascript">
+	var sum3 = (a,b) => {
+		return a + b
+	}
+	document.getElementById('af3').innerHTML = sum3(2,3);
+</script>
+
+<p>or</p>
+<pre>
+< p id='af4'>< /p>
+< script type="text/javascript">
+	const add = (x,y) => {return x  + y};
+	<mark>const sumXY</mark> = <mark>add</mark>(3,2);
+	document.getElementById('af4').innerHTML = sumXY;
+< /script>
+</pre>
+<p id='af4'></p>
+<script type="text/javascript">
+	const add = (x,y) => {return x + y};
+	const sumXY = add(3,2);
+	document.getElementById('af4').innerHTML = sumXY;
+</script>
+
+<p>3. Write an arrow function that subtracts two numbers, not using implicit return. Print the result to the console.</p>
+<pre>
+< p id="af5">< /p>
+< script type="text/javascript">
+	let sub = (numA, numB) => {return numA - numB};
+	let substract1 = sub(110, 20);
+	document.getElementById('af5').innerHTML = substract1;
+< /script>
+</pre>
+<p id="af5"></p>
+<script type="text/javascript">
+	let sub = (numA, numB) => {return numA - numB};
+	let substract1 = sub(110, 20);
+	document.getElementById('af5').innerHTML = substract1;
+</script>
+
+<p> 4. Add a named function to the pizza object called "cook". Print a message to the console saying how long it will take to cook</p>
+<pre>
+< p id="nf2">< /p>
+< script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		cook
+	}
+	function cook(){
+		document.getElementById('nf2').innerHTML =  this.name + ' will take 15 minutes to cook';
+	}
+	pizza1.cook();
+< /script>
+</pre>
+<p id="nf2"></p>
+<script type="text/javascript">
+	const pizza1 = {
+		name: 'Miami',
+		cook
+	}
+	function cook(){
+		document.getElementById('nf2').innerHTML =  this.name + ' will take 15 minutes to cook';
+	}
+	pizza1.cook();
+</script>
+
+<p>5. Add an arrow function to the dog object that logs "bark, bark" to the console when called.</p>
+<pre>
+< p id="af6">< /p>
+< script type="text/javascript">
+	const bigDog = {
+  name2: 'Amstrong',
+  <mark>bark: () =></mark> {
+  	document.getElementById('af6').innerHTML = <mark>this.name2</mark> + ' za big dog bark, bark'
+  }
+};
+bigDog.bark();
+</pre>
+
+<p id="af6"></p>
+<script type="text/javascript">
+	const bigDog = {
+  name2: 'Amstrong',
+  bark: () => {
+  	document.getElementById('af6').innerHTML = this.name2 + ' za big dog bark, bark'
+  }
+};
+bigDog.bark();
+</script>
+
+<h5> bark: function() {...} - instead of bark: <mark>() => {...}</mark></h5>
+<pre>
+< p id="af7">< /p>
+< script type="text/javascript">
+	const bigDog1 = {
+  name: 'Amstrong',
+  <mark>bark: function ()</mark>  {
+  	document.getElementById('af7').innerHTML = <mark>this.name</mark> + ' za big dog bark, bark'
+  }
+};
+bigDog1.bark();
+< /script>
+</pre>
+<p id="af7"></p>
+<script type="text/javascript">
+	const bigDog1 = {
+  name: 'Amstrong',
+  bark: function ()  {
+  	document.getElementById('af7').innerHTML = this.name + ' za big dog bark, bark'
+  }
+};
+bigDog1.bark();
+</script>
+
+<h3>Default Parameters</h3>
+<pre>
+	Example:
+
+< p id="ex6">< /p>
+< script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4);
+	document.getElementById('ex6').innerHTML = result;
+< /script>
+</pre>
+<p id="ex6"></p>
+<script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4);
+	document.getElementById('ex6').innerHTML = result;
+</script>
+<p>The result is "4" - instead of "NaN".<br>
+This "divide" Function() - expects two parameters. (top, bottom).<br>
+The <mark>=1</mark> after the bottom parameter - means that <mark>IF IS NOTHING IS PASSED INTO THE Function as the bottom parameter - its value wil be "1" instead of "undefined".</mark></p>
+
+<pre>
+	< p id="ex6">< /p>
+< script type="text/javascript">
+	function divide(top, bottom = 1){
+		return top / bottom;
+	}
+	const result = divide(4, 4);
+	document.getElementById('ex6').innerHTML = result; //1
+
+	const result = divide(16, 4); //4
+</script>
+</pre>
+<h5>Default parameters makes it so that a parameter value is initialized with some value, but this initialized value will be overwritten by whatever is passed in to the function.<br>
+If there's always some value in the parameter of a function; they won't be undefined unless explicitly passed that way. </h5>
+
+<pre>
+	function divide(top, bottom) {
+    console.log(top / bottom);
+}
+divide(5); // NaN -- because the "bottom" PARAMETER is undefined since nothing was passed in to the function. 
+</pre>
+
+<pre>
+	So let's provide some default parameters to this function.
+
+function divide(top, bottom = 1) {
+    console.log(top / bottom);
+}
+divide(5); // 5
+</pre>
+
+<h3>Named Parameters. Multiple Parameters</h3>
+<p>To USE named Parameters - all you need is to PASS a <u>SINGLE Object</u> to the Function - instead of multiple parameters.<br>
+Also, we have ACCESS to EACH of the ATTRIBUTES of the Object.</p>
+<h4>An example without named parameters:</h4>
+<pre>
+< p id="np">< /p>
+< script type="text/javascript">
+	function dogInfo(name, breed, age, foodPreference, likesToWalk){
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? <mark>'does'</mark> : 'does not'} like to walk.`
+	}
+	 document.getElementById('np'). innerHTML = dogInfo('Duke', 'Labradoodle', '3 years', 'anything', <mark>true</mark>);
+< /script>
+</pre>
+<p id="np"></p>
+<script type="text/javascript">
+	function dogInfo(name, breed, age, foodPreference, likesToWalk){
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`
+	}
+	 document.getElementById('np'). innerHTML = dogInfo('Duke', 'Labradoodle', '3 years', 'anything', true);
+</script>
+
+<h4>Now let's try with NAMED Parameters (Recomended)</h4>
+<pre>
+< p id="np1">< /p>
+< script type="text/javascript">
+	function dogInfo1<mark>({</mark>name, breed, age, foodPreference, likesToWalk<mark>})</mark> {
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`;
+	}
+	 document.getElementById('np1').innerHTML = dogInfo1({<mark>name: 'Duke', breed: 'Labardor', age:'3 years', likesToWalk: true, foodPreference: 'anything'</mark>});
+< /script>
+</pre>
+<p id="np1"></p>
+<script type="text/javascript">
+	function dogInfo1({name, breed, age, foodPreference, likesToWalk}) {
+		return `The dog's name is ${name} and it is a ${breed}. It's age is ${age}, and it likes to eat ${foodPreference}. It ${likesToWalk ? 'does' : 'does not'} like to walk.`;
+	}
+	 document.getElementById('np1').innerHTML = dogInfo1({name: 'Duke', breed: 'Labardor', age:'3 years', likesToWalk: true, foodPreference: 'anything'});
+</script>
+
+<p>This time is very clear what each item is that - we're passing to the Function.<br>
+The object we pass in - has the attribute of each right next to it.<br>
+In this manner <u>there is no order</u> for the ATTRIBUTES on the Object, no matter how u order them</p>
+<h5>YouTube Example:</h5>
+<pre>
+< p id="yt">< /p>
+< p id='yt1'>< /p>
+< p id='yt2'>< /p>
+< script type="text/javascript">
+	// food prices
+	var beer_cost = 6.25;
+	var burger_cost = 4.75;
+	var pop_cost = 3.00;
+
+	//user's money
+	var account_balance = 15.75;
+
+	//drink beer
+	function drinkBeer(){
+		account_balance = account_balance - beer_cost;
+		document.getElementById('yt').innerHTML = account_balance;
+	}
+	
+
+	//eat burger
+	function eatBurger(){
+		account_balance -= burger_cost;
+		document.getElementById('yt1').innerHTML = account_balance;
+	}
+	
+
+	//drink pop
+	function drinkPop(){
+		account_balance -= pop_cost;
+		document.getElementById('yt2').innerHTML = account_balance;
+	}
+	
+	//Visit the carnival, eat and drink
+	var mealList = [drinkBeer, drinkPop, eatBurger, drinkPop];
+	function visitCarnival(mList){
+		for(var i = 0; num=mList.length; i < num; i++){
+			mList[i]();
+		}
+	}
+	visitCarnival(mealList);
+< /script>
+</pre>
+
+<p id="yt"></p>
+<p id='yt1'></p>
+<p id='yt2'></p>
+<script type="text/javascript">
+	// food prices
+	var beer_cost = 6.25;
+	var burger_cost = 4.75;
+	var pop_cost = 3.00;
+
+	//user's money
+	var account_balance = 15.75;
+
+	//drink beer
+	function drinkBeer(){
+		account_balance = account_balance - beer_cost;
+		document.getElementById('yt').innerHTML = account_balance;
+	}
+	
+
+	//eat burger
+	function eatBurger(){
+		account_balance -= burger_cost;
+		document.getElementById('yt1').innerHTML = account_balance;
+	}
+	
+
+	//drink pop
+	function drinkPop(){
+		account_balance -= pop_cost;
+		document.getElementById('yt2').innerHTML = account_balance;
+	}
+	
+	//Visit the carnival, eat and drink
+	var mealList = [drinkBeer, drinkPop, eatBurger, drinkPop];
+	function visitCarnival(mList){
+		for(var i = 0; num=mList.length; i < num; i++){
+			mList[i]();
+		}
+	}
+	visitCarnival(mealList);
+</script>
+<pre>
+	1. we have an array [] - and  inside here I'm gonna put the list of the Functions that I want to call.
+	2.[drink_beer, drink_pop, eat_burger, drink_soda]; - you'll notice I'm no putting the "()" - at the end of the "Functions" in the array.
+	I'm just PASSING the NAME of the Function - i'm not telling the function to run.
+	3. We're gonna calling our Function: "visitCarnival(mealList);" - and then i'm gonna passing this variable "mealist".
+	4. this is gonna make the Function "visitCarnival()" - run; Then we gonna take our array and we gonna pass it.
+	4.1 The content of (mealList) - are going to be PUT into this variable (mList).
+	5. mList[i] - (if i'm going to my array) - to that position [i] - what I'm I looking at is - "the name of the Function()" - (puting the "()" the end of it.mList[i]()).
+</pre>
+
+
+<h3>Rest Parameters</h3>
+<p>"Rest" parameters in functions take all the <b>arguments</b> (passed into a function) (starting from a gien point) - and put them into single parameter - inside the function - as an array.</p>
+<pre>
+< p id="rp">< /p>
+< script type="text/javascript">
+	function addNumbers(name, ...numbers){
+		let sum = 0;
+		for (const num of numbers){
+			sum += num;
+		}
+		return 'Total of ' + name + ': ' + sum;
+	}
+	const totalPrice = addNumbers('Price', 1,2,3,4,5);
+	 document.getElementById('rp').innerHTML = totalPrice;
+< /script>
+</pre>
+<p id="rp"></p>
+<script type="text/javascript">
+	function addNumbers(name, ...numbers){
+		let sum = 0;
+		for (const num of numbers){
+			sum += num;
+		}
+		return 'Total of ' + name + ': ' + sum;
+	}
+	const totalPrice = addNumbers('Price', 1,2,3,4,5);
+	 document.getElementById('rp').innerHTML = totalPrice;
+</script>
+<pre>
+	The numbers 1,2,3,4,5 - are ALL ADDED into the "numbers" parameter as the <b>rest</b> parameter.
+	<b><mark>Once you've declared a rest parameter</mark> you can't decalre any other parameters, (including_ other rest parameters, after it.</b>
+</pre>
+<h5>What is allows you to do is - to <mark>name</mark> a certain number of parameters to the function - and then <mark>catch</mark> the rest of them in an array.</h5>
+<pre>
+< p id="rp1"></p>
+< script type="text/javascript">
+	function addition(setName, ...numbers){
+		const total = <mark>numbers.reduce</mark>((prev, next) => (prev += next), <mark>0</mark>);
+		return `Total of ${setName}: ${total}`;
+	}
+	const result1 = addition('years', 1,2,3,4);
+	document.getElementById('rp1').innerHTML = result1;
+< /script>
+</pre>
+<p id="rp1"></p>
+<script type="text/javascript">
+	function addition(setName, ...numbers){
+		const total = numbers.reduce((prev, next) => (prev += next), 0);
+		return `Total of ${setName}: ${total}`;
+	}
+	const result1 = addition('years', 1,2,3,4);
+	document.getElementById('rp1').innerHTML = result1;
+</script>
+<h5>This function takes a <mark>parameter</mark> called <i>setName</i>.<br>
+Then, we capture the rest of the <mark>arguments</mark> passed to the function in the <i>numbers</i>array.<br>
+That <mark>arguments</mark> includes all the arguments or parameters passed to a function.<br>
+The <i>rest</i> parameter - only includes all the parameters that weren't named.<br>
+The <i>rest</i> parameter - is actually an array.<br>
+Arguments (array-like) - cannot have methods (for Each, .reduce) on arguments.
+</h5>
+
+<h4>Exercises</h4>
+<p> 1. Write a function that prints a welcome message to the console, including the "name" parameter. Provide a default parameter. <br>
+Call the function twice, once passing an argument to the function and once without.</p>
+<pre>
+< p id="ex7">< /p>
+< script type="text/javascript">
+	function myName1(name){
+		document.getElementById('ex7').innerHTML = `Hello, my name is: ${name}.`
+	}
+	myName1('Sergiu');
+< /script>
+
+</pre>
+<p id="ex7"></p>
+<script type="text/javascript">
+	function myName1(name){
+		return `Hello, my name is: ${name}.`
+	}
+	document.getElementById('ex7').innerHTML = myName1('Sergiu');
+</script>
+<pre>
+		function myName1(name){
+		return `Hello, my name is: ${name}.`;
+	}
+	<mark>myName1();</mark>
+'Hello, my name is: <mark>undefined</mark>.'
+</pre>
+
+<p>2. Write a function called "createPizza" that takes a list of named parameters. <br>
+// Print the different parts of the pizza to the console</p>
+<pre>
+< p id="ex8">< /p>
+< script type="text/javascript">
+	function createPizza(<mark>{</mark>name, price, ingredients<mark>}</mark>){
+		 return `This ${name} pizza cost ${price} and contains these few ingredients: ${ingredients}.`
+	}
+	document.getElementById('ex8').innerHTML = createPizza({name: 'Italiano', price: '5 $', ingredients: ['salami', 'tomatoes', 'cedar' ]});
+< /script>
+</pre>
+<p id="ex8"></p>
+<script type="text/javascript">
+	function createPizza({name, price, ingredients}){
+		 return `This ${name} pizza cost ${price} and contains these few ingredients: ${ingredients}.`
+	}
+	document.getElementById('ex8').innerHTML = createPizza({name: 'Italiano', price: '5 $', ingredients: ['salami', 'tomatoes', 'cedar' ]});
+</script>
+
+<p>. Write a function called "describeDog" that takes two parameters: name and hobbies<br>
+// Print a message with the dogs names and its hobbies</p>
+<pre>
+< p id="ex9">< /p>
+< script type="text/javascript">
+	function describeDog<mark>(</mark>name, <mark>...hobbies)</mark>{  //...hobbies - REST Parameter
+		return `${name} has these two hobbies: ${hobbies}.`
+	}
+	document.getElementById('ex9').innerHTML = describeDog<mark>('Buff', 'running', 'playing')</mark>
+< /script>
+</pre>
+
+<p id="ex9"></p>
+<script type="text/javascript">
+	function describeDog(name, ...hobbies){
+		return `${name} has these two hobbies: ${hobbies}.`
+	}
+	document.getElementById('ex9').innerHTML = describeDog('Buff', 'running', 'playing')
+</script>
+
+
+</body>
+</html>

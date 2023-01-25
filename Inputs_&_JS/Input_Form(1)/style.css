@@ -1,0 +1,97 @@
+body {
+	margin:  0;
+	font-family: 'Prompt', sans-serif;
+}
+/*Style the CLASS of "contact-us"*/
+.contact-us{
+	background-image: linear-gradient(
+		to right,
+		rgb(0, 114, 66) 0%,
+		rgb(4, 109, 91) 100%
+	);
+	color: white;
+	font-size: 20px;
+	padding: 25px;
+}
+
+form{
+	padding: 25px;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+/*Style the LABEL*/
+.form-group label{
+	display: block;
+	font-size: 22px;
+	margin-bottom: 5px;	
+}
+
+/*Style the INPUT Box*/
+.form-group input, textarea {
+	width: 320px;
+	padding: 5px;
+	font-size: 15px;
+	color: light-gray;
+	margin-bottom: 5px; /*of...Your name is required*/
+}
+
+textarea {
+	width: 500px;
+	height: 200px;
+}
+
+/*How this INPUT BOX will look like - if there was a VALIDATION ERROR*/
+/*and also style the text-BELOW*/
+input.invalid {
+	border: 1px solid red;
+}
+
+.error-hint {
+	color:  red;
+	font-size: 15px;	
+}
+
+hr{	
+	height: 1px;
+	background-color: rgb(0, 114, 66);
+	border: none;	
+	margin-top:  25px;
+	margin-bottom: 25px;	
+}
+
+button{
+	padding: 10px;
+	font-size: 15px;
+	background:  none;
+	border: 1px solid rgb(0, 114, 66);
+	border-radius: 10px;
+	transition: all 0.5s;
+	cursor:  pointer;
+	color: rgb(0, 114, 66);
+}
+
+button:hover{
+	background-color: rgb(0, 114, 66);
+	border: none;
+	color: white;
+}
+
+/*Get RID of the INITIAL ERROR and hide (that red text) - ADDING A NEW class:  <div class='error-hint hidden'>Your name is required.</div>*/
+/*Let's defined what's HIDDEN is*/
+/*ADD "hidden" or REMOVE "hidden - if we wanna to REMOVE that ERROR TEXT*/
+/*and the same with this - we could add the CLASS of "invalid" to the INPUT Box - to make it SHOW (red or not)*/
+
+.hidden{
+	display: none;
+}
+
+.thank-you{
+	padding:  40px;
+	font-size: 32px;
+	text-align: center;
+}
+
+/*Moving on to the JS  - to DO SOME VALIDATION - to make sure someone typed what they needed to type in into INPUT Box*/
