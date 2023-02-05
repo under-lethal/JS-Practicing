@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>1.Try out these different "form controls". Collect the data - and <u>DISPLAY</u> either on the WEBPAGE or in an AlertBox.</h3>
+
+<pre>
+	1. Put a <mark>form</mark> into the body section of a webpage, and put a "control" which <b>user</b> can type their name - using the <mark>input "control"</mark>.
+	2. Put a button on the <b>form</b>. (the botton doesn"t do anything / include a < br>).
+	3. <b>Write a Function</b> in the < head section > <u>to CAPTURE</u> that the <b>user</b> type in. Inside the "script" - define a Func().
+	4. <b>Inside a Func - I want to GET A HOLD of some of the data on the "form"</b> - so I NEED TO GIVE a form an IDENTIFIER (IN ORDER THAT i CAN refer TO it). <mark>id="myform"</mark>.
+	5. Now <mark>myform</mark> - <b>can be refered to as</b> <mark>< form id="myform"</mark>.
+	6. <b>Display the contents</b> (of the input "CONTROL") - <b>in an alert()box.</b> <mark>alert(document.forms["myform"].yourname.value);</mark>
+	7. <b>The syntax:</b>  <mark>alert(document.forms["myform"].yourname.value);</mark>:
+		- I"m asking for the <b>value property.</b> of the <b>textbox/controler</b> - <b>with the identifier "yourname".</b>
+		- <b>Within the form: <mark>form["myform"]</mark> - of "myform".</b> - I"m ASKING for a <b><u>member</u> OF the forms colections.("myform") - because I could have multiple forms on the same webpage.</b>
+		- <b>The WEBPage</b> - is the <b>(document.</b>
+	8. Now - <b>I need to call my Function when the button is CLICKED.</b>  - <b><i>so I"m gonna include another ATTR</i> - inside of my BUTTON.</b> <mark>onclick="sayHello()"</mark>
+</pre>
+<pre>
+	1. Instead of <b>"alert box" and alert message</b> - <b>put the INPUT back on the PAGE.</b> <mark>document.getElementById("myEmptyParagraph").innerHTML = document.forms["myform"].yourname.value</mark>
+	2. So - I have my "myEmptyParagraph" - i have my <b>indetifier</b> "["myform"]" - all I need to do - is <b>setting the innerHTML property</b> (OF THOSE paragraph tags) - <b>to be  = to the input DATA: </b> <mark>document.forms["myform"].yourname.value;</mark>.
+	3. I"m gonna <b>create</b> a var  - to <b>collect the input form</b>. <mark>message</mark> and assign to
+</pre>
+
+<pre>
+	< form <mark>id="myform"</mark>>
+		< label for="yourname"></ label>Enter Your Name < input type="text" id="yourname">
+		< br>
+		< button type="button" onclick="sayHello()">OK< /button>
+	</ form>
+	
+		< p id="myEmptyParagraph">< /p>
+
+	< script type="text/javascript">
+		function sayHello(){
+			<b>message = document.forms<mark>["myform"]</mark>.yourname.value;</b>
+			//alert(document.forms["myform"].yourname.value);
+			document.getElementById("myEmptyParagraph").innerHTML = <b>message;</b>
+		}
+	< /script>
+
+
+
+	<b>;</b> - when a WEBPAGE is DELIVERED to the BROWSER - <b>it comes in a character at a time</b> - so the BROWSER need to know <b>where the end of each LINE is.</b>
+
+	<b>message = <mark>"Welcome to my website " + </mark>document.forms["myform"].yourname.value;</b>
+	
+	<b><mark>label for="yourname"</mark>Enter Your Name < input type="text" id="yourname"></b> - (when move your cursor into the field) - make the form easier to use/ read. | Easier to the TEXTREADER to decide where a field label is.
+</pre>	
+
+<p>1. Let"s add more CONTROLS. Let"s CAPTURING "theFirstName", "theLastName" and the "age" separately.</p>
+
+
+	2. Capture the <b>gender.</b> using <b>radio buttons</b>
+	2.1 <b>Need</b> a <b>label.</b> Then an <b>input control</b> - of type <b>radio.</b>
+	3. <b>name</b> - <mark>is what connects these two radio buttons together - "cause you could have <b>multiple sets of radio buttons on the form</b>" - and you don"t want them all to behave as if they were in the same group.</mark>
+</pre>
+
+<p>3. Let"s do a DROPDOWN List</p>
+
+<pre>
+	1. <b>The "select" control.</b> I"m going to use <b>this</b> to ALLOW the USER ot SELECT <b>their occupation.</b> <mark>< select name = "occupation"</mark>
+	2. <b>The "select" control</b> - has a number of <b>options.</b>
+	3. Add a <b>label</b> - to your radios.
+	4. <b>Capture this data.</b>
+	5. Notice <b>this <mark>;</mark></b>
+	message = "Welcome to my website " + document.forms["myform"].firstname.value
+	message = "Welcome to my website " + document.forms["myform"].lastname.value
+	message = "Welcome to my website " + document.forms["myform"].age.value
+	message = "Welcome to my website " + document.forms["myform"].occupation.value<mark>;</mark>
+	6. <b>Notice also</b> - that I"m HANDLING the <mark>< select > control</mark> - in the same way - as the textBox.
+</pre>
+
+<p>4. The "radio" buttons need to be HANDLED in <b>a different way.</b> I need to test them.</p>
+<pre>
+	1. I"m goning to use <b>an if() block.</b>
+	if(document.forms["myform".male.<mark>checked</mark>]){
+		message += "Male"
+	}else{
+		message += "Female"
+	}
+
+	1a. i"m testing the <b>checked PROPERTY</b> - of the <b>radio button</b> - with the "id=male".
+	1b. If the <b>radio button</b> - has been SELECTED - <b><i>the CHECKED property is TRUE.</i></b>
+	1c. If <mark>if(document.forms["myform".male.checked])</mark> = <b>true.</b> - then - <b>I concatenate "Male" to my existing <mark>message.</mark></b>
+	1d. If the "Male" is <b>checked / true</b> - we include the text "Male" - <b>at the end of the message.</b>
+	1e. <b>Otherwise</b> - we include the <b>text "Female".</b>
+	1f. <b>If Neither</b> - of the radio buttons <b>is checked</b> - then female <b>will be ioncluded to the end of the "text".</b>
+	2. For that - <b>make one of the Radio buttons - the DEFAULT.</b> BY SIMPLY SDPECIFY: <mark><b>checked</b></mark>
+</pre>
+<pre>
+	< form id="myform">
+		< label for="firstname">< /label>First name: < input type="text" id="firstname">< /p>
+		< label for="lastname">< /label>Last name: < input type="text" id="lastname">< /p>
+		< label for="age">< /label>Age: < input type="text" id="age">< /p>
+	
+		< label for="gender">< /label>Gender< /br>
+		< input type="radio" name="gender" id="male" value="male" checked>Male< /br>
+		< input type="radio" name="gender" id="female" value="female">Female< /p>
+	
+		< label for="occupation">< /label>Occupation:< /br>
+		< select name="occupation">< /p>
+			< option value="Tinker">Tinker< /option>
+			< option value="Tailor">Tailor< /option>
+			< option value="Soldier">Soldier< /option>
+			< option value="Sailor">Sailor< /option>
+			< option value="Astronaut">Astronaut< /option>
+		< /select>
+	
+		< button type="button" onclick="sayHello()">OK< /button>
+	< /form>
+
+		< p id="myEmptyParagraph">< /p>
+
+		< script type="text/javascript">
+			function sayHello(){
+				message = "Welcome to my website " 
+				+ document.forms["myform"].firstname.value + " "
+				+ document.forms["myform"].lastname.value + " " 
+				+ document.forms["myform"].age.value + " " 
+				+ document.forms["myform"].occupation.value + " ";
+		
+				if(document.forms["myform"].male.checked){
+					message += "Male"
+				}else{
+					message += "Female"
+				}
+				
+				//alert(document.forms["myform"].yourname.value);
+				document.getElementById("myEmptyParagraph").innerHTML = message;
+			}
+		< script>
+	
+	
+		
+</pre>
+
+<h3>2.Client Side Validation</h3>
+<pre>
+		<b>Client Computer</b>												<b>Web Server</b>
+		(Web Browser)	
+	
+	Clietn Computer - runnin a <b>WEB Browser.</b>								A <b>web Server</b> somewhere else in the world.
+													On the WebServer - there"s a <b>HTML Page</b> with <b>JS code inside it.</b>
+													A <b>form Handler</b>, and - <b>the server</b> can <b><i>CONNECT</i></b> to a <b>DataBase</b>.
+													<b>An HTML file</b> - ALREADY exist on the SERVER - or it could be GENERATED by a PROGRAM (such as PHP) - WHEN REQUESTED.
+	<b>the Web Page</b> is REQUESTED by the <b>CLIENT.</b> - Either by <u>typing its URL</u> - (or following a link from another page).
+	<b>The PAGE is DELIVERED and RENDERED - by the WEB Browser.</b>
+	<b>The user</b> FILLS IN <b>the Form</b> (on the web page) - <b>and JS PROGRAMS (inside the page) - validate the DATA.</b>
+	<b>These PROGRAMS are RUNNING by the BROWSER - on the CLIENT Computer.</b> - This is called <b>client-side validation.</b>
+	When the <b>validation checks</b> - are SATISFIED - <b>the DATA</b> - are posted - <b>back to the SERVER</b>.
+	The <b>form data</b> - are PROCESSED by the <b>form-handler.</b> - This could INVOLVE  (more validation CHECKS) and any number of OTHER processes <b>(including SAVING the DATA to a DATABASE).</b>
+	<b>Client Side Validation</b> - can IMPROVE <b>the User Experience</b> (by CATCHING INVALID DATA) <b>before it"s send to the SERVER.</b>
+	If all of the VALIDATION (was done by the SERVER ALONE) - <b>the user will EXPERIENCE a DEELAY</b> - before BEING told what they need to CHANGE, in order to put WRONG data RIGHT.
+	<b>There should be ALWAYS some security CHECKS on the SERVER</b> - as WELL.
+	<b>For example:</b> - If a USER is inputting <b>a new user Name</b> <mark>that HAS to be UNIQUE.</mark>
+	<b>The SERVER side CODE</b> - will need to check if it"s in the DATABase - to see if the USERNAME has already been TAKEN.
+
+	<b>You can make A VALIDATION  - without using / writting JS code.</b>
+	<b>HTML5 form elements</b> - have <b>THIS capability</b> built into them.
+	<b>HTML Validation</b> - PERFORM <b>better than JavaScript Validation</b> - but it"s LESS FLEXIBLE.
+	1. <b>"required."</b> - theoretically - without <mark><b>required attributes</b></mark> - I can SUBMIT the form - without DATA on it at all.
+	2. Change the <b>type</b> from "text" to "number" in <b>age field</b><mark>< label for="age"></ label>Age(in years): < input type="number" min="1" max="100" step="1" id="age">< /p></mark> and <b>specify: minimum, maximum step</b> value.
+</pre>
+
+<h3>3.The "Discount" code </h3>
+<pre>
+	Before <b>HTML5</b> this had to be done with JavaScript.
+	<mark>< label <b>for="discountcode"</b>>Discount Code< /label>First name: < input type="text" <b>id="discountcode"</b> >< /p></mark>
+	1.Make sure that the USER - <b>enter</b> 5, <b>and only five</b> capital letters.
+	1.1 <b>Digitis, lowerCase Letters, Punctuation, Symbols - are not ALLOWED.</b>
+	2.<b>Do this</b> using the <b>pattern attribute.</b> 	
+</pre>
+<pre>
+	< label for="discountcode">Discount Code name: < /label>< br>
+	< input type="text" id="discountcode" pattern ="[A-Z] {5}" title = "type 5capital letters">< /p>
+</pre>
+
+<h3>4.Summary</h3>
+<div style="color:red; font-weight: bold; font-family: verdana; font-size:12px;">
+	*Client side VALIDATION - <u>checks the Form Data</u> - <span style="color: black">before they are SUBMITTED to the WEB SERVER.</span><br>
+	*Client side VALIDATION - <u>is EXECUTED</u> - <span style="color: black">by the BROWSER.</span>
+	<pre style="color: gray;">The WEB Browser doesn"t just render the <u>HTML Text</u> - <b>it"s also a RUNTIME Environment</b> for programs.</pre>
+	*Client side VALIDATION - <u>can REDUCE the NETWORK TRAFFIC exchanged</u> - <span style="color: black">between the CLIENT and the SERVER.</span>
+	<pre style="color: gray;">It means there"s less chance of an <u>error message</u> - <b>being sent back to the CLIENT</b> - BECAUSE data was INVALID.</pre>
+	*Client side VALIDATION - <u>can BE PERFORMED</u> - <span style="color: black">by JavaScript.</span>
+	*Client side VALIDATION - <u>can BE PERFORMED</u> - <span style="color: black">by HTML5.</span>
+	<pre style="color: gray;">Without WRITTING  a single LINE of CODE. | HTML5 - Has a number of <u>validation capabilities</u> already <b>built intp it.</b></pre>
+	*Client side VALIDATION - <u>can INCLUDE</u> - <span style="color: black">required FIELDS, max and min VALUES.</span>
+</div>
+
+<h3>5.GET and POST Methods</h3>
+<p>Transmitting FORM Data - to the SERVER.</p>
+<pre>
+	GEt and POST Methods - requires that - add a couple of attributes to the < form >. - <b>action=""</b>and <b>method="" Attribute.</b>
+</pre>
+<p>The GET Method</p>
+<pre>
+	<b>< form id="myform"<mark>method="GET" action="http:/www.murvindrake.com"</mark></b>
+	and to MAKE SURE that <b>every field of my form - has a <mark>name attr.</mark></b>
+
+	< label for="firstname">First name: < /label>< input type="text" id="firstname" <mark>name="firstname"</mark> required>< /p>
+	< label for="lastname">Last name: < /label>< input type="text" id="lastname" <mark>name="lastname"</mark> required>< /p>
+	< label for="age">Age(in years): < /label>< input type="number" min="1" max="100" step="1" id="age" <mark>name="age"</mark>>< /p>
+	... 
+	< input type="text" id="discountcode" pattern ="[A-Z] {5}" title = "type 5capital letters" <mark>name="discountname"</mark>>< /p>
+
+	<b>"Radio buttons" and "select controls" have already got names.</b>
+
+	<mark>For a <u>< form> element</u>, the <b>name attribute</b> is used as a reference when the DATA is SUBMITTED.</mark>
+</pre>
+
+
+
+
+</body>
+
+</html>
