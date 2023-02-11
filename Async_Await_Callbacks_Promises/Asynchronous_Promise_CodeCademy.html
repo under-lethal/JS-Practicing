@@ -334,8 +334,8 @@
 	If the PROMISE <b>rejects</b> <mark>.then()</mark> - (will <b>retunr a PROMISE</b>) - WITH THE SAME rejection reason (as the ORIGINAL PROMISE).
 	</pre>
 
-	<h3>Exercice:</h3>
-	<p>Invoke the checkInventory() function with the order. Remember, this function will return a promise.</p>
+	<h3>Exercise:</h3>
+	<p>Invoke the <mark>checkInventory()</mark> function with the order. Remember, this function will return a promise.</p>
 	<pre>
 		const {checkInventory} = require('./library.js');
 
@@ -353,6 +353,12 @@
 		<b>const myPromise = new Promise((resolve, reject) => {
 			checkInventory(order);</b>
 		})
+
+		//Add a <mark>.then()</mark> to the returned promise. Pass in the success handler <mark>handleSuccess()</mark>.
+		//Add a <mark>.catch()</mark> to the returned promise. Pass in the failure handler <mark>handleFailure()</mark>.
+		.checkInventory(order)
+			.then(handleSuccess)
+			.catch(handleFailure);
 	</pre>
 
 

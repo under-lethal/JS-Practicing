@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="index.js"></script>
+	<title>Map&Set</title>
+</head>
+<body style="font-family: sans-serif; padding:30px">
+	<h2>Map&Set</h2>
+	<p><b>Set</b> Let's you STORE <mark>unique values.</mark> - <b>of any type.</b> (primite values/ objects).</p>
+
+	<h3>What is SET used for?</h3>
+	<p>
+		<ul>
+			<li>To REMOVE all <b>DUPLICATE values</b> from the Array</li>
+			<li>(just create a <b>new Set</b> and PASS an (<b>myArray</b>) - as a <b>parameter</b>)</li>
+		</ul>
+	</p>
+	<pre>
+		const myArray = [1, 2, 3, 4, 5];
+		const mySet = new Set(myArray);
+
+		let text = '';
+		mySet.forEach(function(value){
+			text += value;
+		})
+		
+		[1, 2, ,3, 4, 5]
+		Set {1, 2, ,3, 4, 5}
+	</pre>
+	<p id="ex1"></p>
+	<p id="ex1.1"></p>
+	<script type="text/javascript">
+		document.getElementById('ex1').innerHTML = myArray;
+		
+		document.getElementById('ex1.1').innerHTML = text;
+	</script>
+
+	<h3>Turn that "mySet" - back to an ARRAY - (using the "spread ..." Operator)</h3>
+	<pre>
+		const uniqueArray = [...mySet];
+		console.log(uniqueArray);
+		<b>Ouput:</b>
+		[1, 2, ,3, 4, 5]
+	</pre>
+
+	<h2>Methods:</h2>
+	<h3>add()/delete()/clear() - Method</h3>
+	<pre>
+		mySet.add(6);
+		console.log(mySet);
+		<b>Ouput:</b>
+		[1, 2, ,3, 4, 5, 6]
+	</pre>
+	<p>We can try an Object</p>
+	<pre>
+		mySet.add(<b>{channelName: 'JS -Mastery'}</b>);
+		console.log(mySet);
+		<b>Ouput:</b>
+		{channelName: 'JS -Mastery'}
+
+		let text2 = '';
+		for(const x of mySet<b><mark>.values()</mark></b>){
+			text2 += x;
+		}
+
+		<b>clear()</b> - clears all the elements of the Set();
+		<b>has()</b> - return "true"/"false".
+		<b>size()</b> - returns a <b>numbers of elements</b> in a Set();
+	</pre>
+
+	<p id="obj"></p>
+	<script type="text/javascript">
+		document.getElementById('obj').innerHTML = mySet;		
+	</script>
+
+	<h3>The Differences between "Arrays" & "Sets"</h3>
+	<ul>
+		<li>An <b>Array</b> - is an OREDERED LIST of <b>objects</b> - and ACCESS an item/<b>it's integer position</b> by [].</li>
+		<li>A <b>Set</b> - is an <b>unordered pool</b> of <mark>unique elements</mark>. As long as it's <b>UNORDERED</b> - there is no integer you can use. []</li>		
+	</ul>
+	
+	<h3>When its BETTER so use "Sets" over an "Array"?</h3>
+	<ul>
+		<li><b>Set</b> - <mark>complette</mark> what array is missing. "Set" - can <b>easily</b> remove duplicates.</li>
+	</ul>
+
+	<h2>Map()</h2>
+	<p>Yhe <b>Map() Object</b> - calls <b>key:value</b> pairs - and <mark>remembers the original insertion order</mark> of the <b>keys</b>.<br>
+	You can use <b>objects</b> as <b>key.</b>
+	</p>
+	<pre>
+		const myMap = new Map(<b>[</b>[<mark>'</mark>name<mark>'</mark>, 'John'],['surname'<mark>,</mark> 'Doe'],['age', 35]<b>]</b>);
+		
+		let txt3 = '';
+		myMap.forEach(function(<b>value, key</b>) {
+			txt3 += key + ': ' + value + '< br>';
+		})
+		--------------------------------------------
+		const myMap = new Map([['name', 'John'],['surname', 'Doe'],['age', 35]]);
+		let txt3 = '';
+		for(const y of myMap.<mark><b>entries()</b></mark>){
+			txt3 += y + '< br>';
+		}
+	</pre>
+	<p id="mp"></p>
+	<script type="text/javascript">
+		document.getElementById('mp').innerHTML = txt3;	
+	</script>
+	
+	<ul>
+		<li><b>JS - Objects</b> - only support <mark>ONE Key Object</mark>. If we ADD  - <b>the multiple key: object</b> - it will only remember <mark>The Last One</mark>.</li>		
+	</ul>
+	<pre>
+		const myObject = {};
+
+		const a = {};
+		const b = {};
+
+		<b>If we want to assign those OBJECTS - THE keys to our first Objects.</b>
+		myObject[a] = 'a';
+		
+		<b>Output:</b>
+		<mark>{[object Object]: 'a'}</mark>
+
+		<b>If we do this:</b>
+		myObject[a] = 'a';
+		myObject[b] = 'b';
+
+		<b>Output:</b>
+		<mark>{[object Object]: 'b'}</mark> 'a' - is COMPLETELY overwirtten by - 'b'.
+
+	</pre>
+	<p id='mp2'></p>
+	<script>
+		document.getElementById('mp2').innerHTML = myObject;
+	</script>
+
+	<h3>Explore this problem - using Map():</h3>
+	<pre>
+		const c = {};
+		const d = {};
+		const myMap2 = new Map([ [<b>c</b>,'c'], [<b>d</b>,'d'] ]);
+
+		<b>Output:</b>
+		<mark>{{…} => 'c', {…} => 'd'}</mark> 
+	</pre>
+
+	<p id='mp3'></p>
+	<script>
+		document.getElementById('mp3').innerHTML = myMap2;		
+	</script>
+
+	<h3>Map() - Method:</h3>
+	<pre>
+		const e = {};
+		const f = {};
+		const myMap3 = new Map([ [{},'e'], [{},'f'] ]); // let's EMPTY the OBJ. HERE: "{}".
+		myMap3.set({}, 'g');
+
+		<b>Output:</b>
+		<mark>Map(3){{…} => 'e', {…} => 'f', {…} => 'g'}</mark>  // the "g" VALUE is ADDED.
+	</pre>
+	<p id='set'></p>
+	<script>
+		document.getElementById('set').innerHTML = anotherMap;		
+	</script>
+
+	<pre>
+		const myMap = new Map([[1, 1]]);
+		myMap.<b>delete(1)</b>;
+		console.log(myMap): //{}
+
+		const myMap = new Map([[1, <b>'one'</b>]]);
+		myMap.<b>delete(1)</b>;
+		console.log(myMap): //{}
+
+		const myMap = new Map([[1, 'one'] [2, 'two']]);
+		myMap.<b>clear()</b>;
+		console.log(myMap): //{}
+
+		const myMap = new Map([[1, 'one'] [2, 'two']]);
+		myMap.<b>has(1)</b>;
+		console.log(myMap): // true /false
+
+		const myMap = new Map([[1, 'one'] [2, 'two']]);
+		myMap.<b>has('one')</b>;
+		console.log(myMap): //<b>false</b> - because its <b>searching</b> <mark><b>by keys</b></mark>.
+
+		const myMap = new Map([[1, 'one'] [2, 'two']]);
+		myMap.<b>size()</b>;
+		console.log(myMap): // 2 - <b>Outputs</b> - the number of elements that our <b>map</b> has.
+	</pre>
+</body>
+</html>

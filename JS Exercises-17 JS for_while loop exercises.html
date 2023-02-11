@@ -10,7 +10,7 @@
 <h4>1. Write a JS code to print numbers from 1 to 10</h4>
 <pre>
 < p id="x1">< /p>
-< script type="text/javascript">
+
 	for (let i = 0; i<=10; i++){
 		document.getElementById('x1').innerHTML = i;
 	}
@@ -28,7 +28,7 @@
 <pre>
 < p id="x2">< /p>
 < p id="x3">< /p>
-< script type="text/javascript">
+< scrit type="text/javascript">
 	const rows = 10;
 	const columns = 8;
 
@@ -82,7 +82,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <h4>Example: 3</h4>	
 <pre>
 < p id='x4'>< /p>
-< script type="text/javascript">
+< sript type="text/javascript">
 	const myArray4 = [['a'],['b'],['c'],['d'],['e'],['f']];
 	document.getElementById('x4').innerHTML = myArray4;
 < /script>
@@ -99,7 +99,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <h4>Nested Loop</h4>
 <pre>
 < p id="nl">< /p>
-< script type="text/javascript">
+< sript type="text/javascript">
 	let nested = '';
 	for(var i = 0; i < 4; i++){
 		for (var j = 0; j < 3; j++){
@@ -132,7 +132,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <h3>2 Dimensional Arrays</h3>
 <pre>
 < p id="2D">< /p>
-< script type="text/javascript">
+< sript type="text/javascript">
 	let dimensional = '';
 	var numberGrid = [
 	[1,2,3],
@@ -173,7 +173,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <pre>
 < p id="2D2">< /p>
 < p id="2D3">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let dimensional2 = '';
 	var numberGrid2 = [
 	[1,2,3],
@@ -218,7 +218,7 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 < p id="ex">< /p>
 < p id="ex1">< /p>
 
-< script type="text/javascript">
+<  type="text/javascript">
 	let newFunction = '';
 	<mark>function printArray(arr)</mark>{
 		for(var i = 0; i < arr.length; i++){
@@ -261,17 +261,17 @@ const rows = 10; const myArray = newArray(rows); -> MEANS 10 EMPTY ITEMS.
 <pre>
 	< p id="ex3">< /p>
 
-< script type="text/javascript">
+<  type="text/javascript">
 	var arr2 = [13, 23, 12, 45, 22, 48, 66, 100];
 	let newFunction2 = ''
-	function printArray2(arr2){
+	function printArray2(<mark>arr2</mark>){
 		for(var i = 0; i < arr2.length; i++){
 			if(<mark>arr2[i]%2 == 0</mark>){
 				document.getElementById('ex3').innerHTML = newFunction2 += arr2[i] + " ";
 			}			
 		}
 	}
-printArray2(arr2);
+printArray2(<mark>arr2</mark>);
 </pre>
 <p id="ex3"></p>
 
@@ -291,7 +291,7 @@ printArray2(arr2);
 <h3>Odd Numbers</h3>
 <pre>
 < p id="ex4">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let numb = [1,2,3,4,5,6,7,8,9];
 	let numb2 = '';
 
@@ -323,7 +323,7 @@ printArray2(arr2);
 <h3>4.Write a JS code to delete all occurrence of element in given array</h3>
 <pre>
 	< p id="del">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	var newFunction3 = '';
 	function deleteElement(arr3, elem){
 		for(var i = 0; i < arr3.length; i++){
@@ -360,7 +360,7 @@ printArray2(arr2);
 </pre>
 <pre>
 < p id="del1"></p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let arry = [1,2,3,4,5];
 	delete arry[2]; // to delete the 3're element - specify the array and then the POSITION [2].
 
@@ -395,7 +395,7 @@ printArray2(arr2);
 <pre>
 < p id="rem">< /p>
 < p id="rem1">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let arry = [1,2,3,4,5];
 	let output = '';
 	let output1 = '';
@@ -443,11 +443,20 @@ printArray2(arr2);
 </script>
 
 <h3>5. Write a JS code to demonstrate Async loop:</h3>
+<pre>
+
+</pre>
+<p id="ay"></p>
+<script>
+	for (vari=0; i<5; i++){
+		setTimeout(()=>{console.logi(i)},3000);
+	}
+</script>
 
 <h3>6. Write a JS code to find the power of a number using for loop:</h3>
 <pre>
 < p id="pow">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let x = '';
 	function numPower(num, pow){
 		var res=<mark>1</mark>;
@@ -488,7 +497,7 @@ printArray2(arr2);
 <h4>Did you mean alternative for Math.pow? Here is one way with simple loop.</h4>
 <pre>
 < p id="pow1">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let x1 = '';
 	var p = 1;
 	function pow(base, power){
@@ -514,7 +523,7 @@ printArray2(arr2);
 </script>
 <pre>
 < p id="pow2">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let x2 = '';
 	
 	function pow1(n, e){
@@ -545,7 +554,7 @@ printArray2(arr2);
 <h4>7. Write a JS code to print a pattern using for loop:</h4>
 <pre>
 < p id="patt">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let pattern = '';
 	function printPattern(range){
 		for(var i=1; i<=range; i++){
@@ -577,7 +586,7 @@ printArray2(arr2);
 <h4>Codeademy Exercise - Kelvin Weather</h4>
 <pre>
 < p id="kw">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	//The forecast today is 293 Kelvin. To start, create a variable named kelvin, and set it equal to 293
 	<mark>const kelvin = 293;</mark>
 	
@@ -610,7 +619,7 @@ printArray2(arr2);
 <h5>This example calls a function to convert from Fahrenheit to Celsius:</h5>
 <pre>
 < p id="fh"></p>
-< script type="text/javascript">
+<  type="text/javascript">
 	function toCelsius(f){
 		return (5/9) * (f-32);
 	}
@@ -634,7 +643,7 @@ Use console.log and string interpolation to log the temperature in newton to the
 
 <pre>
 < p id="N">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	let celsius1 = 25;
 	let newton = celsius1 * (33/100);
 	newton = Math.floor(newton);
@@ -654,7 +663,7 @@ Use console.log and string interpolation to log the temperature in newton to the
 <pre>
 < p id="dy">< /p>
 < p id="dy1">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
 	//Create a variable named myAge, and set it equal to your age as a number.
 	<mark>var myAge = 36;</mark>
 
@@ -743,15 +752,17 @@ myAgeInDogYears();
 <pre>
 < p id="digi">< /p>
 < p id="digi1">< /p>
-< script type="text/javascript">
+<  type="text/javascript">
+function digitCount(num){
 	var count = 0; //return 1 for pow=0
 	while(num!=0){
 		num = Math.floor(num/10);
 		count++;
 	}
 	return count;
-	document.getElementById('digi').innerHTML = digitCount(8367); //4
-	document.getElementById('digi1').innerHTML = digitCount(563349); //6
+}
+document.getElementById('digi').innerHTML = digitCount(8367); //4
+document.getElementById('digi1').innerHTML = digitCount(563349); //6
 < /script>
 </pre>
 
@@ -816,7 +827,7 @@ myAgeInDogYears();
 <h3>Youtube Example: Find SUM of DIGITS of a Number:</h3>
 <pre>
 < p id="nd"></p>
-< script type="text/javascript">
+<  type="text/javascript">
 	
 	var n, rem, sum = 0; // declare a variable
 	// promt is used to accept a STRING.
@@ -875,7 +886,7 @@ myAgeInDogYears();
 <h2>9. Write a JS code to find the largest number in an array</h2>
 <pre>
 < div id='ln'>< /div>
-< script type="text/javascript">
+<  type="text/javascript">
 	var arr4 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
 	document.getElementById('ln').innerHTML = Math.max(...arr4);
 < /script>
@@ -889,7 +900,7 @@ myAgeInDogYears();
 
 <pre>
 < div id="ln2">< /div>
-< script type="text/javascript">
+<  type="text/javascript">
 	var arr7 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
 	function maximum(){
 		let max = arr7[0];
@@ -920,13 +931,117 @@ myAgeInDogYears();
 	}
 	maximum();
 </script>
+<h3>3. Using "Ternary (?) OPERATOR"</h3>
+<pre>
+	var arr8 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	var largest = arr8[0];
+	for(var i = 0; i < arr8.length; i++){
+		largest = arr8[i]>largest ? arr8[i] : largest; //Check largest number
+	}
+	document.getElementById('ln3').innerHTML = largest;
+</pre>
+<p id="ln3"></p>
+<script>
+	var arr8 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
+	var largest = arr8[0];
+	for(var i = 0; i < arr8.length; i++){
+		largest = arr8[i]>largest ? arr8[i] : largest; //Check largest number
+	}
+	document.getElementById('ln3').innerHTML = largest;
+</script>
 
+<h3>Find the LARGEST Numb In a 2D Array:</h3>
+<h4>I'st Example:</h4>
+<pre>
+	function largestOfFour(arr){
+		let maxes = [];
+		for(let i=0; i< arr.length; i++){
+			let tempMax = arr[i][0];
+			for(let k=0; k< arr[i].length; k++){
+				let currentElement = arr[i][k];
+				if(currentElement >= tempMax){
+					tempMax = currentElement;
+				}
+			}
+			maxes.push(tempMax);
+		}
+		return maxes;
+	}
+	document.getElementById('2d').innerHTML = largestOfFour ([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
+</pre>
+<p id="2d"></p>
+<script>
+	function largestOfFour(arr){
+		let maxes = [];
+		for(let i=0; i<arr.length; i++){
+			let tempMax = arr[i][0];
+			for(let k=0; k<arr[i].length; k++){
+				let currentElement = arr[i][k];
+				if(currentElement >= tempMax){
+					tempMax = currentElement;
+				}
+			}
+			maxes.push(tempMax);
+		}
+		return maxes;
+	}
+	document.getElementById('2d').innerHTML = largestOfFour ([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
+</script>
 
+<h4>II'nd Example: <mark>NESTED</mark> Logic</h4>
+<pre>
+	function findMax(arr){
+		var max = arr[0];
+		for(var i = 0; i < arr.length; i++){
+			if(arr[i] > max){
+				max=arr[i];
+			}
+			return max;
+		}
+	}
+
+	function largestFour(arr){
+		var maxes = [];
+		for(let i = 0; i< arr.length; i++){
+			<b>var innerMax = <mark>findMax(arr[i])</mark>;</b>
+			<mark>maxes.push(innerMax);</mark>
+		}
+		return maxes;
+	}
+
+	document.getElementById('2nd').innerHTML = largestOfFour ([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
+</pre>
+<p id="2nd"></p>
+<script>
+	function findMax(arr){
+		var max = arr[0];
+		for(var i = 0; i <arr.length; i++){
+			if(arr[i] > max){
+				max=arr[i];
+			}
+			return max;
+		}
+	}
+
+	function largestFour(arr){
+		var maxes = [];
+		for(let i = 0; i<arr.length; i++){
+			var innerMax = findMax(arr[i]);
+			maxes.push(innerMax);
+		}
+		return maxes;
+	}
+
+	document.getElementById('2nd').innerHTML = largestOfFour ([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
+
+	//arra[i] - is all INNER Arrays.
+	//findMax(arr) - takes and Array - and returns the MAX - "var max = ..."
+</script>
 
 <h2>9.1 Find the average number in a given array</h2>
 <pre>
 < div id='avg'>< /div>
-< script type="text/javascript">
+<  type="text/javascript">
 	var arr6 = [2, 45, 3, 67, 34, 567, 34, 345, 123];
 	function avg(){
 		let sum = 0;
@@ -966,5 +1081,35 @@ myAgeInDogYears();
 	printNumb(10);
 </script>
 
+<h3>Get a RANDOM ITEM from an ARRAY</h3>
+<pre>
+< p id='ri'>< /p>
+<>
+	let numbers = [1,2,3,4,5,6,7,8];
+	function getRandomItem(arr){
+		const randomItem = Math.floor(Math.random() * numbers.length);
+		document.getElementById('ri').innerHTML = numbers[randomItem];
+	}
+	getRandomItem();
+< /script>
+</pre>
+<p id='ri'></p>
+<script>
+	let numbers = [1,2,3,4,5,6,7,8];
+	function getRandomItem(arr){
+		const randomItem = Math.floor(Math.random() * numbers.length);
+		document.getElementById('ri').innerHTML = numbers[randomItem];
+	}
+	getRandomItem();
+</script>
+
+
+<pre>
+
+</pre>
+<p id=""></p>
+<script>
+
+</script>
 </body>
 </html>
