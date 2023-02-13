@@ -32,7 +32,7 @@
 	<pre>
 	< p id="gs">< /p>
 	< p id="gs1">< /p>
-	< script type="text/javascript">
+	<  type="text/javascript">
 		let x = 1;
 		let output = '';
 
@@ -43,7 +43,7 @@
 			document.getElementById('gs1').innerHTML  = output += myValue;
 		}
 		parentFunction(); //1 2
-	< /script>
+	< />
 	</pre>
 	<pre>
 The "parentFunction()" - is a CHILD of a Global Scope.
@@ -58,7 +58,7 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 	< p id="gs3">< /p>
 	< p id="gs4">< /p>
 	< p id="gs5">< /p>
-	< script type="text/javascript">
+	<  type="text/javascript">
 		let x = 1;
 		let y = 5;
 		let output2 = '';
@@ -80,7 +80,7 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 			<mark>childFunction();</mark>
 		}
 		parentFunction2();
-	< /script>
+	< />
 
 	...let's take the Value2 - from the parentFunction().
 	This "childFunction()" - has acces to the values from it's parentFunction() - and The Global SCOPE.
@@ -134,12 +134,43 @@ If we want to try the acces the value of "myValue2" - (IN THE GLOBAL SCOPE) - we
 <h4>Now to have access to the parent SCOPE - even after the PARENT Function() has CLOSED.</h4>
 <p>Instead of CALLING the "chidlFunction()"(INSIDE the parentFunction()) - WE actually need to "return"  - the childFunction().<br>
 THEN -we can use "const result"  - to call the CHILD Function()</p>
+
+<p id="gs6"></p>
+<p id="gs7"></p>
+<p id="gs8"></p>
+<p id="gs9"></p>
+<p id="res"></p>
+<script type="text/javascript">
+	let q = 1;
+	let z = 5;
+	let output6 = '';
+	let output7 = '';
+	let output8 = '';
+	let output9 = '';
+
+	const parentFunction3 = () => {
+		//local scope
+		let myValue3 = 2;
+		document.getElementById('gs6').innerHTML  = output6 += q;
+		document.getElementById('gs7').innerHTML  = output7 += myValue3;
+
+		
+		const childFunction2 = () => {
+			document.getElementById('gs7').innerHTML = output8 += z;
+			document.getElementById('gs8').innerHTML = output9 += myValue3;
+		}
+		return childFunction2();
+	}
+	const result = parentFunction3();
+	document.getElementById('res').innerHTML = result;
+</script>
+
 <pre>
 		< p id="gs2">< /p>
 	< p id="gs3">< /p>
 	< p id="gs4">< /p>
 	< p id="gs5">< /p>
-	< script type="text/javascript">
+	<  type="text/javascript">
 		let x = 1;
 		let y = 5;
 		let output2 = '';
@@ -154,7 +185,7 @@ THEN -we can use "const result"  - to call the CHILD Function()</p>
 			document.getElementById('gs3').innerHTML  = output3 += myValue2;
 
 			
-			  const childFunction() {
+			  const childFunction = ()=> {
 				document.getElementById('gs4').innerHTML = output4 += y;
 				document.getElementById('gs5').innerHTML = output5 += myValue2;
 			}
@@ -162,7 +193,7 @@ THEN -we can use "const result"  - to call the CHILD Function()</p>
 		}
 		<mark>const result</mark> = parentFunction2();
 		<mark>result();</mark> //6 3
-	< /script>
+	< />
 </pre>
 <pre>If we call result() again - it will continue to INCREMENT. // 11 4 </pre>
 
