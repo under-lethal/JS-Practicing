@@ -46,7 +46,7 @@ const playMatch = () =>{
 	computerOptions[computerNumber]; //this is gonna GIVE US a RANDOM (rock, paper, scissors).
 
 	//Computer Options
-	const computerOptions = ['rock', 'paper', 'scissors'];
+	//const computerOptions = ['rock', 'paper', 'scissors'];
 
 	//we're getting the "(option)" - on each INDIVIDUAL Button that we choose.??!?!?!?!?!?!?
 	//since, we have only "one parameter in (arrow Func) - get rid of "()"
@@ -74,10 +74,10 @@ const comparedHands = (playerChoice, computerChoice) =>{
 	//cheching for a tie
 	if(playerChoice === computerChoice){
 		winner.textContent = 'It is a tie';
-		retunr;
+		return;
 	}
 }
-//CALL al the InnerFunctions
+//CALL all the InnerFunctions
 startGame();
 playMatch();
 };

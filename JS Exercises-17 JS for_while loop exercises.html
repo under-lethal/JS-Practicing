@@ -320,7 +320,7 @@ printArray2(arr2);
 	printOdd(numb);
 </script>
 
-<h3>4.Write a JS code to delete all occurrence of element in given array</h3>
+<h3>4.Write a JS code to DELETE all occurrence of element in given array</h3>
 <pre>
 	< p id="del">< /p>
 <  type="text/javascript">
@@ -442,10 +442,23 @@ printArray2(arr2);
 	document.getElementById('rem1').innerHTML = output1 += newArray1;
 </script>
 
-<h3>5. Write a JS code to demonstrate Async loop:</h3>
+<h3>5. Write a JS code to demonstrate ASYNC Loop:</h3>
 <pre>
-
+	< p id=""asnc>< /p>
+< >
+	for(var i = 0; i< 5; i++){
+		setTimeout(()=> document.getElementById('asnc').innerHTML = i,3000);
+	} 
+< >
+<b>Ouput:</b>
+5 5 5 5 (after "3" miliseconds)
 </pre>
+<p id=""asnc></p>
+<script>
+	for(var i = 0; i<5; i++){
+		setTimeout(()=> document.getElementById('asnc').innerHTML = i,3000);
+	} 
+</script>
 <p id="ay"></p>
 <script>
 	for (vari=0; i<5; i++){
@@ -453,7 +466,7 @@ printArray2(arr2);
 	}
 </script>
 
-<h3>6. Write a JS code to find the power of a number using for loop:</h3>
+<h3>6. Write a JS code to find the POWER of a NUMBER using for loop:</h3>
 <pre>
 < p id="pow">< /p>
 <  type="text/javascript">
@@ -748,7 +761,7 @@ myAgeInDogYears();
 <mark>'Your age 36 in dog-years is 157!'</mark>
 </pre>
 
-<h3>8. Write a JS code to find the no of digits in a number</h3>
+<h3>8. Write a JS code to find the NO of DIGITS in a number</h3>
 <pre>
 < p id="digi">< /p>
 < p id="digi1">< /p>
@@ -756,10 +769,10 @@ myAgeInDogYears();
 function digitCount(num){
 	var count = 0; //return 1 for pow=0
 	while(num!=0){
-		num = Math.floor(num/10);
-		count++;
+		num = <b>Math.floor(num/10);</b>
+		<mark>count++;</mark>
 	}
-	return count;
+	<mark>return count;</mark>
 }
 document.getElementById('digi').innerHTML = digitCount(8367); //4
 document.getElementById('digi1').innerHTML = digitCount(563349); //6
@@ -811,20 +824,35 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 
 <h3>9. Write a JS code to CALCULATE the SUM of digits in a number</h3>
 <pre>
-	
+< p id="SD">< /p>
+< type="text/javascript">
+	function digitSum(num){
+		var sum = 0;
+		while(num!=0){
+			sum += num % 10;
+			num = <b>Math.floor(num/10);</b>
+		}
+		<mark>return sum;</mark>
+	}	
+	document.getElementById('SD').innerHTML = digitSum(4856);
+</>
 </pre>
+
+<p id="SD"></p>
 <script type="text/javascript">
 	function digitSum(num){
 		var sum = 0;
 		while(num!=0){
-			sum += num % 10
+			sum += num % 10;
+			num = Math.floor(num/10)
 		}
+		return sum;
 	}	
+	document.getElementById('SD').innerHTML = digitSum(4856);
 </script>
 
-
-
 <h3>Youtube Example: Find SUM of DIGITS of a Number:</h3>
+
 <pre>
 < p id="nd"></p>
 <  type="text/javascript">
@@ -883,7 +911,7 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 	document.getElementById('nd').innerHTML = 'Sum of digits is ' + sum;
 </script>
 
-<h2>9. Write a JS code to find the largest number in an array</h2>
+<h2>9. Write a JS code to find the LARGEST NUMBer in an ARRAY</h2>
 <pre>
 < div id='ln'>< /div>
 <  type="text/javascript">
@@ -1081,7 +1109,7 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 	printNumb(10);
 </script>
 
-<h3>Get a RANDOM ITEM from an ARRAY</h3>
+<h2>Get a RANDOM ITEM from an ARRAY</h2>
 <pre>
 < p id='ri'>< /p>
 <>
