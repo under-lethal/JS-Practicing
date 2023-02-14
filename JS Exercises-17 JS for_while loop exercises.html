@@ -978,13 +978,13 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 	document.getElementById('ln3').innerHTML = largest;
 </script>
 
-<h3>Find the LARGEST Numb In a 2D Array:</h3>
+<h3>Find the LARGEST Numb In a 2D Array: | <mark>for();</mark> | <mark>push();</mark></h3>
 <h4>I'st Example:</h4>
 <pre>
 	function largestOfFour(arr){
 		let maxes = [];
 		for(let i=0; i< arr.length; i++){
-			let tempMax = arr[i][0];
+			let tempMax = arr[i][0]; //<mark>Basically, ANY Elem <b>in the first row.</b></mark>
 			for(let k=0; k< arr[i].length; k++){
 				let currentElement = arr[i][k];
 				if(currentElement >= tempMax){
@@ -1016,7 +1016,7 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 	document.getElementById('2d').innerHTML = largestOfFour ([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
 </script>
 
-<h4>II'nd Example: <mark>NESTED</mark> Logic</h4>
+<h4>II'nd Example: <mark>NESTED</mark> Logic | <mark>push();</mark></h4>
 <pre>
 	function findMax(arr){
 		var max = arr[0];
@@ -1064,6 +1064,37 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 
 	//arra[i] - is all INNER Arrays.
 	//findMax(arr) - takes and Array - and returns the MAX - "var max = ..."
+</script>
+
+<h3>III'rd - <mark>forEach()</mark> | <mark>sort();</mark> and <mark>splice();</mark></h3>
+<pre>
+	function largestOfFour(arr){
+		arr.<mark>forEach(function(arr)</mark>{
+			<b>return arr.sort(function(a,b){
+				return b - a;
+			})</b>
+		});
+		arr.<mark>forEach(function(arr)</mark>{
+			<b>return arr.splice(1, 3)
+		});</b>
+		<b>return arr;</b>
+	}
+	document.getElementById('spl').innerHTML = largestOfFour([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
+</pre>
+<p id="spl"></p>
+<script>
+	function largestOfFour(arr){
+		arr.forEach(function(arr){
+			return arr.sort(function(a,b){
+				return b - a;
+			})
+		});
+		arr.forEach(function(arr){
+			return arr.splice(1, 3)
+		});
+		return arr;
+	}
+	document.getElementById('spl').innerHTML = largestOfFour([[4,5,1,3],[13,27,18,26],[32,35,37,39],[1000,1001,857,1]]);
 </script>
 
 <h2>9.1 Find the average number in a given array</h2>
@@ -1131,13 +1162,37 @@ document.getElementById('digi1').innerHTML = digitCount(563349); //6
 	getRandomItem();
 </script>
 
-
+<h2>Print RANGE using for-loop</h2>
 <pre>
+	let text = '';
+	function printRange(rangeStart, rangeStop){
+		for(let i = rangeStart; i<=rangeStop; i++){
+			text += i + ', ';
+		}
+		return text;
+	}
+	document.getElementById('R').innerHTML = printRange(1,19);
+	-----------------------------------------------------------
+
+	function printAllNumb(firstNumb, lastNumb){
+		for(let i = firstNumb; i<=lastNumb; i++){
+			document.write(i + ' ');
+		}
+	}
+
+	<b>printAllNumb(1,19);</b>
 
 </pre>
-<p id=""></p>
+<p id="R"></p>
 <script>
-
+	let text = '';
+	function printRange(rangeStart, rangeStop){
+		for(let i = rangeStart; i<=rangeStop; i++){
+			text += i + ', ';
+		}
+		return text;
+	}
+	document.getElementById('R').innerHTML = printRange(1,19);
 </script>
 </body>
 </html>
