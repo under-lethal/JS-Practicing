@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		span{
+			color:red;
+			background:lightgrey;
+		}
+	</style>
+	<script src="classes.js"></script>
+  <title>JS_Classes_Inheritance</title>
+</head>
+<body style="padding:25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <h2>1.Classes</h2>  
+	<p><b>Classes</b> are <b>templates</b> for JavaScript <b>Objects</b>.</p>
+	<pre>
+		class Car {
+			<b>constructor</b>(name, year){
+				this.name = name;
+				this.year = year;
+			}
+		}
+
+		const myCar = new Car('Ford', 1970);
+		document.getElementById('cls').innerHTML = myCar.name + ' ' + myCar.year; 
+	</pre>
+	<p id="cls"></p>
+	<script>
+		document.getElementById('cls').innerHTML = myCar.name + ' ' + myCar.year; 
+	</script>
+
+	<h2>2.Methods</h2>
+	<pre>
+		class CarMethod{
+			constructor(name, year){
+				this.name = name;
+				this.year = year;
+			}
+			<b>age(){
+				let date = new Date();
+				<mark>return</mark> date.getFullYear() - this.year;
+			}</b>
+		}
+
+		const myCarMethod - new CarMethod('Ford' 2020);
+		document.getElementById('clsm').innerHTML = 'My car is ' + myCarMethod.age() + ' years old.'; 
+	</pre>
+	<p id="clsm"></p>
+	<script>
+		document.getElementById('clsm').innerHTML = 'My car is ' + myCarMethod.age() + ' years old.'; 
+	</script>
+
+	<h2>3.Class INHERITANCE</h2>
+	<p>To <b>create</b> a CLASS INHERITANCE - use <span>extends</span> <b>keyword</b>. <br>
+	A CLASS <b>create</b> with CLASS INHERITANCE - <span>inherits all the METHODS</span> from another CLASS. <br>
+	The <span>'super()'</span> - <b>to call the PARENT'S Contructor Function().</b>
+	</p>
+	<pre>
+
+	</pre>
+	<p id="'inh"></p>
+	<script>
+		document.getElementById('inh').innerHTML = myCarInherit.show(); 
+	</script>
+
+	<h1>Youtube Example: "Inheritance"</h1>
+	<ul>
+		<li><b>Inheritance</b> - is used for code <b>REUSABILITY</b>.</li>
+		<li>We can REUSE - <b>properties</b> and <b>methods</b> of an existing <b>class.</b></li>
+		<li><b>Children classes</b> INHERIT from <b>parent classes.</b></li>
+	</ul>
+	<pre>
+		*We have a <b>class</b> call "Animal." | "Animal" have a <b>property name</b> - "alive".
+		*<b>this.alive = alive;</b> - set this to <b>"true"</b> - for <b>all animal OBJECTS.</b>
+		*All "animals" - will have an <b>eat() - method</b>. | And will display a "message": <b>console.log('This animal is eating');</b>
+		*The <mark>"Animal" <b>class</b></mark> - will be <mark><b>the parent Class</b></mark>.
+		*<mark><b>The parent Class</b></mark> - it will have <mark><b>children.</b></mark>
+		*This <mark><b>children Classes</b></mark> - will be <b>able</b> to INHERIT <mark>this.alive = true; <b>property.</b></mark> | And the <mark><b>eat(){..} method.</b></mark>
+
+		Let's CREATE 3 Classes - of <b>specific kinds of Animals.</b>
+		^Now - for <b>these classes</b> - to INHERIT everyhthing - <b>from other classes,</b> use <span>extends</span>. 
+		^<b>class Rabbit</b> - <mark>take the Class - to inherit to</mark> and <span>extends</span> the Class - <mark>you would LIKE to INHERIT <b>from. | "Animal"</b></mark>
+		<b>
+			class Rabbit extends Animal{
+	
+			}
+			class Fish extends Animal{
+	
+			}
+			class Hawk extends Animal{ 
+	
+			}
+		</b>
+
+		^Now - lets CREATE an <b>instance</b> of: <b>Rabit, Fish</b> and <b>Hawk.</b>
+		^^We'll CREATE a <b>Rabbit/Fish/Hawk OBJECT</b>:
+			
+			<b>let rabbit = new Rabbit()</b>
+			<b>let fish = new Fish()</b>
+			<b>let hawk = new Hawk()</b>
+
+		^IF we look at the <b>rabbit Obj</b> (let's take an Examination at the "rabbit Obj"): <mark><b>rabbit.</b></mark>
+		^<b>console.log(rabbit.alive)</b> //true
+		^<b>console.log(rabbit.eat)</b> //This animal is eating
+		^^The <b>same thing applies</b> to <b>fish</b> and <b>hawk.</b>
+
+		^^<b>So</b> even though there is <b>nothin within</b> <mark>these Classes:</mark>
+		<b>
+			class Rabbit extends Animal{
+	
+			}
+			class Fish extends Animal{
+	
+			}
+			class Hawk extends Animal{ 
+	
+			}
+		</b>
+		 - <mark>since</mark> they <b>extent</b> the <mark><b>Animal Class</b></mark> - <mark>they will <b>INHERIT</b></mark> these <mark>properties</mark> and <mark>methods</mark>:
+		 <b>"this.alive = alive;" "eat(){..}"</b> - found <b>within</b> this <b>paren Class: <mark>class Animal{...}</mark></b>
+	</pre>
+	<p>One <b>benefit</b> of using <b>INHERITANCE</b> is that: - <b>if there is any SIMILARITIES</b> (between each of these <b>Classes</b>) - we can have - (all of thses <b>Classes</b>) - <b>INHERIT</b> from a <b>common ancestor.</b> <br>
+	If we <b>weren't using</b> INHERITANCE - <b>we have to write the same code - for each</b> of these Classes. (we may have <b>copy</b> and <b>paste</b> it).
+	It <b>could be a lot easier</b> - to have (All of these classes) <b>inherit</b> from a <mark>common ancestor:<b>Animal{..}</b></mark> - (and make the CHANGE here <b>in one place</b>) - instead of, for every single class.
+	</p>
+	<pre>
+		#Also - <b>we can give </b>each child Class</b> - their <b>own unique</b> PROPERTIES and METHODS.
+		
+		class Rabbit extends Animal{
+			<b>run(){
+				console.log('This rabbit is running.')}</b>
+		}
+		class Fish extends Animal{
+			<b>swim(){
+				console.log('this fish is swimming.')}</b>
+		}
+		class Hawk extends Animal{ 
+
+		}
+
+		<b>
+			rabbit.run();
+			fish.swmim();
+			hawk.fly();
+		</b>
+	</pre>
+
+	<pre>
+		class Animal {
+			constructor(){
+				this.alive = <b><mark>true;</mark></b>
+			}
+			eat(){
+				console.log('This animal is eating');
+			}
+		}
+
+		class Rabbit extends Animal{
+			run(){
+				console.log('This rabbit is running.')
+			}
+		}
+		class Fish extends Animal{
+			swim(){
+				console.log('This fish is swimming.');
+			}
+		}
+		class Hawk extends Animal{ 
+			fly(){
+				console.log('This hawk is flying.');
+			}
+		}
+
+		let rabbit = new Rabbit();
+		let fish = new Fish();
+		let hawk = new Hawk();
+
+		rabbit.run();
+		fish.swim();
+		hawk.fly();
+	</pre>
+	<p id="inh1"></p>
+	<p id="inh2"></p>
+	<p id="inh3"></p>
+	<script>
+		document.getElementById('inh1').innerHTML = rabbit.run();
+		document.getElementById('inh2').innerHTML = fish.swim();
+		document.getElementById('inh3').innerHTML = hawk.fly();
+	</script>
+
+	<h3>Example III: <mark>class | extends | constructor | super | get | set | static</mark></h3>
+	<pre>
+		<b>Creating a Class</b> - is "like" defining an OBJECT. <b>The blueprint</b> - for an OBJECT.
+		The CLASS <b>constructor()</b> - this is what you get - when you'r saying <b>new 'Something'</b>. (new Car, new Person, new...)
+
+		First <b>we define a "Vehicle" class</b> - then - we <b>create an OBJECT</b>(a "Vehicle" - OBJ) - <mark>let vehicle = new Vehicle(4)</mark>.
+		<b>this.</b> - reffers <mark>to the OBJ itself.</mark>
+
+		<b>console.log(vehicle.wheels)</b> - <mark>i'm ACCESSING this/ the property/method.</mark>
+		<b>get()</b> - "returns" <b>this.numWheels</b>. <b>this.numWheels</b> - is <mark>what we SET in the <b>contructor().</b></mark>
+		<b>set()</b> - will OVERWRITING..
+		<b>let vehicle</b> - is <mark>actually</mark> - <b>an INSTANCE of the Class 'Vehicle'.</b>
+		<b>let vehicle1</b> - are <mark>also</mark> - <b>an INSTANCE of the Class 'Vehicle'.</b>
+		<b>let vehicle2</b> - are <mark>also</mark> - <b>an INSTANCE of the Class 'Vehicle'.</b>
+
+		<b><mark>static</mark></b> - 
+
+		class Vehicle {
+			constructor(_wheels){
+				this.numWheels = _wheels;
+			}
+			<b>get</b> wheels(){
+				<b>return</b> this.numWheels;
+			}
+			set wheels(_wheels){
+				this.numWheels = _wheels;
+			}
+			static accelerate(){
+				document.getElementById('ex1').innerHTML = 'Go faster!';
+			}
+			static decelerate(){
+				//document.getElementById('ex2').innerHTML = 'Go slower!';
+			}
+		}
+		
+		let car = new Vehicle(4);
+		let car1 = new Vehicle(2);
+		let car2 = new Vehicle(6);
+
+		<span><b>get()</b> and <b>set()</b> - are optional.</span>
+	</pre>
+	<p id="ex1"></p>
+	<p id="ex2"></p>
+	<p id="ex3"></p>
+	
+	<script>
+		document.getElementById('ex2').innerHTML = car.wheels;
+		document.getElementById('ex3').innerHTML = CarII.accelerate();		
+	</script>
+
+<h4>extends & super</h4>
+	<pre>
+		CREATE a Class - <b>called 'CarII'.</b>
+		<b>class Car2 extends Vehicle</b> - <mark>the Class "Car"</mark> (or the object that WE <b>created</b> called 'CarII') - <mark><b>it's going to BORROW things</b> from "Vehicle'.</mark>
+		<b>extends</b> - wants to <b>'share'</b> 'things' - <b>inside of Vechicle Class.</b>
+		<b>extends</b> - wants to <b>be able</b> - to ACCES this <mark>constructur(_wheels) property/method.</mark>
+		<b>extends</b> - wants to <b>be able</b> - to USE this <mark>static accelerate/decelerate <b>nethods.</b></mark>
+		<b>So - when we <MARK>extend</MARK> 'Vehicle' - it means that the 'Vehicle' is the PROTOTYPE of 'vehicle'.</b>
+
+		CREATE a <b>contructor().</b>
+		<b>Inside</b> of <b>constructor method()</b> - <mark>this is the ONE that would be called - if we DID this:</mark>
+		<b>let ferrari = new CarII();</b>
+		Now - by <b>calling Vehicle()</b> (let ferrarri = new CarII()); is - <b>we're calling <mark>this</mark> 'constructor()'.</b>
+		<b>let ferrari = new CarII(); - means -</b> - <mark>call the <b>constructor()</b> - inside the 'class CarII'</mark>
+		By calling <b><mark>super();</mark></b> - (what I'm DOING?) - <b>i'm CALLING the 'contructor()' - of</b> (whatever I'm extending) - <b>in this case: 'Vehicle'.</b>
+		*That's what <b>super()</b> does.
+
+		Add a 'parameter': <b>let ferrari = new CarII(4);</b>
+		Pass that <b>variable</b> to <b>super();</b> | <mark>super(_wheels);</mark>
+
+		class CarII <b>extends</b> Vehicle{
+			constructor(){
+				<b><mark>super(_wheels);</mark></b>
+			}		
+		}
+		
+		<mark>let ferrari = new Vehicle(4);</mark>
+	</pre>
+	
+	<p>Let's ADD  a <b>method</b> called <mark>info()</mark>.</p>
+	<pre>
+		*and <b>write all the INFO inside of there:</b>
+		Let's <b>pass</b> 'a few more things': let ferrari = new Vehicle(4, <b>'Ferrari', 'Testarossa', 1985</b>);
+
+		class CarII extends Vehicle{
+			constructor(_wheels){
+				super(_wheels);
+			}
+		
+			<b>info(){
+				
+			}</b>
+		}
+		
+		let ferrari = new Vehicle(4, <b>'Ferrari', 'Testarossa', 1985</b>);
+
+		<b>Those 'things' - need to be <mark>PASSED</mark> into the <mark>constructor Func()</mark>.</b>
+
+		class CarII extends Vehicle{
+			constructor(_wheels, <b>_make, _model, _year</b>){
+				super(_wheels);
+				<b>this.make = _make;</b>
+				<b>this.model = _model;</b>
+				<b>this.year = _year;</b>
+			}
+		
+			<b>info(){
+				console.log('The ', <mark>this.name, this.model, 'was made in', this.year, 'and has', this.wheels, 'wheels.');
+			}</b>
+		}
+		|^ <mark><b>I'm ACCESSING properties - directly here.</b> I'm just GETTING the VALUES.</mark>
+		
+		let ferrari = new Vehicle(4, <b>'Ferrari', 'Testarossa', 1985</b>);
+
+		<b>ferrari - is the INSTANCE - of the 'CarII' Class.</b>
+		Because its an <b>instance</b> - <mark>the keyword <b>this.</b></mark> - <b>is reffering to 'this particular object:</b> <mark>let ferrari = new CarII(...)</mark>
+
+		<b><mark>ferrari.info();</mark></b>
+	</pre>
+
+	<p id="ex4"></p>
+
+	<script>
+		document.getElementById('ex4').innerHTML = ferrari.info();	
+	</script>
+
+</body>
+</html>
