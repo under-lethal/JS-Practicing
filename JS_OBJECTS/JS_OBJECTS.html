@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <scirpt src="index.js"></scirpt>
+    <title>JS-Objects</title>
+		<style>
+			span{
+				color: red;
+			}
+			.span_2{
+				background-color: lightgrey;
+				color:white;
+				padding: 15px;
+			}
+
+			h3{
+				text-decoration: underline;
+			}
+			pre{
+				border: 1px solid lightgray;
+				width: 900px;
+				padding: 15px;
+			}
+		</style>
+</head>
+<body style="padding:25px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+  <h2>JavaScript Objects</h2> 
+	<p>In JavaScript <i>almost everything</i> is an <b>object</b>.
+		<ul>
+			<li>Booleans can be objects (if defined with the <span>new</span> keyword)</li>
+			<li>Numbers can be objects (if defined with the <span>new</span> keyword)</li>
+			<li>Strings can be objects (if defined with the <span>new</span> keyword)</li>
+			<li><b>Dates</b> are always object</li>
+			<li><b>Maths</b> are always objects</li>
+			<li><b>Regular Expressions</b> (RegEx) are always objects</li>
+			<li><b>Arrays</b></li>
+			<li><b>Functions</b></li>
+			<li><b>Objects</b></li>
+		</ul>
+	</p>
+<br>
+	<h2>1.<span>Creating</span> a JavaScript Object</h2>
+	<h3>Using an "Object Literal"</h3>
+	<pre>
+		const person = {
+			fName: 'John',
+			lName:'Doe',
+			age: 50,
+			eyeColor: 'blue'
+		};
+
+		document.getElementById('ol').innerHTML = person.fName + " is " + person.age + " years old." ;		
+
+	</pre>
+	<p id="ol"></p>
+	<script>
+	 		const person = {
+			fName: 'John',
+			lName:'Doe',
+			age: 50,
+			eyeColor: 'blue'
+		};		
+		document.getElementById('ol').innerHTML = person.fName + " is " + person.age + " years old." ;		
+	</script>
+
+	
+	<h3>Using the JavaScript Keyword <span>new</span></h3>
+	<pre>
+		<mark>const personObj = <b>new Object();</b></mark>
+		personObj.fName = 'Axl';
+		personObj.lName = 'Rosses';
+		personObj.age = 50;
+		personObj.eyeColor = 'blue';
+
+		document.getElementById('obj').innerHTML = personObj.fName + " is " + personObj.age + " years old." ;	
+	</pre>
+	<p id="obj"></p>
+	<script>
+		const personObj = new Object();
+		personObj.fName = 'Axl';
+		personObj.lName = 'Rosses';
+		personObj.age = 50;
+		personObj.eyeColor = 'blue';
+
+		document.getElementById('obj').innerHTML = personObj.fName + " is " + personObj.age + " years old." ;	
+	</script>
+<br>
+<p class="span_2">
+There is no need to use <span style="color:black">new Object()</span>. <br> <br>
+
+For readability, simplicity and execution speed, use the object literal method.
+</p>
+<br>
+<hr>
+
+<h2>2.Object Properties</h2>
+<h3><span>Accessing</span> JavaScript Properties</h3>
+<p>The <span>syntax</span> for <b>accessing</b> the property of an object is:</p>
+<pre class="span_2">
+	objectName.property // <b>person.age</b>
+	objectName.['property'] // <b>person["age"]</b>
+	objectName.[expression] // <b style="color:black"> x = 'age'; person[x]</b>
+</pre>
+
+<h3>JavaScript <span>for...in</span> Loop</h3>
+<p>The JavaScript <span>for...in statement</span> <b>loops</b> through the <b>properties</b> of an <b>object</b>.</p>
+<pre>
+	const personL = {
+		fname:" John",
+		lname:" Doe",
+		age: 25
+	};
+	
+	<b>let txt = '';
+	for (let x in personL){
+		txt += personL[x] + ' ';
+	}</b>
+		document.getElementById("fi").innerHTML = txt;
+</pre>
+<p id="fi"></p>
+<script>
+	const personL = {
+	fname:" John",
+  lname:" Doe",
+  age: 25
+};
+
+let txt = '';
+for (let x in personL){
+	txt += personL[x] + ' ';
+}
+	document.getElementById("fi").innerHTML = txt;
+</script>
+
+<h3><span>Adding</span> New Properties</h3>
+<h4>Example:</h4>
+<pre>
+	person<b>.nationality</b> = <span>'English'</span>;
+</pre>
+
+<h3><span>Deleting</span> Properties</h3>
+<pre>
+	const person = {
+		fName: 'Axl',
+		lName: 'Rosses',
+		age: 50,
+		eyeColor: 'blue'
+	};
+
+	<b><span>delete</span></b> person<b>.age</b>;
+	<b><span>delete</span></b> person<b>['age']</b>;
+
+
+	console.log(<b>person.fName + ' is ' + person.age + ' years old.'</b>);
+	
+	<b>Output:</b>
+	John is <span style="color:gray">undefined</span> years old.
+</pre>
+
+<h3><span>Nested</span> Objects</h3>
+<p>Values in an object can be another object:</p>
+<pre>
+	const myObj = {
+		name: 'John',
+		age: 30,
+		cars: {
+			car1: 'Ford',
+			car2: 'BMW',
+			car3: 'Fiat'
+		}
+	};
+
+	document.getElementById("demo").innerHTML = <b>myObj.cars.car2;</b>
+	document.getElementById("demo").innerHTML = <b>myObj.cars['car2'];</b>
+	document.getElementById("demo").innerHTML = <b>myObj.['cars'].['car2'];</b>
+</pre>
+
+<h3><span>Nested Arrays</span> and Objects</h3>
+<p>Values in objects can be arrays, and values in arrays can be objects:</p>
+<pre>
+	const myObj = {
+		name: 'John',
+		age: 30,
+		cars <b>[
+			{name: Ford, models:["Fiesta", "Focus", "Mustang"]},
+			{name: BMW, models:["320", "X3", "X5"]},
+			{name: Fiat, models:["Multipla", "500", "Panda"]},
+			]</b>
+	};
+</pre>
+<p>To <span>access</span> <b>arrays inside arrays</b> - use <span>for...in</span> loop.</p>
+<pre>
+	for (let i <span>in</span> <b>myObj.cars</b>){
+		x += '< h2>' + <b>myObj.cars[i]<span>.name</span></b> + '< h2>';
+			for(let <b>j</b> <span>in</span> <b>myObj.cars[i]<span>.models</span></b>){
+				x += <b>myObj.cars[i]<span>.models[j]</span></b> + '< br>'
+			}
+	}
+
+	document.getElementById("demo").innerHTML = x;
+</pre>
+<p id="nst"></p>
+<script>
+	let x = '';
+	const myObj = {
+		name: 'John',
+		age: 30,
+		cars: [
+			{name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+			{name:"BMW", models:["320", "X3", "X5"]},
+			{name:"Fiat", models:["Multipla", "500", "Panda"]}
+		]
+	};
+
+	for(let i in myObj.cars){
+		x += '<h2>' + myObj.cars[i].name + '</h2>';
+			for(let j in myObj.cars[i].models){
+				x += myObj.cars[i].models[j] + '<br>'
+			}
+	}
+	document.getElementById('nst').innerHTML = x;
+</script>
+<hr>
+<br>
+
+<h2>3.JavaScript <span>Object Methods</span></h2>
+<pre>
+	const person1 = {
+		firstName: 'Alen',
+		lastName:'Sparkle',
+		id:5566,
+		<b>fullName: function(){
+			return this.firstName + ' ' + this.lastName;
+		}</b>
+	};
+
+	document.getElementById("om").innerHTML = <b>person1.fullName();</b>
+</pre>
+<p id="om"></p>
+<script>
+	const person1 = {
+		firstName: 'Alen',
+		lastName:'Sparkle',
+		id:5566,
+		fullName: function(){
+			return this.firstName + ' ' + this.lastName;
+		}
+	};
+
+	document.getElementById("om").innerHTML = person1.fullName();
+</script>
+
+<h3><span>Accesing</span> Object Methods</h3>
+<pre>
+	document.getElementById("om").innerHTML = <b>person1.fullName();</b>
+</pre>
+
+<h3><span>Adding</span> a Method to an Object</h3>
+<pre>
+	const person2 = {
+		name: 'Jessica',
+		surName:'Poe',
+		age: 23
+	};
+
+	<b><span>person2.fullName</span> = function(){
+		return this.name + ' '+ this.surName;
+	}</b>
+
+	document.getElementById("m").innerHTML = 'My auntie is ' + person2.fullName() + '.';
+</pre>
+<p id="m"></p>
+<script>
+	const person2 = {
+		name: 'Jessica',
+		surName:'Poe',
+		age: 23
+	};
+
+	person2.fullName = function(){
+		return this.name + ' '+ this.surName;
+	}
+
+	document.getElementById("m").innerHTML = 'My auntie is ' + person2.fullName() + '.';
+</script>
+<hr>
+<br>
+
+<h2>4.JavaScript <span>Display</span> Objects</h2>
+<h3>Displaying OBJECT <span>Properties</span></h3>
+<pre>
+	Displaying the Object Properties <b>by name</b>:
+	document.getElementById("demo").innerHTML = <b>person;</b>
+	will output <b>[object Object].</b>
+
+	document.getElementById("demo").innerHTML =
+	<b>person.name + "," + person.age + "," + person.city;</b>
+</pre>
+
+<h3>Displaying the OBJECT <span>in a Loop</span></h3>
+<pre>
+	let txt = "";
+	<b>for</b> (let x <b><span>in</span></b> person) {
+		<b>txt</b> += person[x] + " ";
+	};
+
+	document.getElementById("demo").innerHTML = <b>txt</b>;
+</pre>
+
+<h3>Using <span>Object.values()</span></h3>
+<pre>
+	const person3 = {
+		name:'Adelle',
+		age: 30,
+		city: 'Amsterdam'
+	};
+
+	document.getElementById('ov').innerHTML = <b>Object.values(person3);</b>
+</pre>
+<p id="ov"></p>
+<script>
+	const person3 = {
+		name:'Adelle',
+		age: 30,
+		city: 'Amsterdam'
+	};
+
+	document.getElementById('ov').innerHTML = Object.values(person3);
+</script>
+
+<h3>Using <span>JSON.stringify()</span></h3>
+<p>Any JavaScript <b>object</b> can be <span>stringified</span> (converted to a string) - using: <span>JSON.stringify()</span></p>
+<pre>
+	const person4 = {
+		name: 'John',
+		age: 35,
+		city: 'New York'
+	};
+	document.getElementById('str').innerHTML = <b>JSON.stringify(person4);</b>
+</pre>
+<p id="str"></p>
+<script>
+	const person4 = {
+		name: 'John',
+		age: 35,
+		city: 'New York'
+	};
+	document.getElementById('str').innerHTML = JSON.stringify(person4);
+</script>
+<hr>
+<br>
+
+<h2>JavaScript Accessors (<span>Getters</span> and <span>Setters</span>)</h2>
+<h3>JavaScript Getter(The <span>get</span> Keyword)</h3>
+<p>Create an <b>object.</b> | <b>Get</b> the <b>value</b> of the 'language' <b>property</b>.</p>
+<pre>
+	const getPerson = {
+		firstName: 'Joe',
+		lastName: 'Peterson',
+		language: 'en',
+		<b><span>get</span> lang()</b> { 	//<mark>get the <b>value of language property.</b></mark>
+			<b>return this.language;</b>
+		}
+	};
+	
+	document.getElementById('get').innerHTML = <b>getPerson.lang;</b>
+</pre>
+<p id="get"></p>
+<script>
+	const getPerson = {
+		firstName: 'Joe',
+		lastName: 'Peterson',
+		language: 'en',
+		get lang() {
+			return this.language;
+		}
+	};
+	
+	document.getElementById('get').innerHTML = getPerson.lang;
+</script>
+
+<h3>JavaScript Setter(The <span>set</span> Keyword)</h3>
+<pre>
+	const setPerson = {
+		name: 'Ana',
+		surName: 'Pauker',
+		language:'',
+		<b><span>set</span> lang(lang){
+			this.language = lang;</b>
+		}
+	};
+
+	<b>setPerson.<span>lang</span> = 'german';</b>
+	document.getElementById('set').innerHTML = <b>setPerson.<span>language</span>;</b>
+</pre>
+<p id="set"></p>
+<script>
+	const setPerson = {
+		name: 'Ana',
+		surName: 'Pauker',
+		language:'',
+		set lang(lang){
+			this.language = lang;
+		}
+	};
+
+	setPerson.lang = 'german';
+	document.getElementById('set').innerHTML = setPerson.language;
+</script>
+
+<h3>The <b style="color:grey">differences</b> between Function & Getter:</h3>
+<pre class="span_2">
+	<b style="color:black">Function</b> access fullName as a <span><b>function</b></span>: <b style="color:black">person.fullName().</b>
+
+	<b style="color:black">Getter</b> access fullName as a <span><b>property</b></span>: <b style="color:black">person.fullName</b>
+
+	<span style="color: rgb(99, 96, 96); font-size: 17px;">JavaScript <span style="color:black">CAN SECURE</span> better Data Quality when using <span>Getters</span> and <span>Setters</span>.</span>
+</pre>
+
+<hr>
+<br>
+<h2>JavaScript Object <span>Constructors</span></h2>
+<p>Sometimes we need a <b>"blueprint"</b> for creating many objects of the same "type. <br>
+Objects of the same type - are created by <b>calling the constructor function</b> with the <b><span>new</span> keyword.</b></p>
+<pre>
+	function Person(first, last, age, eye){
+		this.fName = first;
+		this.lName = last;
+		this.age = age;
+		this.eyeColor = eye;
+	}
+
+	<b>const myFather = new Person ('John', 'Doe', 50, 'blue');</b>
+	<b>const myMother = new Person ('Sally', 'Rally', 45, 'green');</b>
+
+	document.getElementById('cnstr').innerHTML = 'My father is ' + <b>myFather.age +</b> '. My mother is ' + <b>myMother.age</b> + '.';
+</pre>
+<p id="cnstr"></p>
+<script>
+	function Person(first, last, age, eye){
+		this.fName = first;
+		this.lName = last;
+		this.age = age;
+		this.eyeColor = eye;
+	}
+
+	const myFather = new Person ('John', 'Doe', 50, 'blue');
+	const myMother = new Person ('Sally', 'Rally', 45, 'green');
+
+	document.getElementById('cnstr').innerHTML = 'My father is ' + myFather.age + '. My mother is ' + myMother.age + '.';
+</script>
+
+<h3>Adding a <span>Property</span> to an <span>OBJECT</span></h3>
+<pre>
+	<b>myFather<span>.nationality</span> = 'German';</b>
+
+	// Constructor function for Person objects
+	function Person(first, last, age, eye) {
+		this.firstName = first;
+		this.lastName = last;
+		this.age = age;
+		this.eyeColor = eye;
+	}
+
+	// Create 2 Person objects
+	const myFather = new Person("John", "Doe", 50, "blue");
+	const myMother = new Person("Sally", "Rally", 48, "green");
+
+	// Add nationality to first object
+	<b>myFather<span>.nationality</span> = 'German';</b>
+
+	// Display nationality 
+	document.getElementById("demo").innerHTML =
+	"My father is " + myFather.nationality;
+</pre>
+
+<h3>Adding a <span>Property</span> to a <span>CONSTRUCTOR</span></h3>
+<pre>
+	function Person(first, last, age, eyecolor) {
+		this.firstName = first;
+		this.lastName = last;
+		this.age = age;
+		this.eyeColor = eyecolor;
+		<b>this.<span>nationality</span> = "English";</b>
+	}
+
+	document.getElementById("demo").innerHTML =
+	"My father is " + <b>myFather.nationality</b> + ". My mother is " + <b>myMother.nationality;</b>
+</pre>
+
+<h3>Adding a <span>Method</span> to an <span>OBJECT</span></h3>
+<pre>
+	// Constructor function for Person objects
+	function Person(first, last, age, eye) {
+		this.firstName = first;
+		this.lastName = last;
+		this.age = age;
+		this.eyeColor = eye;
+	}
+
+	// Create 2 Person objects
+	const myFather = new Person("John", "Doe", 50, "blue");
+	const myMother = new Person("Sally", "Rally", 48, "green");
+
+	<mark>// Add a name method to first object</mark>
+	<b>myFather.name = function() {
+		return <span>this.firstName + " " + this.lastName;</span>
+	};</b>
+
+	// Display full name
+	document.getElementById("demo").innerHTML =
+	<b>"My father is " + myFather.name();</b>
+</pre>
+
+<h3>Adding a <span>Method</span> to a <span>CONSTRUCTOR</span></h3>
+<pre>
+	function Person(first, last, age, eye) {
+		this.firstName = first;
+		this.lastName = last;
+		this.age = age;
+		this.eyeColor = eye;
+		<b>this.name = function() {
+			return <span>this.firstName + " " + this.lastName</span>
+		};</b>
+	}
+	
+	// Create a Person object
+	const myFather = new Person("John", "Doe", 50, "blue");
+	
+	// Display full name
+	document.getElementById("demo").innerHTML =
+	<b>"My father is " + myFather.name();</b>
+</pre>
+<hr>
+<br>
+
+<h2>Objects <span>Sets</span></h2>
+
+
+</body>
+</html>
