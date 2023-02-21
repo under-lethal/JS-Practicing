@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS CLASS - Inheritance</title>
+		<style>
+			span {
+				color:red;
+				font-weight: bold;
+			}
+		</style>
+</head>
+<body style="padding:25px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+  <h2>JS - Class - Inheritance - Exercise:</h2>
+	<p><b>1.</b>In the next few exercises, you will create <b>two subclasses</b> (<mark>Doctor and Nurse</mark>) from a <b>parent class</b> named <mark>HospitalEmployee</mark>. <br>
+		Below, we have listed <b>the properties</b> and <b>methods</b> you will find in the <mark>Doctor and Nurse</mark> <b>classes</b>.
+	</p>
+
+	<h3>Doctor</h3>
+	<ul>
+		<li>Properties: <mark>_name</mark>, <mark>_remainingVacationDays</mark>( (set to 20 inside the <mark>constructor()</mark>)), <mark>_insurance</mark></li>
+		<li>Methods: <mark>.takeVacantionDays()</mark></li>
+	</ul>
+	<h3>Nurse</h3>
+	<ul>
+		<li>Properties: <mark>_name</mark>, <mark>_remainingVacationDays</mark>( (set to 20 inside the <mark>constructor()</mark>)), <mark>_insurance</mark></li>
+		<li>Methods: <mark>.takeVacantionDays()</mark>, <makr>.addCertification()</makr></li>		
+	</ul>
+
+	<p>In <b>main.js</b>, <span>create</span> a <b>parent class</b> named <mark>HospitalEmployee</mark>.<br>
+	Add a <b>constructor</b> with <mark>name</mark> - as an <b>argument</b>.
+	</p>
+
+	<pre>
+		<span>class HospitalEmployee</span> {
+			<b>constructor(name)</b>{
+				
+			}
+		}
+	</pre>
+	<p><b>2.</b>Inside of the <b>constructor()</b>, <span>SET the instance's</span> <mark>_name to name</mark> and<mark>_remainingVacationDays to 20</mark>.</p>
+	<pre>
+		class HospitalEmployee {
+			<b>constructor(name)</b>{
+				<span>this._name = name;
+				this._remainingVacationDays = 20;
+				</span>
+			}
+		}
+	</pre>
+
+	<p><b>3.</b>Under the constructor, <span>create getters</span> for your <i>_name</i> and <i>_remainingVacationDays</i> <b>properties.</b><br>
+	Inside the <b>getter</b>, return the <span>property's value</span>.</p>
+	<pre>
+		class <b>HospitalEmployee</b>{
+			constructor(name){
+				this._name = name;
+				this._remainingVacationDays = 20;
+			}
+			<span>get name(){
+				return this.name;
+			}
+			get remainingVacationDays(){
+				return this._remainingVacationDays;
+			} 
+			</span>
+		}
+	</pre>
+
+	<p><b>4.</b>Under the getters, add a <span>method</span> called <i>takeVacationDays.</i> <br>
+	This <b>method</b> should accept <b>one argument</b>, called <i>daysOff</i>. <br>		
+	<mark>Inside</mark> the <b>method</b>, <b>subtract daysOff</b> from <b>_remainingVacationDays.</b> <br>
+	<b>Save</b> the result to <mark>_remainingVacationDays</mark>
+	.
+	</p>
+	<pre>
+		class <b>HospitalEmployee</b>{
+			constructor(name){
+				this._name = name;
+				this._remainingVacantionDays = 20;
+			}
+			
+			get name() {
+				retunr this._name;
+			}
+			get remainingVacationDays() {
+				return this._remainingVacationDays;
+			}
+
+			<span>takeVacantionDays(daysOff){
+				<mark>this._remainingVacantionDays = daysOff;</mark>
+			}</span>
+		}
+	</pre>
+
+	<hr>
+	<br>
+	<h2>Inheritance III</h2>
+	<p>Now that we have these shared properties and methods in the parent <b>HospitalEmployee class</b>, we can <b><span>extend</span> them</b> <span>to the subclasses</span>.</p>
+	<ul>
+		<li>The <span>extends</span> <b>keyword</b> - <span>MAKES</span> the <b>methods</b> of the <i>HospitalEmployee</i> - <b>available - inside the Nurse/Doctor class.</b></li>
+		<li>The <b>constructor</b> called - when you <b>create a</b> <i>new Doctor <b>object</b></i> - and accepts <b>two arguments</b> <i>constructor(x,y)</i></li>
+		<li>The <span>super</span> <b>keyword</b> <span>CALLS</span> the - <b>constructor of the PARENT Class.</b> In this case: <mark>super(name)</mark> - <b>passes</b> (the name ARGUMENT <b>of the</b> Nurse/Doctor) <b>class.</b></li>
+		<li>When the <b>HospitalEmployee constructor runs</b> - it <span>SETS</span> <mark>this._specilality = speciality;</mark> - <b>for the <i>new</i></b> <mark>HospitalEmployee</mark> <b>constructor.</b></li>
+		<p>In a <span>constructor()</span>, <b><i>you must always call</i> <span>the super() method</span> before you can use the <mark>this keyword</mark></b> — <b><i>if you do not,</i></b> <span>JavaScript will throw a reference error</span>.</p>
+	</ul>
+		<pre>
+			class <b>Doctor <span>extends</span> HospitalEmployee</b> {
+				<b>constructor</b>(<span>name, speciality</span>) {
+					<span>super(name);</span>
+					<span>this._specilality = speciality;</span>
+				}
+			}
+		</pre>
+
+	<p><b>1.</b>In this exercise, you will begin to <b>create the Nurse class <i>as a child of the HospitalEmployee class.</i></b></p>
+		<pre>
+			Remember the Nurse class has the following properties and methods:
+			<b>Nurse</b>
+			Properties: <mark>_name, _remainingVacationDays (set to 20 inside constructor()), _certifications</mark>
+			Methods: <mark>.takeVacationDays(), .addCertification()</mark>		
+		</pre>
+	
+	<p>	Under HospitalEmployee, <b>create an empty class</b> named Nurse that extends HospitalEmployee.</p>
+	<pre>
+		<b>class</b> Nurse <span>extends</span> HospitalEmployee {
+
+		}
+	</pre>
+	
+	<p><b>2.</b>Inside the <b>Nurse class</b>, <b>create</b> a <span>constructor()</span> <b>that accepts two arguments.</b><br>
+	 Use the list of properties above to name these arguments.</p>
+	 <pre>
+		class Nurse extends HospitalEmployee {
+			<span>constructor(name, certifications)</span>{
+
+			}
+		}
+	 </pre>
+
+	 <p><b>3.</b>In the <b>Nurse constructor</b>, <span>CALL</span> the <b><mark>parent's constructor method</mark></b> and pass the appropriate value(s).</p>
+	 <pre>
+		class Nurse extends HospitalEmployee{
+			constructor(name, certifications){
+				<span>super(name);</span>
+			}
+		}
+	 </pre>
+
+	 <p><b>4.</b>Inside of the <b>Nurse constructor</b>, and <b>under super</b>, <span>set</span><mark><b> _certifications</b></mark>.</p>
+	 <pre>
+		class Nurse <span>extends</span> HospitalEmployee {
+			constructor(name, certifications){
+				super(name);
+				<span>this._certifications = certifications;</span>
+			}
+		}
+	 </pre>
+
+	 <p><b>5.</b> Uneder the <b>Nurse Class</b> - <b>CREATE a <span>NEW Instance</span> - of the Nurse</b> - and <b>save it</b> to a constant variable - named: <mark><b>nurseOlynyk</b></mark>.<br>
+	Pass in the following values - for each property:</p>
+	<pre>
+		<span>name:</span> Olynyk;
+		<span>certifications:</span> ['Trauma', 'Pediatrics'];
+	</pre>
+
+	<pre>
+		class Nurse extends HospitalEmployee {
+			constructor(name, certifications){
+				super(name);
+				this._certifications = certifications;
+			}
+		}
+
+		const <b>nurseOlynyk</b> = new <b>Nurse</b><span>('Olynyk',
+			['Trauma', 'Pediatrics']);</span>
+	</pre>
+<hr>
+<br>
+
+
+<h3>Inheritance IV</h3>
+<p>When we <b>call <span>extends</span></b> - <b><i>in a class declaration</i></b> - all of the <b>parent methods</b> are available to <b>the child</b>.<BR>
+The <span>extends</span> <b>keyword</b> - <b><i>brings</i></b> <i>all of the parent's <b>getters and methods</b> - into the <b>child class.</b></i></p>
+<p><b>1.</b>Call <i>.takeVacationDays()</i> with an input of <mark>5</mark> on your <b><i>nurseOlynyk instance.</i></b></p>
+<pre>
+	class HospitalEmployee {
+		constructor(name) {
+			this._name = name;
+			this._remainingVacationDays = 20;
+		}
+		
+		get name() {
+			return this._name;
+		}
+		
+		get remainingVacationDays() {
+			return this._remainingVacationDays;
+		}
+		
+		<span>takeVacationDays(daysOff)</span> {
+			this._remainingVacationDays -= daysOff;
+		}
+	}
+	
+	class Nurse extends HospitalEmployee {
+	 constructor(name, certifications) {
+		 super(name);
+		 this._certifications = certifications;
+	 } 
+	}
+	
+	const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+	<span>nurseOlynyk.takeVacantionDays(<mark>5</mark>);</span>
+</pre>
+
+<p><b>2.</b>Under the method call, <b>log the value saved</b> to the <i>remainingVacationDays property</i> in <b>nurseOlynyk.</b></p>
+<pre>
+	class HospitalEmployee {
+		constructor(name) {
+			this._name = name;
+			this._remainingVacationDays = 20;
+		}
+		
+		get name() {
+			return this._name;
+		}
+		
+		get remainingVacationDays() {
+			return this._remainingVacationDays;
+		}
+		
+		takeVacationDays(daysOff) {
+			<b>this.<span>_remainingVacationDays</span> -= daysOff;</b>
+		}
+	}
+	
+	class Nurse extends HospitalEmployee {
+	 constructor(name, certifications) {
+		 super(name);
+		 this._certifications = certifications;
+	 } 
+	}
+	
+	const nurseOlynyk = new Nurse('Olynyk', [
+		'Trauma','Pediatrics']);
+	nurseOlynyk.takeVacationDays(5);
+	<span>console.log(nurseOlynyk.remainingVacationDays);</span>
+</pre>
+
+<hr>
+<br>
+
+<h3>Inheritance V</h3>
+<p><b>1.</b>Under <b>the Nurse constructor()</b>, add a <span>getter</span> that <b>returns</b> <b><i>the value saved to the Nurse instance's _certifications.</i></b></p>
+
+<pre>
+	class HospitalEmployee {
+		constructor(name) {
+			this._name = name;
+			this._remainingVacationDays = 20;
+		}
+		
+		get name() {
+			return this._name;
+		}
+		
+		get remainingVacationDays() {
+			return this._remainingVacationDays;
+		}
+		
+		takeVacationDays(daysOff) {
+			this._remainingVacationDays -= daysOff;
+		}
+	}
+	
+	class Nurse extends HospitalEmployee {
+		<b>constructor(name, certifications)</b> {
+			super(name);
+			this._certifications = certifications;
+		}
+		
+		<span>get certifications (){
+			return this._certifications;
+		}</span> 
+	}
+</pre>
+<p><b>2.</b>Add a <b>method</b> called <b><i>addCertification</i></b> under the certifications getter. <br>
+	The method should accept <b>one input</b> (newCertification). <br>
+	Inside the method, use the <span>push()</span> <b>method</b> to <b>add</b> the <mark>newCertification value</mark> to the nurse's certifications array.</p>
+<pre>
+	class HospitalEmployee {
+		constructor(name) {
+			this._name = name;
+			this._remainingVacationDays = 20;
+		}
+		
+		get name() {
+			return this._name;
+		}
+		
+		get remainingVacationDays() {
+			return this._remainingVacationDays;
+		}
+		
+		takeVacationDays(daysOff) {
+			this._remainingVacationDays -= daysOff;
+		}
+	}
+	
+	class Nurse extends HospitalEmployee {
+		<b>constructor(name, certifications)</b> {
+			super(name);
+			this._certifications = certifications;
+		}
+		
+		<b>get certifications (){
+			return this._certifications;
+		}</b>
+		
+		<span>addCertifications(newCertification){
+			return this.certifications.push(newCertification);
+		}</span>
+	}
+</pre>
+
+<p><b>3.</b>At the bottom of <b>main.js</b> <span>call</span> the <i><b>.addCertification() method</b></i> on <i>nurseOlynyk</i> <b>with a parameter</b> of <mark>'Genetics'.</mark><br>
+<b>4.</b> Log the value <b>saved to the <b><i>certifications property</i></b> of <b>nurseOlynyk.</b></p>
+<pre>
+	class HospitalEmployee {
+		constructor(name) {
+			this._name = name;
+			this._remainingVacationDays = 20;
+		}
+		
+		get name() {
+			return this._name;
+		}
+		
+		get remainingVacationDays() {
+			return this._remainingVacationDays;
+		}
+		
+		takeVacationDays(daysOff) {
+			this._remainingVacationDays -= daysOff;
+		}
+	}
+	
+	class Nurse extends HospitalEmployee {
+		<b>constructor(name, certifications)</b> {
+			super(name);
+			this._certifications = certifications;
+		}
+		
+		<b>get certifications (){
+			return this._certifications;
+		}</b>
+		
+		<b>addCertifications(newCertification){
+			return this.certifications.push(newCertification);
+		}</b>
+
+		<span>nurseOlynyk.addCertification('Genetics');</span>
+		<span>console.log(nurseOlynyk.certifications);</span> //['Trauma', 'Pediatrics', <span>'Genetics'</span>] - we <b>added <span>Genetics</span> to <b>our array.</b></b>
+	}
+</pre>
+</body>
+</html>
