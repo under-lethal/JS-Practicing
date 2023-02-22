@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call_Bind_Appply()</title>
+  <style>
+    body{
+      padding: 25px;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  	span {
+      color:brown;
+      font-weight: bold;
+    }
+		h3{
+			text-decoration: underline;
+		}
+
+		pre{
+			border: 1px solid lightgrey;
+			width: 850px;
+			padding: 15px;
+		}
+  </style>
+</head>
+<body>
+	<h2>'this' Keyword</h2>
+	<p>The <span>this</span> <b>keyword</b> - allows us to:</p>
+	<ul>
+		<li>Reuse Funtions() - with different context. | It allows us to decide which objects should be FOCAL - <b>when INVOKING a Function() or a method();</b></li>
+	</ul>
+	<h3>Implicid Binding</h3>
+	<h4>'this' - Where is this Function INVOKED.</h4>
+	
+	<script>
+		var sayName = function(name){
+			console.log('Hello' + ' ' +name);
+		}
+		sayName('Joey');
+
+		var me = {
+			name:'Tyler',
+			age: 25,
+			sayName: function(){
+				document.write(this.name);
+			}
+		};
+		document.getElementById('me').innerHTML =	me.sayName();
+	</script>
+	<pre>
+		var me = {
+			name:'Tyler',
+			age: 25,
+			sayName: function(){
+				document.getElementById('me').innerHTML = this.name;
+			}
+		};
+		<b>me.sayName();</b> <span>// When this Function is INVOKED - look to the 'left of the dot'.</span> 
+		<b>That is what <span>"this"</span> keyword is going to REFERENCE.</b>
+	</pre>
+	<p id="me"></p>
+
+	<pre>
+		1. Take an <b>object</b>. <b>(obj)</b>
+		2. Add a <b>sayName property - <span>onto this OBJECT</span> <b>(obj.sayName = ..) </b></b>
+		
+		var <b>sayNameMixin</b> = function(<b>obj</b>){
+			<span>obj.sayName = function(){
+				console.log(this.name)
+			};</span>
+		};
+
+		var <b>me</b> = {
+			name: 'Tyler',
+			age:26
+		};
+
+		var <b>you</b> = {
+			name: 'Cassie',
+			age:30
+		};
+
+		<b>3.Pass both these OBJ - in our "sayNameMixin"</b>
+
+		<b>sayNameMixin(me);
+		sayNameMixin(you);</b>
+
+		<b>4.Call them:</b>
+		<b>me.<span>sayName();</span> //Tyler
+		you.<span>sayName();</span></b> //Cassie
+	</pre>
+
+	<pre>
+		<b>1. We have a 'Person'  - CLASS: ???</b>
+		<b>2. We have a Function - that its going to return us an OBJECT.</b> 
+		(with a "name: age: - property" - and a "sayName - method").
+		
+		var Person = function(name, age) {
+			<span>return{
+				name: name,
+				age: age,
+				sayName: function(){
+					console.log(this.name);
+				}</span>
+			}
+		}
+
+		<b>3. Let's create INSTANCE: - of this Class:</b>
+		
+		<b>var jim = Person('Jim' 42);</b>
+		<b>jim.sayName();</b> //Jim
+	</pre>
+
+	<p>Let's make it MORE Complex:</p>
+	<b>1.Add a New OBJECT: <span>mother:</span></b>
+	<pre>
+		var Person = function(name, age){
+			return {
+				name:name,
+				age:age,
+				sayName: function(){
+					console.log(<span>this.</span><b>name</b>);
+				}<span>,</span>
+				<span>mother: {
+					name: 'Stacey',
+					sayName: function(){
+						console.log(this.name);
+					}
+				}</span>
+			}
+		};
+		<b>var jim = Person('Jim' 42);</b>
+		<b>jim.sayName();</b> //Jim
+		<span>Let's INVOKE:
+			jim.mother.sayName(); //Stacey
+		</span>
+	</pre>
+
+
+	
+  <h2>Call()</h2>
+	<h3>Explicit Binding</h3>
+	<pre>
+		var stacey = {
+			name: "Stacey",
+			age: 34,
+			<span>sayName: function(){
+				console.log('My name is  ' + this.name);
+			}</span>
+		};
+		
+		<b>1. We have an OBj called: 'Stacey'.</b>
+		<b>1. We can CALL a METHOD on this object.</b>
+		<span>stacey.sayName()</span> - <b>'stacey' - it's going to be (what <span>this.name</span> is REFFERING - inside of this Function.</b>
+	</pre>
+	
+	<p>But - what if we do something like this:</p>
+
+	<pre>
+		<span>var sayName = function(){
+			console.log('My name is ' + this.name);
+		}</span>
+		
+		<span>Instead of being a METHOD of the OBJECT - Now it's A FUNCTION curenlty IN a GLOBAL SCOPE.</span>
+		<span>We want to CALL (the function ABOVE) - in the CONTEXT of "var stacey =...".</span>
+		
+		var stacey = {
+			name: 'Stacey',
+			age: 34,
+		};
+
+		//stacey.sayName();
+
+		<span>We want to CALL (the function ABOVE) - in the CONTEXT of "var stacey =...".</span>
+		
+		<b>sayName.</b><span>call(stacey);</span> //'My name is Stacey.'
+		
+		<b>THIS ARGUMENT -></b> call(<span>stacey</span>) - <b>is the CONTEXT you WANT to call this function:</b>
+		<mark>
+			var sayName = function(){
+				console.log('My name is ' + this.name);
+			}</mark>
+
+			<b>sayName - it's going be INVOKED.</b>
+			<b>and <span> + this.name</span> - it's going to REFERENCE  - <span>(stacey)</span></b>
+	</pre>
+
+	<p>If we wanna pass a PARAMETER. (with more ARGUMENTS) [...]</p>
+	<pre>
+		var sayName = function(<span>lang1, lang2, lang3</span>){
+			console.log('My name is ' + this.name + <b>' and I know '</b><span> + lang1 + ',' + lang2 + ',' ',and ' + 'lang3' </span>);
+		};
+
+		var stacey = {
+			name: 'Stacey',
+			age: 34,
+		};
+
+		<b>var languages = ['JavaScript', 'Ruby', 'Python'];</b>
+		<span>sayName.call(stacey, languages[0], languages[1], languages[2]);</span>
+
+		<span>WE'RE invoking "sayName - IN THE CONTEXT of "Stacey"</span>
+	</pre>
+
+	<h3>Apply()</h3>
+	<p>Use <span>apply()</span> - to GET RID OF ...that long code...</p>
+	<pre>
+		*It would be NICER if could just PASS IN: <B>languages.</B>
+		<span>*JavaScript - would be abel to PARSE THESE out for us. | That's exaclty what "apply" does.</span>
+		<span>Instead of PASSING - THE ARGUMENTS - one BY one - You can pass n - AN ARRAY of ARGUMENTS</span> - <B>and it's going to PARSE it for us.</B>
+		
+		<b>var languages = ['JavaScript', 'Ruby', 'Python'];</b>
+		<b>sayName<span>.apply</span>(stacey, <span>languages</span>);</b>		
+	</pre>
+
+	<h3>bind()</h3>
+	<p>Does <b>the same thing</b> like <span>call()</span> - except (one thing).</p>
+	<pre>
+		<b>var languages = ['JavaScript', 'Ruby', 'Python'];</b>
+		<span>var newFn = sayName.bind(stacey, languages[0], languages[1], languages[2]);</span>
+
+		<span>.bind() - It's GONNA return us A NEW Function </span><b>- instead of invoking The ORIGINAL Function.</b>
+		
+		<b>Instead of INVOKING "sayName" - its <span>gonna BIND() this.name + to "stacey"</span> 
+		then passing these arguments:</b> (lang[0], lang[1], lang[2])
+		<b>then - return a Brand New Function.</b>
+
+		<b>var languages = ['JavaScript', 'Ruby', 'Python'];</b>
+		<span>var newFn = sayName.bind(stacey, languages[0], languages[1], languages[2]);</span>
+		console.log('HERE');
+		newFn();
+
+
+		
+	</pre>
+
+
+
+
+</body>
+</html>
