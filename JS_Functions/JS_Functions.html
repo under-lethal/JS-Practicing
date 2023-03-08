@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS-Functions</title>
+	<script src="index.js"></script>
+	<style>
+		body{
+			padding:25px;
+			font-family: 'Segoe UI', Candara, Helvetica;
+		}
+		h3{
+			text-decoration: underline;
+		}
+		span{
+			color: indianred;
+		}
+		pre{
+			border: 1px solid lightgrey;
+			padding:15px;
+			width:750px;
+		}
+	</style>
+</head>
+<body>
+	<h2>JS - Functions</h2>
+	<h3><span>Normal</span> Function()</h3>
+	<pre>
+		function myFunction(a,b) {
+			return a * b;
+		}
+	</pre>
+
+	<h3><span>Anonymous</span> Function()</h3>
+	<p>A function - <b>without</b> a name.<br>
+		It's <b>stored</b> in an <b>variable</b> - and <b>do not need a name.</b>
+	</p>
+	<pre>
+		const <b>x</b> = <span><b>function</span>(a, b)</b> {<b>return</b> a * b};
+		document.getElementById('af').innerHTML = <b>x(4,3);</b>
+	</pre>
+	<p id='af'></p>
+	<script>
+			document.getElementById('af').innerHTML = x(4,3);		
+	</script>
+
+	<h3>The Function() <span>Constructor</span></h3>
+	<p>Functions <b>can also be defined</b> with a built-in JavaScript function constructor called <b><span>Function()</span></b>.</p>
+	<pre>
+		const <b><span>myFunction</span></b> = <b><span>new</span></b> Function(<b><span>'a', 'b', 'return a * b'</span></b>);
+		document.getElementById("fc").innerHTML = <span><b>myFunction(4, 3)</b></span>;
+	</pre>
+	<p id="fc"></p>
+	<script>
+		document.getElementById("fc").innerHTML = myFunction(4, 3);
+	</script>
+
+	<span style="background-color: lightgrey; padding: 10px;">Most of the time, you can <b>avoid</b> using the <span style="color: darkgray;"><b>new</b></span> keyword in JavaScript.</span>
+
+	<h3>Function <span>Hoisting</span></h3>
+	<p><b>Hoisting</b> is <span>JavaScript's default behavior</span> of <b>moving declarations to the top of the current scope.</b></p>
+	<pre>
+		<b><span>myFunction(5);</span></b>
+
+		function <b>myFunction(y)</b>{
+			return <b>y * y;</b>
+		}
+	</pre>
+
+	<h3><span>Self-Invoking</span> Functions</h3>
+	<p>A <b>self-invoking expression</b> is invoked <b><span>(started) automatically</span></b>, without <b>being called.</b><br>
+	<b>Function</b> expressions <b><span>will execute automatically</span></b> if the expression is <b>followed</b> by <b><span>()</span></b>.<br>
+	You <b>have</b> to <span><b>add parantheses</b> around the function</span> - to <b>indicate</b> that <span>is a <b>function expression</b></span>.</p>
+
+	<pre>
+		<b><span>(</span></b>function () {
+			<b>let x</b> = 'Hello!'; <span>//I will INVOKE myself</span>
+		}<b><span>)</span></b><span>();</span>
+	</pre>
+
+	<h3>Functions Can Be Used <span>as Values</span></h3>
+	<pre>
+		function <b>myFunction(a,b)</b>{
+			return a * b;
+		}
+		let <b>x</b> = <b><span>myFunction(4,3);</span></b>
+		document.getElementById('fv').innerHTML = <b><span>x</span></b>;
+
+		<b>JavaScript functions</b> can be used in <span>expressions:</span>
+		
+		let <b>x</b> = <b><span>myFunction(4,3) * 2;</span></b>
+		document.getElementById('fv').innerHTML = <b><span>x</span></b>;
+	</pre>
+
+	<h3>Functions are <span>Objects</span></h3>
+	<p>The <span>typeof</span> operator in JavaScript <b>returns</b> <b><span>"function"</span></b> for <b>functions</b>.<br>
+	But, <span>JavaScript</span> functions - can best be described as <b><span>objects.</span></b>
+	</p>
+	<pre>
+		<span><b>typeof</b></span> function() {};
+		<span>//'function'</span>
+	</pre>
+	<p>The <span><b>toString()</b></span> method - <b>returns</b> the function as a <span>string:</span></p>
+	<pre>
+		function <b>myFunction(a, b)</b> {
+		  <b>return</b> a * b;
+		}
+		<b>myFunction<span>.toString();</span></b>
+		<span>//'function myFunction(a, b) {\n  return a * b;\n}'</span>
+	</pre>
+
+	<h3><span>Arrow</span> Functions()</h3>
+	<p>A <b>short <span>syntax</span></b>  -  for writing <span>functions expressions.</span><br>
+	You don't need - <span>the <b>function</b> keyword</span> - <span>the <b>return</b> keyword</span> - and the <span><b>curly</b> brackets <b>{}</b>.
+	</p>
+	<pre>
+		<span>//ES5</span>
+		var <b>x</b> = function(x, y){
+			<b>return</b> x * y;
+		}
+
+		<span>//ES6</span>
+		<b>const x = <span>(x * y) => x * y</span>;</b>
+
+		<span>//3</span>		
+		<b>const</b> x = <b><span>(x, y) => x * y</span></b>;
+		document.getElementById("demo").innerHTML = <b>x(5, 5);</b>
+	</pre>
+	<p><span>Arrow functions</span> <b>do not have</b> their own <b><span>this</span>.</b> | <span>They</span> are <b>not well suited</b> for <span><b>defining</b> object methods</span>.<br>
+	<span>Arrow functions</span> <b>are not <span>hoisted.</span></b><br>
+	You can <b style="color:grey">only omit</b> - the <span><b>return</b> keyword</span> - and the <span><b>curly</b> brackets <b>{}</b></span> - if the <b>function</b> is a <b><span>single statement.</span></b>
+	</p>
+	<pre><b>const x = <span>(x, y) => { return x * y };</span></b></pre>
+	<br>
+	<hr>	
+
+	<h2>2.Function Parameters</h2>
+	<p>JavaScript function definitions <span>do not specify data types</span> for parameters.<br>
+	JavaScript functions <span>do not perform type checking</span> on the passed arguments.<br>
+	JavaScript functions <span>do not check the number of arguments</span> received.<br><br>
+	If a Function - is <b>called</b> with - <b>missing arguments / less than declared</b> - <span style="color:grey">the missing VALUES are set to</span> - <span>undefined</span>.
+	</p>
+
+	<h3>The <span>Rest</span> Parameter <span>(...args)</h3>
+		<p>Allows a Function to <b>treat</b> - an <span style="color:grey">indefinite NUMBER of <b>arguments.</b></span>
+	<pre>
+		function <b>sum<span>(...args)</span></b> {
+		  let <b>sum</b> = 0;
+		  <b><span>for</span></b> (let arg <b><span>of</span></b> args) 
+		  sum += arg;
+		  return <b>sum;</b>
+		}
+
+		<span>let x = <b>sum(4, 9, 16, 25, 29, 100, 66, 77);</b></span>
+		document.getElementById("demo").innerHTML = <b><span>x</span></b>;
+	</pre>
+
+	<h3>The <span>Arguments</span> Object</h3>
+	<p>JS Functions() - have <b>built-in</b> <span>object</span> - <b>called</b> the <b style="color:darkgrey;">arguments object.</b><br>
+		The <b style="color:darkgrey;">argument object</b> contains <span>an <b>array of arguments</b> used</span> - when - <b><span style="color:darkgrey">the function was called</span></b>.<br><br>
+	<b>x = <span style="color:grey">findMax</span><span>(1, 123, 500, 115, 44, 88);</span></b><br>
+	<b>x = <span style="color:grey">sumAll</span><span>(1, 123, 500, 115, 44, 88);</span></b>
+	</p>
+
+	<pre>	
+	function <b>findMax()</b>{
+		let <b>max</b> = -Infinity;
+		for(let i = 0; i < <b><span>arguments.</span></b>length; i++){
+			if(<b><span>argument[i]</span></b> > <b>max</b>){
+				<b>max</b> = <b><span>arguments[i];</span></b>
+			}
+		}
+		return <b>max;</b>
+	}
+	document.getelementById('demo').innerHTML = <b>findMax<span>(4,5,6);</span></b>
+	</pre>
+	<p id='max'></p>
+	<script>
+		function findMax(){
+			let max = -Infinity;
+			for(let i = 0; i < arguments.length; i++){
+				if(arguments[i] > max){
+					max = arguments[i];
+				}
+			}
+			return max;
+		};
+		document.getElementById('max').innerHTML ='<b>' + 'Output: ' + '</b>' + findMax(4,5,6);
+	</script>
+
+	<p>Or <b style="color:grey">create a function</b> to <b style="color:gray"><span>sum</span> all input values:</b></p>
+<pre>
+		function <b>sumAll()</b>{
+			let <b>sum</b> = 0;
+			for(let i = 0; i < <b><span>arguments.</span></b>length; i++){
+				sum += <b><span>arguments[i];</span></b>
+			}
+			return <b>sum;</b>
+		};
+		document.getElementById('sum').innerHTML = <b>sumAll<span>(1, 123, 500, 115, 44, 88);</span></b>
+</pre>
+<p id="sum"></p>
+<script>
+	function sumAll(){
+		let sum = 0;
+		for(let i = 0; i < arguments.length; i++){
+			sum += arguments[i];
+		}
+		return sum;
+	};
+	document.getElementById('sum').innerHTML ='<b>' + 'Output: ' + '</b>' +  sumAll(1, 123, 500, 115, 44, 88);
+</script>
+<br>
+<hr>
+
+<h2>3.Function Invocation</h2>
+<h3>Invoking a <span>Function()</span> as a <span>Method</span></h3>
+<pre>
+	const <b>myObject</b> = {
+		firstName: 'Steven',
+		lastName: 'Spielberg',
+		<b>fullName: <span>function(){
+			return this.firstName + ' ' + this.lastName;
+		}</span></b>
+	};
+	document.getElementById('demo').innerHTML = <b>myObject<span>.fullName();</span></b>
+</pre>
+
+<h3>Invoking a <span>Function()</span> with a <span>Function Constructor</span></h3>
+<p>If a Function invocation is <b>preceded</b> with the <span><b>new</b> keyeword</span>, it is <b>a constructor invocation.</b></p>
+<pre>
+	functin <b>myFunction(arg1, arg2)</b>{
+		this.firstName = arg1;
+		this.lastName = arg2;
+	}
+
+	<b>const myObj = <span>new</span> Function('John', 'Doe')</b>
+	document.getElementById('demo').innerHTML = <b>myObj.firstName;</b>
+</pre>
+<br>
+<hr>
+
+<h2>4.JavaScript Function <span>call()</span></h2>
+<h3>All Functions are <span>Methods</span></h3>
+<p>In JS - all <span>functions</span> are <b><span>object methods.</span></b> <br>
+If a function <span>is not a METHOD of a <b>JavaScript Object</b></span> - is a <span>function of a <b>global object.</b></span>
+</p>
+
+<h3>The JavaScript <span>call()</span> Method</h3>
+<p>The <span>call() <b>method</b></span> - is a <span style="color:grey"><b>predefiend JS - method.</b></span><br>
+<span style="color:grey"><b>With <span>call()</span>, an object can USE A METHOD - BELONGING to another OBJECT.</b></span>
+</p>
+<PRE>
+	const person = {
+		<b>fullName: function(){
+			return this.firstName +  ' ' + this.lastName;</b>
+		}
+	}
+	const person1 = {
+		firstName: 'John',
+		lastName: 'Doe'
+	}
+
+	const person2 = {
+		firstName:'Mary',
+		lastName:'Doe'
+	}
+
+	document.getElementById('call').innerHTML = <b><span>person.fullName.call(person1);</span></b>
+</PRE>
+<p id="call"></p>
+<script>
+	document.getElementById('call').innerHTML = person.fullName.call(person1);
+</script>
+
+<h3>The <span>call()</span> Method with <span>Arguments</span></h3>
+<pre>
+	const person = {
+		fullName: function(<b><span>city, country</span></b>){
+			return this.firstName +  ' ' + this.lastName + <span>  ',' + <b>city</b> + ',' + <b>country</b>;</span>
+		}
+	}
+
+	const person1 = {
+		fName: 'Adam',
+		lName: 'Sandler'
+	}
+
+	const person2 = {
+		fName:'Natalie',
+		lName:'Portman'
+	}
+
+	document.getElementById('arg').innerHTML = <b>person.fullName.call(person1, <span>'Oslo', 'Norway'</span>);</b>
+</pre>
+
+<h3>The JS <span>apply()</span> Method</h3>
+<p>Is similar to <span>call()</span>.</p>
+<pre>
+	const personX = {
+		fullName: <b>function(){
+			return this.firstName + ' ' + this.lastName;
+		}</b>
+	}
+
+	const person1X = {
+		firstName: 'Alen',
+		lastName: 'Poe'
+	};
+
+	document.getElementById('app').innerHTML = <b>personX.firstName<span>.apply(person1X)</span>;</b>
+</pre>
+<p id="apl"></p>
+<script>
+	document.getElementById('apl').innerHTML = personX.fullName.apply(person1X);
+</script>
+
+<h3>The <span>difference</span> between <span>call()</span> & <span>apply()</span></h3>
+<p>The <span>call()</span> method takes arguments <b><span>separately</span></b>. <br>
+	The <span>apply()</span> method takes arguments <b><span>as an array.</span></b>
+</p>
+<pre>
+	const person = {
+		fullName: <b>function(city, country) {
+			return this.firstName + " " + this.lastName + "," + city + "," + country;
+		}</b>
+	}
+	
+	const <b>person1</b> = {
+		firstName:"John",
+		lastName: "Doe"
+	}
+	
+	document.getElementById("demo").innerHTML = <b>person.fullName.apply(person1, <span>["Oslo", "Norway"]);</span></b>
+</pre>
+
+<h3>Function <span>Borrowing</span></h3>
+<p>With the <span><b>bind()</b> method</span> - an Object <b>can borrow a MTHOD</b> - from <b>another Object.</b></p>
+
+<pre>
+	const personY = {
+		fName: 'Joe',
+		lName:'Biden',
+		fullName: function(){
+			return this.fname + ' ' + this.lName;
+		}
+	};
+
+	<b>const member</b> = {
+		fName:<span><b>'Hege'</b></span>,
+		lName: <span><b>'Nilsen'</b></span>
+	};
+
+	<b>let fullName = <span>person.fullName.bind(member);</span></b>
+	document.getElementById('bind').innerHTML = <b><span>fullName();</span></b>
+</pre>
+<p id="bind"></p>
+<script>
+	document.getElementById('bind').innerHTML = fullName();
+</script>
+
+<h3>Preserving <span>this.</span></h3>
+<p>When a function is <b>used</b> as a <b>callback</b>, <b><span>this</span></b> is <b>lost</b>.</p>
+<pre>
+	const person = {
+		firstName:"John",
+		lastName: "Doe",
+		<b>display: function () {
+			let x = document.getElementById("demo");
+			<span>x.innerHTML</span> = this.firstName + " " + this.lastName;</b>
+		}
+	}
+	
+	<b>person.display();</b> <span>//undefined</span>
+	-----------------------------------------------------------
+	<b>setTimeout(person.display, 3000);</b> <span>//undefined undefined</span>
+</pre>
+<p>The <span>bind()</span> <b>method</b> - solves this problem. <br>
+The <span>bind()</span> <b>method</b> -is used to <b><span>bind</span> person.display</b> to <b>(person).</b>
+</p>
+
+<pre>
+	const personZ = {
+		firstName: 'Edward',
+		lastName: ' Norton',
+		<b>display: function(){
+			<span>let x</span> = document.getElementById('bind2');
+			<span>x.innerHTML</span> = this.firstName + ' ' + this.lastName;
+		}</b>
+	}
+
+	<b><span>let display = personZ.dislay<mark>.bind(personZ);</mark></span></b>
+	<b><span>steTimeout(display, 3000);</span></b>
+</pre>
+<p id="bind2"></p>
+<script>
+	const personZ = {
+	firstName: 'Edward',
+	lastName:'Norton',
+	display: function(){
+		let x = document.getElementById('bind2');
+		x.innerHTML = this.firstName + ' ' + this.lastName;
+	}
+};
+ let display = personZ.display.bind(personZ);
+ setTimeout(display, 3000);
+</script>
+<hr>
+<br>
+
+<h2>5. JavaScript <span>Closures</span></h2>
+<p>When we want to acces a global variable. (A var outside the <span><b>"Function Scope"</b></span>).</p>
+<pre>
+	*All functions <span>have access</span> - <b>to the scope above them.</b>
+	*<b>JS <span>supports</span> NESTED FUNCTIONS. | NESTED FUNCTIONS have access to the scope <span>"above them".</span></b>
+
+function <b>add()</b>{
+	<span><b>let counter  = 0;</b></span>
+	<b><i>function plus() {counter += 1;}</i>
+		plus();
+		return counter;
+	</b>
+}	
+
+<b>Output:</b> 1.
+</pre>
+<p>...The "wonderful part - is that <b>it can ACCESS the counter - <span>in the parent scope.</span></b><br>
+</p>
+<h4>This |^ is called <span>JavaScript Closure.</span> | It makes possible for a function to have <span>"private"</span> variables.</h4>
+<h4>The <i>counter / (let counter =...)</i> is PROTECTED by the SCOPE - to the ANONYMOUS Function, <i> const add = (function() {...}) ();</i></h4>
+<pre>
+	<span>< button type="button"</span> <b>onclick = <span>"myFunction()"></span></b>Count! <span>/ button></span>
+	
+	const add = <span><b>(function () {</b></span>
+		<b>let counter = 0;
+			return function () {counter += 1; <span>return counter;</span>}</b>			
+		<span><b>}) ();</b></span>
+
+		<b><span>function myFunction()</span></b>{
+			document.getElementById('demo').innerHTML = <b>add();</b>
+		}
+</pre>
+<pre>
+	const add = (function () {
+		let counter = 0;
+			return function () {counter += 1;}
+             <b><span>return counter;</span></b>
+		}) ();
+
+		function myFunction(){
+			console.log(add());
+		}
+undefined
+add();
+undefined
+add();
+undefined
+add();
+undefined
+</pre>
+
+<h3>Example 2: CLOSURES.</h3>
+<pre>
+	function <span>randomFunc()</span>{
+		<b>var obj</b> = {name:'Vivid', age: 45};
+
+		<b>return function()</b>{
+			console.log(<span>obj.name</span> + ' is ' + 'awesome.' );
+		}
+	}
+
+	<b>var</b> intialClosure = <span>randomFunc();</span>
+	intitalClosure();
+</pre>
+
+<p>When the <span>randomFunc()</span> <b>runs</b> th <span>returning Func</span> is using <b>the var 'obj' - inside of it.</b><br>
+Therefore <span>randomFunc()</span> - <b>instead of DESTROING - the value of 'obj' (after execution)</b> - <span>SAVES the VALUE in MEMORY</span> - <b>for the further reference.</b><br>
+*This is the <b>reason</b> - why the <b>returning Func()</b> is <span>able to USE</span> <b>the variable DECLARED in the <span>Outer Scope</span></b> - even after the Func is ALREADY executed.</p>
+<b>This is the <span>ability of a Func - to STORE a VARIABLE</span> - for further REFERENCE - even after it is EXECUTED - <span>it's called Closure</span>.</b>
+
+</body>
+</html>
