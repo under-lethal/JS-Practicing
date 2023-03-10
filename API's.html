@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>API's</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body style="padding:40px">  
+
+		<h2>Web API's</h2>
+		<p>Stands for: <b>Application Programming Interface.</b><br>
+		<b>A WEB API's</b> - is an <b>A</b>plication <b>P</b>rograming <b>I</b>nterface - <b>for the web</b><br>
+		<b>A Browsere API</b> - can <u>extend</u> the functionality of a WEB BROWSER.<br>
+		<b>A Server API</b> - can <u>extent</u> the functionality of a WEB SERVER.	
+		</p>
+		
+		<ul>
+			<li>It can EXTENT - the functionality of the BROWSER.</li>
+			<li>It can GREATLY simplify - COMPLEX functions.</li>
+			<li>It can PROVIDE - easy SYNTAX to COMPLEX code.</li>
+		</ul>
+		<br>
+
+		<h2>Browser API's</h2>
+		<p>All BROWSERS - <u>have a SET of BUILT-IN API's</u> - <b>to support COMPLEX OPERATIONS,</b> and to HELP ACCESSING DATA.</p>
+		<pre>For example, the Geolocation API can return the coordinates of where the browser is located.</pre>
+		<br>
+
+		<h2>Validation API</h2>
+
+		<h3>Constraint Validation <b>DOM Methods</b></h3>
+		<pre><b>check Validity()</b> - RETURNS <b>true</b> <i>if an input element</i> <u>contains valid data.</u></pre>
+		<pre><b>setCostumValidity()</b> - SETS the <b>validationMessage property</b> - <i>of an input element.</i></pre>
+		<br>
+			
+		<h4>Exercise: JavaScript Validation</h4>
+		<h4><u>The checkValidity() Method</u></h4>
+		
+		<p>Enter a number and click OK:<br>
+		If an input field contains invalid data, display a message:</p>
+		<pre>
+			< input id="id1" type="number" min="100" max="300" required>
+			< button onclick="myFunction()">OK< /button>
+	
+			< p id="demo">< /p>
+	
+			< script>
+				function myFunction(){
+					const inpObj = document.getElementById('id1');
+					if(!inpObj.<mark><b>checkValidity()</b></mark>){	<- The checkValidity() <b>Method</b>
+						document.getElementById('demo').innerHTML = inpObj.<mark>validationMessage;</mark> <- The checkValidity() <b>Property</b>
+					}else{
+						document.getElementById('demo').innerHTML = "Input OK";
+					}
+				}
+			< /script>
+		</pre>
+		
+		<input id="id1" type="number" min="100" max="300" required>
+		<button onclick="myFunction()">OK</button>
+
+		<p>If the number is <u>less than 100</u> or <u>greater than 300</u> - an ERROR MESSAGE - will be displayed.</p>
+		<p id="demo"></p>
+
+		<script>
+			function myFunction(){
+				const inpObj = document.getElementById('id1');
+				if(!inpObj.checkValidity()){
+					document.getElementById('demo').innerHTML = inpObj.validationMessage;
+				}else{
+					document.getElementById('demo').innerHTML = "Input OK";
+				}
+			}
+		</script>
+	<br>
+		
+	<h3>Constraint Validation <b>DOM Properties</b></h3>
+		<pre>
+			<b>validity</b> - Contains BOOLEANS properties RELATED tothe VALIDITY of an input element.
+			<b>validation Message</b> - Contains THE MESSAGE - <i>a BROWSER will DISPLAY when the validity is FALSE.</i>.
+			<b>willValidate</b> - INDICATES if an INPUT - will BE VALIDATED.
+		</pre>
+		<br>
+
+		<h4>VALIDITY PROPERTIES</h4>
+		<h4>The <b><u>rangeOverflow</u> Property</b></h4>
+		<p>If the number in an INPUT FIELD is > (greater than) 100 - (the input <b>max attribute</b>) - <i>display a message.</i></p>
+		<pre>
+			< input id="id2" type="number" max="100">
+			< button onclick="myFunction2()">OK< /button>
+	
+			< p id="demo2">< /p>
+			
+			< script>
+				function myFunction2(){
+					let text;
+					if(document.getElementById('id2').validity.rangeOverflow){
+						text = "Value too Large!";
+					}else{
+						text = "Input OK";
+					}
+					document.getElementById('demo2').innerHTML = text;
+				}
+			< /script>
+		</pre>
+
+		<input id="id2" type="number" max="100">
+		<button onclick="myFunction2()">OK</button>
+
+		<p id="demo2"></p>
+		
+		<script>
+			function myFunction2(){
+				let text;
+				if(document.getElementById('id2').validity.rangeOverflow){
+					text = "Value too Large!";
+				}else{
+					text = "Input OK";
+				}
+				document.getElementById('demo2').innerHTML = text;
+			}
+		</script>
+		<br>
+
+		<p>If the number in an INPUT FIELD is less than 100 (the input's min <b>attribute</b>), display a message:</p>
+		<pre>
+			< input id="id3" type="number" min="100">
+			< button onclick = "myFunction3()">OK< /button>
+			
+			< p id="demo3">< /p>
+	
+			< script>
+				function myFunction3(){
+					let text;
+					if(document.getElementById('id3').validity.rangUnderflow) {
+						text = "Value too small"
+					}else{
+						text = "Input OK"
+					}
+					document.getElementById('demo3').innerHTML = text;
+				}
+			< /script>
+		</pre>
+
+		<input id="id3" type="number" min="100">
+		<button onclick = "myFunction3()">OK</button>
+		
+		<p id="demo3"></p>
+
+		<script>
+			function myFunction3(){
+				let text;
+				if(document.getElementById('id3').validity.rangUnderflow) {
+					text = "Value too small"
+				}else{
+					text = "Input OK"
+				}
+				document.getElementById('demo3').innerHTML = text;
+			}
+		</script>
+	<br>
+
+	<h2>Web History API</h2>
+	<p>The Web History API provides - easy methods -<b>to access the <mark>windows.history</mark> OBJECT.</b><br>
+	The <b>windows.history OBJECT</b> contains the URLs/WebSites - visited by the USER.
+	</p>
+<br>
+
+	<h3>The History <u>back() Method</u></h3>
+	<p>The <b><mark>back() method</mark> - LOADS the previous URL</b> - in the <b>windows.history LIST.</b></p>
+
+	<pre>
+		< button onclick = "myFunction()">GO Back< /button>
+		< script>
+			function myFunction(){
+				<mark>window.history.back();</mark>
+			}
+		< /script>
+	</pre>
+	<br>
+
+	<h3>The History <u>go() Method</u></h3>
+		<p>The <b>go() method</b> - loads a SPECIFIC URL from the history list:</p>
+		<pre>
+			< button onclick="myFunction2()">GO Back 2 Pages< /button>
+
+			< script>
+				function myFunction2() {
+					<mark>window.history.go<b>(-2)</b></mark>
+				}
+			< /script>
+		</pre>
+<BR>
+	<h3>History Object Properties</h3>	
+	<pre><b>length</b> - Returns the number of URL's in the history LIST.</pre>
+<br>
+
+	<h3>History OBJECT Methods</h3>	
+	<pre>
+		<b>back()</b> - LOADS the PREVIOUS URL in the <u>history LIST</u>.
+		<b>foward()</b> - LOADS the NEXT URL in the <u>history LIST</u>.
+		<b>go()</b> - LOADS a SPECIFIC URL in the <u>history LIST</u>.
+	</pre>
+<br>
+
+<h2>Web Storage API</h2>
+<p>The Web Storage is a <u>simple syntax</u> for <b>STORING</b> and <b>RETRIEVING data</b> in the BROWSER.</p>
+<pre>
+	< p id="demo4">< /p>
+	< script>
+		<mark>localStorage.setItem</mark>('name', 'John Doe');
+		document.getelementById('demo4').innerHTML = <mark>localStorage.getItem('name');</mark>
+	< /script>
+</pre>
+
+<p id="demo4"></p>
+<script>
+	localStorage.setItem('name', 'John Doe');
+	document.getelementById('demo4').innerHTML = localStorage.getItem('name');
+</script>
+<br>
+
+<h3>The <u>localStorage</u> OBJECT</h3>
+<p>The <u>localStorage Object</u> - <b>provides access - to a local storage for a particular Web Site</b><br>
+It allows you to STORE, READ, ADD, MODIFY and DELETE <u>data ITEMS</u>  - for <b>that DOMAIN.</b></p>
+<BR>
+
+<h3>The <u>setItem()</u> Method</h3>
+<p>The <b>localStorage.setItem() method</b> - STORES a DATA item - in a STORAGE.<br>
+It takes a <b>name</b> and a <b>value</b> - <b>as parameters.</b></p>
+<pre>
+	<mark>localStorage.setItem</mark>('name', 'John Doe');
+</pre>
+<br>
+
+<h3>The <u>getItem()</u> Method</h3>
+<p>The <b>localStorage.getItem() method</b> - RETRIEVES a DATA item from the STORAGE.<br>
+It takes a <b>name</b> as a <b>parameter:</b></p>
+<pre>
+	localStorage.getItem('name');
+</pre>
+<pre>
+< p id="ms">< /p>
+//Since you might not have the specified item stored in your local storage, we have added a script that creates it for you.
+
+< button onclick=<b>"createItem()"</b>>Create local storage item< /button>
+
+< button onclick="myStorage()">Get the item value< /button>
+
+< script>
+	function createItem(){
+		localStorage.mytime = Date.now();
+	}
+
+	function myStorage(){
+		<b>var a = localStorage.getItem('mytime');</b>
+		document.getElementById('ms').innerHTML = a;
+	}
+< /script>
+<b>W3S - Output:</b> 1669043992554
+</pre>
+
+<p id="ms"></p>
+<button onclick="createItem()">Create local storage item</button>
+
+<button onclick="myStorage()">Get the item value</button>
+
+<script>
+	function createItem(){
+		localStorage.mytime = Date.now();
+	}
+
+	function myStorage(){
+		var a = localStorage.getItem('mytime');
+		document.getElementById('ms').innerHTML = a;
+	}
+</script>
+
+<h3>The <u>sessionStorage</u> Object</h3>
+<p>The <b>sessionStorage object</b> is <b>identical</b> to the <b>localStorage object.</b><br>
+	The difference is that the <b>sessionStorage object stores data for <mark>one session.</mark></b><br>
+	The data is <b>deleted</b> when the browser is <b>closed.</b>
+</p>
+<pre>
+	< script>
+		< p id="demo5">< /p>
+		<b>sessionStorage.setItem('name', 'John Doe');</b>
+		document.getElementById('demo5').innerHTML = <b>sessionStorage.getItem('name');</b>
+	</ script>
+</pre>
+<script>
+	<p id="ss"></p>
+	sessionStorage.setItem('name', 'John Doe');
+	document.getElementById('ss').innerHTML = sessionStorage.getItem('name');
+</script>
+
+<h3>Related Pages for Web Storage API</h3>
+<pre>
+	<b>window.localStorage</b>	- Allows <u>to save</u> <b>key/value pairs</b> - in a WEB BROWSER. (<b>stores data</b> - with NO EXPIRATION date).
+	<b>window.sessionStorage</b>	- Allows <u>to save</u> <b>key/value pairs</b> - in a WEB BROWSER. (<b>stores data</b> - for ONE SESSION).
+</pre>
+
+<h3>The <u>key(n)</u> Method</h3>
+<p>Returns the NAME of the <b> key</b> with specified INDEX.</p>
+<pre>
+	< p id="kn">< /p>
+
+< button onclick="myFunction4()">Get the name of the first LOCAL STORAGE item< /button>
+
+< script>
+	function myFunction4(){
+		<b>var x = localStorage.key(0);</b>
+		document.getElementById('kn').innerHTML = <b>x</b>;
+	}
+< /script>
+</pre>
+
+<p id="kn"></p>
+
+<button onclick="myFunction4()">Get the name of the first LOCAL STORAGE item</button>
+
+<script>
+	function myFunction4(){
+		var x = localStorage.key(0);
+		document.getElementById('kn').innerHTML = x;
+	}
+</script>
+
+<h3>Another Examples</h3>
+
+<pre>
+< p id="kn1">< /p>
+
+< button onclick="myFunction5()">Get Item Name< /button>
+
+< script>
+	function createItems() {
+		sesion.storage.test1 = 'hello';
+		sesion.storage.test2 = 'Jim';
+		sesion.storage.test3 = 123;
+	};
+
+	function myFunction5(){
+		<b>var y = sessionStorage.key(0);</b>
+		document.getElementById('kn1').innerHTML = <b>y</b>;
+	}
+< script>
+
+<b>Expected Output:</b> test1; /test2 <- W3School...
+</pre>
+<p id="st"></p>
+
+<button onclick="myFunction5()">Get Item Name</button>
+
+<script>
+	function createItems() {
+		sesion.storage.test1 = 'hello';
+		sesion.storage.test2 = 'Jim';
+		sesion.storage.test3 = 123;
+	};
+
+	function myFunction5(){
+		var y = sessionStorage.key(0);
+		document.getElementById('st').innerHTML = y;
+	}
+</script>
+
+<h4>Loop through each local storage ITEM - and DISPLAY the NAMES:</h4>
+<pre>
+	< script>
+		function createItems() {
+			localStorage.setItem("mytime", Date.now());
+			localStorage.setItem("myname", "John");
+			localStorage.setItem("myage", 36);
+		}
+		
+		function displayItems() {
+			var i;
+			document.getElementById("so").innerHTML = "";
+			for (i = 0; i < localStorage.length; i++) {
+			<b>x = localStorage.key(i);</b>
+			document.getElementById("so").innerHTML += x + "< br>";
+			}
+		}
+		< /script>
+		<b>Output:</b> name | myage | mytime | myname
+</pre>
+
+<p id="so"></p>
+<button onclick="displayItems()">Display items</button>
+
+<script>
+	function createItems() {
+	  localStorage.setItem("mytime", Date.now());
+	  localStorage.setItem("myname", "John");
+	  localStorage.setItem("myage", 36);
+	}
+	
+	function displayItems() {
+	  var i;
+	  document.getElementById("so").innerHTML = "";
+	  for (i = 0; i < localStorage.length; i++) {
+	  x = localStorage.key(i);
+	  document.getElementById("so").innerHTML += x + "<br>";
+	  }
+	}
+	</script>
+<br>
+
+<h2>API Fetch</h2>
+<p>The <u>Fetch API <b>interface</b></u> - allows WEB BROWSER to make HTTP Requestes TO web SERVERS.</p>
+<pre>
+< p id="f"><b>FETCH a FILE - TO CHANGE this text.</b>< /p>
+< script>
+	let file = 'fetch_info.txt'
+	fetch (file)
+	.then(x => x.text())
+	.then(y => document.getelementById('f').innerHTML = y);
+< /script>
+</pre>
+
+<p id="f"><b>FETCH a FILE - TO CHANGE this text.</b></p>
+<script>
+	let file = 'fetch_info.txt'
+	fetch (file)
+	.then(x => x.text())
+	.then(y => document.getelementById('f').innerHTML = y);
+</script>	
+</body>
+</html>
