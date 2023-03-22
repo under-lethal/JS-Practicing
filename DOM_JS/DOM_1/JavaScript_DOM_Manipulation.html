@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+				padding: 25px;
+				font-family:Verdana, Geneva, Tahoma, sans-serif;
+			}
+		h3{
+      text-decoration: underline;
+    }
+		p{
+			font-size: 14px;	
+			font-weight: 400;	
+			color: grey;
+			padding: 20px;
+      font-style: italic;
+		}
+
+    span{
+      font-weight: bold;
+      color: indianred;
+    }
+    pre{
+      border: 1px solid lightgray;
+      width: 1600px;
+      font-weight: bold;
+      font-style: italic;
+      color: rgb(70, 67, 67);
+      padding: 15px;
+    }
+    
+    hr{
+      line-height: 0.5px solid lightgrey;
+    }
+    </style>
+</head>
+<body>
+	<h1>DOM - Document Object Model</h1>
+<p>Stands for - Document.Object.Model and HAS - many <span>PROPERTIES</span> and <span>METHODS</span>, that we <span>USE</span> TO MANIPULATE the <mark>CONTENT</mark> | <mark>STRUCTURE</mark> | <mark>STYLE of a PROJECT.</mark><br>
+Almost everytime - a WEBSITE <span>performs an Action</span> such as:
+	<ul>
+		<li>TOGGLING Nav Menu</li>
+		<li>SLIDESHOW Imgs</li>
+		<li>A USER  - attempts to SUBMIT an INCOMPLETE Form</li>
+	</ul>	
+</p>
+
+  <pre>
+		< div class = 'container'>
+			< h2 id="main-heading">Favourite Movie / h2>
+			< ul>
+				< li class="list-items"> The Matrix / li>
+				< li class="list-items"> Star Wars / li>
+				< li class="list-items"> Harry Potter / li>
+				< li class="list-items"> Lord of The Rings / li>
+				< li class="list-items"> Marvel / li>
+			< /ul>
+		< /div>
+		< div class = 'container'>
+		< h2 id="main-heading">Favourite SPORTS / h2>
+		< ul>
+			< li class="list-items"> The Matrix / li>
+			< li class="list-items"> Star Wars / li>
+			< li class="list-items"> Harry Potter / li>
+			< li class="list-items"> Lord of The Rings / li>
+			< li class="list-items"> Marvel / li>
+		< /ul>
+	< /div>
+	
+		<  type="text/javascript" src="appDOM.js"> < /script>
+	</pre>
+
+	<div class = 'container'>
+		<h2 id="main-heading">Favourite Movie</h2>
+		<ul>
+			<li class="list-items">The Matrix</li>
+			<li class="list-items">Star Wars</li>
+			<li class="list-items">Harry Potter</li>
+			<li class="list-items">Lord of The Rings</li>
+			<li class="list-items">Marvel</li>
+		</ul>
+	</div>
+	<div class = 'container'>
+		<h2 id="main-heading">Favourite SPORTS</h2>
+		<ul>
+			<li class="list-items">The Matrix</li>
+			<li class="list-items">Star Wars</li>
+			<li class="list-items">Harry Potter</li>
+			<li class="list-items">Lord of The Rings</li>
+			<li class="list-items">Marvel</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="appDOM.js"></script>
+
+<h2>1.SELECTING ELEMENTS</h2>
+<p>In order to manipulate ELEM in a DOMTree - we first have to SELECT that particular element. <br>
+	...several ways to do this. <br>
+	5 Major ways - of selecting the Elements.
+</p>	
+	<ol>
+		<li>GetElementById()</li>
+		<li>GetElementBYClassName()</li>
+		<li>GetElementByTagName()</li>
+		<li>querrySelector()</li>
+		<li>querrySelectorAll()</li>
+	</ol>
+<br>
+<hr>
+
+
+
+<h3>GetElementById()</h3>
+	<p>You can select element - using this Method - <span>by its unique ID</span>. <br>
+		"h1" in the main BROWSER has the id of "main-heading" so, this is the element we're going to be selecting.</p>
+	<pre>
+		<span>const title = </span>document.getElementById(<span>main-heading</span>); 
+		
+		// <span>place</span> the SELECTION <span>inside</span> of a VARIABLE | to manipulate it.
+		<span>now - we can SELECT that VAR - and can ADD (styles to the element | manipulate it's ATTRIBUTES |  TRAVERSE the Element).</span>
+	</pre>
+
+
+<h3>GetElementByClassName()</h3>
+<p>
+	This METHOD returns <span>a COLLECTION of ALL the ELEMENTS</span> in the DOCUMENT with <span>that "SPECIFIED CLASS NAME"</span>. <br>
+	All our <span>< li > items</span> - have that class name: <span>"list-item"</span>. <br>
+	We can select them  using - <mark>"getElemByClassname()</mark> - method".
+</p>
+<pre>
+	We do the same <span>thing</span> - putting inside of a VARIABLE:
+
+	<span>const listItems = </span>getElementByClassName(<span>'list-items'</span>);
+	console.log(listItems);
+
+	This <span>method - also RETURNS - an array like object</span> - of all the child-elements.
+</pre>
+
+<h3>getElementByTagName()</h3>
+<p>Similar to <span>"ClassName"</span> - returns all of the ELEM. (of that specified <span>tag name</span>) - in order in WHICH THEY appear in the Document. <br>
+Returning <span>an array</span> LIKE OBJECT.</p>
+<pre>
+	
+	<span>const listItems = </span>getElementByTagName(<span>'li'</span>);
+	console.log(listItems);
+
+	We've got a COLLECTION of all the (5) "list-items".
+	This <span>method</span> is similar to: <span>"getElementByClassName"</span>.	
+</pre>
+
+
+<h3>querrySelector()</h3>
+<p>Is used to SELECT <span> one ITEM</span> or <span>the FIRST ITEM - that MATCHES the SELECTOR is given</span>. <br>
+IF YOU HAVE MULTIPLE ITEMS WITH THE SAME CLASS NAME (or the sam ID / or TAG) - <span>it will select the first ONE</span>. <br>
+IT also can ACCEPT - all CSS style SELECTORS. (allowing it to <span>SELECT</span> by it's TAG, CLASS, ID). <br>
+We can use THIS method TO grab ANY element in our HTML file.
+
+</p>
+<pre>
+	// we grab the "div" tag, of the CLASS="container".
+	<span>const container =</span> document.querrySelector(<span>'div'</span>);    
+	console.log(container);
+
+	*<span>With this METHOD</span> document.querrySelector - <span>we can grab the < div> TAG, the "class Name", the "#ID Attribute".</span>
+</pre>
+
+
+<h3>querrySelectorAll()</h3>
+<p>If we have more "divs" we WANT to select THEM all.</p>
+<pre>
+	<span>const container =</span> document.querrySelectorAll(<span>'div'</span>);   // we grab the "div" tag.
+	console.log(container);
+
+	Returns  - a <span>node list of COLLECTIONS</span> - of all the matching elements - that MATCHES that SPECIFIC CSS Selector.
+	"div" - in our case.
+	If (we select elements BY TAG or CLASS Name) (where we get<span> HTML COLLECTION</span>)- in this METHOD we GET a <span>"NODELIST"</span>.
+</pre>
+<br>
+<hr>
+<br>
+
+
+<h2>2.DOM MANIPULATION - MANIPULATE/STYLING Elements</h2>
+<h3>2.1 Styling an Element</h3>
+<p>How to <span>change a STYLING</span> of an Elmement.. <br>
+We can <span>acces</span> these CSS ELEMENTS with JS:</p>
+<pre>
+	Select "this" MAIN Heading: - put in a VARIABLE:
+	<span>const title =</span> document.<mark>querySelector('#main-heading');</mark>
+	console.log(title);
+</pre>
+
+<p>Now we manipulate this element and CHANGE it AROUND - using CSS Properties. <br>
+	1.<span>To ACCESS properties in JS</span> First we grab the VAR we want to APPLY the styling; (titile - in this case). <br>
+	2.Simply type "style property". <br>
+	3.USE - any CSS property (you want to apply to this element). <span>.color</span>
+</p>
+<pre>
+	title.style.color = 'red';
+	
+	//Now the <span>color</span> (of the <span>"main-heading"</span>) - is red.
+	<span><i>//This type of STYLING -si  - INLINE Styling.</i></span>
+
+	*If I try to APPLYing - all of the < li > - <span>It's Not gonna Work!</span>
+	(<span>SELECT them</span> then <span>STYLE.</span>)
+	
+	<span>const listItems = </span>document.querrySelectorAll('.list-items');
+	console.log(listItems);
+
+	<span>listItems.style.fontSize = '2rem';</span>
+
+	//<span>NOT Working</span>  - because <span>it's trying to apply an INLINE STYLE - <i>(to 5 different list-items).</i></span>
+	//<i>IF we want to apply this styling - to all of the list-items- we NEED to <span>LOOP through.</span></i>
+	
+	for (i = 0; i < <mark>listItems.length;</mark> i++){
+		<mark>listItems<span>[i]</span>.style.fontSize = '2rem';</mark>	
+	}
+	console.log(listItems);
+</pre>
+
+<h2>3.CREATING ELEMENTS</h2>
+<p><span>Add</span> another <i>list item</i> in our "Fav Movie";</p>
+<pre>
+	<span>const ul</span> = document.querySelector('ul');
+	//now - use <span>createElement - METHOD.</span>
+	<span>const li</span> = document<mark>.createElement('li');</mark>  <span>//we create a "list-item".</span>
+</pre>
+
+<h3>3.1 Append Child / ADDING Elements</h3>
+<p>Our VAR(and this elem.:<span>"document.createElement('li')"</span>) - <mark>needs to be INSERTED</mark> -into OUR Document. <br>
+	<span>The way - WE CAN ADD ELEMENETS (inside of the documents)</span> - is USING <mark>"the append. - METHOD";</mark> <br>
+	...using - append METHOD. <br>
+	1. grab the <span>< ul ></span>; ('cause - we want to append this "listItems" inside this "ul"). <br>
+	2. grab the "append" METHOD. <br>
+	3. then - the Elem. we want to append.
+</p>
+<pre>
+	<span>ul.append(li);</span> // the Elem. we want to <span>apppend</span> is <span>(the variable of) li</span>. 
+	Now we ADD a NEW <span>< li > < /li > - inside of the < ul >.
+</pre>
+
+<h3>3.2 <span>Add</span> some content <span>inside of our list-Item</span></h3> 
+<p>Include or Modify Text. <br>
+	1.<span>Add</span> a <mark>"span"</mark> inside the 1'st "li"; <br>
+	2.<span>Create</span> a VAR that <span>GRAB</span> that <mark>"span element"</mark>. (and <mark>include innerText</mark>);</p>
+
+	<pre>
+	const firstListItem = document.querySelector(<span>'.list-items'</span>);
+	console.log(firstListItem.innerText);
+	console.log(firstListItem.textContent);
+	console.log(firstListItem.innerHTML);
+	</pre>
+	<p>
+		//!* There is a bit of a DANGER (using .innerHTML) - security ISSUES. <br>
+		//You don;t want user INPUT to be DISPLAYED in the innerHTML (because - THIS actually allows THE USER to control the JS and HTML on your webPage.) <br>
+		//In most cases you're going to use (<span>innerText</span>); Let's use it.
+	</p>
+	<pre>
+		//grab the "li" (grab in a text);
+
+		<span>li.innerText = 'X-Men';</span>
+
+		"X-Men" - The "text" has been INCLUDED - <span>inside of our list.</span>
+	</pre>
+	<p>Now that <span>WE ADD</span> a new "< li >" (using <mark>append METHOD</mark>) - and also <span>give it SOME Txt</span> <mark>(li.innerText = 'X-men')</mark></p>
+	<p><b>Make our list item "X-Men" - look like the rest of the list items:</b></p>
+
+	<h3>3.3 <span>Modifying</span> Attributes & Classes</h3>
+	<p>1.The <span>setAttribute</span> Method (<mark>we GRAB</mark> our "li" item). <br>
+		1.1 <span>SET an Attribute</span> to OUR Specify Element - (in our case - "li"). <br>
+		<mark>For this ATTR - we NEED to INCLUDE TWO values.</mark> <br>
+		b. <span>Attr</span> you want to <span>SET</span>. <br>
+		a. <span>The NAME you want to GIVE</span> that ATTR.
+	</p>
+
+	<pre>
+		<span>li.setAttribute('id', 'main-heading');</span>
+		
+		// a marit "X-Men"  - la fel ca si 'main-heading'...
+	</pre>
+
+	<h3>3.4 We can actually <span>REMOVE</span> this ATTR:</h3>
+	<p>
+		Let's say - we want to remove the 'ID' from our "list-item". <br>
+		<span>li.remove('id');</span> //'main-heading'
+		Now"X-Men" - it's REVERTED back to it's default styling. (e mic);
+		As the others list-items - because we added the same class (as the rest of the list-items).
+	</p>
+
+	<h3>3.5 There is also a WAY we can <span>ACCES Attributes</span> in JS</h3>
+	<p>
+		...let's say we want to <mark>get the (attr - of our "main-heading").</mark> <br>
+		<b>1. create a VAR for it.</b> - and GRAB the <mark>'main-heading'</mark>.
+	</p>
+	<pre>
+		<span>const title = </span> document.<mark>querrySelector('main-heading')</mark>;
+		console.log(<span>title.getAttribute('id')</span>); //main-heading - which is the ID associated with our "main-heading".
+	</pre>
+
+	<h3>3.6 DEAL with CLASSES</h3>
+	<p>
+		1.Grab our "li". <br>
+		2.Use the PROPERTY of <span>"classList".</span> <br>
+		3.This <span>"classList"</span> - have a <b>FEW METHODS.</b> <br>
+		(but we use "add" method) - to add a class to our LIST-iTEMS
+	</p>
+	<pre>
+		<span>li.classList<mark>.add</mark>('list-items');</span> // Now (our last list-item - "X-men" is exactly the same - as the other list-items) - <span>because we've added the SAME Class.</span> - as the rest of the list-items.
+
+		li.classList<span>.remove</span>('list-items'); //we've REMOVED that CLASS. ('X-Men').
+	</pre>
+
+	<h3>3.7 FIND out if whether an ELEM (has that "SPECIFIC class").</h3>
+	<pre>
+		console.log(<span>li.classList.contains('list-items')</span>);
+
+		//true - because -> li.classList<span>.add('list-items')</span>;
+		//false - because -> li.classList<span>.remove('list-items')</span>;
+	</pre>
+
+	<h3><span>REMOVE</span> Elements:</h3>
+	<p>use - <span>remove METHOD</span>.</p>
+	<pre>
+		<span>li.remove();</span> // remove "X-Men" from "list-items";
+	</pre>
+
+	<br>
+	<hr>
+
+	<h1>B.Traversing/NAVIGATE the DOM</h1>
+	<h2>Parent Node Traversal</h2>
+	<h3>Traverse <span>UpWards</span></h3>
+	<p>Grab this "ul" - and TRAVERSE UpWards in the DOM - and find out <span>the Parent of the "ul".</span></p>
+	<p><span>Create</span> a VAR that <span>GRAB</span> the "ul"; to find out the PARENT and the GRANDPARENT.</p>
+	<pre>
+		let ul = document<span>.querrySelector('ul')</span>;
+		console.log(ul); //< ul > ... < /ul> >
+
+		The DOm reffered to as: <span>parents, children</span> or <span>siblings.</span>
+		The parent of any node is a node - that is one level above it.
+		or closer to the document in the DOM Hierarchy.
+
+		//To find out the parent Node - we have 2 Options:
+
+		console.log(ul.<span>parentNode</span>);
+		console.log(ul.<span>parentElement</span>);
+		//we getting the "div" with the class of "container" - because  - is the "parent" of the "ul".
+
+		//If we want to find the GRAND PAERNT of the "ul".
+		console.log(ul.<span>parentNode.parentNode</span>);
+		console.log(ul.<span>parentElement.parentElement</span>);
+		//"body" - first is the "container" then is the "body".
+
+		//The DIFERENCE between ".parentNode" and ."parentElement"
+		const html = document.documentElement;
+		console.log(html.parentNode); //(Nodes - can be TEXT, can be DOCUMENT, COMMENTS, LINEBREAKS)
+		console.log(html.parentElement); //null - because the job of the ".parentElement" is to try and RETREIVE the parent element, of the "html" element;
+
+		<SPAN>USE "parentNode"</SPAN> not <span>parentElement</span> - to TRAVERSING the DOM.
+	</pre>
+	<h2>Child Node Traversal</h2>
+	<h3>Let's <span>traverse DOWNWards</span> in the DOM</h3>
+	<P>Traverse Downards into <SPAN>"list-items"</SPAN>;</P>
+	<pre>
+		let ul = document.querySelector('ul');
+		console.log(ul);
+
+		Just like "parentElem" and "parentNode" - we have <span>childElement (properties)</span> and <span>childNode (properties)</span>
+
+		//childNodes
+		<span>console.log(ul.childNodes);</span> // the console it's giving us a "nodeList"
+		//we get a list of every <span>child node</span> - inside of the <span>"ul"</span>.
+	</pre>
+	<p>We also have <span>firstChild</span> and <span>lastChild</span> - to SELECT "first" and "last" child NODE of our LIST.</p>
+	<pre>
+		<span>console.log(ul.firstChild);</span>
+		<span>console.log(ul.lastChild);</span>
+		//returning the "textNodes" (because first and last index - is "text" node).
+		//fChild and lChild - is selecting the FIRST and LAST node. 
+	</pre>
+	<p>If we want to styling:</p>
+	<pre>		
+		<span>ul.childNodes[1].style.backgroundColor = 'blue';</span>
+		// The first ITEM "li" - HAS background-color: "blue";
+	</pre>
+	<p>Like the <b>parentElement</b> - we have the same thing - for <b>childrenElements.</b></p>
+	<pre>
+		//We can also have the same thing with the "children" elements.
+		//it's gonna select the "element nodes".
+
+		<span>console.log(ul.children);</span> //<span>ul</span>, an then <span>grab</span> "children";
+		returns: all those 5 LIST ITEMS (li). (inside of our 'ul').
+	</pre>
+
+	<p><b>firstChild</b> and <b>lastChild</b> - do the exact same thing.</p>
+	<pre>
+		console.log(<span>ul.firstElementChild</span>); //The Matrix
+		console.log(<span>ul.lastElementChild</span>); //Marvel
+	</pre>
+
+	<p><b>h1</b> and <b>ul</b> are on the same LEVEL. <br>
+	<span>The siblings - DONT'T have to be - the same type of node.</span> <br>
+	If we leave a comment betwen them (<! -- asdf -- >) => THAT would be classify as a SIBLING - <b>to the h1</b>.
+	</p>
+	<pre>
+		let ul3 = <span>document.querySelector('ul');</span>
+		console.log(ul.previousSibling);
+		console.log(ul.nextSibling);
+
+		*<span>We have PROPERTIES for <b>nodes</b> - which covers all THE NODES.</span>	
+		*<span>We have PROPERTIES for <b>nodes</b> - JUST covers ELEM NODES.</span>
+		console.log(ul.previousSibling); //#text
+		console.log(ul.nextSibling); //#text
+	</pre>
+
+	<p>Find out the SIBLING Element Nodes. (instead of using previous/nextSibling).</p>
+	<pre>
+		console.log(<span>ul.previousElementSibling</span>);
+		console.log(<span>ul.nextElementSibling</span>);
+
+		<span>h1</span> - because THIS IS THE PREVIOUS ELEM. SIBLING NODE.
+		<span>null</span> - because THERE is NO ELEMENT NODE - after the "ul".
+	</pre>
+	<hr>
+	<br>
+
+	<h1>C.Event Listeners</h1>
+	<p><b>EventListeners</b> allow us to <span>ADD INTERACCTIVE Funtionality</span> to html Elements by -  <span>listening to different EVENTS</span>. <br>
+		...such as: When a <b>USER PRESSES a KEY</b>, when <b>ELEMENTS LOADS</b>, when a <b>USER clicks a BUTTON</b>. <br> <br>
+
+		The most COMMON <span>EV.</span> are: <br>
+		<b>LOAD Events | KEY DOWN Events(?) | MOUSE Over Events | CLICK Events.</b> 
+	</p>
+
+	<h3>Global OnEvent - ATTRIBUTE.</h3>
+	<p>We include an EVENT inside of these html elements:</p>
+	<pre>
+		< h1 id=<span>"main-heading"</span>>Event Listeners < /h1>
+		
+		< div class = <span>"container"</span>>
+			< div class = <span>"boxes box-1"</span> >
+				< h1 = <span>"heading"</span> > Example 1 < / h1 >
+				< button>Enter< /button>
+			< div>
+			< div class = <span>"boxes box-2"</span> >
+				< h1 = <span>"heading"</span> > Example 2 < / h1 >
+				< button class = <span>"btn-2</span>>Enter< /button>
+			< div>
+			< div class = <span>"boxes box-3"</span> >
+				< h1 = <span>"heading"</span> > Example 3 < / h1 >
+				< button class = <span>"btn-3</span>>Enter< /button>
+			< div>
+		< /div >
+	</pre>
+	<pre>
+		Let's include an EVENT into this <span>< button> tag.</span>
+		For this example - we're going to use <span>"ONCLICK Event"</span>.
+		..to show us an "AlertBox" - that has the CONTENT: "I Love JavaScript."
+
+		< button <span>onclick="alert('I Love JavaScript!')"</span>>Enter< /button>
+	</pre>
+
+	<h3>addEventListener()</h3>
+	<pre>
+		Frst include a ELEM - that we want to <span>apply the eventListener</span> to:
+		<span>element.addEventListener("click" function);</span>
+	</pre>
+	<p>We "operate on "Example2"</p>
+	<pre>
+		*First - INCLUDE a Variable:
+		const buttonTwo = 
+		//this button |^ - HAS A Class of "btn-2". So' we're gonna RETREIVE that:
+		const buttonTwo = <span>document.querrySelector('btn-2');</span>
+
+		Now - we CREATE a CALLBack Func() - and we call it:
+		We also <span>INCLUDE</span> an <span>eventListener();</span>
+
+		<span>function alertBtn (){
+				alert('I also love JS!');				
+		};</span>
+
+		button.addEventListener('click', alertBtn);
+	</pre>
+
+	<h3>Example 3:</h3>
+	<h3>mouseover() - event</h3>
+	<pre>
+		*Instead of CLICKING a button - we're HOVER over an Elem. (an I want the BACKGROUND of that "Box Elem" - to change).
+		Let's first GRAB "Box3";
+
+		const newBackgroundColor = <span>document.querrySelector('.box-3');
+
+			function changeColor(){
+				newBackgroundColor.style.backgroundColor = 'blue'
+			};
+
+			newBackgroundColor.addEventListener('mouseover', changeColor);
+		</span>
+	</pre>
+
+	<h3>Click on button to DISPLAY some TEXT (which is originally HIDDEN)</h3>
+	<pre>
+		<span>EventListeners</span> - we can COMBINE with CSS, and other JS tools.
+		Here we have a button  - and when we click on this button - REVEAL MORE TEXT.
+		If we click on the button again - it HIDES the TEXT.
+	</pre>
+
+	<h4>Example:</h4>
+	<pre>
+		< div class = <span>'container'</span> >
+		< button class = <span>"reveal-btn-boxes"</span> > Reveal More </ button>
+
+		< div class = <span>"hiden-content boxes"</span> >
+			Lorem Ipsum dolor sit amet ....
+		< / div>
+	</pre>
+	<p>Create TWO <b>"const"</b>:</p>
+	<pre>
+		const revealBtn = document<span>.querrySelector('.reveal-btn');</span>
+		const hiddenContent = document<span>.querrySelector('.hidden-content');</span>
+
+		//<span>Create a CALLBack Func()</span> - which will check if out HIDDEN CONTENT has the <span>class = 'reveal-btn';</span>
+		
+		function revealContent() {
+			if(<span>hiddenContent.classlist){		//If our "hidden-conten" (grab the "classList" property) - <span>contains CLASS OF ('reveal-btn')</span>
+				hiddenContent.class.remove('reveal-btn')	//GRAB the "innerContent", GRAB the "classList" Property. - and <span>.remove THE CLASS ('reveal-btn')</span>
+			}else{
+				hiddenContent.classList.add('reveal-btn');
+			}
+		</span> 
+		}
+
+		//NOW - Include our <span>eventListener</span> on a BUTTON:
+		<span>revealBtn.addEventListener('click' revealContent);</span> //..we're look out for a "clickEvent" | <span>and function we want to RUN Off: "revealContent".</span>
+	</pre>
+</body>
+</html>
