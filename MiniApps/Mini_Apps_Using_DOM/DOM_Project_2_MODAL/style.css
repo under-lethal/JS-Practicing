@@ -1,0 +1,97 @@
+/*MODAL Styling*/
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Prompt', sans-serif;
+}
+
+body{
+  background: url(img/headphones_Modal.jpg) no-repeat center center/ cover;
+  height: 100vh;
+  position: relative;
+}
+
+/*Open MODAL Button*/
+#open-btn{
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  width: 350px;
+  height: 60px;
+  font-size: 1.7rem;
+  background: transparent;
+  color: #c2cdda;
+  border: solid 1px #79828d;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #828d97;
+  transition: 2s;
+}
+
+/*Hover Effect*/
+#open-btn:hover{
+  background-color:#828d97;
+  color: #272b34
+}
+
+/*STYLE our Modal*/
+/*The BOX that SHOWs Up - when we CLIKC that BUTTON*/
+#modal{
+  background-color: #c2cddaff;
+  color:#272b34;  
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  /*Move 'x" to the right - and "txt* to the left.*/
+  display: flex;
+  justify-content: space-between;
+  /*Align VERTICALY to the CENTER*/
+  align-items: center;
+/*Create an Animation*/
+  animation-name: animatemodal;
+  animation-duration: .4s;
+}
+
+/*Style the CROSS*/
+#close-btn{
+  cursor: default;
+  font-size: 4rem;
+  color: #272b34;
+  font-weight: light;  
+}
+
+/*GRAB Modal Container - and MAKE IT DISAPPEAR*/
+#modal-container{
+  display:none;
+  position: fixed; /*??*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgb(255, 255, 255, .2);
+}
+
+/*Animate the Modal*/
+/*Keyframes*/
+@keyframes animatemodal {
+  from{
+    top:-300px;
+    opacity: 0;
+  }
+  to{
+    top: 50%;
+    opacity: 1%;
+  }
+}
+
+/*The @keyframes rule specifies the animation code.
+The animation is created by gradually changing from one set of CSS styles to another.
+During the animation, you can change the set of CSS styles many times.*/
+
+

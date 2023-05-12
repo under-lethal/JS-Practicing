@@ -1,0 +1,76 @@
+body{
+  background: url(img/askingQuestions.png) no-repeat center center/cover;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  aling-items: center;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Prompt', sans-serif;
+}
+
+.accordion{
+  width: 65%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.accordion .accordion-title{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.accordion .content-container .question{
+  padding: 18px 0px;
+  font-size: 22px;
+  cursor: pointer;
+  border-bottom: 1px solid #000;
+
+  position: relative; /*Becasue - we're going to POSITIONING the Open/Close SECTIONS. (show/hide ANSWERS)*/  
+}
+
+.accordion .content-container .question::after{
+  content: '+';
+  
+  position: absolute;
+  right: -5px; /*move '+' SIGN - to the RIGHT of the TTILE*/
+
+}
+
+.accordion .content-container .answer {
+  padding-top: 15px;
+  font-size: 22px;
+  line-height: 1.5;
+  width: 100%;
+
+  /*Now - LET'S HIDE The CONTENT*/
+  height: 0px;
+  overflow: hidden;
+  /*and make IT SMOOTH - transition-*/
+  transition: 0.5s;
+  /*then we NEED to Appply some JS - when we CLICK on "+"*/
+}
+
+/*JS Styling LINK*/
+
+/*grab the "accordion, .content-container CLASS*/
+/*SELECT the "active" CLASS (created INSIDE the JavaScript*/
+/*grab the "answer" CLASS*/
+.accordion .content-container.active .answer {
+  height: 150px;
+};
+
+/*We're using the JS  - we just created*/
+/*TOGGLE the CLASS ('answer')*/ /*So - when we click on any questions THE height: 150px; - instead of "0px"*/
+
+.accordion .content-container.active .question {
+  font-size: 18px;
+  transition: .5s;
+}
+
+/*The CLOSE '-' BUTTON*/
+.accordion .content-container.active .question::after {
+  content: '-';
+  font-size: 30px;
+  transition: .5s;
+}
